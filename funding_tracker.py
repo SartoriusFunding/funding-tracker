@@ -83,6 +83,24 @@ BIO_KEYWORDS = [
 # Funder column: NIH ICs render as "NIH (NIGMS)", these render as themselves.
 NON_NIH_AGENCIES = {"CDC", "FDA", "AHRQ", "ACF", "VA", "HRSA", "CMS", "SAMHSA"}
 
+# Shown in the Department column when NIH reports no department.
+NO_DEPT_LABEL = "--"
+OLD_NO_DEPT_LABEL = "Dept not reported by NIH (bio keyword match)"  # migrated
+
+# --- PI email lookup (PubMed) -----------------------------------------------
+# NIH's API gives PI names but not emails. For those, we search the PI's own
+# recent PubMed publications (NCBI E-utilities, free) and extract their .edu
+# address from the affiliation line - i.e. the email the PI published
+# themselves. Only .edu addresses are accepted, and the address must contain
+# the PI's name so a co-author's email is never picked up. Results (including
+# misses) are cached in data/pi_email_cache.json so each PI costs at most one
+# lookup; misses are retried after EMAIL_RETRY_DAYS.
+ENABLE_EMAIL_LOOKUP = True
+NCBI_API_KEY = os.environ.get("NCBI_API_KEY", "").strip()  # optional, free
+EMAIL_SLEEP = 0.12 if NCBI_API_KEY else 0.35  # NCBI: 10/s with key, 3/s without
+EMAIL_RETRY_DAYS = 45
+MAX_EMAIL_LOOKUPS_PER_RUN = 600  # bounds runtime; the rest continue next run
+
 # NSF: include whole BIO directorate, these divisions, or CBET/ENG when a bio
 # keyword is present in the program name or title.
 NSF_INCLUDE_DIVISIONS = {"MCB", "DBI", "IOS", "EF"}
@@ -265,6 +283,147 @@ def flip_name(name: str) -> str:
     return nice_name(name) if name else ""
 
 
+# --- PubMed email lookup ----------------------------------------------------
+
+EMAIL_EDU_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.edu\b", re.I)
+AFFIL_STOP = {"university", "of", "the", "at", "and", "a", "an", "in", "for",
+              "system"}
+
+
+def email_cache_path() -> Path:
+    return DATA_DIR / "pi_email_cache.json"
+
+
+def _uni_affil_terms(university: str) -> str:
+    """'University of California Berkeley' -> '"California Berkeley"'."""
+    toks = [w for w in re.split(r"[^A-Za-z]+", university)
+            if w and w.lower() not in AFFIL_STOP]
+    return f'"{" ".join(toks[:2])}"' if toks else ""
+
+
+def _plausible_own_email(email: str, first: str, last: str) -> bool:
+    lp = email.split("@")[0].lower()
+    last_l = re.sub(r"[^a-z]", "", last.lower())
+    fi = first[:1].lower()
+    return bool(last_l) and (
+        last_l[:5] in lp
+        or (fi and lp.startswith(fi) and last_l[:4] in lp)
+    )
+
+
+def _extract_edu_email(xml_text: str, first: str, last: str) -> str:
+    """Pull the PI's own .edu email out of PubMed efetch XML, if present."""
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return ""
+    last_l = last.lower()
+    # pass 1: affiliation lines attached to the matching author
+    for au in root.iter("Author"):
+        if (au.findtext("LastName") or "").lower() != last_l:
+            continue
+        for aff in au.iter("Affiliation"):
+            for e in EMAIL_EDU_RE.findall(aff.text or ""):
+                if _plausible_own_email(e, first, last):
+                    return e
+    # pass 2: any affiliation line, still requiring the name to match
+    for aff in root.iter("Affiliation"):
+        for e in EMAIL_EDU_RE.findall(aff.text or ""):
+            if _plausible_own_email(e, first, last):
+                return e
+    return ""
+
+
+def _pubmed_email(first: str, last: str, university: str, stats: dict) -> str:
+    base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+    common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
+    if NCBI_API_KEY:
+        common["api_key"] = NCBI_API_KEY
+    q = f"{last} {first[:1]}[Author]"
+    terms = _uni_affil_terms(university)
+    if terms:
+        q += f" AND {terms}[Affiliation]"
+    try:
+        stats["net"] = stats.get("net", 0) + 1
+        r = SESSION.get(base + "esearch.fcgi",
+                        params=dict(common, term=q, retmax="8", retmode="json",
+                                    reldate="4000", datetype="pdat"),
+                        timeout=TIMEOUT)
+        r.raise_for_status()
+        time.sleep(EMAIL_SLEEP)
+        ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
+        if not ids:
+            return ""
+        r2 = SESSION.get(base + "efetch.fcgi",
+                         params=dict(common, id=",".join(ids), retmode="xml"),
+                         timeout=TIMEOUT)
+        r2.raise_for_status()
+        time.sleep(EMAIL_SLEEP)
+        return _extract_edu_email(r2.text, first, last)
+    except Exception as exc:
+        log(f"  email lookup failed for {first} {last}: {exc}")
+        return ""
+
+
+def lookup_pi_email(pi: str, university: str, cache: dict, stats: dict) -> str:
+    """Cached PubMed lookup; '' means not found (retried after a while)."""
+    key = f"{pi}|{university}".lower()
+    ent = cache.get(key)
+    if ent is not None:
+        if ent.get("email"):
+            return ent["email"]
+        try:
+            checked = date.fromisoformat(ent.get("checked", "1970-01-01"))
+        except ValueError:
+            checked = date(1970, 1, 1)
+        if (date.today() - checked).days < EMAIL_RETRY_DAYS:
+            return ""
+    parts = pi.split()
+    email = ""
+    if len(parts) >= 2:
+        email = _pubmed_email(parts[0], parts[-1], university, stats)
+    cache[key] = {"email": email, "checked": date.today().isoformat()}
+    return email
+
+
+def sweep_pi_emails(data):
+    """Fill missing PI emails on NIH cell entries, newest dates first.
+
+    Runs after ingest every day, so it both enriches today's new awards and
+    backfills older entries that were recorded before lookup existed."""
+    if not ENABLE_EMAIL_LOOKUP:
+        return data
+    cache = load_json(email_cache_path(), {})
+    stats = {"net": 0}
+    filled, changed = 0, False
+    for d in reversed(data["dates"]):
+        for row in data["rows"].values():
+            for e in row["cells"].get(d, []):
+                if stats["net"] >= MAX_EMAIL_LOOKUPS_PER_RUN:
+                    log("email lookup cap reached; the rest continue next run")
+                    save_json(email_cache_path(), cache)
+                    if changed:
+                        save_json(DATA_FILE, data)
+                    log(f"PI email sweep: {stats['net']} PubMed queries, "
+                        f"{filled} emails filled")
+                    return data
+                if e.get("source") != "NIH" or not e.get("pi") or e.get("pi_email"):
+                    continue
+                em = lookup_pi_email(e["pi"], row["university"], cache, stats)
+                if em:
+                    e["pi_email"] = em
+                    e["pi_email_via"] = "PubMed"
+                    filled += 1
+                    changed = True
+    save_json(email_cache_path(), cache)
+    if changed:
+        save_json(DATA_FILE, data)
+    log(f"PI email sweep: {stats['net']} PubMed queries, {filled} emails "
+        f"filled, cache {len(cache)}")
+    return data
+
+
 def content_key(prefix: str, text: str) -> str:
     return f"{prefix}:{hashlib.sha1(text.lower().encode()).hexdigest()[:16]}"
 
@@ -338,7 +497,7 @@ def fetch_nih(today: date):
                 # and say so honestly in the label. The university check stops
                 # SBIR/STTR company awards (e.g. "X Therapeutics, Inc.") from
                 # leaking into a table about university departments.
-                dept_label = "Dept not reported by NIH (bio keyword match)"
+                dept_label = NO_DEPT_LABEL
             else:
                 continue  # named clinical dept, or unreported + not bio
             ic = (p.get("agency_ic_admin") or {}).get("abbreviation") or ""
@@ -616,6 +775,23 @@ def ingest(awards, run_date: str):
     data = load_json(DATA_FILE, {"dates": [], "rows": {}})
     seen = load_json(SEEN_FILE, {})
 
+    # One-time migration: rows written by earlier versions used a long
+    # "Dept not reported..." label; relabel to "--" and re-key, merging
+    # if a "--" row for the same university/funder already exists.
+    for rk in list(data["rows"]):
+        row = data["rows"][rk]
+        if row.get("department") == OLD_NO_DEPT_LABEL:
+            row["department"] = NO_DEPT_LABEL
+            new_rk = (f"{row['university'].lower()}||{NO_DEPT_LABEL.lower()}"
+                      f"||{row.get('funder', '\u2014').lower()}")
+            if new_rk != rk:
+                data["rows"].pop(rk)
+                if new_rk in data["rows"]:
+                    for dte, ent in row["cells"].items():
+                        data["rows"][new_rk]["cells"].setdefault(dte, []).extend(ent)
+                else:
+                    data["rows"][new_rk] = row
+
     if run_date not in data["dates"]:
         data["dates"].append(run_date)
         data["dates"].sort()
@@ -668,7 +844,9 @@ def _cell_html(entries):
     pi_name = html_lib.escape(top.get("pi") or "--")
     email = (top.get("pi_email") or "").strip()
     if email:
-        pi_mail = (f'<a href="mailto:{html_lib.escape(email, quote=True)}">'
+        t = (' title="found via the PI\'s PubMed publications"'
+             if top.get("pi_email_via") else "")
+        pi_mail = (f'<a href="mailto:{html_lib.escape(email, quote=True)}"{t}>'
                    f"{html_lib.escape(email)}</a>")
     else:
         pi_mail = "--"
@@ -813,10 +991,12 @@ a.approx {{ color:var(--caution); border-bottom-color:#E4CDA5; }}
 appears only on the day it was first detected, so amounts are never
 double-counted. 0 = no new funding detected for that row that day. Cells with
 several awards list each one and end with a ruled, unlinked <b>= total</b>.
-The PI lines show the contact PI of the cell's largest award &mdash; NSF
-publishes PI emails directly; NIH publishes the name only, and the email is
-one click away on the linked project page; -- means the source provides
-neither.
+A <b>--</b> Department means NIH reported no department for that
+keyword-matched award. The PI lines show the contact PI of the cell's largest
+award: NSF publishes emails directly; for NIH the tracker recovers the PI's
+own .edu address from their recent PubMed publications when possible (hover
+the email to see that); -- means the source provides neither / nothing was
+found yet.
 <span class="approx">~ amber figures</span> are estimates parsed from press
 coverage (source unverified) &mdash; click through before quoting them.
 Sources: NIH RePORTER, NSF, USAspending (ARPA-H, ASPR/BARDA, NIFA, DOE-SC,
@@ -930,6 +1110,58 @@ def selftest() -> int:
     assert find_funder("V Foundation gives Tufts $1M") == "V Foundation"
     assert find_funder("A mystery donor gives Tufts $1M") == "See source"
 
+    # --- PubMed email extraction (offline, canned XML) ---
+    xml = ("<PubmedArticleSet><PubmedArticle><MedlineCitation><Article>"
+           "<AuthorList><Author><LastName>Big</LastName><ForeName>Jane</ForeName>"
+           "<AffiliationInfo><Affiliation>Dept of BME, Brown University, "
+           "Providence RI. Electronic address: jane_big@brown.edu."
+           "</Affiliation></AffiliationInfo></Author>"
+           "<Author><LastName>Other</LastName><AffiliationInfo>"
+           "<Affiliation>MIT, Cambridge MA. other@mit.edu</Affiliation>"
+           "</AffiliationInfo></Author></AuthorList>"
+           "</Article></MedlineCitation></PubmedArticle></PubmedArticleSet>")
+    assert _extract_edu_email(xml, "Jane", "Big") == "jane_big@brown.edu", \
+        "PubMed email extraction failed"
+    assert _extract_edu_email(xml, "Zed", "Nowhere") == "", \
+        "must not return someone else's email"
+    assert not _plausible_own_email("random@x.edu", "Jane", "Big"), \
+        "name match too loose"
+    assert _uni_affil_terms("University of California Berkeley") == '"California Berkeley"'
+
+    # --- email sweep with a stubbed lookup (no network) ---
+    orig_lookup = globals()["lookup_pi_email"]
+    globals()["lookup_pi_email"] = (
+        lambda pi, uni, cache, stats: "jbig@brown.edu" if pi == "Jane Big" else "")
+    data = sweep_pi_emails(data)
+    globals()["lookup_pi_email"] = orig_lookup
+    bme15 = data["rows"]["brown university||biomedical engineering||nih (nigms)"]
+    assert bme15["cells"]["2026-09-15"][0]["pi_email"] == "jbig@brown.edu", \
+        "sweep did not fill email"
+    write_site(data)
+    page = (DOCS_DIR / "index.html").read_text()
+    assert 'href="mailto:jbig@brown.edu"' in page and "PubMed publications" in page, \
+        "swept email not rendered with tooltip"
+
+    # --- migration of the old long no-department label ---
+    import tempfile as _tf
+    tmp2 = Path(_tf.mkdtemp(prefix="tracker_migrate_"))
+    HOME, DATA_DIR, DOCS_DIR = tmp2, tmp2 / "data", tmp2 / "docs"
+    DATA_FILE, SEEN_FILE = DATA_DIR / "tracker_data.json", DATA_DIR / "seen_awards.json"
+    legacy = {"dates": ["2026-09-14"], "rows": {
+        "utopia university||dept not reported by nih (bio keyword match)||nih (od)": {
+            "university": "Utopia University",
+            "department": OLD_NO_DEPT_LABEL,
+            "funder": "NIH (OD)",
+            "cells": {"2026-09-14": [{"amount": 1000, "label": "$1,000",
+                                      "url": "u", "source": "NIH",
+                                      "approx": False, "pi": "", "pi_email": ""}]},
+        }}}
+    save_json(DATA_FILE, legacy)
+    data2, _ = ingest([], "2026-09-15")
+    new_rk = "utopia university||--||nih (od)"
+    assert new_rk in data2["rows"] and data2["rows"][new_rk]["department"] == "--", \
+        "old no-dept rows were not migrated to --"
+
     print(f"SELFTEST PASSED  (artifacts in {tmp})")
     return 0
 
@@ -937,18 +1169,24 @@ def selftest() -> int:
 # ----------------------------------------------------------------------------
 
 def main() -> int:
+    global ENABLE_EMAIL_LOOKUP
     ap = argparse.ArgumentParser()
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--tier1-only", action="store_true")
+    ap.add_argument("--skip-emails", action="store_true",
+                    help="skip the PubMed PI-email sweep this run")
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
+    if args.skip_emails:
+        ENABLE_EMAIL_LOOKUP = False
 
     today = date.today().isoformat()
     log(f"run date {today}")
     awards = collect_awards(date.today(), tier1_only=args.tier1_only)
     data, _ = ingest(awards, today)
+    data = sweep_pi_emails(data)
     write_site(data)
     return 0
 
