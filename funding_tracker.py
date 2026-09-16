@@ -256,17 +256,28 @@ def find_funder(text: str) -> str:
     return "See source"
 
 
+def flip_name(name: str) -> str:
+    """NIH gives 'DOE, JANE A' -> 'Jane A Doe'."""
+    name = (name or "").strip()
+    if "," in name:
+        last, _, rest = name.partition(",")
+        name = f"{rest.strip()} {last.strip()}"
+    return nice_name(name) if name else ""
+
+
 def content_key(prefix: str, text: str) -> str:
     return f"{prefix}:{hashlib.sha1(text.lower().encode()).hexdigest()[:16]}"
 
 
 def make_award(key, university, department, amount, url, source, approx=False,
-               label=None, funder="\u2014"):
+               label=None, funder="\u2014", pi="", pi_email=""):
     return {
         "key": key,
         "university": university,
         "department": department,
         "funder": funder,
+        "pi": pi,
+        "pi_email": pi_email,
         "amount": int(amount),
         "label": label or fmt_money(int(amount)),
         "url": url,
@@ -298,6 +309,7 @@ def fetch_nih(today: date):
                 "ApplId", "ProjectNum", "ProjectTitle", "AwardAmount",
                 "Organization", "AwardNoticeDate", "DateAdded",
                 "ProjectDetailUrl", "PrefTerms", "AgencyIcAdmin",
+                "ContactPiName",
             ],
             "limit": 500,
             "offset": offset,
@@ -339,6 +351,8 @@ def fetch_nih(today: date):
                 university=nice_name(name),
                 department=dept_label,
                 amount=amt, url=url, source="NIH", funder=funder,
+                pi=flip_name(p.get("contact_pi_name") or ""),
+                pi_email="",  # not in the public API; shown on the linked project page
             ))
         if len(results) < 500:
             break
@@ -372,6 +386,7 @@ def fetch_nsf(today: date):
             "id", "title", "awardeeName", "fundsObligatedAmt",
             "estimatedTotalAmt", "date", "dirAbbr", "divAbbr",
             "fundProgramName", "cfdaNumber",
+            "pdPIName", "piFirstName", "piLastName", "piEmail",
         ]),
     }
     offset = 1
@@ -394,6 +409,9 @@ def fetch_nsf(today: date):
             if amt < MIN_AWARD_AMOUNT:
                 continue
             aid = rec.get("id")
+            pi_name = " ".join(x for x in [rec.get("piFirstName"),
+                                           rec.get("piLastName")] if x) \
+                or rec.get("pdPIName") or ""
             awards.append(make_award(
                 key=f"NSF:{aid}",
                 university=nice_name(name),
@@ -401,6 +419,7 @@ def fetch_nsf(today: date):
                 amount=amt,
                 url=f"https://www.nsf.gov/awardsearch/showAward?AWD_ID={aid}",
                 source="NSF", funder="NSF",
+                pi=pi_name, pi_email=(rec.get("piEmail") or "").strip(),
             ))
         if len(recs) < 25:
             break
@@ -613,6 +632,7 @@ def ingest(awards, run_date: str):
         row["cells"].setdefault(run_date, []).append({
             "amount": a["amount"], "label": a["label"], "url": a["url"],
             "source": a["source"], "approx": a["approx"],
+            "pi": a.get("pi", ""), "pi_email": a.get("pi_email", ""),
         })
         new_count += 1
 
@@ -631,15 +651,26 @@ def _cell_html(entries):
     if not entries:
         return '<td class="zero" data-v="0">0</td>'
     total = sum(e["amount"] for e in entries)
-    links = " + ".join(
-        f'<a href="{html_lib.escape(e["url"], quote=True)}" target="_blank" rel="noopener" '
+    lines = "".join(
+        f'<div class="aline"><a href="{html_lib.escape(e["url"], quote=True)}" '
+        f'target="_blank" rel="noopener" '
         f'class="{"approx" if e["approx"] else "amt"}" '
-        f'title="{html_lib.escape(e["source"])}">{html_lib.escape(e["label"])}</a>'
+        f'title="{html_lib.escape(e["source"])}">{html_lib.escape(e["label"])}</a></div>'
         for e in entries
     )
     if len(entries) > 1:
-        links += f' = <span class="sum">{fmt_money(total)}</span>'
-    return f'<td data-v="{total}">{links}</td>'
+        lines += f'<div class="tot">= {fmt_money(total)}</div>'
+    top = max(entries, key=lambda e: e["amount"])  # PI of the highest award
+    pi_name = html_lib.escape(top.get("pi") or "--")
+    email = (top.get("pi_email") or "").strip()
+    if email:
+        pi_mail = (f'<a href="mailto:{html_lib.escape(email, quote=True)}">'
+                   f"{html_lib.escape(email)}</a>")
+    else:
+        pi_mail = "--"
+    lines += (f'<div class="pib">PI Name: {pi_name}<br>'
+              f"PI Email: {pi_mail}</div>")
+    return f'<td data-v="{total}">{lines}</td>'
 
 
 def render_html(data) -> str:
@@ -710,7 +741,13 @@ a:hover {{ border-bottom-color:var(--grow); }}
 table {{ border-collapse:separate; border-spacing:0; min-width:100%;
   font-variant-numeric:tabular-nums; }}
 th, td {{ padding:9px 14px; border-bottom:1px solid var(--line);
-  white-space:nowrap; text-align:right; font-size:14px; }}
+  white-space:nowrap; text-align:right; font-size:14px; vertical-align:top; }}
+.aline {{ display:block; line-height:1.6; }}
+.tot {{ display:inline-block; border-top:1px solid var(--ink); margin-top:3px;
+  padding-top:3px; font-weight:600; }}
+.pib {{ margin-top:7px; font-size:12px; color:var(--mut); font-weight:400;
+  line-height:1.5; }}
+.pib a {{ color:var(--grow); border-bottom-color:#BFE0CC; }}
 th {{ position:sticky; top:0; background:var(--bg); z-index:3; cursor:pointer;
   font-weight:500; user-select:none; }}
 th::after {{ content:"\u21C5"; margin-left:6px; font-size:11px; color:var(--mut); }}
@@ -733,7 +770,6 @@ td[data-v]:not(.zero) {{ background:#fff; }}
 tr:hover td {{ background:#F3F7F4; }}
 .zero {{ color:var(--mut); }}
 a.approx {{ color:var(--caution); border-bottom-color:#E4CDA5; }}
-.sum {{ font-weight:600; }}
 .legend {{ padding:12px 32px 40px; color:var(--mut); font-size:12.5px; }}
 .legend .approx {{ color:var(--caution); }}
 </style></head><body>
@@ -772,7 +808,11 @@ a.approx {{ color:var(--caution); border-bottom-color:#E4CDA5; }}
 <div class="legend">Every dated column is one run of the tracker; an award
 appears only on the day it was first detected, so amounts are never
 double-counted. 0 = no new funding detected for that row that day. Cells with
-several awards end with an unlinked <b>= total</b>.
+several awards list each one and end with a ruled, unlinked <b>= total</b>.
+The PI lines show the contact PI of the cell's largest award &mdash; NSF
+publishes PI emails directly; NIH publishes the name only, and the email is
+one click away on the linked project page; -- means the source provides
+neither.
 <span class="approx">~ amber figures</span> are estimates parsed from press
 coverage (source unverified) &mdash; click through before quoting them.
 Sources: NIH RePORTER, NSF, USAspending (ARPA-H, ASPR/BARDA, NIFA, DOE-SC,
@@ -831,13 +871,14 @@ def selftest() -> int:
     day1 = [
         make_award("NIH:111", "Brown University", "Biomedical Engineering",
                    4_600_000, "https://reporter.nih.gov/project-details/111",
-                   "NIH", funder="NIH (NIGMS)"),
+                   "NIH", funder="NIH (NIGMS)", pi="Jane Big"),
         make_award("NIH:112", "Brown University", "Biomedical Engineering",
                    500_000, "https://reporter.nih.gov/project-details/112",
-                   "NIH", funder="NIH (NIGMS)"),  # same row, same day -> sum
+                   "NIH", funder="NIH (NIGMS)", pi="John Small"),
         make_award("NSF:222", "Tufts University", "NSF program: Cellular Biosciences",
                    750_000, "https://www.nsf.gov/awardsearch/showAward?AWD_ID=222",
-                   "NSF", funder="NSF"),
+                   "NSF", funder="NSF", pi="Ada Lovelace",
+                   pi_email="ada@tufts.edu"),
     ]
     data, n1 = ingest(day1, "2026-09-15")
     assert n1 == 3 and len(data["rows"]) == 2, "day 1 ingest failed"
@@ -864,8 +905,11 @@ def selftest() -> int:
     page = (DOCS_DIR / "index.html").read_text()
     assert 'data-v="0">0<' in page, "zero cells missing"
     assert "reporter.nih.gov/project-details/111" in page, "hyperlink missing"
-    assert '= <span class="sum">$5,100,000</span>' in page, "cell sum missing"
-    assert '<td class="funder">NIH (NIGMS)</td>' in page, "funder column missing"
+    assert '<div class="tot">= $5,100,000</div>' in page, "cell total missing"
+    assert "PI Name: Jane Big" in page and "PI Name: John Small" not in page, \
+        "PI should come from the largest award in the cell"
+    assert 'href="mailto:ada@tufts.edu"' in page, "NSF mailto missing"
+    assert "PI Email: --" in page and "PI Name: --" in page, "-- fallbacks missing"
     assert '<td class="funder">ARPA-H</td>' in page and \
            '<td class="funder">V Foundation</td>' in page, "funder values missing"
     assert "~$2,000,000" in page and "approx" in page, "tier-2 flag missing"
