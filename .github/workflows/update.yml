@@ -24,6 +24,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tracker
+        env:
+          # Optional: a free NCBI API key raises the PubMed email-lookup rate
+          # from 3/sec to 10/sec. Add it under Settings > Secrets and
+          # variables > Actions as NCBI_API_KEY. Works fine without it.
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
         run: python funding_tracker.py
 
       - name: Commit updated ledger and page
