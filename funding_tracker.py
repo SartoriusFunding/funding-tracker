@@ -330,10 +330,14 @@ def fetch_nih(today: date):
                 if dept == "ENGINEERING (ALL TYPES)" and not has_bio_keyword(text):
                     continue
                 dept_label = nice_name(dept)
-            elif dept in ("", "NONE", "NO CODE ASSIGNED") and has_bio_keyword(text):
+            elif (dept in ("", "NONE", "NO CODE ASSIGNED")
+                  and has_bio_keyword(text)
+                  and looks_like_university(name)):
                 # Common outside medical schools (e.g. engineering schools):
                 # NIH reports no department, so we keep it on topic keywords
-                # and say so honestly in the label.
+                # and say so honestly in the label. The university check stops
+                # SBIR/STTR company awards (e.g. "X Therapeutics, Inc.") from
+                # leaking into a table about university departments.
                 dept_label = "Dept not reported by NIH (bio keyword match)"
             else:
                 continue  # named clinical dept, or unreported + not bio
