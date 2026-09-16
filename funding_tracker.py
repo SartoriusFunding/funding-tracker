@@ -5,10 +5,11 @@ Biotech Department Funding Tracker
 Runs once a day (GitHub Actions) and maintains a ledger of NEW research funding
 awarded to biotech-adjacent university departments.
 
-  Column A = University        Column B = Department
+  Column A = University   Column B = Department   Column C = Funder
   Every run date = one new column. An award appears ONLY on the day it is
   first seen (deduplicated forever via data/seen_awards.json). Cells with no
-  new money show 0. Old columns are never rewritten.
+  new money show 0. Old columns are never rewritten. Cells with several awards
+  end with an unlinked "= total".
 
 Sources
   Tier 1 (structured APIs) : NIH RePORTER, NSF Awards API, USAspending
@@ -49,6 +50,9 @@ import requests
 # ----------------------------------------------------------------------------
 
 # NIH RePORTER standardized dept_type values to INCLUDE (verbatim strings).
+# Awards whose org reports NO department (common outside medical schools) are
+# also kept when the project title/terms match BIO_KEYWORDS, and labeled
+# "Dept not reported by NIH (bio keyword match)".
 NIH_INCLUDE_DEPTS = [
     "BIOCHEMISTRY",
     "BIOMEDICAL ENGINEERING",
@@ -66,14 +70,18 @@ NIH_INCLUDE_DEPTS = [
 ]
 # Clinical departments are excluded simply by not being in the include list.
 
-# Awards from "ENGINEERING (ALL TYPES)" must match one of these keywords in the
-# project title/terms, so civil/mechanical noise is dropped.
+# Awards from "ENGINEERING (ALL TYPES)" and no-department orgs must match one
+# of these keywords in the project title/terms.
 BIO_KEYWORDS = [
     "bio", "cell", "tissue", "protein", "gene", "genom", "rna", "dna",
     "microb", "ferment", "enzym", "vaccin", "antibod", "therapeut",
     "pharma", "drug", "organoid", "biomanufactur", "bioprocess", "biosens",
     "stem", "immun", "virus", "viral", "crispr", "molecul",
 ]
+
+# NIH institutes vs non-NIH agencies that also appear in RePORTER, for the
+# Funder column: NIH ICs render as "NIH (NIGMS)", these render as themselves.
+NON_NIH_AGENCIES = {"CDC", "FDA", "AHRQ", "ACF", "VA", "HRSA", "CMS", "SAMHSA"}
 
 # NSF: include whole BIO directorate, these divisions, or CBET/ENG when a bio
 # keyword is present in the program name or title.
@@ -88,6 +96,35 @@ USASPENDING_AGENCIES = [
     "National Institute of Food and Agriculture",
     "Office of Science",
     "U.S. Army Medical Research Acquisition Activity",
+]
+# Short display names for the Funder column.
+SHORT_AGENCY = {
+    "Advanced Research Projects Agency for Health": "ARPA-H",
+    "Administration for Strategic Preparedness and Response": "ASPR/BARDA",
+    "National Institute of Food and Agriculture": "USDA NIFA",
+    "Office of Science": "DOE Office of Science",
+    "U.S. Army Medical Research Acquisition Activity": "Army MRAA",
+}
+
+# Funder names detectable in press-release headlines (checked in order;
+# specific foundations before generic agencies).
+KNOWN_FUNDERS = [
+    ("V Foundation", r"\bV Foundation\b"),
+    ("CPRIT", r"\bCPRIT\b"),
+    ("HHMI", r"\bHHMI\b|Howard Hughes"),
+    ("Chan Zuckerberg Initiative", r"Chan Zuckerberg|\bCZI\b"),
+    ("Gates Foundation", r"Gates Foundation"),
+    ("Simons Foundation", r"Simons Foundation"),
+    ("Damon Runyon", r"Damon Runyon"),
+    ("American Cancer Society", r"American Cancer Society"),
+    ("Mark Foundation", r"Mark Foundation"),
+    ("Wellcome", r"Wellcome"),
+    ("Keck Foundation", r"Keck Foundation"),
+    ("ARPA-H", r"\bARPA-H\b"),
+    ("DARPA", r"\bDARPA\b"),
+    ("NIH", r"\bNIH\b"),
+    ("NSF", r"\bNSF\b"),
+    ("DOE", r"Department of Energy|\bDOE\b"),
 ]
 
 # Recipient must look like a university/college for NSF & USAspending rows.
@@ -212,15 +249,24 @@ def has_bio_keyword(text: str) -> bool:
     return any(k in low for k in BIO_KEYWORDS)
 
 
+def find_funder(text: str) -> str:
+    for name, pat in KNOWN_FUNDERS:
+        if re.search(pat, text, re.I):
+            return name
+    return "See source"
+
+
 def content_key(prefix: str, text: str) -> str:
     return f"{prefix}:{hashlib.sha1(text.lower().encode()).hexdigest()[:16]}"
 
 
-def make_award(key, university, department, amount, url, source, approx=False, label=None):
+def make_award(key, university, department, amount, url, source, approx=False,
+               label=None, funder="\u2014"):
     return {
         "key": key,
         "university": university,
         "department": department,
+        "funder": funder,
         "amount": int(amount),
         "label": label or fmt_money(int(amount)),
         "url": url,
@@ -240,15 +286,18 @@ def fetch_nih(today: date):
     while offset <= 9500:
         payload = {
             "criteria": {
+                # NOTE: no dept_types filter here on purpose - NIH only assigns
+                # department names reliably to medical-school components, so
+                # filtering server-side would drop engineering-school awards
+                # that arrive with dept "NONE". We filter client-side below.
                 "date_added": {"from_date": frm, "to_date": today.isoformat()},
-                "dept_types": NIH_INCLUDE_DEPTS,
                 "org_countries": ["UNITED STATES"],
                 "exclude_subprojects": True,
             },
             "include_fields": [
                 "ApplId", "ProjectNum", "ProjectTitle", "AwardAmount",
                 "Organization", "AwardNoticeDate", "DateAdded",
-                "ProjectDetailUrl", "PrefTerms",
+                "ProjectDetailUrl", "PrefTerms", "AgencyIcAdmin",
             ],
             "limit": 500,
             "offset": offset,
@@ -260,20 +309,36 @@ def fetch_nih(today: date):
         for p in results:
             amt = p.get("award_amount") or 0
             org = p.get("organization") or {}
-            dept = (org.get("dept_type") or "").strip()
+            dept = (org.get("dept_type") or "").strip().upper()
             name = (org.get("org_name") or "").strip()
-            if amt < MIN_AWARD_AMOUNT or not name or dept not in NIH_INCLUDE_DEPTS:
+            text = (p.get("project_title") or "") + " " + (p.get("pref_terms") or "")
+            if amt < MIN_AWARD_AMOUNT or not name:
                 continue
-            if dept == "ENGINEERING (ALL TYPES)" and not has_bio_keyword(
-                    (p.get("project_title") or "") + " " + (p.get("pref_terms") or "")):
-                continue
+            if dept in NIH_INCLUDE_DEPTS:
+                if dept == "ENGINEERING (ALL TYPES)" and not has_bio_keyword(text):
+                    continue
+                dept_label = nice_name(dept)
+            elif dept in ("", "NONE", "NO CODE ASSIGNED") and has_bio_keyword(text):
+                # Common outside medical schools (e.g. engineering schools):
+                # NIH reports no department, so we keep it on topic keywords
+                # and say so honestly in the label.
+                dept_label = "Dept not reported by NIH (bio keyword match)"
+            else:
+                continue  # named clinical dept, or unreported + not bio
+            ic = (p.get("agency_ic_admin") or {}).get("abbreviation") or ""
+            if not ic:
+                funder = "NIH"
+            elif ic in NON_NIH_AGENCIES:
+                funder = ic
+            else:
+                funder = f"NIH ({ic})"
             appl = p.get("appl_id")
             url = p.get("project_detail_url") or f"https://reporter.nih.gov/project-details/{appl}"
             awards.append(make_award(
                 key=f"NIH:{appl}",
                 university=nice_name(name),
-                department=nice_name(dept),
-                amount=amt, url=url, source="NIH",
+                department=dept_label,
+                amount=amt, url=url, source="NIH", funder=funder,
             ))
         if len(results) < 500:
             break
@@ -335,13 +400,22 @@ def fetch_nsf(today: date):
                 department=dept_label,
                 amount=amt,
                 url=f"https://www.nsf.gov/awardsearch/showAward?AWD_ID={aid}",
-                source="NSF",
+                source="NSF", funder="NSF",
             ))
         if len(recs) < 25:
             break
         offset += 25
         time.sleep(1)
     return awards
+
+
+def _short_agency(sub: str) -> str:
+    if sub in SHORT_AGENCY:
+        return SHORT_AGENCY[sub]
+    for full, short in SHORT_AGENCY.items():
+        if sub and (sub.startswith(full) or full.startswith(sub)):
+            return short
+    return sub or "Federal agency"
 
 
 def fetch_usaspending(today: date):
@@ -395,8 +469,9 @@ def fetch_usaspending(today: date):
                     awards.append(make_award(
                         key=f"USA:{key_id}",
                         university=nice_name(name),
-                        department=f"{sub} award (dept n/a)",
+                        department="Dept n/a (federal award)",
                         amount=amt, url=url, source="USAspending",
+                        funder=_short_agency(sub),
                     ))
                     got += 1
                 if len(rows) < 100:
@@ -424,9 +499,9 @@ def _news_items_to_awards(items, prefix, source_name):
         awards.append(make_award(
             key=content_key(prefix, title),
             university=uni,
-            department="Press release (dept n/a)",
+            department="Dept n/a (press release)",
             amount=amt, url=link, source=source_name,
-            approx=True, label="~" + label,
+            approx=True, label="~" + label, funder=find_funder(title),
         ))
     return awards
 
@@ -480,8 +555,9 @@ def fetch_cprit(_today: date):
         awards.append(make_award(
             key=f"CPRIT:{gid.group(0)}",
             university=uni,
-            department="CPRIT award (dept n/a)",
+            department="Dept n/a (CPRIT)",
             amount=amt, url=url, source="CPRIT", approx=False, label=label,
+            funder="CPRIT",
         ))
     return awards
 
@@ -509,7 +585,7 @@ def collect_awards(today: date, tier1_only=False):
 # ----------------------------------------------------------------------------
 
 def row_key(a) -> str:
-    return f"{a['university'].lower()}||{a['department'].lower()}"
+    return f"{a['university'].lower()}||{a['department'].lower()}||{a['funder'].lower()}"
 
 
 def ingest(awards, run_date: str):
@@ -531,6 +607,7 @@ def ingest(awards, run_date: str):
         row = data["rows"].setdefault(rk, {
             "university": a["university"],
             "department": a["department"],
+            "funder": a["funder"],
             "cells": {},
         })
         row["cells"].setdefault(run_date, []).append({
@@ -560,13 +637,19 @@ def _cell_html(entries):
         f'title="{html_lib.escape(e["source"])}">{html_lib.escape(e["label"])}</a>'
         for e in entries
     )
+    if len(entries) > 1:
+        links += f' = <span class="sum">{fmt_money(total)}</span>'
     return f'<td data-v="{total}">{links}</td>'
 
 
 def render_html(data) -> str:
     dates = data["dates"]
     latest = dates[-1] if dates else None
-    rows = sorted(data["rows"].values(), key=lambda r: r["university"].lower())
+    rows = sorted(
+        data["rows"].values(),
+        key=lambda r: (r["university"].lower(), r.get("funder", "").lower(),
+                       r["department"].lower()),
+    )
 
     total_today = sum(e["amount"]
                       for r in rows for e in r["cells"].get(latest, []))
@@ -587,6 +670,7 @@ def render_html(data) -> str:
             "<tr>"
             f'<td class="uni">{html_lib.escape(r["university"])}</td>'
             f'<td class="dept">{html_lib.escape(r["department"])}</td>'
+            f'<td class="funder">{html_lib.escape(r.get("funder", "\u2014"))}</td>'
             f"{cells}</tr>"
         )
 
@@ -629,20 +713,27 @@ th, td {{ padding:9px 14px; border-bottom:1px solid var(--line);
   white-space:nowrap; text-align:right; font-size:14px; }}
 th {{ position:sticky; top:0; background:var(--bg); z-index:3; cursor:pointer;
   font-weight:500; user-select:none; }}
-th:hover {{ color:var(--grow); }}
+th::after {{ content:"\u21C5"; margin-left:6px; font-size:11px; color:var(--mut); }}
 th.sorted {{ box-shadow:inset 0 -2px 0 var(--grow); color:var(--grow); }}
+th.sorted.asc::after {{ content:"\u25B2"; color:var(--grow); }}
+th.sorted.desc::after {{ content:"\u25BC"; color:var(--grow); }}
+th:hover {{ color:var(--grow); }}
 th.today {{ background:var(--broth); }}
 th:nth-child(1), td.uni {{ position:sticky; left:0; background:var(--bg);
-  text-align:left; min-width:230px; max-width:300px; white-space:normal;
-  z-index:2; font-weight:500; }}
-th:nth-child(2), td.dept {{ position:sticky; left:230px; background:var(--bg);
   text-align:left; min-width:220px; max-width:280px; white-space:normal;
+  z-index:2; font-weight:500; }}
+th:nth-child(2), td.dept {{ position:sticky; left:220px; background:var(--bg);
+  text-align:left; min-width:200px; max-width:260px; white-space:normal;
   z-index:2; color:#3C444C; }}
-th:nth-child(1), th:nth-child(2) {{ z-index:4; }}
+th:nth-child(3), td.funder {{ position:sticky; left:420px; background:var(--bg);
+  text-align:left; min-width:130px; max-width:180px; white-space:normal;
+  z-index:2; box-shadow:2px 0 0 var(--line); }}
+th:nth-child(-n+3) {{ z-index:4; }}
 td[data-v]:not(.zero) {{ background:#fff; }}
 tr:hover td {{ background:#F3F7F4; }}
 .zero {{ color:var(--mut); }}
 a.approx {{ color:var(--caution); border-bottom-color:#E4CDA5; }}
+.sum {{ font-weight:600; }}
 .legend {{ padding:12px 32px 40px; color:var(--mut); font-size:12.5px; }}
 .legend .approx {{ color:var(--caution); }}
 </style></head><body>
@@ -661,15 +752,17 @@ a.approx {{ color:var(--caution); border-bottom-color:#E4CDA5; }}
 </div>
 
 <div class="controls">
-  <input id="q" type="search" placeholder="Filter by university or department"
+  <input id="q" type="search" placeholder="Filter by university, department or funder"
     aria-label="Filter rows">
-  <span>Click any column header to sort &middot; click again to reverse</span>
+  <span>The \u21C5 arrows mean a column is sortable &mdash; click to sort,
+    click again to reverse</span>
 </div>
 
 <div class="wrap"><table id="t">
 <thead><tr>
   <th data-t="text">University</th>
   <th data-t="text">Department</th>
+  <th data-t="text">Funder</th>
   {head_cells}
 </tr></thead>
 <tbody>
@@ -678,7 +771,8 @@ a.approx {{ color:var(--caution); border-bottom-color:#E4CDA5; }}
 
 <div class="legend">Every dated column is one run of the tracker; an award
 appears only on the day it was first detected, so amounts are never
-double-counted. 0 = no new funding detected for that row that day.
+double-counted. 0 = no new funding detected for that row that day. Cells with
+several awards end with an unlinked <b>= total</b>.
 <span class="approx">~ amber figures</span> are estimates parsed from press
 coverage (source unverified) &mdash; click through before quoting them.
 Sources: NIH RePORTER, NSF, USAspending (ARPA-H, ASPR/BARDA, NIFA, DOE-SC,
@@ -693,8 +787,8 @@ ths.forEach((th, i) => th.addEventListener('click', () => {{
   const num = th.dataset.t === 'num';
   cur.dir = (cur.i === i) ? -cur.dir : (num ? -1 : 1); // amounts: desc first
   cur.i = i;
-  ths.forEach(h => h.classList.remove('sorted'));
-  th.classList.add('sorted');
+  ths.forEach(h => h.classList.remove('sorted', 'asc', 'desc'));
+  th.classList.add('sorted', cur.dir === 1 ? 'asc' : 'desc');
   const rows = [...tbody.rows];
   rows.sort((a, b) => {{
     if (num) {{
@@ -707,7 +801,8 @@ ths.forEach((th, i) => th.addEventListener('click', () => {{
 document.getElementById('q').addEventListener('input', e => {{
   const v = e.target.value.toLowerCase();
   [...tbody.rows].forEach(r => {{
-    const hay = (r.cells[0].innerText + ' ' + r.cells[1].innerText).toLowerCase();
+    const hay = (r.cells[0].innerText + ' ' + r.cells[1].innerText + ' '
+                 + r.cells[2].innerText).toLowerCase();
     r.style.display = hay.includes(v) ? '' : 'none';
   }});
 }});
@@ -735,35 +830,47 @@ def selftest() -> int:
 
     day1 = [
         make_award("NIH:111", "Brown University", "Biomedical Engineering",
-                   4_600_000, "https://reporter.nih.gov/project-details/111", "NIH"),
+                   4_600_000, "https://reporter.nih.gov/project-details/111",
+                   "NIH", funder="NIH (NIGMS)"),
+        make_award("NIH:112", "Brown University", "Biomedical Engineering",
+                   500_000, "https://reporter.nih.gov/project-details/112",
+                   "NIH", funder="NIH (NIGMS)"),  # same row, same day -> sum
         make_award("NSF:222", "Tufts University", "NSF program: Cellular Biosciences",
-                   750_000, "https://www.nsf.gov/awardsearch/showAward?AWD_ID=222", "NSF"),
+                   750_000, "https://www.nsf.gov/awardsearch/showAward?AWD_ID=222",
+                   "NSF", funder="NSF"),
     ]
     data, n1 = ingest(day1, "2026-09-15")
-    assert n1 == 2 and len(data["rows"]) == 2, "day 1 ingest failed"
+    assert n1 == 3 and len(data["rows"]) == 2, "day 1 ingest failed"
 
     day2 = [
         day1[0],  # duplicate: must NOT appear again
-        make_award("USA:333", "Brown University",
-                   "Advanced Research Projects Agency for Health award (dept n/a)",
-                   1_000_000, "https://www.usaspending.gov/award/x", "USAspending"),
-        make_award("NEWS:444", "University of Vermont", "Press release (dept n/a)",
+        make_award("USA:333", "Brown University", "Dept n/a (federal award)",
+                   1_000_000, "https://www.usaspending.gov/award/x",
+                   "USAspending", funder="ARPA-H"),
+        make_award("NEWS:444", "University of Vermont", "Dept n/a (press release)",
                    2_000_000, "https://example.com/story", "Google News",
-                   approx=True, label="~$2,000,000"),
+                   approx=True, label="~$2,000,000", funder="V Foundation"),
     ]
     data, n2 = ingest(day2, "2026-09-16")
     assert n2 == 2, f"dedup failed, ingested {n2}"
     assert data["dates"] == ["2026-09-15", "2026-09-16"], "date columns wrong"
-    brown_bme = data["rows"]["brown university||biomedical engineering"]
-    assert "2026-09-16" not in brown_bme["cells"], "duplicate re-emitted!"
-    assert brown_bme["cells"]["2026-09-15"][0]["amount"] == 4_600_000, "history changed!"
+    assert len(data["rows"]) == 4, "funder should split rows"
+    bme = data["rows"]["brown university||biomedical engineering||nih (nigms)"]
+    assert "2026-09-16" not in bme["cells"], "duplicate re-emitted!"
+    assert [e["amount"] for e in bme["cells"]["2026-09-15"]] == [4_600_000, 500_000], \
+        "history changed!"
 
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
     assert 'data-v="0">0<' in page, "zero cells missing"
     assert "reporter.nih.gov/project-details/111" in page, "hyperlink missing"
+    assert '= <span class="sum">$5,100,000</span>' in page, "cell sum missing"
+    assert '<td class="funder">NIH (NIGMS)</td>' in page, "funder column missing"
+    assert '<td class="funder">ARPA-H</td>' in page and \
+           '<td class="funder">V Foundation</td>' in page, "funder values missing"
     assert "~$2,000,000" in page and "approx" in page, "tier-2 flag missing"
-    assert page.count("<th ") == 2 + 2, "expected 2 date columns + 2 label columns"
+    assert page.count("<th ") == 3 + 2, "expected 3 label columns + 2 date columns"
+    assert "\u21C5" in page and "asc::after" in page, "sort arrows missing"
 
     # rerun same day: nothing new, no duplicate column
     data, n3 = ingest(day2, "2026-09-16")
@@ -772,6 +879,8 @@ def selftest() -> int:
     m = parse_money("awarded up to $39.2 million for RNA work")
     assert m == (39_200_000, "up to $39,200,000"), f"money parse: {m}"
     assert find_university("MIT teams with Boston University on grant") == "Boston University"
+    assert find_funder("V Foundation gives Tufts $1M") == "V Foundation"
+    assert find_funder("A mystery donor gives Tufts $1M") == "See source"
 
     print(f"SELFTEST PASSED  (artifacts in {tmp})")
     return 0
