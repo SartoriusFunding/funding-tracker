@@ -1,14 +1,14 @@
-# Daily biotech funding tracker
+# Weekly biotech funding tracker
 # File must live at:  .github/workflows/update.yml
-name: Daily funding tracker
+name: Weekly funding tracker
 
 on:
   schedule:
-    - cron: "17 9 * * *"   # 09:17 UTC daily = 5:17 AM ET (NIH-courtesy window, off the top of the hour)
-  workflow_dispatch: {}     # lets you run it manually from the Actions tab
+    - cron: "17 13 * * 1"  # Mondays 13:17 UTC (~9:17 AM ET), after NIH's Sunday-night refresh
+  workflow_dispatch: {}     # manual run button stays available
 
 permissions:
-  contents: write           # allows the workflow to commit the updated data + page
+  contents: write
 
 jobs:
   update:
@@ -25,14 +25,13 @@ jobs:
 
       - name: Run tracker
         env:
-          # Optional: a free NCBI API key raises the PubMed email-lookup rate
-          # from 3/sec to 10/sec. Add it under Settings > Secrets and
-          # variables > Actions as NCBI_API_KEY. Works fine without it.
+          # Optional: a free NCBI API key speeds up the PubMed email fallback.
+          # Add it under Settings > Secrets and variables > Actions as NCBI_API_KEY.
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
         run: python funding_tracker.py
 
       - name: Commit updated ledger and page
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Daily funding update"
+          commit_message: "Weekly funding update"
           file_pattern: "data/* docs/*"
