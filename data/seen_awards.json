@@ -9,6 +9,11 @@
   "first_seen": "2026-09-16",
   "university": "Loma Linda University"
  },
+ "NEWS:2e5c5dd4c218dd9b": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawai"
+ },
  "NEWS:2efe5bafe97d0afb": {
   "amount": 2000000,
   "first_seen": "2026-09-16",
@@ -59,6 +64,11 @@
   "first_seen": "2026-09-16",
   "university": "University of Colorado Boulder"
  },
+ "NEWS:d17c8c467aef31f6": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "Utah State University"
+ },
  "NEWS:d4be5699f0d2fbbb": {
   "amount": 18000000,
   "first_seen": "2026-09-16",
@@ -78,6 +88,11 @@
   "amount": 22000000,
   "first_seen": "2026-09-16",
   "university": "Brown University"
+ },
+ "NIH:10693956": {
+  "amount": 1122604,
+  "first_seen": "2026-09-16",
+  "university": "New York State Psychiatric Institute Dba Research Foundation for Mental Hygiene, Inc"
  },
  "NIH:10973971": {
   "amount": 393903,
@@ -104,6 +119,11 @@
   "first_seen": "2026-09-16",
   "university": "University of Wisconsin-madison"
  },
+ "NIH:11062764": {
+  "amount": 889018,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Chicago"
+ },
  "NIH:11062766": {
   "amount": 904165,
   "first_seen": "2026-09-16",
@@ -114,30 +134,100 @@
   "first_seen": "2026-09-16",
   "university": "Georgia Southern University"
  },
+ "NIH:11136997": {
+  "amount": 1129936,
+  "first_seen": "2026-09-16",
+  "university": "Kaiser Foundation Research Institute"
+ },
  "NIH:11138566": {
   "amount": 50000,
   "first_seen": "2026-09-16",
   "university": "University of Houston"
+ },
+ "NIH:11142317": {
+  "amount": 87631,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11158797": {
+  "amount": 148724,
+  "first_seen": "2026-09-16",
+  "university": "Miriam Hospital"
  },
  "NIH:11169980": {
   "amount": 295079,
   "first_seen": "2026-09-16",
   "university": "Wake Forest University Health Sciences"
  },
+ "NIH:11186473": {
+  "amount": 1035970,
+  "first_seen": "2026-09-16",
+  "university": "Momease Solutions, Inc."
+ },
+ "NIH:11191098": {
+  "amount": 145735,
+  "first_seen": "2026-09-16",
+  "university": "American University"
+ },
  "NIH:11200766": {
   "amount": 350606,
   "first_seen": "2026-09-16",
   "university": "Stanford University"
+ },
+ "NIH:11211136": {
+  "amount": 1073479,
+  "first_seen": "2026-09-16",
+  "university": "University of Guam"
  },
  "NIH:11219514": {
   "amount": 51614,
   "first_seen": "2026-09-16",
   "university": "Columbia University Health Sciences"
  },
+ "NIH:11224806": {
+  "amount": 550806,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
+ "NIH:11234880": {
+  "amount": 4993830,
+  "first_seen": "2026-09-16",
+  "university": "Texas Tech University Health Scis Center"
+ },
  "NIH:11242979": {
   "amount": 43101,
   "first_seen": "2026-09-16",
   "university": "University of California, San Francisco"
+ },
+ "NIH:11248068": {
+  "amount": 690895,
+  "first_seen": "2026-09-16",
+  "university": "University of Miami Coral Gables"
+ },
+ "NIH:11253187": {
+  "amount": 388656,
+  "first_seen": "2026-09-16",
+  "university": "Ne1 Inc."
+ },
+ "NIH:11253906": {
+  "amount": 400000,
+  "first_seen": "2026-09-16",
+  "university": "Merlin Biotech Inc"
+ },
+ "NIH:11255158": {
+  "amount": 189542,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11255512": {
+  "amount": 449987,
+  "first_seen": "2026-09-16",
+  "university": "Rallidae Therapeutics, Inc"
+ },
+ "NIH:11255605": {
+  "amount": 390537,
+  "first_seen": "2026-09-16",
+  "university": "Amlal Pharmaceuticals Inc"
  },
  "NIH:11256752": {
   "amount": 498992,
@@ -158,6 +248,11 @@
   "amount": 598848,
   "first_seen": "2026-09-16",
   "university": "Northwestern University"
+ },
+ "NIH:11259281": {
+  "amount": 616220,
+  "first_seen": "2026-09-16",
+  "university": "Rutgers, the State Univ of N.j."
  },
  "NIH:11259923": {
   "amount": 460625,
@@ -189,10 +284,35 @@
   "first_seen": "2026-09-16",
   "university": "Iowa State University"
  },
+ "NIH:11260672": {
+  "amount": 412379,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
+ },
  "NIH:11271849": {
   "amount": 288713,
   "first_seen": "2026-09-16",
   "university": "University of Oklahoma Hlth Sciences Ctr"
+ },
+ "NIH:11272563": {
+  "amount": 3203539,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
+ "NIH:11273545": {
+  "amount": 893837,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11280188": {
+  "amount": 1056648,
+  "first_seen": "2026-09-16",
+  "university": "Father Flanagan's Boys' Home"
+ },
+ "NIH:11282115": {
+  "amount": 186019,
+  "first_seen": "2026-09-16",
+  "university": "Indiana University Indianapolis"
  },
  "NIH:11282171": {
   "amount": 874500,
@@ -204,10 +324,60 @@
   "first_seen": "2026-09-16",
   "university": "Harvard Medical School"
  },
+ "NIH:11282925": {
+  "amount": 124808,
+  "first_seen": "2026-09-16",
+  "university": "Florida State University"
+ },
+ "NIH:11283583": {
+  "amount": 150725,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts Institute of Technology"
+ },
+ "NIH:11284335": {
+  "amount": 479185,
+  "first_seen": "2026-09-16",
+  "university": "General Biophysics, Llc"
+ },
+ "NIH:11286195": {
+  "amount": 188300,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
+ "NIH:11286509": {
+  "amount": 369203,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11292540": {
+  "amount": 408743,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11293502": {
+  "amount": 532490,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh at Pittsburgh"
+ },
  "NIH:11293590": {
   "amount": 2395432,
   "first_seen": "2026-09-16",
   "university": "University of Illinois at Urbana-champaign"
+ },
+ "NIH:11294135": {
+  "amount": 406703,
+  "first_seen": "2026-09-16",
+  "university": "Cantata Bio Llc"
+ },
+ "NIH:11294713": {
+  "amount": 549978,
+  "first_seen": "2026-09-16",
+  "university": "Oregon Health & Science University"
+ },
+ "NIH:11294960": {
+  "amount": 567413,
+  "first_seen": "2026-09-16",
+  "university": "New York University School of Medicine"
  },
  "NIH:11295598": {
   "amount": 391081,
@@ -219,10 +389,40 @@
   "first_seen": "2026-09-16",
   "university": "University of Texas Hlth Science Center"
  },
+ "NIH:11297000": {
+  "amount": 558294,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11297100": {
+  "amount": 646828,
+  "first_seen": "2026-09-16",
+  "university": "Boston Medical Center"
+ },
+ "NIH:11299707": {
+  "amount": 712838,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11299964": {
+  "amount": 821788,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Sci Ctr Houston"
+ },
+ "NIH:11300063": {
+  "amount": 424961,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
  "NIH:11300302": {
   "amount": 119880,
   "first_seen": "2026-09-16",
   "university": "University of Pennsylvania"
+ },
+ "NIH:11301316": {
+  "amount": 1500000,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11301501": {
   "amount": 126873,
@@ -239,6 +439,11 @@
   "first_seen": "2026-09-16",
   "university": "Harvard University"
  },
+ "NIH:11302328": {
+  "amount": 148352,
+  "first_seen": "2026-09-16",
+  "university": "Duke University"
+ },
  "NIH:11302835": {
   "amount": 629808,
   "first_seen": "2026-09-16",
@@ -249,10 +454,55 @@
   "first_seen": "2026-09-16",
   "university": "Medical College of Wisconsin"
  },
+ "NIH:11305424": {
+  "amount": 223750,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11306162": {
+  "amount": 121692,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11306523": {
+  "amount": 752253,
+  "first_seen": "2026-09-16",
+  "university": "Benaroya Research Inst at Virginia Mason"
+ },
+ "NIH:11307355": {
+  "amount": 138200,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11307415": {
+  "amount": 121802,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
+ },
+ "NIH:11307855": {
+  "amount": 364168,
+  "first_seen": "2026-09-16",
+  "university": "Silbiotech, Inc."
+ },
+ "NIH:11308324": {
+  "amount": 875798,
+  "first_seen": "2026-09-16",
+  "university": "Taxis Pharmaceuticals, Inc."
+ },
+ "NIH:11309523": {
+  "amount": 399977,
+  "first_seen": "2026-09-16",
+  "university": "Romix Biosciences Inc."
+ },
  "NIH:11309788": {
   "amount": 89487,
   "first_seen": "2026-09-16",
   "university": "Texas A&m University"
+ },
+ "NIH:11309966": {
+  "amount": 319764,
+  "first_seen": "2026-09-16",
+  "university": "Nobiotics Llc"
  },
  "NIH:11311744": {
   "amount": 50114,
@@ -264,15 +514,160 @@
   "first_seen": "2026-09-16",
   "university": "University of Arizona"
  },
+ "NIH:11312068": {
+  "amount": 318017,
+  "first_seen": "2026-09-16",
+  "university": "Oralbiolife Inc"
+ },
+ "NIH:11312101": {
+  "amount": 313095,
+  "first_seen": "2026-09-16",
+  "university": "Fzata, Inc."
+ },
+ "NIH:11312222": {
+  "amount": 1028948,
+  "first_seen": "2026-09-16",
+  "university": "Olmeda Biosciences Llc"
+ },
  "NIH:11312373": {
   "amount": 38914,
   "first_seen": "2026-09-16",
   "university": "University of Kentucky"
  },
+ "NIH:11312959": {
+  "amount": 1030215,
+  "first_seen": "2026-09-16",
+  "university": "Oncosting Llc"
+ },
+ "NIH:11313004": {
+  "amount": 314363,
+  "first_seen": "2026-09-16",
+  "university": "Inbios International, Inc."
+ },
+ "NIH:11313259": {
+  "amount": 1373038,
+  "first_seen": "2026-09-16",
+  "university": "Family Room Llc"
+ },
+ "NIH:11313683": {
+  "amount": 306841,
+  "first_seen": "2026-09-16",
+  "university": "Ciconia Medical Inc"
+ },
+ "NIH:11313729": {
+  "amount": 398525,
+  "first_seen": "2026-09-16",
+  "university": "Onvagus, Inc."
+ },
+ "NIH:11314038": {
+  "amount": 302408,
+  "first_seen": "2026-09-16",
+  "university": "Tex Immunetics Inc"
+ },
+ "NIH:11314239": {
+  "amount": 273123,
+  "first_seen": "2026-09-16",
+  "university": "Alveolus Bio, Inc."
+ },
+ "NIH:11314266": {
+  "amount": 937492,
+  "first_seen": "2026-09-16",
+  "university": "Athna Biotech, Inc."
+ },
+ "NIH:11314283": {
+  "amount": 963977,
+  "first_seen": "2026-09-16",
+  "university": "Life Analytics, Inc."
+ },
+ "NIH:11314321": {
+  "amount": 303933,
+  "first_seen": "2026-09-16",
+  "university": "Mirofend Llc"
+ },
+ "NIH:11314378": {
+  "amount": 305893,
+  "first_seen": "2026-09-16",
+  "university": "Oncopatch, Inc"
+ },
+ "NIH:11314526": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "Spring Mill Pharma Incorporated"
+ },
+ "NIH:11314719": {
+  "amount": 313674,
+  "first_seen": "2026-09-16",
+  "university": "Via Therapeutics, Llc"
+ },
  "NIH:11314858": {
   "amount": 50114,
   "first_seen": "2026-09-16",
   "university": "University of Pennsylvania"
+ },
+ "NIH:11314925": {
+  "amount": 309391,
+  "first_seen": "2026-09-16",
+  "university": "Arphion, Ltd"
+ },
+ "NIH:11315103": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Spring Mill Pharma Incorporated"
+ },
+ "NIH:11315150": {
+  "amount": 322177,
+  "first_seen": "2026-09-16",
+  "university": "Repeat Rna Therapeutics Inc"
+ },
+ "NIH:11315302": {
+  "amount": 312589,
+  "first_seen": "2026-09-16",
+  "university": "Montani Biotechnologies, Inc"
+ },
+ "NIH:11315417": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Immport Therapeutics, Inc."
+ },
+ "NIH:11315490": {
+  "amount": 398039,
+  "first_seen": "2026-09-16",
+  "university": "Trampoline Pharma, Inc."
+ },
+ "NIH:11315591": {
+  "amount": 306807,
+  "first_seen": "2026-09-16",
+  "university": "Bauhealth, Inc."
+ },
+ "NIH:11315884": {
+  "amount": 1047908,
+  "first_seen": "2026-09-16",
+  "university": "Limax Biosciences Inc"
+ },
+ "NIH:11316597": {
+  "amount": 479794,
+  "first_seen": "2026-09-16",
+  "university": "Objective Biotechnology, Inc."
+ },
+ "NIH:11316610": {
+  "amount": 1477110,
+  "first_seen": "2026-09-16",
+  "university": "Sinopia Biosciences, Inc."
+ },
+ "NIH:11316654": {
+  "amount": 1006467,
+  "first_seen": "2026-09-16",
+  "university": "Mucommune, Llc"
+ },
+ "NIH:11316734": {
+  "amount": 314138,
+  "first_seen": "2026-09-16",
+  "university": "Entangl3d, Llc"
+ },
+ "NIH:11316912": {
+  "amount": 47655,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
  },
  "NIH:11317299": {
   "amount": 50114,
@@ -283,6 +678,11 @@
   "amount": 45528,
   "first_seen": "2026-09-16",
   "university": "Virginia Polytechnic Inst and St Univ"
+ },
+ "NIH:11319079": {
+  "amount": 1878189,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Jacksonville"
  },
  "NIH:11322909": {
   "amount": 45225,
@@ -304,10 +704,30 @@
   "first_seen": "2026-09-16",
   "university": "Ohio State University"
  },
+ "NIH:11330784": {
+  "amount": 778451,
+  "first_seen": "2026-09-16",
+  "university": "California Institute of Technology"
+ },
+ "NIH:11331054": {
+  "amount": 431750,
+  "first_seen": "2026-09-16",
+  "university": "Rutgers, the State Univ of N.j."
+ },
  "NIH:11331323": {
   "amount": 460625,
   "first_seen": "2026-09-16",
   "university": "Univ of Massachusetts Med Sch Worcester"
+ },
+ "NIH:11331328": {
+  "amount": 471625,
+  "first_seen": "2026-09-16",
+  "university": "Marine Biological Laboratory"
+ },
+ "NIH:11331767": {
+  "amount": 403172,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern California"
  },
  "NIH:11333926": {
   "amount": 4367777,
@@ -319,6 +739,31 @@
   "first_seen": "2026-09-16",
   "university": "Rutgers Biomedical and Health Sciences"
  },
+ "NIH:11339992": {
+  "amount": 339574,
+  "first_seen": "2026-09-16",
+  "university": "Carnegie-mellon University"
+ },
+ "NIH:11340138": {
+  "amount": 411792,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11340314": {
+  "amount": 752834,
+  "first_seen": "2026-09-16",
+  "university": "Arizona State University-tempe Campus"
+ },
+ "NIH:11342366": {
+  "amount": 752413,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
+ "NIH:11343472": {
+  "amount": 472706,
+  "first_seen": "2026-09-16",
+  "university": "Electronic Biosciences, Inc."
+ },
  "NIH:11343920": {
   "amount": 769725,
   "first_seen": "2026-09-16",
@@ -328,6 +773,11 @@
   "amount": 758139,
   "first_seen": "2026-09-16",
   "university": "Iowa State University"
+ },
+ "NIH:11345040": {
+  "amount": 722790,
+  "first_seen": "2026-09-16",
+  "university": "Georgia State University"
  },
  "NIH:11347017": {
   "amount": 582879,
@@ -339,10 +789,50 @@
   "first_seen": "2026-09-16",
   "university": "University of Montana"
  },
+ "NIH:11349408": {
+  "amount": 129330,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11350222": {
+  "amount": 724189,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11351068": {
+  "amount": 806069,
+  "first_seen": "2026-09-16",
+  "university": "New England Research Institutes, Inc."
+ },
+ "NIH:11351157": {
+  "amount": 106605,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
  "NIH:11352245": {
   "amount": 128327,
   "first_seen": "2026-09-16",
   "university": "University of Rochester"
+ },
+ "NIH:11353220": {
+  "amount": 143251,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11353959": {
+  "amount": 251340,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
+ "NIH:11354168": {
+  "amount": 1412216,
+  "first_seen": "2026-09-16",
+  "university": "National Jewish Health"
+ },
+ "NIH:11355348": {
+  "amount": 182539,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
  },
  "NIH:11357465": {
   "amount": 135626,
@@ -354,10 +844,25 @@
   "first_seen": "2026-09-16",
   "university": "Oregon Health & Science University"
  },
+ "NIH:11358538": {
+  "amount": 441905,
+  "first_seen": "2026-09-16",
+  "university": "Kgb Associates, Inc"
+ },
  "NIH:11361296": {
   "amount": 579716,
   "first_seen": "2026-09-16",
   "university": "Montclair State University"
+ },
+ "NIH:11361372": {
+  "amount": 412500,
+  "first_seen": "2026-09-16",
+  "university": "Northern California Health Services and Research Foundation"
+ },
+ "NIH:11361746": {
+  "amount": 402941,
+  "first_seen": "2026-09-16",
+  "university": "Vandeventer Place Research Foundation"
  },
  "NIH:11362782": {
   "amount": 380166,
@@ -369,10 +874,40 @@
   "first_seen": "2026-09-16",
   "university": "University of Illinois at Chicago"
  },
+ "NIH:11364173": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "Fred Hutchinson Cancer Center"
+ },
+ "NIH:11364197": {
+  "amount": 961797,
+  "first_seen": "2026-09-16",
+  "university": "Evrys Bio, Inc."
+ },
+ "NIH:11364772": {
+  "amount": 173089,
+  "first_seen": "2026-09-16",
+  "university": "Nova Southeastern University"
+ },
+ "NIH:11365138": {
+  "amount": 385355,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
+ },
+ "NIH:11365659": {
+  "amount": 536246,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
  "NIH:11366197": {
   "amount": 598929,
   "first_seen": "2026-09-16",
   "university": "Cleveland Clinic Lerner Com-cwru"
+ },
+ "NIH:11366297": {
+  "amount": 1087267,
+  "first_seen": "2026-09-16",
+  "university": "Healing Lodge of the Seven Nations"
  },
  "NIH:11366492": {
   "amount": 1521200,
@@ -384,6 +919,16 @@
   "first_seen": "2026-09-16",
   "university": "University of Texas Med Br Galveston"
  },
+ "NIH:11366761": {
+  "amount": 746931,
+  "first_seen": "2026-09-16",
+  "university": "Cedars-sinai Medical Center"
+ },
+ "NIH:11366828": {
+  "amount": 1696670,
+  "first_seen": "2026-09-16",
+  "university": "Cedars-sinai Medical Center"
+ },
  "NIH:11367405": {
   "amount": 1766928,
   "first_seen": "2026-09-16",
@@ -394,10 +939,45 @@
   "first_seen": "2026-09-16",
   "university": "Baylor College of Medicine"
  },
+ "NIH:11367426": {
+  "amount": 163332,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11370712": {
+  "amount": 414750,
+  "first_seen": "2026-09-16",
+  "university": "Research Inst Nationwide Children's Hosp"
+ },
+ "NIH:11370738": {
+  "amount": 219852,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
+ },
+ "NIH:11370915": {
+  "amount": 209737,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11371557": {
+  "amount": 206541,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
  "NIH:11371722": {
   "amount": 393750,
   "first_seen": "2026-09-16",
   "university": "Lsu Health Sciences Center"
+ },
+ "NIH:11371926": {
+  "amount": 408337,
+  "first_seen": "2026-09-16",
+  "university": "University of Minnesota"
+ },
+ "NIH:11373086": {
+  "amount": 668485,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
  },
  "NIH:11374377": {
   "amount": 142616,
@@ -429,6 +1009,11 @@
   "first_seen": "2026-09-16",
   "university": "University of California, San Diego"
  },
+ "NIH:11377720": {
+  "amount": 288565,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11378723": {
   "amount": 3061628,
   "first_seen": "2026-09-16",
@@ -449,15 +1034,60 @@
   "first_seen": "2026-09-16",
   "university": "University of Puerto Rico Med Sciences"
  },
+ "NIH:11380605": {
+  "amount": 215523,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
+ "NIH:11380718": {
+  "amount": 517156,
+  "first_seen": "2026-09-16",
+  "university": "Vitalant"
+ },
+ "NIH:11380768": {
+  "amount": 129330,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11380958": {
+  "amount": 692941,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts Eye and Ear Infirmary"
+ },
+ "NIH:11380985": {
+  "amount": 195831,
+  "first_seen": "2026-09-16",
+  "university": "Hospital for Special Surgery"
+ },
+ "NIH:11381019": {
+  "amount": 588124,
+  "first_seen": "2026-09-16",
+  "university": "Rand Corporation"
+ },
  "NIH:11382074": {
   "amount": 549599,
   "first_seen": "2026-09-16",
   "university": "University of Houston"
  },
+ "NIH:11382186": {
+  "amount": 87668,
+  "first_seen": "2026-09-16",
+  "university": "Molecular Intelligence Llc"
+ },
  "NIH:11382962": {
   "amount": 120348,
   "first_seen": "2026-09-16",
   "university": "Rutgers, the State Univ of N.j."
+ },
+ "NIH:11382990": {
+  "amount": 54000,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11383122": {
+  "amount": 142360,
+  "first_seen": "2026-09-16",
+  "university": "Children's Research Institute"
  },
  "NIH:11383368": {
   "amount": 487110,
@@ -469,10 +1099,20 @@
   "first_seen": "2026-09-16",
   "university": "San Diego State University"
  },
+ "NIH:11383495": {
+  "amount": 122040,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11384153": {
   "amount": 438164,
   "first_seen": "2026-09-16",
   "university": "University of New Mexico Health Scis Ctr"
+ },
+ "NIH:11384158": {
+  "amount": 632325,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Diego"
  },
  "NIH:11384397": {
   "amount": 971998,
@@ -499,10 +1139,20 @@
   "first_seen": "2026-09-16",
   "university": "Univ of North Carolina Chapel Hill"
  },
+ "NIH:11384770": {
+  "amount": 86080,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11384775": {
   "amount": 87148,
   "first_seen": "2026-09-16",
   "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11384970": {
+  "amount": 335984,
+  "first_seen": "2026-09-16",
+  "university": "Sentara Health"
  },
  "NIH:11385376": {
   "amount": 1765277,
@@ -529,23 +1179,53 @@
   "first_seen": "2026-09-16",
   "university": "University of California Santa Cruz"
  },
+ "NIH:11386238": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
  "NIH:11386546": {
   "amount": 25089,
   "first_seen": "2026-09-16",
   "university": "Drexel University"
+ },
+ "NIH:11386849": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
  },
  "NIH:11387047": {
   "amount": 782853,
   "first_seen": "2026-09-16",
   "university": "University of California Los Angeles"
  },
+ "NIH:11387136": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11387765": {
+  "amount": 3517105,
+  "first_seen": "2026-09-16",
+  "university": "Westat, Inc."
+ },
  "NIH:11387848": {
   "amount": 249000,
   "first_seen": "2026-09-16",
   "university": "New York University"
  },
+ "NIH:11387899": {
+  "amount": 2278493,
+  "first_seen": "2026-09-16",
+  "university": "University of Calif-lawrenc Berkeley Lab"
+ },
  "NIH:11388415": {
   "amount": 50914,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11388523": {
+  "amount": 50114,
   "first_seen": "2026-09-16",
   "university": "Columbia University Health Sciences"
  },
@@ -554,10 +1234,25 @@
   "first_seen": "2026-09-16",
   "university": "University of Tx Md Anderson Can Ctr"
  },
+ "NIH:11389287": {
+  "amount": 687277,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11389446": {
   "amount": 78437,
   "first_seen": "2026-09-16",
   "university": "University of Connecticut Storrs"
+ },
+ "NIH:11389637": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Weill Medical Coll of Cornell Univ"
+ },
+ "NIH:11389934": {
+  "amount": 76300,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern California"
  },
  "NIH:11390017": {
   "amount": 36017,
@@ -568,6 +1263,11 @@
   "amount": 314510,
   "first_seen": "2026-09-16",
   "university": "University of California at Davis"
+ },
+ "NIH:11390977": {
+  "amount": 1149980,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Sci Ctr Houston"
  },
  "NIH:11391043": {
   "amount": 345268,
@@ -594,6 +1294,11 @@
   "first_seen": "2026-09-16",
   "university": "Yale University"
  },
+ "NIH:11391413": {
+  "amount": 109080,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
  "NIH:11392342": {
   "amount": 386250,
   "first_seen": "2026-09-16",
@@ -604,15 +1309,45 @@
   "first_seen": "2026-09-16",
   "university": "Rice University"
  },
+ "NIH:11392520": {
+  "amount": 1393708,
+  "first_seen": "2026-09-16",
+  "university": "University of New Mexico Health Scis Ctr"
+ },
+ "NIH:11392525": {
+  "amount": 3011576,
+  "first_seen": "2026-09-16",
+  "university": "St. Jude Children's Research Hospital"
+ },
+ "NIH:11392671": {
+  "amount": 741000,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
  "NIH:11392925": {
   "amount": 498018,
   "first_seen": "2026-09-16",
   "university": "Icahn School of Medicine at Mount Sinai"
  },
+ "NIH:11392961": {
+  "amount": 139092,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11393041": {
+  "amount": 779939,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11393064": {
   "amount": 50114,
   "first_seen": "2026-09-16",
   "university": "Emory University"
+ },
+ "NIH:11393067": {
+  "amount": 52667,
+  "first_seen": "2026-09-16",
+  "university": "Tufts University Boston"
  },
  "NIH:11393083": {
   "amount": 1142020,
@@ -629,25 +1364,85 @@
   "first_seen": "2026-09-16",
   "university": "University of Houston"
  },
+ "NIH:11393798": {
+  "amount": 811521,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11393814": {
+  "amount": 763977,
+  "first_seen": "2026-09-16",
+  "university": "Research Inst Nationwide Children's Hosp"
+ },
+ "NIH:11393822": {
+  "amount": 442036,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
+ "NIH:11393825": {
+  "amount": 131863,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Diego"
+ },
  "NIH:11394191": {
   "amount": 738625,
   "first_seen": "2026-09-16",
   "university": "University of Washington"
+ },
+ "NIH:11394268": {
+  "amount": 49853,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut Storrs"
+ },
+ "NIH:11394356": {
+  "amount": 2710629,
+  "first_seen": "2026-09-16",
+  "university": "Rand Corporation"
+ },
+ "NIH:11394385": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "Cedars-sinai Medical Center"
  },
  "NIH:11394475": {
   "amount": 413581,
   "first_seen": "2026-09-16",
   "university": "University of California Berkeley"
  },
+ "NIH:11394521": {
+  "amount": 1654855,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11394578": {
+  "amount": 730398,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
  "NIH:11394594": {
   "amount": 801426,
   "first_seen": "2026-09-16",
   "university": "University of Florida"
  },
+ "NIH:11394636": {
+  "amount": 621878,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Arizona"
+ },
  "NIH:11394654": {
   "amount": 425038,
   "first_seen": "2026-09-16",
   "university": "Ohio State University"
+ },
+ "NIH:11395257": {
+  "amount": 49999,
+  "first_seen": "2026-09-16",
+  "university": "American Association of Neuropathologists, Inc."
+ },
+ "NIH:11395276": {
+  "amount": 872556,
+  "first_seen": "2026-09-16",
+  "university": "Capesym, Inc."
  },
  "NIH:11395308": {
   "amount": 397418,
@@ -669,15 +1464,45 @@
   "first_seen": "2026-09-16",
   "university": "Northwestern University"
  },
+ "NIH:11395638": {
+  "amount": 1164977,
+  "first_seen": "2026-09-16",
+  "university": "Corami Biotech Inc."
+ },
  "NIH:11395891": {
   "amount": 739100,
   "first_seen": "2026-09-16",
   "university": "Stanford University"
  },
+ "NIH:11396190": {
+  "amount": 483110,
+  "first_seen": "2026-09-16",
+  "university": "Beckman Research Institute/city of Hope"
+ },
+ "NIH:11396259": {
+  "amount": 2515852,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11396287": {
+  "amount": 536613,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
  "NIH:11396320": {
   "amount": 798338,
   "first_seen": "2026-09-16",
   "university": "University of California, San Francisco"
+ },
+ "NIH:11396333": {
+  "amount": 399332,
+  "first_seen": "2026-09-16",
+  "university": "Duke University"
+ },
+ "NIH:11396363": {
+  "amount": 144770,
+  "first_seen": "2026-09-16",
+  "university": "Fairleigh Dickinson University"
  },
  "NIH:11396424": {
   "amount": 385345,
@@ -689,10 +1514,25 @@
   "first_seen": "2026-09-16",
   "university": "Texas Engineering Experiment Station"
  },
+ "NIH:11396474": {
+  "amount": 831217,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11396479": {
   "amount": 427625,
   "first_seen": "2026-09-16",
   "university": "University of Washington"
+ },
+ "NIH:11396504": {
+  "amount": 590960,
+  "first_seen": "2026-09-16",
+  "university": "Beckman Research Institute/city of Hope"
+ },
+ "NIH:11396786": {
+  "amount": 912000,
+  "first_seen": "2026-09-16",
+  "university": "Van Andel Research Institute"
  },
  "NIH:11396794": {
   "amount": 741000,
@@ -704,6 +1544,11 @@
   "first_seen": "2026-09-16",
   "university": "Johns Hopkins University"
  },
+ "NIH:11397009": {
+  "amount": 873371,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
  "NIH:11397089": {
   "amount": 761897,
   "first_seen": "2026-09-16",
@@ -713,6 +1558,31 @@
   "amount": 45588,
   "first_seen": "2026-09-16",
   "university": "University of Florida"
+ },
+ "NIH:11397303": {
+  "amount": 351000,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Sci Ctr Houston"
+ },
+ "NIH:11397349": {
+  "amount": 1273207,
+  "first_seen": "2026-09-16",
+  "university": "Seattle Inst for Biomedical/clinical Res"
+ },
+ "NIH:11397450": {
+  "amount": 162123,
+  "first_seen": "2026-09-16",
+  "university": "West Virginia University"
+ },
+ "NIH:11397464": {
+  "amount": 879255,
+  "first_seen": "2026-09-16",
+  "university": "Integral Molecular"
+ },
+ "NIH:11397466": {
+  "amount": 2391668,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
  },
  "NIH:11397523": {
   "amount": 360714,
@@ -729,6 +1599,36 @@
   "first_seen": "2026-09-16",
   "university": "Drexel University"
  },
+ "NIH:11397767": {
+  "amount": 299690,
+  "first_seen": "2026-09-16",
+  "university": "Purdue University"
+ },
+ "NIH:11397780": {
+  "amount": 2186663,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11397784": {
+  "amount": 688656,
+  "first_seen": "2026-09-16",
+  "university": "Roswell Park Cancer Institute Corp"
+ },
+ "NIH:11398044": {
+  "amount": 505225,
+  "first_seen": "2026-09-16",
+  "university": "University of Calif-lawrenc Berkeley Lab"
+ },
+ "NIH:11398119": {
+  "amount": 738613,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11398144": {
+  "amount": 248505,
+  "first_seen": "2026-09-16",
+  "university": "University of New Mexico Health Scis Ctr"
+ },
  "NIH:11398198": {
   "amount": 752846,
   "first_seen": "2026-09-16",
@@ -744,40 +1644,135 @@
   "first_seen": "2026-09-16",
   "university": "University of Houston"
  },
+ "NIH:11398329": {
+  "amount": 312453,
+  "first_seen": "2026-09-16",
+  "university": "Analytical Diagnostic Solutions, Inc."
+ },
  "NIH:11398872": {
   "amount": 50114,
   "first_seen": "2026-09-16",
   "university": "University of Southern California"
+ },
+ "NIH:11398968": {
+  "amount": 602496,
+  "first_seen": "2026-09-16",
+  "university": "Fred Hutchinson Cancer Center"
  },
  "NIH:11398981": {
   "amount": 307189,
   "first_seen": "2026-09-16",
   "university": "Vanderbilt University"
  },
+ "NIH:11398997": {
+  "amount": 947870,
+  "first_seen": "2026-09-16",
+  "university": "Briacell Therapeutics Corp"
+ },
+ "NIH:11399049": {
+  "amount": 187500,
+  "first_seen": "2026-09-16",
+  "university": "Xavier University of Louisiana"
+ },
+ "NIH:11399125": {
+  "amount": 1098560,
+  "first_seen": "2026-09-16",
+  "university": "Athna Biotech, Inc."
+ },
+ "NIH:11399143": {
+  "amount": 710482,
+  "first_seen": "2026-09-16",
+  "university": "Beckman Research Institute/city of Hope"
+ },
+ "NIH:11399201": {
+  "amount": 290566,
+  "first_seen": "2026-09-16",
+  "university": "Dentosity, Llc D/b/a Vertex Discoveries"
+ },
  "NIH:11399699": {
   "amount": 417450,
   "first_seen": "2026-09-16",
   "university": "Johns Hopkins University"
+ },
+ "NIH:11399767": {
+  "amount": 698032,
+  "first_seen": "2026-09-16",
+  "university": "Ihealthscreen, Inc."
  },
  "NIH:11399792": {
   "amount": 668770,
   "first_seen": "2026-09-16",
   "university": "Rockefeller University"
  },
+ "NIH:11399835": {
+  "amount": 2580000,
+  "first_seen": "2026-09-16",
+  "university": "Mainehealth"
+ },
+ "NIH:11399839": {
+  "amount": 717501,
+  "first_seen": "2026-09-16",
+  "university": "Arizona State University-tempe Campus"
+ },
+ "NIH:11399863": {
+  "amount": 520099,
+  "first_seen": "2026-09-16",
+  "university": "H. Lee Moffitt Cancer Ctr & Res Inst"
+ },
  "NIH:11399868": {
   "amount": 55114,
   "first_seen": "2026-09-16",
   "university": "University of Wisconsin-madison"
+ },
+ "NIH:11399875": {
+  "amount": 164484,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
+ "NIH:11399925": {
+  "amount": 680174,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
+ "NIH:11399943": {
+  "amount": 1043326,
+  "first_seen": "2026-09-16",
+  "university": "Coram Technologies, Inc."
  },
  "NIH:11400067": {
   "amount": 340068,
   "first_seen": "2026-09-16",
   "university": "Carnegie-mellon University"
  },
+ "NIH:11400339": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
+ },
+ "NIH:11400514": {
+  "amount": 1510520,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
+ "NIH:11400515": {
+  "amount": 1462590,
+  "first_seen": "2026-09-16",
+  "university": "Imagine Scientific, Inc."
+ },
+ "NIH:11400999": {
+  "amount": 792665,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
  "NIH:11401002": {
   "amount": 2265000,
   "first_seen": "2026-09-16",
   "university": "Medical University of South Carolina"
+ },
+ "NIH:11401065": {
+  "amount": 131886,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
  },
  "NIH:11401067": {
   "amount": 129400,
@@ -794,15 +1789,45 @@
   "first_seen": "2026-09-16",
   "university": "Clemson University"
  },
+ "NIH:11401181": {
+  "amount": 1012800,
+  "first_seen": "2026-09-16",
+  "university": "Cnd Life Sciences, Inc."
+ },
  "NIH:11401186": {
   "amount": 508715,
   "first_seen": "2026-09-16",
   "university": "Columbia University Health Sciences"
  },
+ "NIH:11401364": {
+  "amount": 755795,
+  "first_seen": "2026-09-16",
+  "university": "Roswell Park Cancer Institute Corp"
+ },
+ "NIH:11401388": {
+  "amount": 872957,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
+ },
+ "NIH:11401395": {
+  "amount": 656459,
+  "first_seen": "2026-09-16",
+  "university": "Kaiser Foundation Research Institute"
+ },
+ "NIH:11401613": {
+  "amount": 114912,
+  "first_seen": "2026-09-16",
+  "university": "Simulations Plus, Inc."
+ },
  "NIH:11401617": {
   "amount": 399798,
   "first_seen": "2026-09-16",
   "university": "University of Maryland Baltimore"
+ },
+ "NIH:11401620": {
+  "amount": 499681,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
  },
  "NIH:11401621": {
   "amount": 362790,
@@ -819,6 +1844,11 @@
   "first_seen": "2026-09-16",
   "university": "Drexel University"
  },
+ "NIH:11401994": {
+  "amount": 2052164,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
+ },
  "NIH:11402050": {
   "amount": 643949,
   "first_seen": "2026-09-16",
@@ -828,6 +1858,41 @@
   "amount": 248999,
   "first_seen": "2026-09-16",
   "university": "Emory University"
+ },
+ "NIH:11402067": {
+  "amount": 1111998,
+  "first_seen": "2026-09-16",
+  "university": "Iveena Delivery Systems, Inc."
+ },
+ "NIH:11402205": {
+  "amount": 710302,
+  "first_seen": "2026-09-16",
+  "university": "Women and Infants Hospital-rhode Island"
+ },
+ "NIH:11402594": {
+  "amount": 433322,
+  "first_seen": "2026-09-16",
+  "university": "Ihp Therapeutics, Inc."
+ },
+ "NIH:11402657": {
+  "amount": 459360,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
+ "NIH:11402700": {
+  "amount": 1026874,
+  "first_seen": "2026-09-16",
+  "university": "Inlighta Biosciences, Llc"
+ },
+ "NIH:11402710": {
+  "amount": 286724,
+  "first_seen": "2026-09-16",
+  "university": "Shy Therapeutics, Llc"
+ },
+ "NIH:11402725": {
+  "amount": 704730,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
  },
  "NIH:11402746": {
   "amount": 1072998,
@@ -844,6 +1909,16 @@
   "first_seen": "2026-09-16",
   "university": "Oregon State University"
  },
+ "NIH:11403555": {
+  "amount": 364853,
+  "first_seen": "2026-09-16",
+  "university": "Max Biopharma, Inc."
+ },
+ "NIH:11403787": {
+  "amount": 268500,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
  "NIH:11403806": {
   "amount": 358857,
   "first_seen": "2026-09-16",
@@ -854,25 +1929,55 @@
   "first_seen": "2026-09-16",
   "university": "University of Massachusetts Amherst"
  },
+ "NIH:11403849": {
+  "amount": 1498892,
+  "first_seen": "2026-09-16",
+  "university": "Allinaire Therapeutics, Llc"
+ },
  "NIH:11403902": {
   "amount": 114381,
   "first_seen": "2026-09-16",
   "university": "University of Arizona"
+ },
+ "NIH:11403929": {
+  "amount": 149407,
+  "first_seen": "2026-09-16",
+  "university": "University of Kansas Lawrence"
+ },
+ "NIH:11403934": {
+  "amount": 135000,
+  "first_seen": "2026-09-16",
+  "university": "Indiana University Indianapolis"
  },
  "NIH:11404074": {
   "amount": 3381121,
   "first_seen": "2026-09-16",
   "university": "Harvard University"
  },
+ "NIH:11404674": {
+  "amount": 265064,
+  "first_seen": "2026-09-16",
+  "university": "Noveome Biotherapeutics, Inc."
+ },
  "NIH:11404793": {
   "amount": 566770,
   "first_seen": "2026-09-16",
   "university": "University of Arizona"
  },
+ "NIH:11404877": {
+  "amount": 73683,
+  "first_seen": "2026-09-16",
+  "university": "American Association for Cancer Research"
+ },
  "NIH:11404891": {
   "amount": 424770,
   "first_seen": "2026-09-16",
   "university": "Harvard Medical School"
+ },
+ "NIH:11404903": {
+  "amount": 561284,
+  "first_seen": "2026-09-16",
+  "university": "Comprehensive Cancer Center/ Univ/pr"
  },
  "NIH:11404951": {
   "amount": 574734,
@@ -889,20 +1994,255 @@
   "first_seen": "2026-09-16",
   "university": "Weill Medical Coll of Cornell Univ"
  },
+ "NIH:11405325": {
+  "amount": 309881,
+  "first_seen": "2026-09-16",
+  "university": "Pure Somni Corporation"
+ },
+ "NIH:11405442": {
+  "amount": 320037,
+  "first_seen": "2026-09-16",
+  "university": "Gentibio, Inc."
+ },
+ "NIH:11405506": {
+  "amount": 1058879,
+  "first_seen": "2026-09-16",
+  "university": "Broad Institute, Inc."
+ },
+ "NIH:11405524": {
+  "amount": 160337,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11405623": {
+  "amount": 399992,
+  "first_seen": "2026-09-16",
+  "university": "Mabswitch, Inc."
+ },
+ "NIH:11405683": {
+  "amount": 302853,
+  "first_seen": "2026-09-16",
+  "university": "Craniosure Llc"
+ },
+ "NIH:11405793": {
+  "amount": 1477882,
+  "first_seen": "2026-09-16",
+  "university": "Leadoptik Inc."
+ },
+ "NIH:11405804": {
+  "amount": 1097036,
+  "first_seen": "2026-09-16",
+  "university": "Hydrogene Therapeutics Inc"
+ },
+ "NIH:11405841": {
+  "amount": 350000,
+  "first_seen": "2026-09-16",
+  "university": "Paulex Bio Inc."
+ },
  "NIH:11406087": {
   "amount": 3926903,
   "first_seen": "2026-09-16",
   "university": "University of Oklahoma Hlth Sciences Ctr"
+ },
+ "NIH:11406114": {
+  "amount": 466393,
+  "first_seen": "2026-09-16",
+  "university": "Broad Institute, Inc."
+ },
+ "NIH:11406244": {
+  "amount": 653389,
+  "first_seen": "2026-09-16",
+  "university": "Klein Buendel, Inc."
+ },
+ "NIH:11406381": {
+  "amount": 1188325,
+  "first_seen": "2026-09-16",
+  "university": "Xfibra, Inc."
+ },
+ "NIH:11406435": {
+  "amount": 400000,
+  "first_seen": "2026-09-16",
+  "university": "Keylicon Biosciences Inc"
+ },
+ "NIH:11406497": {
+  "amount": 1005434,
+  "first_seen": "2026-09-16",
+  "university": "Perception Dynamics Institute"
+ },
+ "NIH:11406648": {
+  "amount": 398880,
+  "first_seen": "2026-09-16",
+  "university": "Olmeda Biosciences Llc"
+ },
+ "NIH:11406734": {
+  "amount": 238300,
+  "first_seen": "2026-09-16",
+  "university": "Biosight Llc"
+ },
+ "NIH:11406764": {
+  "amount": 3000000,
+  "first_seen": "2026-09-16",
+  "university": "Sinopia Biosciences, Inc."
+ },
+ "NIH:11406991": {
+  "amount": 406500,
+  "first_seen": "2026-09-16",
+  "university": "Gapscore Inc"
+ },
+ "NIH:11407223": {
+  "amount": 210510,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Diego"
+ },
+ "NIH:11407401": {
+  "amount": 294571,
+  "first_seen": "2026-09-16",
+  "university": "Bioptics Imaging Llc"
+ },
+ "NIH:11407469": {
+  "amount": 373452,
+  "first_seen": "2026-09-16",
+  "university": "Sollus Therapeutics, Inc."
+ },
+ "NIH:11407847": {
+  "amount": 1906253,
+  "first_seen": "2026-09-16",
+  "university": "Airway Therapeutics, Inc."
+ },
+ "NIH:11408604": {
+  "amount": 250308,
+  "first_seen": "2026-09-16",
+  "university": "Children's Research Institute"
+ },
+ "NIH:11408663": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "University of South Florida"
  },
  "NIH:11408692": {
   "amount": 654307,
   "first_seen": "2026-09-16",
   "university": "University of Colorado"
  },
+ "NIH:11408810": {
+  "amount": 186633,
+  "first_seen": "2026-09-16",
+  "university": "Baystate Medical Center, Inc."
+ },
+ "NIH:11408908": {
+  "amount": 1213723,
+  "first_seen": "2026-09-16",
+  "university": "Neurotherapia, Inc."
+ },
+ "NIH:11409150": {
+  "amount": 1097977,
+  "first_seen": "2026-09-16",
+  "university": "Coaptech, Llc"
+ },
+ "NIH:11409187": {
+  "amount": 1333206,
+  "first_seen": "2026-09-16",
+  "university": "National Disease Research Interchange"
+ },
+ "NIH:11409344": {
+  "amount": 312740,
+  "first_seen": "2026-09-16",
+  "university": "Ez Diagnostics Inc."
+ },
+ "NIH:11409429": {
+  "amount": 994403,
+  "first_seen": "2026-09-16",
+  "university": "Doty Scientific, Inc."
+ },
+ "NIH:11409549": {
+  "amount": 349828,
+  "first_seen": "2026-09-16",
+  "university": "Vigilant Labels Inc"
+ },
+ "NIH:11409656": {
+  "amount": 306872,
+  "first_seen": "2026-09-16",
+  "university": "Junipero Therapeutics, Inc."
+ },
+ "NIH:11409749": {
+  "amount": 412351,
+  "first_seen": "2026-09-16",
+  "university": "Immunogenic Cancer Engineering Therapeutics Llc"
+ },
+ "NIH:11409876": {
+  "amount": 349997,
+  "first_seen": "2026-09-16",
+  "university": "Biagon, Inc."
+ },
+ "NIH:11409904": {
+  "amount": 406500,
+  "first_seen": "2026-09-16",
+  "university": "Neosplice Therapeutics, Inc."
+ },
+ "NIH:11410176": {
+  "amount": 399915,
+  "first_seen": "2026-09-16",
+  "university": "Blacksmith Medicines, Inc."
+ },
+ "NIH:11410209": {
+  "amount": 1044729,
+  "first_seen": "2026-09-16",
+  "university": "Vyriad, Inc."
+ },
+ "NIH:11410332": {
+  "amount": 506495,
+  "first_seen": "2026-09-16",
+  "university": "Vivid Bioinnovations, Pbc"
+ },
+ "NIH:11410435": {
+  "amount": 306872,
+  "first_seen": "2026-09-16",
+  "university": "Omaroon Corporation"
+ },
+ "NIH:11411074": {
+  "amount": 1145004,
+  "first_seen": "2026-09-16",
+  "university": "Vizlitics Inc."
+ },
+ "NIH:11411096": {
+  "amount": 160380,
+  "first_seen": "2026-09-16",
+  "university": "Seattle Children's Hospital"
+ },
+ "NIH:11411104": {
+  "amount": 689213,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11411109": {
+  "amount": 786273,
+  "first_seen": "2026-09-16",
+  "university": "Glyco Discoveries, Inc"
+ },
+ "NIH:11411145": {
+  "amount": 382872,
+  "first_seen": "2026-09-16",
+  "university": "Research Inst Nationwide Children's Hosp"
+ },
+ "NIH:11411154": {
+  "amount": 801611,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
  "NIH:11411184": {
   "amount": 265309,
   "first_seen": "2026-09-16",
   "university": "Icahn School of Medicine at Mount Sinai"
+ },
+ "NIH:11411292": {
+  "amount": 166080,
+  "first_seen": "2026-09-16",
+  "university": "Van Andel Research Institute"
+ },
+ "NIH:11411295": {
+  "amount": 780943,
+  "first_seen": "2026-09-16",
+  "university": "Harvard Pilgrim Health Care, Inc."
  },
  "NIH:11411322": {
   "amount": 969873,
@@ -914,35 +2254,130 @@
   "first_seen": "2026-09-16",
   "university": "Yale University"
  },
+ "NIH:11411343": {
+  "amount": 2478150,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
+ "NIH:11411362": {
+  "amount": 127896,
+  "first_seen": "2026-09-16",
+  "university": "University of Louisiana at Lafayette"
+ },
+ "NIH:11411397": {
+  "amount": 2109503,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11412564": {
+  "amount": 1519091,
+  "first_seen": "2026-09-16",
+  "university": "Fred Hutchinson Cancer Center"
+ },
+ "NIH:11412588": {
+  "amount": 124308,
+  "first_seen": "2026-09-16",
+  "university": "Fred Hutchinson Cancer Center"
+ },
+ "NIH:11412625": {
+  "amount": 789554,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11412637": {
+  "amount": 1312500,
+  "first_seen": "2026-09-16",
+  "university": "Salk Institute for Biological Studies"
+ },
+ "NIH:11412711": {
+  "amount": 211188,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11412720": {
+  "amount": 191484,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
  "NIH:11412928": {
   "amount": 1467789,
   "first_seen": "2026-09-16",
   "university": "Baylor College of Medicine"
+ },
+ "NIH:11413116": {
+  "amount": 95000,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State Department of Agriculture"
+ },
+ "NIH:11413355": {
+  "amount": 135903,
+  "first_seen": "2026-09-16",
+  "university": "Fred Hutchinson Cancer Center"
  },
  "NIH:11413399": {
   "amount": 545816,
   "first_seen": "2026-09-16",
   "university": "University of Pennsylvania"
  },
+ "NIH:11413448": {
+  "amount": 530106,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
+ },
+ "NIH:11413452": {
+  "amount": 122486,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11413520": {
   "amount": 2161600,
   "first_seen": "2026-09-16",
   "university": "Stanford University"
+ },
+ "NIH:11413521": {
+  "amount": 631410,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11413675": {
   "amount": 1446185,
   "first_seen": "2026-09-16",
   "university": "Harvard University D/b/a Harvard School of Public Health"
  },
+ "NIH:11413717": {
+  "amount": 1022907,
+  "first_seen": "2026-09-16",
+  "university": "Tiny Cargo Company, the"
+ },
+ "NIH:11413845": {
+  "amount": 956566,
+  "first_seen": "2026-09-16",
+  "university": "Xylyx Bio, Inc."
+ },
  "NIH:11414856": {
   "amount": 264355,
   "first_seen": "2026-09-16",
   "university": "Baylor College of Medicine"
  },
+ "NIH:11414889": {
+  "amount": 128391,
+  "first_seen": "2026-09-16",
+  "university": "Boston Medical Center"
+ },
+ "NIH:11414951": {
+  "amount": 624389,
+  "first_seen": "2026-09-16",
+  "university": "Vesteck, Inc"
+ },
  "NIH:11414988": {
   "amount": 416726,
   "first_seen": "2026-09-16",
   "university": "Ohio State University"
+ },
+ "NIH:11414993": {
+  "amount": 1114075,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11415026": {
   "amount": 2184761,
@@ -954,10 +2389,25 @@
   "first_seen": "2026-09-16",
   "university": "University of Chicago"
  },
+ "NIH:11415039": {
+  "amount": 497796,
+  "first_seen": "2026-09-16",
+  "university": "Miriam Hospital"
+ },
+ "NIH:11415046": {
+  "amount": 2464364,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
  "NIH:11415089": {
   "amount": 676761,
   "first_seen": "2026-09-16",
   "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11415108": {
+  "amount": 948496,
+  "first_seen": "2026-09-16",
+  "university": "University of Montana"
  },
  "NIH:11415114": {
   "amount": 283057,
@@ -974,30 +2424,115 @@
   "first_seen": "2026-09-16",
   "university": "Harvard University D/b/a Harvard School of Public Health"
  },
+ "NIH:11415510": {
+  "amount": 892972,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11415524": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "Weill Medical Coll of Cornell Univ"
+ },
  "NIH:11415552": {
   "amount": 36350,
   "first_seen": "2026-09-16",
   "university": "Univ of Maryland, College Park"
+ },
+ "NIH:11415585": {
+  "amount": 2176121,
+  "first_seen": "2026-09-16",
+  "university": "Fred Hutchinson Cancer Center"
+ },
+ "NIH:11415594": {
+  "amount": 906871,
+  "first_seen": "2026-09-16",
+  "university": "Dine' College"
+ },
+ "NIH:11415677": {
+  "amount": 130426,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11415733": {
+  "amount": 2107257,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
  },
  "NIH:11415799": {
   "amount": 290022,
   "first_seen": "2026-09-16",
   "university": "Emory University"
  },
+ "NIH:11415815": {
+  "amount": 1380456,
+  "first_seen": "2026-09-16",
+  "university": "Beckman Research Institute/city of Hope"
+ },
+ "NIH:11415832": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "Baebies, Inc."
+ },
+ "NIH:11415896": {
+  "amount": 6006601,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
  "NIH:11415898": {
   "amount": 4083081,
   "first_seen": "2026-09-16",
   "university": "University of Southern Mississippi"
+ },
+ "NIH:11416192": {
+  "amount": 87923,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11416391": {
+  "amount": 1,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
  },
  "NIH:11416476": {
   "amount": 497104,
   "first_seen": "2026-09-16",
   "university": "University of Mississippi Med Ctr"
  },
+ "NIH:11416579": {
+  "amount": 1007657,
+  "first_seen": "2026-09-16",
+  "university": "Albert Einstein College of Medicine"
+ },
  "NIH:11416631": {
   "amount": 139849,
   "first_seen": "2026-09-16",
   "university": "Yale University"
+ },
+ "NIH:11416637": {
+  "amount": 3416817,
+  "first_seen": "2026-09-16",
+  "university": "Coridea, Llc"
+ },
+ "NIH:11416721": {
+  "amount": 1272876,
+  "first_seen": "2026-09-16",
+  "university": "University of South Carolina at Columbia"
+ },
+ "NIH:11417160": {
+  "amount": 699807,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
+ },
+ "NIH:11417245": {
+  "amount": 133685,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11417472": {
+  "amount": 1087500,
+  "first_seen": "2026-09-16",
+  "university": "Montana State University - Bozeman"
  },
  "NIH:11417477": {
   "amount": 1164382,
@@ -1019,15 +2554,80 @@
   "first_seen": "2026-09-16",
   "university": "Tufts University Boston"
  },
+ "NIH:11417937": {
+  "amount": 2700000,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11417972": {
+  "amount": 936698,
+  "first_seen": "2026-09-16",
+  "university": "Biotex, Inc."
+ },
+ "NIH:11417983": {
+  "amount": 1064042,
+  "first_seen": "2026-09-16",
+  "university": "Graduate School of Public Health and Health Policy"
+ },
+ "NIH:11418003": {
+  "amount": 484985,
+  "first_seen": "2026-09-16",
+  "university": "Feinstein Institute for Medical Research"
+ },
+ "NIH:11418087": {
+  "amount": 870482,
+  "first_seen": "2026-09-16",
+  "university": "Embiosys Inc."
+ },
+ "NIH:11418091": {
+  "amount": 309908,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
+ },
+ "NIH:11418337": {
+  "amount": 34848,
+  "first_seen": "2026-09-16",
+  "university": "State University of Ny,binghamton"
+ },
  "NIH:11418424": {
   "amount": 1902068,
   "first_seen": "2026-09-16",
   "university": "University of Texas Hlth Science Center"
  },
+ "NIH:11418474": {
+  "amount": 140492,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11418481": {
+  "amount": 554444,
+  "first_seen": "2026-09-16",
+  "university": "H. Lee Moffitt Cancer Ctr & Res Inst"
+ },
+ "NIH:11418519": {
+  "amount": 494986,
+  "first_seen": "2026-09-16",
+  "university": "Implenomics Llcs"
+ },
  "NIH:11418522": {
   "amount": 1457442,
   "first_seen": "2026-09-16",
   "university": "Ponce School of Medicine"
+ },
+ "NIH:11418541": {
+  "amount": 7254479,
+  "first_seen": "2026-09-16",
+  "university": "Cog Research Foundation, Llc"
+ },
+ "NIH:11418785": {
+  "amount": 137385,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11418842": {
+  "amount": 9277,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
  },
  "NIH:11418853": {
   "amount": 40056,
@@ -1044,10 +2644,25 @@
   "first_seen": "2026-09-16",
   "university": "Yale University"
  },
+ "NIH:11418866": {
+  "amount": 58114,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
  "NIH:11418875": {
   "amount": 81169,
   "first_seen": "2026-09-16",
   "university": "Stanford University"
+ },
+ "NIH:11419143": {
+  "amount": 852500,
+  "first_seen": "2026-09-16",
+  "university": "Oklahoma Medical Research Foundation"
+ },
+ "NIH:11419177": {
+  "amount": 1496000,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
  },
  "NIH:11419452": {
   "amount": 200000,
@@ -1059,25 +2674,95 @@
   "first_seen": "2026-09-16",
   "university": "University of Kentucky"
  },
+ "NIH:11419469": {
+  "amount": 200000,
+  "first_seen": "2026-09-16",
+  "university": "Tennessee State Department of Health"
+ },
  "NIH:11419471": {
   "amount": 199499,
   "first_seen": "2026-09-16",
   "university": "University of Illinois at Urbana-champaign"
+ },
+ "NIH:11419563": {
+  "amount": 2191000,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii at Manoa"
  },
  "NIH:11419621": {
   "amount": 850148,
   "first_seen": "2026-09-16",
   "university": "Harvard Medical School"
  },
+ "NIH:11419623": {
+  "amount": 692681,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
  "NIH:11419677": {
   "amount": 2829961,
   "first_seen": "2026-09-16",
   "university": "University of California Santa Cruz"
  },
+ "NIH:11419800": {
+  "amount": 4342433,
+  "first_seen": "2026-09-16",
+  "university": "Uchicago Argonne, Llc"
+ },
  "NIH:11419850": {
   "amount": 131882,
   "first_seen": "2026-09-16",
   "university": "Duke University"
+ },
+ "NIH:11419873": {
+  "amount": 1599527,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
+ },
+ "NIH:11419891": {
+  "amount": 716893,
+  "first_seen": "2026-09-16",
+  "university": "Indoor Biotechnologies"
+ },
+ "NIH:11420511": {
+  "amount": 325565,
+  "first_seen": "2026-09-16",
+  "university": "Spirify Pharma Inc"
+ },
+ "NIH:11420541": {
+  "amount": 625795,
+  "first_seen": "2026-09-16",
+  "university": "Rochester Institute of Technology"
+ },
+ "NIH:11420791": {
+  "amount": 1010897,
+  "first_seen": "2026-09-16",
+  "university": "Xr Navigation Inc."
+ },
+ "NIH:11420797": {
+  "amount": 945740,
+  "first_seen": "2026-09-16",
+  "university": "Schepens Eye Research Institute"
+ },
+ "NIH:11420974": {
+  "amount": 836291,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11421412": {
+  "amount": 498108,
+  "first_seen": "2026-09-16",
+  "university": "University of Delaware"
+ },
+ "NIH:11421489": {
+  "amount": 1044386,
+  "first_seen": "2026-09-16",
+  "university": "Mainsquare Co"
+ },
+ "NIH:11421504": {
+  "amount": 586799,
+  "first_seen": "2026-09-16",
+  "university": "Luminary Therapeutics, Inc."
  },
  "NIH:11422333": {
   "amount": 2471340,
@@ -1088,6 +2773,21 @@
   "amount": 499275,
   "first_seen": "2026-09-16",
   "university": "Indiana University Indianapolis"
+ },
+ "NIH:11423276": {
+  "amount": 3620769,
+  "first_seen": "2026-09-16",
+  "university": "University of Calif-lawrenc Berkeley Lab"
+ },
+ "NIH:11423370": {
+  "amount": 180000,
+  "first_seen": "2026-09-16",
+  "university": "Ponce School of Medicine"
+ },
+ "NIH:11423659": {
+  "amount": 654728,
+  "first_seen": "2026-09-16",
+  "university": "Lundquist Institute for Biomedical Innovation at Harbor-ucla Medical Center"
  },
  "NIH:11424472": {
   "amount": 145254,
@@ -1114,6 +2814,11 @@
   "first_seen": "2026-09-16",
   "university": "Princeton University"
  },
+ "NIH:11426413": {
+  "amount": 514864,
+  "first_seen": "2026-09-16",
+  "university": "Methodist Hospital Research Institute"
+ },
  "NIH:11426569": {
   "amount": 588303,
   "first_seen": "2026-09-16",
@@ -1124,30 +2829,80 @@
   "first_seen": "2026-09-16",
   "university": "Northeastern University"
  },
+ "NIH:11427136": {
+  "amount": 608215,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
+ },
  "NIH:11427612": {
   "amount": 444125,
   "first_seen": "2026-09-16",
   "university": "University of Virginia"
+ },
+ "NIH:11427683": {
+  "amount": 1249181,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11427743": {
+  "amount": 660843,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11427895": {
   "amount": 427625,
   "first_seen": "2026-09-16",
   "university": "Washington University"
  },
+ "NIH:11427960": {
+  "amount": 597193,
+  "first_seen": "2026-09-16",
+  "university": "Seattle Children's Hospital"
+ },
  "NIH:11428434": {
   "amount": 777030,
   "first_seen": "2026-09-16",
   "university": "Oregon Health & Science University"
+ },
+ "NIH:11428722": {
+  "amount": 227445,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern California"
+ },
+ "NIH:11428983": {
+  "amount": 641640,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
  },
  "NIH:11429143": {
   "amount": 552772,
   "first_seen": "2026-09-16",
   "university": "University of Michigan at Ann Arbor"
  },
+ "NIH:11429245": {
+  "amount": 525537,
+  "first_seen": "2026-09-16",
+  "university": "Brown University"
+ },
+ "NIH:11429471": {
+  "amount": 747903,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11429898": {
+  "amount": 386204,
+  "first_seen": "2026-09-16",
+  "university": "Texas A&m University"
+ },
  "NIH:11430037": {
   "amount": 642756,
   "first_seen": "2026-09-16",
   "university": "University of Nevada Reno"
+ },
+ "NIH:11430827": {
+  "amount": 690974,
+  "first_seen": "2026-09-16",
+  "university": "Boston College"
  },
  "NIH:11431698": {
   "amount": 337610,
@@ -1164,10 +2919,30 @@
   "first_seen": "2026-09-16",
   "university": "University of Pennsylvania"
  },
+ "NIH:11433151": {
+  "amount": 639896,
+  "first_seen": "2026-09-16",
+  "university": "Hospital for Special Surgery"
+ },
+ "NIH:11433199": {
+  "amount": 1575000,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
  "NIH:11434156": {
   "amount": 716515,
   "first_seen": "2026-09-16",
   "university": "University of Pennsylvania"
+ },
+ "NIH:11434331": {
+  "amount": 524456,
+  "first_seen": "2026-09-16",
+  "university": "Princeton University"
+ },
+ "NIH:11434824": {
+  "amount": 776314,
+  "first_seen": "2026-09-16",
+  "university": "La Jolla Institute for Immunology"
  },
  "NIH:11435400": {
   "amount": 138121,
@@ -1189,6 +2964,11 @@
   "first_seen": "2026-09-16",
   "university": "University of Kansas Medical Center"
  },
+ "NIH:11436582": {
+  "amount": 105697,
+  "first_seen": "2026-09-16",
+  "university": "Rehabilitation Institute of Chicago D/b/a Shirley Ryan Abilitylab"
+ },
  "NIH:11436727": {
   "amount": 132300,
   "first_seen": "2026-09-16",
@@ -1199,15 +2979,55 @@
   "first_seen": "2026-09-16",
   "university": "University of Michigan at Ann Arbor"
  },
+ "NIH:11437572": {
+  "amount": 192697,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11437731": {
+  "amount": 126900,
+  "first_seen": "2026-09-16",
+  "university": "Scripps Research Institute, the"
+ },
  "NIH:11437913": {
   "amount": 107730,
   "first_seen": "2026-09-16",
   "university": "Vanderbilt University"
  },
+ "NIH:11437973": {
+  "amount": 165024,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11438182": {
+  "amount": 415250,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
  "NIH:11438335": {
   "amount": 156000,
   "first_seen": "2026-09-16",
   "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11438936": {
+  "amount": 451000,
+  "first_seen": "2026-09-16",
+  "university": "Princeton University"
+ },
+ "NIH:11439518": {
+  "amount": 154705,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11440049": {
+  "amount": 415748,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11440365": {
+  "amount": 200478,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
  },
  "NIH:11440841": {
   "amount": 193198,
@@ -1219,20 +3039,70 @@
   "first_seen": "2026-09-16",
   "university": "Virginia Polytechnic Inst and St Univ"
  },
+ "NIH:11441233": {
+  "amount": 432674,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11441885": {
+  "amount": 227800,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
  "NIH:11441959": {
   "amount": 395056,
   "first_seen": "2026-09-16",
   "university": "North Carolina State University Raleigh"
+ },
+ "NIH:11442757": {
+  "amount": 398050,
+  "first_seen": "2026-09-16",
+  "university": "University of New Mexico Health Scis Ctr"
+ },
+ "NIH:11442965": {
+  "amount": 684008,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11442992": {
+  "amount": 2188735,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11443090": {
+  "amount": 726905,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11443222": {
+  "amount": 500168,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
  },
  "NIH:11443419": {
   "amount": 534662,
   "first_seen": "2026-09-16",
   "university": "University of Maine Orono"
  },
+ "NIH:11443925": {
+  "amount": 669587,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
  "NIH:11444313": {
   "amount": 587112,
   "first_seen": "2026-09-16",
   "university": "University of Georgia"
+ },
+ "NIH:11444523": {
+  "amount": 558646,
+  "first_seen": "2026-09-16",
+  "university": "Midwestern University"
+ },
+ "NIH:11444675": {
+  "amount": 240272,
+  "first_seen": "2026-09-16",
+  "university": "University of Cincinnati"
  },
  "NIH:11444990": {
   "amount": 573750,
@@ -1243,6 +3113,21 @@
   "amount": 476199,
   "first_seen": "2026-09-16",
   "university": "Northern Illinois University"
+ },
+ "NIH:11445130": {
+  "amount": 194400,
+  "first_seen": "2026-09-16",
+  "university": "Mclean Hospital"
+ },
+ "NIH:11445921": {
+  "amount": 835279,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11446768": {
+  "amount": 796311,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
  },
  "NIH:11446862": {
   "amount": 702683,
@@ -1259,6 +3144,11 @@
   "first_seen": "2026-09-16",
   "university": "University of California, San Francisco"
  },
+ "NIH:11447529": {
+  "amount": 130125,
+  "first_seen": "2026-09-16",
+  "university": "Roswell Park Cancer Institute Corp"
+ },
  "NIH:11447595": {
   "amount": 841065,
   "first_seen": "2026-09-16",
@@ -1269,15 +3159,50 @@
   "first_seen": "2026-09-16",
   "university": "University of Minnesota"
  },
+ "NIH:11448039": {
+  "amount": 697186,
+  "first_seen": "2026-09-16",
+  "university": "Boston University (charles River Campus)"
+ },
+ "NIH:11448170": {
+  "amount": 701969,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts Eye and Ear Infirmary"
+ },
+ "NIH:11448363": {
+  "amount": 597599,
+  "first_seen": "2026-09-16",
+  "university": "Chestnut Health Systems, Inc."
+ },
+ "NIH:11448727": {
+  "amount": 612731,
+  "first_seen": "2026-09-16",
+  "university": "Father Flanagan's Boys' Home"
+ },
  "NIH:11448850": {
   "amount": 454477,
   "first_seen": "2026-09-16",
   "university": "North Carolina State University Raleigh"
  },
+ "NIH:11448949": {
+  "amount": 824042,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
+ },
  "NIH:11449438": {
   "amount": 410514,
   "first_seen": "2026-09-16",
   "university": "University of North Texas Hlth Sci Ctr"
+ },
+ "NIH:11449503": {
+  "amount": 577735,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
+ },
+ "NIH:11449570": {
+  "amount": 656311,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
  },
  "NIH:11449718": {
   "amount": 521426,
@@ -1289,10 +3214,50 @@
   "first_seen": "2026-09-16",
   "university": "Stanford University"
  },
+ "NIH:11449950": {
+  "amount": 358144,
+  "first_seen": "2026-09-16",
+  "university": "Nemours Children's Hospital, Delaware"
+ },
+ "NIH:11450413": {
+  "amount": 690732,
+  "first_seen": "2026-09-16",
+  "university": "Lovelace Biomedical Research Institute"
+ },
+ "NIH:11451380": {
+  "amount": 134729,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11451473": {
+  "amount": 211196,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11451497": {
+  "amount": 1000770,
+  "first_seen": "2026-09-16",
+  "university": "National Jewish Health"
+ },
  "NIH:11451655": {
   "amount": 126452,
   "first_seen": "2026-09-16",
   "university": "Rutgers Biomedical and Health Sciences"
+ },
+ "NIH:11451687": {
+  "amount": 132057,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
+ "NIH:11451719": {
+  "amount": 234360,
+  "first_seen": "2026-09-16",
+  "university": "Hugo W. Moser Res Inst Kennedy Krieger"
+ },
+ "NIH:11451767": {
+  "amount": 165672,
+  "first_seen": "2026-09-16",
+  "university": "Cincinnati Childrens Hosp Med Ctr"
  },
  "NIH:11451839": {
   "amount": 2070025,
@@ -1303,6 +3268,21 @@
   "amount": 123894,
   "first_seen": "2026-09-16",
   "university": "University of Kansas Medical Center"
+ },
+ "NIH:11451885": {
+  "amount": 185814,
+  "first_seen": "2026-09-16",
+  "university": "Connecticut Children's Medical Center"
+ },
+ "NIH:11451913": {
+  "amount": 126900,
+  "first_seen": "2026-09-16",
+  "university": "Mclean Hospital"
+ },
+ "NIH:11451935": {
+  "amount": 134740,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11451969": {
   "amount": 119691,
@@ -1324,10 +3304,30 @@
   "first_seen": "2026-09-16",
   "university": "Stanford University"
  },
+ "NIH:11452316": {
+  "amount": 125064,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11452447": {
+  "amount": 292028,
+  "first_seen": "2026-09-16",
+  "university": "Sloan-kettering Inst Can Research"
+ },
+ "NIH:11452713": {
+  "amount": 191138,
+  "first_seen": "2026-09-16",
+  "university": "Rochester General Hospital (ny)"
+ },
  "NIH:11452734": {
   "amount": 493227,
   "first_seen": "2026-09-16",
   "university": "Auburn University at Auburn"
+ },
+ "NIH:11453331": {
+  "amount": 1657037,
+  "first_seen": "2026-09-16",
+  "university": "Henry Ford Health + Michigan State University Health Sciences"
  },
  "NIH:11454479": {
   "amount": 181578,
@@ -1344,6 +3344,11 @@
   "first_seen": "2026-09-16",
   "university": "University of California, San Diego"
  },
+ "NIH:11454846": {
+  "amount": 481250,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
  "NIH:11454897": {
   "amount": 399491,
   "first_seen": "2026-09-16",
@@ -1359,6 +3364,11 @@
   "first_seen": "2026-09-16",
   "university": "Tufts University Medford"
  },
+ "NIH:11455938": {
+  "amount": 477694,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
  "NIH:11456508": {
   "amount": 492699,
   "first_seen": "2026-09-16",
@@ -1368,6 +3378,26 @@
   "amount": 98136,
   "first_seen": "2026-09-16",
   "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11457449": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "Gigamune, Inc."
+ },
+ "NIH:11457452": {
+  "amount": 935236,
+  "first_seen": "2026-09-16",
+  "university": "Veramorph, Llc"
+ },
+ "NIH:11457808": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11457932": {
+  "amount": 30400,
+  "first_seen": "2026-09-16",
+  "university": "Cold Spring Harbor Laboratory"
  },
  "NIH:11458751": {
   "amount": 41809,
@@ -1394,6 +3424,16 @@
   "first_seen": "2026-09-16",
   "university": "Oregon Health & Science University"
  },
+ "NIH:11459876": {
+  "amount": 176904,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11459880": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
  "NIH:11460166": {
   "amount": 37417,
   "first_seen": "2026-09-16",
@@ -1403,6 +3443,26 @@
   "amount": 41912,
   "first_seen": "2026-09-16",
   "university": "Ohio State University"
+ },
+ "NIH:11460263": {
+  "amount": 79780,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
+ },
+ "NIH:11460436": {
+  "amount": 53114,
+  "first_seen": "2026-09-16",
+  "university": "University of Arizona"
+ },
+ "NIH:11460628": {
+  "amount": 755347,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11461147": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
  },
  "NIH:11461177": {
   "amount": 44696,
@@ -1418,6 +3478,11 @@
   "amount": 431750,
   "first_seen": "2026-09-16",
   "university": "Henry Ford Health + Michigan State University Health Sciences"
+ },
+ "NIH:11461509": {
+  "amount": 46575,
+  "first_seen": "2026-09-16",
+  "university": "New York University"
  },
  "NIH:11461534": {
   "amount": 51834,
@@ -1484,6 +3549,11 @@
   "first_seen": "2026-09-16",
   "university": "Columbia University Health Sciences"
  },
+ "NIH:11464357": {
+  "amount": 1860006,
+  "first_seen": "2026-09-16",
+  "university": "Mucommune, Llc"
+ },
  "NIH:11464942": {
   "amount": 777870,
   "first_seen": "2026-09-16",
@@ -1509,6 +3579,11 @@
   "first_seen": "2026-09-16",
   "university": "Univ of North Carolina Chapel Hill"
  },
+ "NIH:11468159": {
+  "amount": 89222,
+  "first_seen": "2026-09-16",
+  "university": "H. Lee Moffitt Cancer Ctr & Res Inst"
+ },
  "NIH:11468206": {
   "amount": 46198,
   "first_seen": "2026-09-16",
@@ -1518,6 +3593,16 @@
   "amount": 447000,
   "first_seen": "2026-09-16",
   "university": "University of Puerto Rico Med Sciences"
+ },
+ "NIH:11470337": {
+  "amount": 773096,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11470479": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Weill Medical Coll of Cornell Univ"
  },
  "NIH:11470655": {
   "amount": 884647,
@@ -1534,15 +3619,90 @@
   "first_seen": "2026-09-16",
   "university": "San Diego State University"
  },
+ "NIH:11474405": {
+  "amount": 175444,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11474567": {
+  "amount": 934614,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hospital of Los Angeles"
+ },
+ "NIH:11476818": {
+  "amount": 150000,
+  "first_seen": "2026-09-16",
+  "university": "Research Triangle Institute"
+ },
+ "NIH:11476819": {
+  "amount": 2213293,
+  "first_seen": "2026-09-16",
+  "university": "Booz Allen Hamilton"
+ },
+ "NIH:11476833": {
+  "amount": 50268,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11476835": {
+  "amount": 3953813,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11476855": {
+  "amount": 508519,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia"
+ },
+ "NIH:11476856": {
+  "amount": 2258412,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia"
+ },
+ "NIH:11477242": {
+  "amount": 163904,
+  "first_seen": "2026-09-16",
+  "university": "Kessler Foundation, Inc."
+ },
+ "NIH:11481449": {
+  "amount": 6096000,
+  "first_seen": "2026-09-16",
+  "university": "Fisher Bioservices, Inc."
+ },
+ "NIH:11483375": {
+  "amount": 8000000,
+  "first_seen": "2026-09-16",
+  "university": "Rho Federal Systems Division, Inc."
+ },
  "NIH:11498344": {
   "amount": 50114,
   "first_seen": "2026-09-16",
   "university": "University of Rochester"
  },
+ "NIH:11499508": {
+  "amount": 174000,
+  "first_seen": "2026-09-16",
+  "university": "Alchem Laboratories Corporation"
+ },
+ "NIH:11505050": {
+  "amount": 160648,
+  "first_seen": "2026-09-16",
+  "university": "Cedars-sinai Medical Center"
+ },
  "NIH:11505448": {
   "amount": 19610,
   "first_seen": "2026-09-16",
   "university": "University of Rochester"
+ },
+ "NIH:11507053": {
+  "amount": 161500,
+  "first_seen": "2026-09-16",
+  "university": "Methodist Hospital Research Institute"
+ },
+ "NIH:11510446": {
+  "amount": 72750,
+  "first_seen": "2026-09-16",
+  "university": "Meharry Medical College"
  },
  "NIH:11511125": {
   "amount": 640489,
@@ -1553,6 +3713,36 @@
   "amount": 409750,
   "first_seen": "2026-09-16",
   "university": "University of Alabama at Birmingham"
+ },
+ "NIH:11515601": {
+  "amount": 170500,
+  "first_seen": "2026-09-16",
+  "university": "Oklahoma Medical Research Foundation"
+ },
+ "NIH:11517156": {
+  "amount": 1500310,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11517157": {
+  "amount": 200000,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11517158": {
+  "amount": 360000,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11520809": {
+  "amount": 240336,
+  "first_seen": "2026-09-16",
+  "university": "University of Washington"
+ },
+ "NIH:11521254": {
+  "amount": 1150489,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
  },
  "NIH:11524483": {
   "amount": 109619,
@@ -1589,10 +3779,40 @@
   "first_seen": "2026-09-16",
   "university": "Herbert H. Lehman College"
  },
+ "NIH:11532351": {
+  "amount": 969219,
+  "first_seen": "2026-09-16",
+  "university": "Lactiga Us Inc."
+ },
+ "NIH:11533852": {
+  "amount": 3033905,
+  "first_seen": "2026-09-16",
+  "university": "Spartanburg Regional Medical Center"
+ },
+ "NIH:11534626": {
+  "amount": 1699307,
+  "first_seen": "2026-09-16",
+  "university": "Duke University"
+ },
  "NIH:11535269": {
   "amount": 51709,
   "first_seen": "2026-09-16",
   "university": "Rice University"
+ },
+ "NIH:11535341": {
+  "amount": 64620,
+  "first_seen": "2026-09-16",
+  "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11535390": {
+  "amount": 123708,
+  "first_seen": "2026-09-16",
+  "university": "University of South Carolina at Columbia"
+ },
+ "NIH:11536459": {
+  "amount": 4717218,
+  "first_seen": "2026-09-16",
+  "university": "Precision Bioservices, Inc."
  },
  "NIH:11536611": {
   "amount": 160000,
@@ -1604,40 +3824,165 @@
   "first_seen": "2026-09-16",
   "university": "Baylor College of Medicine"
  },
+ "NIH:11537246": {
+  "amount": 59887,
+  "first_seen": "2026-09-16",
+  "university": "Van Andel Research Institute"
+ },
+ "NIH:11538401": {
+  "amount": 167174,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11539228": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "Princeton University"
+ },
+ "NIH:11539618": {
+  "amount": 911333,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
  "NIH:11540196": {
   "amount": 2144745,
   "first_seen": "2026-09-16",
   "university": "Johns Hopkins University"
+ },
+ "NIH:11540595": {
+  "amount": 1098987,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin-madison"
  },
  "NIH:11541944": {
   "amount": 350000,
   "first_seen": "2026-09-16",
   "university": "Baylor College of Medicine"
  },
+ "NIH:11542184": {
+  "amount": 508776,
+  "first_seen": "2026-09-16",
+  "university": "Harvard Medical School"
+ },
+ "NIH:11542383": {
+  "amount": 176998,
+  "first_seen": "2026-09-16",
+  "university": "Jackson Laboratory"
+ },
+ "NIH:11543457": {
+  "amount": 1329328,
+  "first_seen": "2026-09-16",
+  "university": "Prisma Health - Upstate"
+ },
+ "NIH:11543477": {
+  "amount": 2404367,
+  "first_seen": "2026-09-16",
+  "university": "Aurora Health Care, Inc."
+ },
+ "NIH:11543480": {
+  "amount": 978001,
+  "first_seen": "2026-09-16",
+  "university": "Mainehealth"
+ },
+ "NIH:11543487": {
+  "amount": 670000,
+  "first_seen": "2026-09-16",
+  "university": "Southern Nevada Cancer Research Fdn"
+ },
+ "NIH:11543520": {
+  "amount": 3134462,
+  "first_seen": "2026-09-16",
+  "university": "Southeast Clinical Oncol Res Consortium"
+ },
+ "NIH:11543523": {
+  "amount": 2310779,
+  "first_seen": "2026-09-16",
+  "university": "Carle Foundation"
+ },
+ "NIH:11543548": {
+  "amount": 2606426,
+  "first_seen": "2026-09-16",
+  "university": "Swedish Medical Center, First Hill"
+ },
+ "NIH:11543550": {
+  "amount": 460000,
+  "first_seen": "2026-09-16",
+  "university": "Columbus Community Clinical Oncology Prg"
+ },
+ "NIH:11543554": {
+  "amount": 404750,
+  "first_seen": "2026-09-16",
+  "university": "Dayton Clinical Oncology Program"
+ },
+ "NIH:11543555": {
+  "amount": 754814,
+  "first_seen": "2026-09-16",
+  "university": "Nemours Children's Hospital, Delaware"
+ },
+ "NIH:11543558": {
+  "amount": 2129439,
+  "first_seen": "2026-09-16",
+  "university": "Northside Hospital Atlanta"
+ },
+ "NIH:11543559": {
+  "amount": 828867,
+  "first_seen": "2026-09-16",
+  "university": "Cook County Health and Hospital System"
+ },
  "NIH:11545947": {
   "amount": 17010754,
   "first_seen": "2026-09-16",
   "university": "University of Minnesota"
+ },
+ "NIH:11549938": {
+  "amount": 3693271,
+  "first_seen": "2026-09-16",
+  "university": "Sri International"
  },
  "NIH:11549993": {
   "amount": 332765,
   "first_seen": "2026-09-16",
   "university": "Univ of North Carolina Chapel Hill"
  },
+ "NIH:11550517": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "Mayo Clinic Rochester"
+ },
  "NIH:11550873": {
   "amount": 83700,
   "first_seen": "2026-09-16",
   "university": "University of South Florida"
+ },
+ "NIH:11552393": {
+  "amount": 968954,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11553282": {
   "amount": 1489546,
   "first_seen": "2026-09-16",
   "university": "University of California, San Francisco"
  },
+ "NIH:11554132": {
+  "amount": 191,
+  "first_seen": "2026-09-16",
+  "university": "Sri International"
+ },
+ "NIH:11556428": {
+  "amount": 2234858,
+  "first_seen": "2026-09-16",
+  "university": "University of Montana"
+ },
  "NIH:11563748": {
   "amount": 879252,
   "first_seen": "2026-09-16",
   "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11568220": {
+  "amount": 1499648,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
  },
  "NIH:11572336": {
   "amount": 767876,
@@ -1679,15 +4024,80 @@
   "first_seen": "2026-09-16",
   "university": "Northeastern University"
  },
+ "NIH:11580924": {
+  "amount": 108000,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
  "NIH:11581927": {
   "amount": 510063,
   "first_seen": "2026-09-16",
   "university": "Ut Southwestern Medical Center"
  },
+ "NIH:11582462": {
+  "amount": 408097,
+  "first_seen": "2026-09-16",
+  "university": "Northern California Institute/res/edu"
+ },
+ "NIH:11582959": {
+  "amount": 563728,
+  "first_seen": "2026-09-16",
+  "university": "Rhode Island Hospital"
+ },
+ "NIH:11583246": {
+  "amount": 7812599,
+  "first_seen": "2026-09-16",
+  "university": "Ppd Development Lp"
+ },
+ "NIH:11585295": {
+  "amount": 116200,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern California"
+ },
+ "NIH:11587443": {
+  "amount": 171909,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11589303": {
+  "amount": 286928,
+  "first_seen": "2026-09-16",
+  "university": "Research Triangle Institute"
+ },
+ "NIH:11589304": {
+  "amount": 202116,
+  "first_seen": "2026-09-16",
+  "university": "Research Triangle Institute"
+ },
+ "NIH:11591244": {
+  "amount": 601068,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hosp of Philadelphia"
+ },
+ "NIH:11591353": {
+  "amount": 1473099,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11593444": {
+  "amount": 338879,
+  "first_seen": "2026-09-16",
+  "university": "Research Triangle Institute"
+ },
+ "NIH:11593939": {
+  "amount": 210000,
+  "first_seen": "2026-09-16",
+  "university": "Albert Einstein College of Medicine"
+ },
  "NIH:11595516": {
   "amount": 500000,
   "first_seen": "2026-09-16",
   "university": "Upstate Medical University"
+ },
+ "NIH:11595667": {
+  "amount": 182633,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
  },
  "NIH:11595726": {
   "amount": 593092,
@@ -1699,15 +4109,60 @@
   "first_seen": "2026-09-16",
   "university": "Virginia Commonwealth University"
  },
+ "NIH:11597153": {
+  "amount": 338206,
+  "first_seen": "2026-09-16",
+  "university": "Allen Institute"
+ },
+ "NIH:11597810": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "University of Washington"
+ },
  "NIH:11599438": {
   "amount": 107897,
   "first_seen": "2026-09-16",
   "university": "University of Miami School of Medicine"
  },
+ "NIH:11600931": {
+  "amount": 197640,
+  "first_seen": "2026-09-16",
+  "university": "Brigham and Women's Hospital"
+ },
+ "NIH:11601048": {
+  "amount": 42179,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11601054": {
+  "amount": 17992,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts General Hospital"
+ },
+ "NIH:11601156": {
+  "amount": 433490,
+  "first_seen": "2026-09-16",
+  "university": "National Institute of Allergy and Infectious Diseases"
+ },
+ "NIH:11603170": {
+  "amount": 256048,
+  "first_seen": "2026-09-16",
+  "university": "Dana-farber Cancer Inst"
+ },
+ "NIH:11604071": {
+  "amount": 1093264,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
  "NIH:11605225": {
   "amount": 565436,
   "first_seen": "2026-09-16",
   "university": "University of Texas Hlth Science Center"
+ },
+ "NIH:11605228": {
+  "amount": 527485,
+  "first_seen": "2026-09-16",
+  "university": "Children's Hospital of Los Angeles"
  },
  "NIH:11605896": {
   "amount": 248998,
@@ -1719,10 +4174,20 @@
   "first_seen": "2026-09-16",
   "university": "University of Virginia"
  },
+ "NIH:11606552": {
+  "amount": 21501,
+  "first_seen": "2026-09-16",
+  "university": "Beth Israel Deaconess Medical Center"
+ },
  "NIH:11606635": {
   "amount": 531356,
   "first_seen": "2026-09-16",
   "university": "Washington University"
+ },
+ "NIH:11607308": {
+  "amount": 521396,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
  },
  "NIH:11607784": {
   "amount": 381216,
@@ -1734,6 +4199,11 @@
   "first_seen": "2026-09-16",
   "university": "Univ of Maryland, College Park"
  },
+ "NIH:11607831": {
+  "amount": 69769,
+  "first_seen": "2026-09-16",
+  "university": "Lurie Children's Hospital of Chicago"
+ },
  "NIH:11608576": {
   "amount": 429746,
   "first_seen": "2026-09-16",
@@ -1743,6 +4213,46 @@
   "amount": 307558,
   "first_seen": "2026-09-16",
   "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11609221": {
+  "amount": 718261,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11609233": {
+  "amount": 1822074,
+  "first_seen": "2026-09-16",
+  "university": "Benaroya Research Inst at Virginia Mason"
+ },
+ "NIH:11614270": {
+  "amount": 8276,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
+ },
+ "NIH:11614271": {
+  "amount": 8276,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
+ },
+ "NIH:11614272": {
+  "amount": 62072,
+  "first_seen": "2026-09-16",
+  "university": "Boston Children's Hospital"
+ },
+ "NIH:11616276": {
+  "amount": 526443,
+  "first_seen": "2026-09-16",
+  "university": "University of Houston"
+ },
+ "NIH:11616345": {
+  "amount": 81000,
+  "first_seen": "2026-09-16",
+  "university": "New York University"
+ },
+ "NIH:11616517": {
+  "amount": 370496,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
  },
  "NIH:11616949": {
   "amount": 23408,
@@ -1764,10 +4274,25 @@
   "first_seen": "2026-09-16",
   "university": "University of Colorado Denver"
  },
+ "NIH:11617682": {
+  "amount": 167927,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
+ "NIH:11617683": {
+  "amount": 97632,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University Medical Center"
+ },
  "NIH:11617803": {
   "amount": 47771,
   "first_seen": "2026-09-16",
   "university": "Texas A&m University"
+ },
+ "NIH:11617813": {
+  "amount": 744342,
+  "first_seen": "2026-09-16",
+  "university": "St. Jude Children's Research Hospital"
  },
  "NIH:11618618": {
   "amount": 541009,
@@ -1784,15 +4309,35 @@
   "first_seen": "2026-09-16",
   "university": "Duquesne University"
  },
+ "NIH:11621885": {
+  "amount": 500002,
+  "first_seen": "2026-09-16",
+  "university": "George Mason University"
+ },
  "NIH:11622604": {
   "amount": 22875,
   "first_seen": "2026-09-16",
   "university": "Univ of North Carolina Chapel Hill"
  },
+ "NIH:11623182": {
+  "amount": 167842,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11623224": {
+  "amount": 161293,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
  "NIH:11623237": {
   "amount": 248918,
   "first_seen": "2026-09-16",
   "university": "State University New York Stony Brook"
+ },
+ "NIH:11623420": {
+  "amount": 1844501,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Diego"
  },
  "NIH:11624008": {
   "amount": 248358,
@@ -1804,6 +4349,11 @@
   "first_seen": "2026-09-16",
   "university": "Ohio State University"
  },
+ "NIH:11624837": {
+  "amount": 89835,
+  "first_seen": "2026-09-16",
+  "university": "Hartford Hospital"
+ },
  "NIH:11625643": {
   "amount": 749988,
   "first_seen": "2026-09-16",
@@ -1813,6 +4363,26 @@
   "amount": 17057,
   "first_seen": "2026-09-16",
   "university": "New York University"
+ },
+ "NIH:11625979": {
+  "amount": 261643,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11626501": {
+  "amount": 167128,
+  "first_seen": "2026-09-16",
+  "university": "Beckman Research Institute/city of Hope"
+ },
+ "NIH:11626504": {
+  "amount": 498809,
+  "first_seen": "2026-09-16",
+  "university": "Posit Science Corporation"
+ },
+ "NIH:11627078": {
+  "amount": 136448,
+  "first_seen": "2026-09-16",
+  "university": "Medical University of South Carolina"
  },
  "NIH:11627109": {
   "amount": 561617,
@@ -1828,6 +4398,41 @@
   "amount": 546394,
   "first_seen": "2026-09-16",
   "university": "Univ of Maryland, College Park"
+ },
+ "NIH:11628800": {
+  "amount": 749295,
+  "first_seen": "2026-09-16",
+  "university": "Research Triangle Institute"
+ },
+ "NIH:11628917": {
+  "amount": 110030,
+  "first_seen": "2026-09-16",
+  "university": "California Institute of Technology"
+ },
+ "NIH:11638548": {
+  "amount": 1099927,
+  "first_seen": "2026-09-16",
+  "university": "National Institute of Allergy and Infectious Diseases"
+ },
+ "NIH:11638572": {
+  "amount": 1556524,
+  "first_seen": "2026-09-16",
+  "university": "National Institute of Allergy and Infectious Diseases"
+ },
+ "NIH:11638746": {
+  "amount": 941215,
+  "first_seen": "2026-09-16",
+  "university": "Fisher Bioservices, Inc."
+ },
+ "NIH:11638759": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Baltimore"
+ },
+ "NIH:11640226": {
+  "amount": 2502640,
+  "first_seen": "2026-09-16",
+  "university": "Westat, Inc."
  },
  "NSF:2535312": {
   "amount": 11876081,
