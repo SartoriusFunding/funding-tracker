@@ -397,6 +397,14 @@ def sweep_pi_emails(data):
     cache = load_json(email_cache_path(), {})
     stats = {"net": 0}
     filled, changed = 0, False
+    pending = sum(
+        1 for row in data["rows"].values() for entries in row["cells"].values()
+        for e in entries
+        if e.get("source") == "NIH" and e.get("pi") and not e.get("pi_email"))
+    if pending:
+        log(f"PI email sweep: {pending} entries need emails "
+            f"(max {MAX_EMAIL_LOOKUPS_PER_RUN} lookups this run; "
+            f"~2-3s each without an NCBI key, so a big first pass takes a while)")
     for d in reversed(data["dates"]):
         for row in data["rows"].values():
             for e in row["cells"].get(d, []):
@@ -410,12 +418,21 @@ def sweep_pi_emails(data):
                     return data
                 if e.get("source") != "NIH" or not e.get("pi") or e.get("pi_email"):
                     continue
+                before = stats["net"]
                 em = lookup_pi_email(e["pi"], row["university"], cache, stats)
                 if em:
                     e["pi_email"] = em
                     e["pi_email_via"] = "PubMed"
                     filled += 1
                     changed = True
+                if stats["net"] != before:
+                    if stats["net"] % 25 == 0:
+                        log(f"  email sweep progress: {stats['net']} lookups, "
+                            f"{filled} emails found")
+                    if stats["net"] % 50 == 0:  # checkpoint: survive interruption
+                        save_json(email_cache_path(), cache)
+                        if changed:
+                            save_json(DATA_FILE, data)
     save_json(email_cache_path(), cache)
     if changed:
         save_json(DATA_FILE, data)
