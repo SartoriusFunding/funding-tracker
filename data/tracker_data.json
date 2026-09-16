@@ -2911,6 +2911,35 @@
    "department": "Engineering (all Types)",
    "university": "Rice University"
   },
+  "rice university||press release (dept n/a)": {
+   "cells": {
+    "2026-09-16": [
+     {
+      "amount": 18200000,
+      "approx": true,
+      "label": "~up to $18,200,000",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQREx6ejlwa25Vc3VwYlFXek9aY1NHNVpsRXM1cDYyWHROemxmWm42NGFDLU8yRUhEYk9pWkRRUTh5Q3M5Yjh1TTE2TkppU0M0ZDNZNzc2TWdXNmdsWEpxbVV1Ykkzck40SFVGVWIzYVBwQjlvSmNCZVZwdk50RFNhbWlUQ2w0T0pRNXI1NE5SZHpFNUNpbXdZTHpJY2ZDNWdOUWNNVERPaUNxZ1ZTLWFHQ0Z2OWE5dm1r?oc=5"
+     },
+     {
+      "amount": 18000000,
+      "approx": true,
+      "label": "~up to $18,000,000",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVF9kcElKU0FEaXhkQVJwcGgyeDhoOGRpdWN1LUhIT2QzOFhzUVdYc1NsR3ZRaFZFay01ek85QlhJU0RVMzRDeE5Tb0EyTy1WQXFVczNTRnc4ZnA3d3ZpSG9BNktyNWltb0JkTlBZanNLWkduckJwZnk1VllWRDNKaEcxVTE0a096cmdUNUtoNzlCZ2dWalpWWWtkVHlILVhWTHdONk5PMmp3eVphRUpZRTh0ZkZpNmx6WEE?oc=5"
+     },
+     {
+      "amount": 18000000,
+      "approx": true,
+      "label": "~$18,000,000",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVS1jbjU3d3ZzbklwZlUtNlNwQngxYkJtU1dLNHJacUhPWDBNYm9hM2lvNXBNT0tIb1ZHVGNUN2NXMk50QnNzM2p6U3dENTJuQm1DRlNqdUxjSS1XczN2Q1lYc0R0V0xMS3J0UmdvbWEzSVZLVFdzSjloYXlXRlB6VGcwRC1zeFBlT0Jmcmd4YkVoeWNMQVBaUXo5ejE5T2hLeUtYRmxMZmJKdWZKcDBjM09xTWdTR2dRVFE?oc=5"
+     }
+    ]
+   },
+   "department": "Press release (dept n/a)",
+   "university": "Rice University"
+  },
   "rockefeller university||biology": {
    "cells": {
     "2026-09-16": [
