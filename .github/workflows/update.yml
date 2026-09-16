@@ -1,0 +1,33 @@
+# Daily biotech funding tracker
+# File must live at:  .github/workflows/update.yml
+name: Daily funding tracker
+
+on:
+  schedule:
+    - cron: "17 9 * * *"   # 09:17 UTC daily = 5:17 AM ET (NIH-courtesy window, off the top of the hour)
+  workflow_dispatch: {}     # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write           # allows the workflow to commit the updated data + page
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tracker
+        run: python funding_tracker.py
+
+      - name: Commit updated ledger and page
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Daily funding update"
+          file_pattern: "data/* docs/*"
