@@ -1,0 +1,3132 @@
+{
+ "NEWS:0645a2c99af82c9c": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawai"
+ },
+ "NEWS:0eeb18aa901b9685": {
+  "amount": 9000000,
+  "first_seen": "2026-09-16",
+  "university": "Loma Linda University"
+ },
+ "NEWS:2efe5bafe97d0afb": {
+  "amount": 2000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii System"
+ },
+ "NEWS:3e6c68d60b62d7cc": {
+  "amount": 22000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NEWS:4f8304ab963868a6": {
+  "amount": 3340000,
+  "first_seen": "2026-09-16",
+  "university": "Marquette University"
+ },
+ "NEWS:91c34ce48c5a14b2": {
+  "amount": 3500000,
+  "first_seen": "2026-09-16",
+  "university": "UF College"
+ },
+ "NEWS:92b718323a13b305": {
+  "amount": 7000000,
+  "first_seen": "2026-09-16",
+  "university": "Charles Sturt University"
+ },
+ "NEWS:ac32cc54058a68f6": {
+  "amount": 2300000,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii"
+ },
+ "NEWS:cb4d7bf2fe852ef0": {
+  "amount": 1800000,
+  "first_seen": "2026-09-16",
+  "university": "University of New England"
+ },
+ "NEWS:cecebff7c120fa44": {
+  "amount": 45000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Colorado Boulder"
+ },
+ "NEWS:db616314e29d8f78": {
+  "amount": 15000000,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University"
+ },
+ "NEWS:ed082c414ddf1cc4": {
+  "amount": 41000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh"
+ },
+ "NEWS:f452a55207455dd2": {
+  "amount": 22000000,
+  "first_seen": "2026-09-16",
+  "university": "Brown University"
+ },
+ "NIH:10973971": {
+  "amount": 393903,
+  "first_seen": "2026-09-16",
+  "university": "Georgia Institute of Technology"
+ },
+ "NIH:10973994": {
+  "amount": 680519,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:10973997": {
+  "amount": 1359468,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11012613": {
+  "amount": 895495,
+  "first_seen": "2026-09-16",
+  "university": "Rice University"
+ },
+ "NIH:11014668": {
+  "amount": 896204,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin-madison"
+ },
+ "NIH:11062766": {
+  "amount": 904165,
+  "first_seen": "2026-09-16",
+  "university": "Purdue University"
+ },
+ "NIH:11134758": {
+  "amount": 193055,
+  "first_seen": "2026-09-16",
+  "university": "Georgia Southern University"
+ },
+ "NIH:11138566": {
+  "amount": 50000,
+  "first_seen": "2026-09-16",
+  "university": "University of Houston"
+ },
+ "NIH:11169980": {
+  "amount": 295079,
+  "first_seen": "2026-09-16",
+  "university": "Wake Forest University Health Sciences"
+ },
+ "NIH:11200766": {
+  "amount": 350606,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11219514": {
+  "amount": 51614,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11242979": {
+  "amount": 43101,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Francisco"
+ },
+ "NIH:11256752": {
+  "amount": 498992,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Dallas"
+ },
+ "NIH:11258255": {
+  "amount": 453908,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11258305": {
+  "amount": 411000,
+  "first_seen": "2026-09-16",
+  "university": "Baylor University"
+ },
+ "NIH:11258792": {
+  "amount": 598848,
+  "first_seen": "2026-09-16",
+  "university": "Northwestern University"
+ },
+ "NIH:11259923": {
+  "amount": 460625,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Massachusetts Med Sch Worcester"
+ },
+ "NIH:11259933": {
+  "amount": 573967,
+  "first_seen": "2026-09-16",
+  "university": "University of South Florida"
+ },
+ "NIH:11260309": {
+  "amount": 444620,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11260344": {
+  "amount": 440000,
+  "first_seen": "2026-09-16",
+  "university": "Northwestern University"
+ },
+ "NIH:11260428": {
+  "amount": 126000,
+  "first_seen": "2026-09-16",
+  "university": "Albert Einstein College of Medicine"
+ },
+ "NIH:11260586": {
+  "amount": 421579,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University"
+ },
+ "NIH:11271849": {
+  "amount": 288713,
+  "first_seen": "2026-09-16",
+  "university": "University of Oklahoma Hlth Sciences Ctr"
+ },
+ "NIH:11282171": {
+  "amount": 874500,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Urbana-champaign"
+ },
+ "NIH:11282339": {
+  "amount": 125901,
+  "first_seen": "2026-09-16",
+  "university": "Harvard Medical School"
+ },
+ "NIH:11293590": {
+  "amount": 2395432,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Urbana-champaign"
+ },
+ "NIH:11295598": {
+  "amount": 391081,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11296396": {
+  "amount": 649628,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Science Center"
+ },
+ "NIH:11300302": {
+  "amount": 119880,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11301501": {
+  "amount": 126873,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11301717": {
+  "amount": 123204,
+  "first_seen": "2026-09-16",
+  "university": "University of California Los Angeles"
+ },
+ "NIH:11302254": {
+  "amount": 100786,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University"
+ },
+ "NIH:11302835": {
+  "amount": 629808,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Urbana-champaign"
+ },
+ "NIH:11302930": {
+  "amount": 429000,
+  "first_seen": "2026-09-16",
+  "university": "Medical College of Wisconsin"
+ },
+ "NIH:11309788": {
+  "amount": 89487,
+  "first_seen": "2026-09-16",
+  "university": "Texas A&m University"
+ },
+ "NIH:11311744": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Northwestern University"
+ },
+ "NIH:11312020": {
+  "amount": 228808,
+  "first_seen": "2026-09-16",
+  "university": "University of Arizona"
+ },
+ "NIH:11312373": {
+  "amount": 38914,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky"
+ },
+ "NIH:11314858": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11317299": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "University of South Carolina at Columbia"
+ },
+ "NIH:11318600": {
+  "amount": 45528,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Inst and St Univ"
+ },
+ "NIH:11322909": {
+  "amount": 45225,
+  "first_seen": "2026-09-16",
+  "university": "University of California-irvine"
+ },
+ "NIH:11326270": {
+  "amount": 601442,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Ctr at Tyler"
+ },
+ "NIH:11329140": {
+  "amount": 446875,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11330056": {
+  "amount": 506167,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
+ "NIH:11331323": {
+  "amount": 460625,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Massachusetts Med Sch Worcester"
+ },
+ "NIH:11333926": {
+  "amount": 4367777,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico Med Sciences"
+ },
+ "NIH:11336772": {
+  "amount": 431750,
+  "first_seen": "2026-09-16",
+  "university": "Rutgers Biomedical and Health Sciences"
+ },
+ "NIH:11343920": {
+  "amount": 769725,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Baltimore"
+ },
+ "NIH:11344297": {
+  "amount": 758139,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University"
+ },
+ "NIH:11347017": {
+  "amount": 582879,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "NIH:11347057": {
+  "amount": 352322,
+  "first_seen": "2026-09-16",
+  "university": "University of Montana"
+ },
+ "NIH:11352245": {
+  "amount": 128327,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11357465": {
+  "amount": 135626,
+  "first_seen": "2026-09-16",
+  "university": "Harvard Medical School"
+ },
+ "NIH:11358410": {
+  "amount": 283361,
+  "first_seen": "2026-09-16",
+  "university": "Oregon Health & Science University"
+ },
+ "NIH:11361296": {
+  "amount": 579716,
+  "first_seen": "2026-09-16",
+  "university": "Montclair State University"
+ },
+ "NIH:11362782": {
+  "amount": 380166,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Maryland, College Park"
+ },
+ "NIH:11364157": {
+  "amount": 630810,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Chicago"
+ },
+ "NIH:11366197": {
+  "amount": 598929,
+  "first_seen": "2026-09-16",
+  "university": "Cleveland Clinic Lerner Com-cwru"
+ },
+ "NIH:11366492": {
+  "amount": 1521200,
+  "first_seen": "2026-09-16",
+  "university": "University of South Alabama"
+ },
+ "NIH:11366524": {
+  "amount": 517568,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Med Br Galveston"
+ },
+ "NIH:11367405": {
+  "amount": 1766928,
+  "first_seen": "2026-09-16",
+  "university": "University of Rhode Island"
+ },
+ "NIH:11367422": {
+  "amount": 698067,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11371722": {
+  "amount": 393750,
+  "first_seen": "2026-09-16",
+  "university": "Lsu Health Sciences Center"
+ },
+ "NIH:11374377": {
+  "amount": 142616,
+  "first_seen": "2026-09-16",
+  "university": "Texas Engineering Experiment Station"
+ },
+ "NIH:11374989": {
+  "amount": 667977,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Merced"
+ },
+ "NIH:11375728": {
+  "amount": 762991,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "NIH:11376152": {
+  "amount": 210480,
+  "first_seen": "2026-09-16",
+  "university": "New York University"
+ },
+ "NIH:11376664": {
+  "amount": 684907,
+  "first_seen": "2026-09-16",
+  "university": "Medical University of South Carolina"
+ },
+ "NIH:11377107": {
+  "amount": 538803,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Diego"
+ },
+ "NIH:11378723": {
+  "amount": 3061628,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11378984": {
+  "amount": 81580,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Baltimore"
+ },
+ "NIH:11379540": {
+  "amount": 617932,
+  "first_seen": "2026-09-16",
+  "university": "University of Minnesota"
+ },
+ "NIH:11379549": {
+  "amount": 2043379,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico Med Sciences"
+ },
+ "NIH:11382074": {
+  "amount": 549599,
+  "first_seen": "2026-09-16",
+  "university": "University of Houston"
+ },
+ "NIH:11382962": {
+  "amount": 120348,
+  "first_seen": "2026-09-16",
+  "university": "Rutgers, the State Univ of N.j."
+ },
+ "NIH:11383368": {
+  "amount": 487110,
+  "first_seen": "2026-09-16",
+  "university": "Indiana University Indianapolis"
+ },
+ "NIH:11383464": {
+  "amount": 460398,
+  "first_seen": "2026-09-16",
+  "university": "San Diego State University"
+ },
+ "NIH:11384153": {
+  "amount": 438164,
+  "first_seen": "2026-09-16",
+  "university": "University of New Mexico Health Scis Ctr"
+ },
+ "NIH:11384397": {
+  "amount": 971998,
+  "first_seen": "2026-09-16",
+  "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11384529": {
+  "amount": 196573,
+  "first_seen": "2026-09-16",
+  "university": "Northwestern University"
+ },
+ "NIH:11384616": {
+  "amount": 186250,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico Med Sciences"
+ },
+ "NIH:11384670": {
+  "amount": 383978,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "NIH:11384713": {
+  "amount": 89648,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11384775": {
+  "amount": 87148,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11385376": {
+  "amount": 1765277,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts Institute of Technology"
+ },
+ "NIH:11385445": {
+  "amount": 2517717,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Science Center"
+ },
+ "NIH:11385502": {
+  "amount": 43959,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11385903": {
+  "amount": 121230,
+  "first_seen": "2026-09-16",
+  "university": "University of North Texas Hlth Sci Ctr"
+ },
+ "NIH:11385962": {
+  "amount": 43668,
+  "first_seen": "2026-09-16",
+  "university": "University of California Santa Cruz"
+ },
+ "NIH:11386546": {
+  "amount": 25089,
+  "first_seen": "2026-09-16",
+  "university": "Drexel University"
+ },
+ "NIH:11387047": {
+  "amount": 782853,
+  "first_seen": "2026-09-16",
+  "university": "University of California Los Angeles"
+ },
+ "NIH:11387848": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "New York University"
+ },
+ "NIH:11388415": {
+  "amount": 50914,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11389204": {
+  "amount": 38174,
+  "first_seen": "2026-09-16",
+  "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11389446": {
+  "amount": 78437,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut Storrs"
+ },
+ "NIH:11390017": {
+  "amount": 36017,
+  "first_seen": "2026-09-16",
+  "university": "University of Missouri-columbia"
+ },
+ "NIH:11390909": {
+  "amount": 314510,
+  "first_seen": "2026-09-16",
+  "university": "University of California at Davis"
+ },
+ "NIH:11391043": {
+  "amount": 345268,
+  "first_seen": "2026-09-16",
+  "university": "Northwestern University"
+ },
+ "NIH:11391179": {
+  "amount": 634953,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University"
+ },
+ "NIH:11391217": {
+  "amount": 388058,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "NIH:11391255": {
+  "amount": 204733,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11391342": {
+  "amount": 100511,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11392342": {
+  "amount": 386250,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Baltimore"
+ },
+ "NIH:11392354": {
+  "amount": 1372424,
+  "first_seen": "2026-09-16",
+  "university": "Rice University"
+ },
+ "NIH:11392925": {
+  "amount": 498018,
+  "first_seen": "2026-09-16",
+  "university": "Icahn School of Medicine at Mount Sinai"
+ },
+ "NIH:11393064": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11393083": {
+  "amount": 1142020,
+  "first_seen": "2026-09-16",
+  "university": "Delaware State University"
+ },
+ "NIH:11393367": {
+  "amount": 248954,
+  "first_seen": "2026-09-16",
+  "university": "Oakland University"
+ },
+ "NIH:11393606": {
+  "amount": 387766,
+  "first_seen": "2026-09-16",
+  "university": "University of Houston"
+ },
+ "NIH:11394191": {
+  "amount": 738625,
+  "first_seen": "2026-09-16",
+  "university": "University of Washington"
+ },
+ "NIH:11394475": {
+  "amount": 413581,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
+ },
+ "NIH:11394594": {
+  "amount": 801426,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "NIH:11394654": {
+  "amount": 425038,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
+ "NIH:11395308": {
+  "amount": 397418,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
+ },
+ "NIH:11395533": {
+  "amount": 121195,
+  "first_seen": "2026-09-16",
+  "university": "University of California Santa Barbara"
+ },
+ "NIH:11395578": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "University of Nebraska Lincoln"
+ },
+ "NIH:11395627": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "Northwestern University"
+ },
+ "NIH:11395891": {
+  "amount": 739100,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11396320": {
+  "amount": 798338,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Francisco"
+ },
+ "NIH:11396424": {
+  "amount": 385345,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
+ "NIH:11396443": {
+  "amount": 320023,
+  "first_seen": "2026-09-16",
+  "university": "Texas Engineering Experiment Station"
+ },
+ "NIH:11396479": {
+  "amount": 427625,
+  "first_seen": "2026-09-16",
+  "university": "University of Washington"
+ },
+ "NIH:11396794": {
+  "amount": 741000,
+  "first_seen": "2026-09-16",
+  "university": "University of California Los Angeles"
+ },
+ "NIH:11396897": {
+  "amount": 731549,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11397089": {
+  "amount": 761897,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11397232": {
+  "amount": 45588,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "NIH:11397523": {
+  "amount": 360714,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Science Center"
+ },
+ "NIH:11397575": {
+  "amount": 136988,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Baltimore"
+ },
+ "NIH:11397592": {
+  "amount": 384560,
+  "first_seen": "2026-09-16",
+  "university": "Drexel University"
+ },
+ "NIH:11398198": {
+  "amount": 752846,
+  "first_seen": "2026-09-16",
+  "university": "University of Kansas Medical Center"
+ },
+ "NIH:11398246": {
+  "amount": 1884798,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University"
+ },
+ "NIH:11398315": {
+  "amount": 582724,
+  "first_seen": "2026-09-16",
+  "university": "University of Houston"
+ },
+ "NIH:11398872": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern California"
+ },
+ "NIH:11398981": {
+  "amount": 307189,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University"
+ },
+ "NIH:11399699": {
+  "amount": 417450,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11399792": {
+  "amount": 668770,
+  "first_seen": "2026-09-16",
+  "university": "Rockefeller University"
+ },
+ "NIH:11399868": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin-madison"
+ },
+ "NIH:11400067": {
+  "amount": 340068,
+  "first_seen": "2026-09-16",
+  "university": "Carnegie-mellon University"
+ },
+ "NIH:11401002": {
+  "amount": 2265000,
+  "first_seen": "2026-09-16",
+  "university": "Medical University of South Carolina"
+ },
+ "NIH:11401067": {
+  "amount": 129400,
+  "first_seen": "2026-09-16",
+  "university": "University of New Haven"
+ },
+ "NIH:11401081": {
+  "amount": 575193,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11401125": {
+  "amount": 528863,
+  "first_seen": "2026-09-16",
+  "university": "Clemson University"
+ },
+ "NIH:11401186": {
+  "amount": 508715,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11401617": {
+  "amount": 399798,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Baltimore"
+ },
+ "NIH:11401621": {
+  "amount": 362790,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut Storrs"
+ },
+ "NIH:11401757": {
+  "amount": 592974,
+  "first_seen": "2026-09-16",
+  "university": "University of Iowa"
+ },
+ "NIH:11401989": {
+  "amount": 507541,
+  "first_seen": "2026-09-16",
+  "university": "Drexel University"
+ },
+ "NIH:11402050": {
+  "amount": 643949,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky"
+ },
+ "NIH:11402061": {
+  "amount": 248999,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11402746": {
+  "amount": 1072998,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia"
+ },
+ "NIH:11402818": {
+  "amount": 106474,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11402824": {
+  "amount": 399081,
+  "first_seen": "2026-09-16",
+  "university": "Oregon State University"
+ },
+ "NIH:11403806": {
+  "amount": 358857,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky"
+ },
+ "NIH:11403824": {
+  "amount": 380813,
+  "first_seen": "2026-09-16",
+  "university": "University of Massachusetts Amherst"
+ },
+ "NIH:11403902": {
+  "amount": 114381,
+  "first_seen": "2026-09-16",
+  "university": "University of Arizona"
+ },
+ "NIH:11404074": {
+  "amount": 3381121,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University"
+ },
+ "NIH:11404793": {
+  "amount": 566770,
+  "first_seen": "2026-09-16",
+  "university": "University of Arizona"
+ },
+ "NIH:11404891": {
+  "amount": 424770,
+  "first_seen": "2026-09-16",
+  "university": "Harvard Medical School"
+ },
+ "NIH:11404951": {
+  "amount": 574734,
+  "first_seen": "2026-09-16",
+  "university": "University of Arizona"
+ },
+ "NIH:11404996": {
+  "amount": 401745,
+  "first_seen": "2026-09-16",
+  "university": "Southern Methodist University"
+ },
+ "NIH:11405270": {
+  "amount": 1042140,
+  "first_seen": "2026-09-16",
+  "university": "Weill Medical Coll of Cornell Univ"
+ },
+ "NIH:11406087": {
+  "amount": 3926903,
+  "first_seen": "2026-09-16",
+  "university": "University of Oklahoma Hlth Sciences Ctr"
+ },
+ "NIH:11408692": {
+  "amount": 654307,
+  "first_seen": "2026-09-16",
+  "university": "University of Colorado"
+ },
+ "NIH:11411184": {
+  "amount": 265309,
+  "first_seen": "2026-09-16",
+  "university": "Icahn School of Medicine at Mount Sinai"
+ },
+ "NIH:11411322": {
+  "amount": 969873,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University"
+ },
+ "NIH:11411323": {
+  "amount": 987631,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11412928": {
+  "amount": 1467789,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11413399": {
+  "amount": 545816,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11413520": {
+  "amount": 2161600,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11413675": {
+  "amount": 1446185,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11414856": {
+  "amount": 264355,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11414988": {
+  "amount": 416726,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
+ "NIH:11415026": {
+  "amount": 2184761,
+  "first_seen": "2026-09-16",
+  "university": "University of New Hampshire"
+ },
+ "NIH:11415034": {
+  "amount": 370635,
+  "first_seen": "2026-09-16",
+  "university": "University of Chicago"
+ },
+ "NIH:11415089": {
+  "amount": 676761,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11415114": {
+  "amount": 283057,
+  "first_seen": "2026-09-16",
+  "university": "Worcester Polytechnic Institute"
+ },
+ "NIH:11415133": {
+  "amount": 786560,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11415246": {
+  "amount": 1037835,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11415552": {
+  "amount": 36350,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Maryland, College Park"
+ },
+ "NIH:11415799": {
+  "amount": 290022,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11415898": {
+  "amount": 4083081,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern Mississippi"
+ },
+ "NIH:11416476": {
+  "amount": 497104,
+  "first_seen": "2026-09-16",
+  "university": "University of Mississippi Med Ctr"
+ },
+ "NIH:11416631": {
+  "amount": 139849,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11417477": {
+  "amount": 1164382,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky"
+ },
+ "NIH:11417487": {
+  "amount": 1617170,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11417857": {
+  "amount": 125847,
+  "first_seen": "2026-09-16",
+  "university": "Meharry Medical College"
+ },
+ "NIH:11417911": {
+  "amount": 1000056,
+  "first_seen": "2026-09-16",
+  "university": "Tufts University Boston"
+ },
+ "NIH:11418424": {
+  "amount": 1902068,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Science Center"
+ },
+ "NIH:11418522": {
+  "amount": 1457442,
+  "first_seen": "2026-09-16",
+  "university": "Ponce School of Medicine"
+ },
+ "NIH:11418853": {
+  "amount": 40056,
+  "first_seen": "2026-09-16",
+  "university": "Loyola University Chicago"
+ },
+ "NIH:11418855": {
+  "amount": 48824,
+  "first_seen": "2026-09-16",
+  "university": "University of Alabama at Birmingham"
+ },
+ "NIH:11418859": {
+  "amount": 76780,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11418875": {
+  "amount": 81169,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11419452": {
+  "amount": 200000,
+  "first_seen": "2026-09-16",
+  "university": "South Dakota State University"
+ },
+ "NIH:11419462": {
+  "amount": 199993,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky"
+ },
+ "NIH:11419471": {
+  "amount": 199499,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Urbana-champaign"
+ },
+ "NIH:11419621": {
+  "amount": 850148,
+  "first_seen": "2026-09-16",
+  "university": "Harvard Medical School"
+ },
+ "NIH:11419677": {
+  "amount": 2829961,
+  "first_seen": "2026-09-16",
+  "university": "University of California Santa Cruz"
+ },
+ "NIH:11419850": {
+  "amount": 131882,
+  "first_seen": "2026-09-16",
+  "university": "Duke University"
+ },
+ "NIH:11422333": {
+  "amount": 2471340,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11422754": {
+  "amount": 499275,
+  "first_seen": "2026-09-16",
+  "university": "Indiana University Indianapolis"
+ },
+ "NIH:11424472": {
+  "amount": 145254,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico Rio Piedras"
+ },
+ "NIH:11424651": {
+  "amount": 558245,
+  "first_seen": "2026-09-16",
+  "university": "Georgetown University"
+ },
+ "NIH:11424694": {
+  "amount": 145000,
+  "first_seen": "2026-09-16",
+  "university": "Humboldt State University"
+ },
+ "NIH:11425227": {
+  "amount": 193750,
+  "first_seen": "2026-09-16",
+  "university": "University of Alaska Fairbanks"
+ },
+ "NIH:11425637": {
+  "amount": 109987,
+  "first_seen": "2026-09-16",
+  "university": "Princeton University"
+ },
+ "NIH:11426569": {
+  "amount": 588303,
+  "first_seen": "2026-09-16",
+  "university": "Medical College of Wisconsin"
+ },
+ "NIH:11427034": {
+  "amount": 738722,
+  "first_seen": "2026-09-16",
+  "university": "Northeastern University"
+ },
+ "NIH:11427612": {
+  "amount": 444125,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11427895": {
+  "amount": 427625,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11428434": {
+  "amount": 777030,
+  "first_seen": "2026-09-16",
+  "university": "Oregon Health & Science University"
+ },
+ "NIH:11429143": {
+  "amount": 552772,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11430037": {
+  "amount": 642756,
+  "first_seen": "2026-09-16",
+  "university": "University of Nevada Reno"
+ },
+ "NIH:11431698": {
+  "amount": 337610,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin-madison"
+ },
+ "NIH:11431765": {
+  "amount": 785873,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "NIH:11432158": {
+  "amount": 807781,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11434156": {
+  "amount": 716515,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11435400": {
+  "amount": 138121,
+  "first_seen": "2026-09-16",
+  "university": "University of Missouri-columbia"
+ },
+ "NIH:11435823": {
+  "amount": 123936,
+  "first_seen": "2026-09-16",
+  "university": "Harvard University D/b/a Harvard School of Public Health"
+ },
+ "NIH:11436409": {
+  "amount": 141210,
+  "first_seen": "2026-09-16",
+  "university": "Rockefeller University"
+ },
+ "NIH:11436535": {
+  "amount": 465000,
+  "first_seen": "2026-09-16",
+  "university": "University of Kansas Medical Center"
+ },
+ "NIH:11436727": {
+  "amount": 132300,
+  "first_seen": "2026-09-16",
+  "university": "Columbia Univ New York Morningside"
+ },
+ "NIH:11437540": {
+  "amount": 418440,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11437913": {
+  "amount": 107730,
+  "first_seen": "2026-09-16",
+  "university": "Vanderbilt University"
+ },
+ "NIH:11438335": {
+  "amount": 156000,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11440841": {
+  "amount": 193198,
+  "first_seen": "2026-09-16",
+  "university": "University of Louisville"
+ },
+ "NIH:11441001": {
+  "amount": 189621,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Inst and St Univ"
+ },
+ "NIH:11441959": {
+  "amount": 395056,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University Raleigh"
+ },
+ "NIH:11443419": {
+  "amount": 534662,
+  "first_seen": "2026-09-16",
+  "university": "University of Maine Orono"
+ },
+ "NIH:11444313": {
+  "amount": 587112,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia"
+ },
+ "NIH:11444990": {
+  "amount": 573750,
+  "first_seen": "2026-09-16",
+  "university": "Oakland University"
+ },
+ "NIH:11445081": {
+  "amount": 476199,
+  "first_seen": "2026-09-16",
+  "university": "Northern Illinois University"
+ },
+ "NIH:11446862": {
+  "amount": 702683,
+  "first_seen": "2026-09-16",
+  "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11447154": {
+  "amount": 625792,
+  "first_seen": "2026-09-16",
+  "university": "Medical College of Wisconsin"
+ },
+ "NIH:11447313": {
+  "amount": 819998,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Francisco"
+ },
+ "NIH:11447595": {
+  "amount": 841065,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11447798": {
+  "amount": 449362,
+  "first_seen": "2026-09-16",
+  "university": "University of Minnesota"
+ },
+ "NIH:11448850": {
+  "amount": 454477,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University Raleigh"
+ },
+ "NIH:11449438": {
+  "amount": 410514,
+  "first_seen": "2026-09-16",
+  "university": "University of North Texas Hlth Sci Ctr"
+ },
+ "NIH:11449718": {
+  "amount": 521426,
+  "first_seen": "2026-09-16",
+  "university": "Oregon State University"
+ },
+ "NIH:11449825": {
+  "amount": 769846,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11451655": {
+  "amount": 126452,
+  "first_seen": "2026-09-16",
+  "university": "Rutgers Biomedical and Health Sciences"
+ },
+ "NIH:11451839": {
+  "amount": 2070025,
+  "first_seen": "2026-09-16",
+  "university": "Weill Medical Coll of Cornell Univ"
+ },
+ "NIH:11451876": {
+  "amount": 123894,
+  "first_seen": "2026-09-16",
+  "university": "University of Kansas Medical Center"
+ },
+ "NIH:11451969": {
+  "amount": 119691,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11452057": {
+  "amount": 429000,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11452105": {
+  "amount": 162000,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Sci Ctr Houston"
+ },
+ "NIH:11452273": {
+  "amount": 125000,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11452734": {
+  "amount": 493227,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University at Auburn"
+ },
+ "NIH:11454479": {
+  "amount": 181578,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia"
+ },
+ "NIH:11454481": {
+  "amount": 389737,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11454631": {
+  "amount": 347839,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Diego"
+ },
+ "NIH:11454897": {
+  "amount": 399491,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11455046": {
+  "amount": 442560,
+  "first_seen": "2026-09-16",
+  "university": "Columbia Univ New York Morningside"
+ },
+ "NIH:11455159": {
+  "amount": 413130,
+  "first_seen": "2026-09-16",
+  "university": "Tufts University Medford"
+ },
+ "NIH:11456508": {
+  "amount": 492699,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11457169": {
+  "amount": 98136,
+  "first_seen": "2026-09-16",
+  "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11458751": {
+  "amount": 41809,
+  "first_seen": "2026-09-16",
+  "university": "University of Alabama at Birmingham"
+ },
+ "NIH:11458799": {
+  "amount": 79000,
+  "first_seen": "2026-09-16",
+  "university": "University of Michigan at Ann Arbor"
+ },
+ "NIH:11458921": {
+  "amount": 81580,
+  "first_seen": "2026-09-16",
+  "university": "Emory University"
+ },
+ "NIH:11459315": {
+  "amount": 39780,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11459640": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Oregon Health & Science University"
+ },
+ "NIH:11460166": {
+  "amount": 37417,
+  "first_seen": "2026-09-16",
+  "university": "Utah State Higher Education System--university of Utah"
+ },
+ "NIH:11460253": {
+  "amount": 41912,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
+ "NIH:11461177": {
+  "amount": 44696,
+  "first_seen": "2026-09-16",
+  "university": "Indiana University Indianapolis"
+ },
+ "NIH:11461202": {
+  "amount": 79348,
+  "first_seen": "2026-09-16",
+  "university": "Yale University"
+ },
+ "NIH:11461450": {
+  "amount": 431750,
+  "first_seen": "2026-09-16",
+  "university": "Henry Ford Health + Michigan State University Health Sciences"
+ },
+ "NIH:11461534": {
+  "amount": 51834,
+  "first_seen": "2026-09-16",
+  "university": "University of Minnesota"
+ },
+ "NIH:11461563": {
+  "amount": 39684,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11461846": {
+  "amount": 37312,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11462007": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Arizona State University-tempe Campus"
+ },
+ "NIH:11462123": {
+  "amount": 41658,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11462499": {
+  "amount": 47914,
+  "first_seen": "2026-09-16",
+  "university": "University of Oklahoma Hlth Sciences Ctr"
+ },
+ "NIH:11462568": {
+  "amount": 44114,
+  "first_seen": "2026-09-16",
+  "university": "Colorado State University"
+ },
+ "NIH:11463247": {
+  "amount": 560381,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11463257": {
+  "amount": 76300,
+  "first_seen": "2026-09-16",
+  "university": "Boston University (charles River Campus)"
+ },
+ "NIH:11463350": {
+  "amount": 43596,
+  "first_seen": "2026-09-16",
+  "university": "State University of Ny,binghamton"
+ },
+ "NIH:11463534": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Thomas Jefferson University"
+ },
+ "NIH:11463631": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "University of Chicago"
+ },
+ "NIH:11464061": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11464942": {
+  "amount": 777870,
+  "first_seen": "2026-09-16",
+  "university": "Pennsylvania State University, the"
+ },
+ "NIH:11465287": {
+  "amount": 786863,
+  "first_seen": "2026-09-16",
+  "university": "Stanford University"
+ },
+ "NIH:11465395": {
+  "amount": 740790,
+  "first_seen": "2026-09-16",
+  "university": "University of California Berkeley"
+ },
+ "NIH:11466402": {
+  "amount": 37249,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11467608": {
+  "amount": 41747,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11468206": {
+  "amount": 46198,
+  "first_seen": "2026-09-16",
+  "university": "University of Washington"
+ },
+ "NIH:11469839": {
+  "amount": 447000,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico Med Sciences"
+ },
+ "NIH:11470655": {
+  "amount": 884647,
+  "first_seen": "2026-09-16",
+  "university": "Case Western Reserve University"
+ },
+ "NIH:11472197": {
+  "amount": 36694,
+  "first_seen": "2026-09-16",
+  "university": "Indiana University Indianapolis"
+ },
+ "NIH:11473227": {
+  "amount": 87191,
+  "first_seen": "2026-09-16",
+  "university": "San Diego State University"
+ },
+ "NIH:11498344": {
+  "amount": 50114,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11505448": {
+  "amount": 19610,
+  "first_seen": "2026-09-16",
+  "university": "University of Rochester"
+ },
+ "NIH:11511125": {
+  "amount": 640489,
+  "first_seen": "2026-09-16",
+  "university": "Columbia University Health Sciences"
+ },
+ "NIH:11514488": {
+  "amount": 409750,
+  "first_seen": "2026-09-16",
+  "university": "University of Alabama at Birmingham"
+ },
+ "NIH:11524483": {
+  "amount": 109619,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Calif/div/agriculture/nat/resour"
+ },
+ "NIH:11527837": {
+  "amount": 163912,
+  "first_seen": "2026-09-16",
+  "university": "State University of Ny,binghamton"
+ },
+ "NIH:11529020": {
+  "amount": 249222,
+  "first_seen": "2026-09-16",
+  "university": "Dartmouth College"
+ },
+ "NIH:11529073": {
+  "amount": 104319,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin-madison"
+ },
+ "NIH:11529137": {
+  "amount": 114064,
+  "first_seen": "2026-09-16",
+  "university": "Icahn School of Medicine at Mount Sinai"
+ },
+ "NIH:11529990": {
+  "amount": 239000,
+  "first_seen": "2026-09-16",
+  "university": "Columbia Univ New York Morningside"
+ },
+ "NIH:11530007": {
+  "amount": 94421,
+  "first_seen": "2026-09-16",
+  "university": "Herbert H. Lehman College"
+ },
+ "NIH:11535269": {
+  "amount": 51709,
+  "first_seen": "2026-09-16",
+  "university": "Rice University"
+ },
+ "NIH:11536611": {
+  "amount": 160000,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11536778": {
+  "amount": 160000,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11540196": {
+  "amount": 2144745,
+  "first_seen": "2026-09-16",
+  "university": "Johns Hopkins University"
+ },
+ "NIH:11541944": {
+  "amount": 350000,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11545947": {
+  "amount": 17010754,
+  "first_seen": "2026-09-16",
+  "university": "University of Minnesota"
+ },
+ "NIH:11549993": {
+  "amount": 332765,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11550873": {
+  "amount": 83700,
+  "first_seen": "2026-09-16",
+  "university": "University of South Florida"
+ },
+ "NIH:11553282": {
+  "amount": 1489546,
+  "first_seen": "2026-09-16",
+  "university": "University of California, San Francisco"
+ },
+ "NIH:11563748": {
+  "amount": 879252,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11572336": {
+  "amount": 767876,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois at Chicago"
+ },
+ "NIH:11573169": {
+  "amount": 2000259,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11573170": {
+  "amount": 1267926,
+  "first_seen": "2026-09-16",
+  "university": "University of Colorado Denver"
+ },
+ "NIH:11573812": {
+  "amount": 350285,
+  "first_seen": "2026-09-16",
+  "university": "University of Tx Md Anderson Can Ctr"
+ },
+ "NIH:11577357": {
+  "amount": 302975,
+  "first_seen": "2026-09-16",
+  "university": "Ut Southwestern Medical Center"
+ },
+ "NIH:11579078": {
+  "amount": 275742,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Merced"
+ },
+ "NIH:11579130": {
+  "amount": 299558,
+  "first_seen": "2026-09-16",
+  "university": "University of Tennessee Knoxville"
+ },
+ "NIH:11579161": {
+  "amount": 313321,
+  "first_seen": "2026-09-16",
+  "university": "Northeastern University"
+ },
+ "NIH:11581927": {
+  "amount": 510063,
+  "first_seen": "2026-09-16",
+  "university": "Ut Southwestern Medical Center"
+ },
+ "NIH:11595516": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "Upstate Medical University"
+ },
+ "NIH:11595726": {
+  "amount": 593092,
+  "first_seen": "2026-09-16",
+  "university": "Boston University (charles River Campus)"
+ },
+ "NIH:11596742": {
+  "amount": 107812,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Commonwealth University"
+ },
+ "NIH:11599438": {
+  "amount": 107897,
+  "first_seen": "2026-09-16",
+  "university": "University of Miami School of Medicine"
+ },
+ "NIH:11605225": {
+  "amount": 565436,
+  "first_seen": "2026-09-16",
+  "university": "University of Texas Hlth Science Center"
+ },
+ "NIH:11605896": {
+  "amount": 248998,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Commonwealth University"
+ },
+ "NIH:11606497": {
+  "amount": 536251,
+  "first_seen": "2026-09-16",
+  "university": "University of Virginia"
+ },
+ "NIH:11606635": {
+  "amount": 531356,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11607784": {
+  "amount": 381216,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia"
+ },
+ "NIH:11607825": {
+  "amount": 104197,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Maryland, College Park"
+ },
+ "NIH:11608576": {
+  "amount": 429746,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11608580": {
+  "amount": 307558,
+  "first_seen": "2026-09-16",
+  "university": "University of Pittsburgh at Pittsburgh"
+ },
+ "NIH:11616949": {
+  "amount": 23408,
+  "first_seen": "2026-09-16",
+  "university": "University of Pennsylvania"
+ },
+ "NIH:11617112": {
+  "amount": 73040,
+  "first_seen": "2026-09-16",
+  "university": "University of Southern California"
+ },
+ "NIH:11617295": {
+  "amount": 55114,
+  "first_seen": "2026-09-16",
+  "university": "Rice University"
+ },
+ "NIH:11617676": {
+  "amount": 79998,
+  "first_seen": "2026-09-16",
+  "university": "University of Colorado Denver"
+ },
+ "NIH:11617803": {
+  "amount": 47771,
+  "first_seen": "2026-09-16",
+  "university": "Texas A&m University"
+ },
+ "NIH:11618618": {
+  "amount": 541009,
+  "first_seen": "2026-09-16",
+  "university": "Saint Louis University"
+ },
+ "NIH:11618783": {
+  "amount": 113886,
+  "first_seen": "2026-09-16",
+  "university": "Florida International University"
+ },
+ "NIH:11619389": {
+  "amount": 249000,
+  "first_seen": "2026-09-16",
+  "university": "Duquesne University"
+ },
+ "NIH:11622604": {
+  "amount": 22875,
+  "first_seen": "2026-09-16",
+  "university": "Univ of North Carolina Chapel Hill"
+ },
+ "NIH:11623237": {
+  "amount": 248918,
+  "first_seen": "2026-09-16",
+  "university": "State University New York Stony Brook"
+ },
+ "NIH:11624008": {
+  "amount": 248358,
+  "first_seen": "2026-09-16",
+  "university": "University of Tennessee Knoxville"
+ },
+ "NIH:11624692": {
+  "amount": 3000,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University"
+ },
+ "NIH:11625643": {
+  "amount": 749988,
+  "first_seen": "2026-09-16",
+  "university": "Baylor College of Medicine"
+ },
+ "NIH:11625657": {
+  "amount": 17057,
+  "first_seen": "2026-09-16",
+  "university": "New York University"
+ },
+ "NIH:11627109": {
+  "amount": 561617,
+  "first_seen": "2026-09-16",
+  "university": "Icahn School of Medicine at Mount Sinai"
+ },
+ "NIH:11627926": {
+  "amount": 108208,
+  "first_seen": "2026-09-16",
+  "university": "Washington University"
+ },
+ "NIH:11627989": {
+  "amount": 546394,
+  "first_seen": "2026-09-16",
+  "university": "Univ of Maryland, College Park"
+ },
+ "NSF:2535312": {
+  "amount": 11876081,
+  "first_seen": "2026-09-16",
+  "university": "Rockefeller University"
+ },
+ "NSF:2535659": {
+  "amount": 17992454,
+  "first_seen": "2026-09-16",
+  "university": "Florida State University"
+ },
+ "NSF:2535661": {
+  "amount": 19982354,
+  "first_seen": "2026-09-16",
+  "university": "Louisiana State University"
+ },
+ "NSF:2629154": {
+  "amount": 484768,
+  "first_seen": "2026-09-16",
+  "university": "Whitman College"
+ },
+ "NSF:2639172": {
+  "amount": 503723,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland Center for Environmental Sciences"
+ },
+ "USA:ASST_NON_20203842232247_012": {
+  "amount": 269070,
+  "first_seen": "2026-09-16",
+  "university": "Colorado State University-pueblo"
+ },
+ "USA:ASST_NON_20205118132135_012": {
+  "amount": 3998178,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20206701538956_012": {
+  "amount": 368529,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20206701730778_012": {
+  "amount": 478354,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20206702132462_012": {
+  "amount": 495708,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20206702132799_012": {
+  "amount": 19998042,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois"
+ },
+ "USA:ASST_NON_20206801231674_012": {
+  "amount": 10000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland, College Park"
+ },
+ "USA:ASST_NON_20207041132768_012": {
+  "amount": 532924,
+  "first_seen": "2026-09-16",
+  "university": "North Dakota State University"
+ },
+ "USA:ASST_NON_20213352235343_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20213842034061_012": {
+  "amount": 240053,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20213882134577_012": {
+  "amount": 275113,
+  "first_seen": "2026-09-16",
+  "university": "Prairie View A&m University"
+ },
+ "USA:ASST_NON_20213882134581_012": {
+  "amount": 352358,
+  "first_seen": "2026-09-16",
+  "university": "Langston University"
+ },
+ "USA:ASST_NON_20213882134586_012": {
+  "amount": 272687,
+  "first_seen": "2026-09-16",
+  "university": "Langston University"
+ },
+ "USA:ASST_NON_20213882134590_012": {
+  "amount": 233018,
+  "first_seen": "2026-09-16",
+  "university": "Kentucky State University"
+ },
+ "USA:ASST_NON_20213882134712_012": {
+  "amount": 320421,
+  "first_seen": "2026-09-16",
+  "university": "University of Arkansas System"
+ },
+ "USA:ASST_NON_20214121035032_012": {
+  "amount": 54555,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20215130035225_012": {
+  "amount": 740876,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii"
+ },
+ "USA:ASST_NON_20216701335887_012": {
+  "amount": 600000,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia Research Foundation, Inc."
+ },
+ "USA:ASST_NON_20216701434257_012": {
+  "amount": 794255,
+  "first_seen": "2026-09-16",
+  "university": "College of New Jersey"
+ },
+ "USA:ASST_NON_20216701534413_012": {
+  "amount": 496133,
+  "first_seen": "2026-09-16",
+  "university": "Board of Regents of the University of Nebraska"
+ },
+ "USA:ASST_NON_20216701534465_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University, the"
+ },
+ "USA:ASST_NON_20216701534485_012": {
+  "amount": 499976,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20216701535236_012": {
+  "amount": 2478000,
+  "first_seen": "2026-09-16",
+  "university": "University of Vermont & State Agricultural College"
+ },
+ "USA:ASST_NON_20216701934345_012": {
+  "amount": 1188026,
+  "first_seen": "2026-09-16",
+  "university": "University System of New Hampshire"
+ },
+ "USA:ASST_NON_20216702133997_012": {
+  "amount": 476672,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20216702134256_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20216702234200_012": {
+  "amount": 453068,
+  "first_seen": "2026-09-16",
+  "university": "North Dakota State University"
+ },
+ "USA:ASST_NON_20216702333825_012": {
+  "amount": 417156,
+  "first_seen": "2026-09-16",
+  "university": "Trustees of Boston University"
+ },
+ "USA:ASST_NON_20216702334481_012": {
+  "amount": 499126,
+  "first_seen": "2026-09-16",
+  "university": "Boise State University"
+ },
+ "USA:ASST_NON_20216703734173_012": {
+  "amount": 386403,
+  "first_seen": "2026-09-16",
+  "university": "Peralta Community College District"
+ },
+ "USA:ASST_NON_20216703734621_012": {
+  "amount": 499994,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20216900633879_012": {
+  "amount": 499984,
+  "first_seen": "2026-09-16",
+  "university": "Louisiana State University Agricultural Center"
+ },
+ "USA:ASST_NON_20216901834644_012": {
+  "amount": 375781,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20217000134520_012": {
+  "amount": 746673,
+  "first_seen": "2026-09-16",
+  "university": "Texas Tech University System"
+ },
+ "USA:ASST_NON_20217000635332_012": {
+  "amount": 565489,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20217000635477_012": {
+  "amount": 504677,
+  "first_seen": "2026-09-16",
+  "university": "University System of New Hampshire"
+ },
+ "USA:ASST_NON_20217704034905_012": {
+  "amount": 975314,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico"
+ },
+ "USA:ASST_NON_20223846038438_012": {
+  "amount": 762856,
+  "first_seen": "2026-09-16",
+  "university": "Salish Kootenai College, Inc."
+ },
+ "USA:ASST_NON_20223882137417_012": {
+  "amount": 230239,
+  "first_seen": "2026-09-16",
+  "university": "Alabama A & M University"
+ },
+ "USA:ASST_NON_20224159038120_012": {
+  "amount": 735020,
+  "first_seen": "2026-09-16",
+  "university": "University of Maine System"
+ },
+ "USA:ASST_NON_20224159038124_012": {
+  "amount": 735020,
+  "first_seen": "2026-09-16",
+  "university": "University of Alaska Fairbanks"
+ },
+ "USA:ASST_NON_20224700338385_012": {
+  "amount": 1065000,
+  "first_seen": "2026-09-16",
+  "university": "Salish Kootenai College, Inc."
+ },
+ "USA:ASST_NON_20224700338404_012": {
+  "amount": 1065000,
+  "first_seen": "2026-09-16",
+  "university": "Ilisagvik College"
+ },
+ "USA:ASST_NON_20225118138449_012": {
+  "amount": 5176559,
+  "first_seen": "2026-09-16",
+  "university": "Washington State University"
+ },
+ "USA:ASST_NON_20225130037882_012": {
+  "amount": 1499090,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois"
+ },
+ "USA:ASST_NON_20226701336141_012": {
+  "amount": 682031,
+  "first_seen": "2026-09-16",
+  "university": "Kansas State University"
+ },
+ "USA:ASST_NON_20226701336173_012": {
+  "amount": 649895,
+  "first_seen": "2026-09-16",
+  "university": "Clemson University"
+ },
+ "USA:ASST_NON_20226701336386_012": {
+  "amount": 504416,
+  "first_seen": "2026-09-16",
+  "university": "Montana State University"
+ },
+ "USA:ASST_NON_20226701337020_012": {
+  "amount": 293997,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia Research Foundation, Inc."
+ },
+ "USA:ASST_NON_20226701436880_012": {
+  "amount": 887998,
+  "first_seen": "2026-09-16",
+  "university": "The Regents of the University of California"
+ },
+ "USA:ASST_NON_20226701537083_012": {
+  "amount": 649917,
+  "first_seen": "2026-09-16",
+  "university": "Purdue University"
+ },
+ "USA:ASST_NON_20226701636213_012": {
+  "amount": 241669,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20226701736289_012": {
+  "amount": 625100,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20226701836277_012": {
+  "amount": 160960,
+  "first_seen": "2026-09-16",
+  "university": "Tennessee State University"
+ },
+ "USA:ASST_NON_20226701836599_012": {
+  "amount": 192456,
+  "first_seen": "2026-09-16",
+  "university": "Virginia State University"
+ },
+ "USA:ASST_NON_20226702136644_012": {
+  "amount": 285481,
+  "first_seen": "2026-09-16",
+  "university": "University of Arkansas"
+ },
+ "USA:ASST_NON_20226702336377_012": {
+  "amount": 649697,
+  "first_seen": "2026-09-16",
+  "university": "University of Massachusetts"
+ },
+ "USA:ASST_NON_20226702336383_012": {
+  "amount": 648359,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20226703736254_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "South Dakota State University"
+ },
+ "USA:ASST_NON_20226801436666_012": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "Purdue University"
+ },
+ "USA:ASST_NON_20226801437275_012": {
+  "amount": 995000,
+  "first_seen": "2026-09-16",
+  "university": "Trustees of the University of Pennsylvania, the"
+ },
+ "USA:ASST_NON_20226801536718_012": {
+  "amount": 923014,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University, the"
+ },
+ "USA:ASST_NON_20226801636896_012": {
+  "amount": 984832,
+  "first_seen": "2026-09-16",
+  "university": "University of Tennessee"
+ },
+ "USA:ASST_NON_20227000137314_012": {
+  "amount": 299709,
+  "first_seen": "2026-09-16",
+  "university": "Texas Tech University System"
+ },
+ "USA:ASST_NON_20227000137315_012": {
+  "amount": 136742,
+  "first_seen": "2026-09-16",
+  "university": "University of Central Oklahoma"
+ },
+ "USA:ASST_NON_20227002938489_012": {
+  "amount": 994635,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20227002938526_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "Florida International University"
+ },
+ "USA:ASST_NON_20227003338204_012": {
+  "amount": 747629,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20227704038529_012": {
+  "amount": 264959,
+  "first_seen": "2026-09-16",
+  "university": "San Diego State University Foundation"
+ },
+ "USA:ASST_NON_20233841441218_012": {
+  "amount": 49994,
+  "first_seen": "2026-09-16",
+  "university": "Bluegrass Community & Technical College"
+ },
+ "USA:ASST_NON_20233850341179_012": {
+  "amount": 351062,
+  "first_seen": "2026-09-16",
+  "university": "Texas State University"
+ },
+ "USA:ASST_NON_20233850441023_012": {
+  "amount": 739811,
+  "first_seen": "2026-09-16",
+  "university": "University of Missouri System"
+ },
+ "USA:ASST_NON_20233882139590_012": {
+  "amount": 298674,
+  "first_seen": "2026-09-16",
+  "university": "Florida A & M University"
+ },
+ "USA:ASST_NON_20233882139805_012": {
+  "amount": 97234,
+  "first_seen": "2026-09-16",
+  "university": "Tennessee State University"
+ },
+ "USA:ASST_NON_20233882139923_012": {
+  "amount": 277902,
+  "first_seen": "2026-09-16",
+  "university": "Fort Valley State University"
+ },
+ "USA:ASST_NON_20233882139978_012": {
+  "amount": 248268,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina Agricultural and Technical State University"
+ },
+ "USA:ASST_NON_20233882140136_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Lincoln University"
+ },
+ "USA:ASST_NON_20234520041108_012": {
+  "amount": 4181169,
+  "first_seen": "2026-09-16",
+  "university": "Alabama A & M University"
+ },
+ "USA:ASST_NON_20234520041109_012": {
+  "amount": 3132153,
+  "first_seen": "2026-09-16",
+  "university": "Delaware State University"
+ },
+ "USA:ASST_NON_20234520041124_012": {
+  "amount": 3867201,
+  "first_seen": "2026-09-16",
+  "university": "Alcorn State University"
+ },
+ "USA:ASST_NON_20234520041128_012": {
+  "amount": 4975765,
+  "first_seen": "2026-09-16",
+  "university": "Lincoln University"
+ },
+ "USA:ASST_NON_20234520041129_012": {
+  "amount": 4910737,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina Agricultural and Technical State University"
+ },
+ "USA:ASST_NON_20234520041134_012": {
+  "amount": 4181169,
+  "first_seen": "2026-09-16",
+  "university": "Tuskegee University"
+ },
+ "USA:ASST_NON_20234520041135_012": {
+  "amount": 3851185,
+  "first_seen": "2026-09-16",
+  "university": "University of Arkansas System"
+ },
+ "USA:ASST_NON_20234520041137_012": {
+  "amount": 4441985,
+  "first_seen": "2026-09-16",
+  "university": "Virginia State University"
+ },
+ "USA:ASST_NON_20234640140961_012": {
+  "amount": 153786,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20235110240782_012": {
+  "amount": 485000,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20235130040963_012": {
+  "amount": 1999963,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20235130040984_012": {
+  "amount": 1314290,
+  "first_seen": "2026-09-16",
+  "university": "Regents of the University of Minnesota"
+ },
+ "USA:ASST_NON_20236701140356_012": {
+  "amount": 105836,
+  "first_seen": "2026-09-16",
+  "university": "Montana State University"
+ },
+ "USA:ASST_NON_20236701140361_012": {
+  "amount": 155183,
+  "first_seen": "2026-09-16",
+  "university": "University of Arkansas"
+ },
+ "USA:ASST_NON_20236701240063_012": {
+  "amount": 190568,
+  "first_seen": "2026-09-16",
+  "university": "The Leland Stanford Junior University"
+ },
+ "USA:ASST_NON_20236701339304_012": {
+  "amount": 498961,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20236701339614_012": {
+  "amount": 649604,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin System"
+ },
+ "USA:ASST_NON_20236701339794_012": {
+  "amount": 293958,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20236701439557_012": {
+  "amount": 203753,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20236701439618_012": {
+  "amount": 799810,
+  "first_seen": "2026-09-16",
+  "university": "South Dakota State University"
+ },
+ "USA:ASST_NON_20236701539563_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20236701539883_012": {
+  "amount": 999997,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20236701545223_012": {
+  "amount": 174474,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky Research Foundation, the"
+ },
+ "USA:ASST_NON_20236701839554_012": {
+  "amount": 299193,
+  "first_seen": "2026-09-16",
+  "university": "University of Alabama"
+ },
+ "USA:ASST_NON_20236701839934_012": {
+  "amount": 299856,
+  "first_seen": "2026-09-16",
+  "university": "University of Maine System"
+ },
+ "USA:ASST_NON_20236801239002_012": {
+  "amount": 10000000,
+  "first_seen": "2026-09-16",
+  "university": "Louisiana State University Agricultural Center"
+ },
+ "USA:ASST_NON_20236801741230_012": {
+  "amount": 760000,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois"
+ },
+ "USA:ASST_NON_20236801839174_012": {
+  "amount": 7328929,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University, the"
+ },
+ "USA:ASST_NON_20236801839177_012": {
+  "amount": 7850000,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina Agricultural and Technical State University"
+ },
+ "USA:ASST_NON_20236901839949_012": {
+  "amount": 184052,
+  "first_seen": "2026-09-16",
+  "university": "Texas A & M University Kingsville"
+ },
+ "USA:ASST_NON_20237000541081_012": {
+  "amount": 946349,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20237000640594_012": {
+  "amount": 200000,
+  "first_seen": "2026-09-16",
+  "university": "West Virginia University"
+ },
+ "USA:ASST_NON_20237000841046_012": {
+  "amount": 197331,
+  "first_seen": "2026-09-16",
+  "university": "Northern Marianas College"
+ },
+ "USA:ASST_NON_20237000841050_012": {
+  "amount": 198806,
+  "first_seen": "2026-09-16",
+  "university": "University of Puerto Rico"
+ },
+ "USA:ASST_NON_20237002040631_012": {
+  "amount": 297000,
+  "first_seen": "2026-09-16",
+  "university": "Texas Tech University System"
+ },
+ "USA:ASST_NON_20237002440677_012": {
+  "amount": 245495,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20237041140957_012": {
+  "amount": 5126,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20237044239232_012": {
+  "amount": 5000000,
+  "first_seen": "2026-09-16",
+  "university": "Division of Agriculture of the University of Arkansas"
+ },
+ "USA:ASST_NON_20237704041311_012": {
+  "amount": 535200,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20243842043545_012": {
+  "amount": 660000,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20243850343654_012": {
+  "amount": 200000,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20243882142049_012": {
+  "amount": 219375,
+  "first_seen": "2026-09-16",
+  "university": "Florida A & M University"
+ },
+ "USA:ASST_NON_20243882142095_012": {
+  "amount": 85564,
+  "first_seen": "2026-09-16",
+  "university": "Florida A & M University"
+ },
+ "USA:ASST_NON_20245118143234_012": {
+  "amount": 49956,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "USA:ASST_NON_20246701142901_012": {
+  "amount": 124414,
+  "first_seen": "2026-09-16",
+  "university": "The Pennsylvania State University"
+ },
+ "USA:ASST_NON_20246701242409_012": {
+  "amount": 153493,
+  "first_seen": "2026-09-16",
+  "university": "Division of Agriculture of the University of Arkansas"
+ },
+ "USA:ASST_NON_20246701242411_012": {
+  "amount": 225000,
+  "first_seen": "2026-09-16",
+  "university": "Massachusetts Institute of Technology"
+ },
+ "USA:ASST_NON_20246701244740_012": {
+  "amount": 196120,
+  "first_seen": "2026-09-16",
+  "university": "North Dakota State University"
+ },
+ "USA:ASST_NON_20246701246406_012": {
+  "amount": 125680,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20246701942512_012": {
+  "amount": 800000,
+  "first_seen": "2026-09-16",
+  "university": "Regents of the University of Michigan"
+ },
+ "USA:ASST_NON_20246702142833_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Arizona State University"
+ },
+ "USA:ASST_NON_20246801641536_012": {
+  "amount": 250942,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii"
+ },
+ "USA:ASST_NON_20247000642874_012": {
+  "amount": 324400,
+  "first_seen": "2026-09-16",
+  "university": "University of Tennessee"
+ },
+ "USA:ASST_NON_20247000643498_012": {
+  "amount": 630000,
+  "first_seen": "2026-09-16",
+  "university": "South Dakota State University"
+ },
+ "USA:ASST_NON_20247000643501_012": {
+  "amount": 163665,
+  "first_seen": "2026-09-16",
+  "university": "West Virginia University"
+ },
+ "USA:ASST_NON_20247000643502_012": {
+  "amount": 628734,
+  "first_seen": "2026-09-16",
+  "university": "University of Vermont & State Agricultural College"
+ },
+ "USA:ASST_NON_20247000643509_012": {
+  "amount": 563055,
+  "first_seen": "2026-09-16",
+  "university": "Rutgers, the State University"
+ },
+ "USA:ASST_NON_20247000643538_012": {
+  "amount": 498534,
+  "first_seen": "2026-09-16",
+  "university": "Oklahoma State University"
+ },
+ "USA:ASST_NON_20247000643559_012": {
+  "amount": 818619,
+  "first_seen": "2026-09-16",
+  "university": "University of Wisconsin System"
+ },
+ "USA:ASST_NON_20247000643563_012": {
+  "amount": 568966,
+  "first_seen": "2026-09-16",
+  "university": "University of Arizona"
+ },
+ "USA:ASST_NON_20247000643575_012": {
+  "amount": 742347,
+  "first_seen": "2026-09-16",
+  "university": "Washington State University"
+ },
+ "USA:ASST_NON_20247000643669_012": {
+  "amount": 378927,
+  "first_seen": "2026-09-16",
+  "university": "University of Wyoming"
+ },
+ "USA:ASST_NON_20247000643752_012": {
+  "amount": 661965,
+  "first_seen": "2026-09-16",
+  "university": "North Dakota State University"
+ },
+ "USA:ASST_NON_20247000643753_012": {
+  "amount": 819000,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20247703943724_012": {
+  "amount": 958410,
+  "first_seen": "2026-09-16",
+  "university": "Board of Regents of the University of Nebraska"
+ },
+ "USA:ASST_NON_20247704643688_012": {
+  "amount": 241450,
+  "first_seen": "2026-09-16",
+  "university": "Board of Regents of the University of Nebraska"
+ },
+ "USA:ASST_NON_20247704643689_012": {
+  "amount": 182045,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20253414145369_012": {
+  "amount": 1929000,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20253414145371_012": {
+  "amount": 1563000,
+  "first_seen": "2026-09-16",
+  "university": "University of Maine System"
+ },
+ "USA:ASST_NON_20253882145476_012": {
+  "amount": 100000,
+  "first_seen": "2026-09-16",
+  "university": "Prairie View A&m University"
+ },
+ "USA:ASST_NON_20254880645513_012": {
+  "amount": 199922,
+  "first_seen": "2026-09-16",
+  "university": "Clemson University"
+ },
+ "USA:ASST_NON_20254880745506_012": {
+  "amount": 298156,
+  "first_seen": "2026-09-16",
+  "university": "The University of Texas Rio Grande Valley"
+ },
+ "USA:ASST_NON_20256702144264_012": {
+  "amount": 299937,
+  "first_seen": "2026-09-16",
+  "university": "Northern Arizona University"
+ },
+ "USA:ASST_NON_20256801544275_012": {
+  "amount": 49960,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20257911145234_012": {
+  "amount": 27748800,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20263352246923_012": {
+  "amount": 644140,
+  "first_seen": "2026-09-16",
+  "university": "University of Tennessee"
+ },
+ "USA:ASST_NON_20263847046944_012": {
+  "amount": 490916,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii"
+ },
+ "USA:ASST_NON_20263850046738_012": {
+  "amount": 934771,
+  "first_seen": "2026-09-16",
+  "university": "University of Washington"
+ },
+ "USA:ASST_NON_20263850046781_012": {
+  "amount": 934772,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20263850046782_012": {
+  "amount": 934771,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland, College Park"
+ },
+ "USA:ASST_NON_20265115046837_012": {
+  "amount": 614206,
+  "first_seen": "2026-09-16",
+  "university": "The Pennsylvania State University"
+ },
+ "USA:ASST_NON_20266701246736_012": {
+  "amount": 169341,
+  "first_seen": "2026-09-16",
+  "university": "University of Wyoming"
+ },
+ "USA:ASST_NON_20266701346671_012": {
+  "amount": 299638,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "USA:ASST_NON_20266701346672_012": {
+  "amount": 800000,
+  "first_seen": "2026-09-16",
+  "university": "The Pennsylvania State University"
+ },
+ "USA:ASST_NON_20266701346694_012": {
+  "amount": 649995,
+  "first_seen": "2026-09-16",
+  "university": "Washington State University"
+ },
+ "USA:ASST_NON_20266701346706_012": {
+  "amount": 649980,
+  "first_seen": "2026-09-16",
+  "university": "Michigan Technological University"
+ },
+ "USA:ASST_NON_20266701346707_012": {
+  "amount": 542260,
+  "first_seen": "2026-09-16",
+  "university": "University of Massachusetts"
+ },
+ "USA:ASST_NON_20266701346708_012": {
+  "amount": 649510,
+  "first_seen": "2026-09-16",
+  "university": "Washington State University"
+ },
+ "USA:ASST_NON_20266701346714_012": {
+  "amount": 649439,
+  "first_seen": "2026-09-16",
+  "university": "Board of Regents of the University of Nebraska"
+ },
+ "USA:ASST_NON_20266701346723_012": {
+  "amount": 2940000,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20266701346724_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "Division of Agriculture of the University of Arkansas"
+ },
+ "USA:ASST_NON_20266701346725_012": {
+  "amount": 588000,
+  "first_seen": "2026-09-16",
+  "university": "Oklahoma State University"
+ },
+ "USA:ASST_NON_20266701346726_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20266701346727_012": {
+  "amount": 1421000,
+  "first_seen": "2026-09-16",
+  "university": "Kansas State University"
+ },
+ "USA:ASST_NON_20266701346730_012": {
+  "amount": 649977,
+  "first_seen": "2026-09-16",
+  "university": "Oregon State University"
+ },
+ "USA:ASST_NON_20266701346731_012": {
+  "amount": 649958,
+  "first_seen": "2026-09-16",
+  "university": "University of Missouri System"
+ },
+ "USA:ASST_NON_20266701346767_012": {
+  "amount": 588000,
+  "first_seen": "2026-09-16",
+  "university": "Clemson University"
+ },
+ "USA:ASST_NON_20266701346791_012": {
+  "amount": 649995,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20266701346805_012": {
+  "amount": 648830,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20266701346806_012": {
+  "amount": 649908,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20266701346808_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20266701346809_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "Boyce Thompson Institute for Plant Research Inc"
+ },
+ "USA:ASST_NON_20266701346811_012": {
+  "amount": 649520,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20266701346820_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "Virginia Polytechnic Institute & State University"
+ },
+ "USA:ASST_NON_20266701346826_012": {
+  "amount": 299998,
+  "first_seen": "2026-09-16",
+  "university": "Clemson University"
+ },
+ "USA:ASST_NON_20266701346829_012": {
+  "amount": 799013,
+  "first_seen": "2026-09-16",
+  "university": "North Dakota State University"
+ },
+ "USA:ASST_NON_20266701446693_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "South Dakota State University"
+ },
+ "USA:ASST_NON_20266701446711_012": {
+  "amount": 299999,
+  "first_seen": "2026-09-16",
+  "university": "Alcorn State University"
+ },
+ "USA:ASST_NON_20266701446732_012": {
+  "amount": 299991,
+  "first_seen": "2026-09-16",
+  "university": "University of North Texas"
+ },
+ "USA:ASST_NON_20266701446792_012": {
+  "amount": 644000,
+  "first_seen": "2026-09-16",
+  "university": "South Dakota State University"
+ },
+ "USA:ASST_NON_20266701446812_012": {
+  "amount": 299240,
+  "first_seen": "2026-09-16",
+  "university": "West Virginia State University Research and Development Corporation"
+ },
+ "USA:ASST_NON_20266701446814_012": {
+  "amount": 415824,
+  "first_seen": "2026-09-16",
+  "university": "Brigham Young University"
+ },
+ "USA:ASST_NON_20266701546690_012": {
+  "amount": 50000,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland, College Park"
+ },
+ "USA:ASST_NON_20266701546691_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia Research Foundation, Inc."
+ },
+ "USA:ASST_NON_20266701546692_012": {
+  "amount": 25000,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20266701546733_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois"
+ },
+ "USA:ASST_NON_20266701546734_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Oklahoma State University"
+ },
+ "USA:ASST_NON_20266701546735_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "Board of Regents of the University of Nebraska"
+ },
+ "USA:ASST_NON_20266701546769_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20266701546770_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia Research Foundation, Inc."
+ },
+ "USA:ASST_NON_20266701546771_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Purdue University"
+ },
+ "USA:ASST_NON_20266701546774_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "University of Maryland, College Park"
+ },
+ "USA:ASST_NON_20266701546802_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "Texas Tech University System"
+ },
+ "USA:ASST_NON_20266701646737_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "Prairie View A&m University"
+ },
+ "USA:ASST_NON_20266701746649_012": {
+  "amount": 291106,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20266701746650_012": {
+  "amount": 632445,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20266701746656_012": {
+  "amount": 49982,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20266701746660_012": {
+  "amount": 633133,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20266701746661_012": {
+  "amount": 633750,
+  "first_seen": "2026-09-16",
+  "university": "Oregon State University"
+ },
+ "USA:ASST_NON_20266701746662_012": {
+  "amount": 633194,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20266701746675_012": {
+  "amount": 292500,
+  "first_seen": "2026-09-16",
+  "university": "Purdue University"
+ },
+ "USA:ASST_NON_20266701746677_012": {
+  "amount": 633750,
+  "first_seen": "2026-09-16",
+  "university": "Regents of the University of Minnesota"
+ },
+ "USA:ASST_NON_20266701746678_012": {
+  "amount": 779438,
+  "first_seen": "2026-09-16",
+  "university": "Florida State University"
+ },
+ "USA:ASST_NON_20266701746681_012": {
+  "amount": 649999,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20266701746682_012": {
+  "amount": 649998,
+  "first_seen": "2026-09-16",
+  "university": "University of Massachusetts"
+ },
+ "USA:ASST_NON_20266701746683_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky Research Foundation, the"
+ },
+ "USA:ASST_NON_20266701746684_012": {
+  "amount": 649986,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois"
+ },
+ "USA:ASST_NON_20266701746712_012": {
+  "amount": 650000,
+  "first_seen": "2026-09-16",
+  "university": "Cornell University"
+ },
+ "USA:ASST_NON_20266701746713_012": {
+  "amount": 649995,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20266701746740_012": {
+  "amount": 633750,
+  "first_seen": "2026-09-16",
+  "university": "Auburn University"
+ },
+ "USA:ASST_NON_20266701746742_012": {
+  "amount": 779819,
+  "first_seen": "2026-09-16",
+  "university": "Tennessee State University"
+ },
+ "USA:ASST_NON_20266701846647_012": {
+  "amount": 292496,
+  "first_seen": "2026-09-16",
+  "university": "Texas Womans University"
+ },
+ "USA:ASST_NON_20266701846648_012": {
+  "amount": 292500,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20266701846676_012": {
+  "amount": 290238,
+  "first_seen": "2026-09-16",
+  "university": "The Regents of the University of California"
+ },
+ "USA:ASST_NON_20266701846685_012": {
+  "amount": 799891,
+  "first_seen": "2026-09-16",
+  "university": "University of Connecticut"
+ },
+ "USA:ASST_NON_20266702146655_012": {
+  "amount": 24500,
+  "first_seen": "2026-09-16",
+  "university": "Board of Regents of the University of Nebraska"
+ },
+ "USA:ASST_NON_20266702346720_012": {
+  "amount": 23875,
+  "first_seen": "2026-09-16",
+  "university": "Kansas State University"
+ },
+ "USA:ASST_NON_20266703946709_012": {
+  "amount": 297188,
+  "first_seen": "2026-09-16",
+  "university": "Louisiana State University Agricultural Center"
+ },
+ "USA:ASST_NON_20266703946775_012": {
+  "amount": 1000000,
+  "first_seen": "2026-09-16",
+  "university": "University of Illinois"
+ },
+ "USA:ASST_NON_20266703946777_012": {
+  "amount": 900000,
+  "first_seen": "2026-09-16",
+  "university": "University of Kentucky Research Foundation, the"
+ },
+ "USA:ASST_NON_20266704046689_012": {
+  "amount": 750000,
+  "first_seen": "2026-09-16",
+  "university": "The University of Southern Mississippi"
+ },
+ "USA:ASST_NON_20266704046778_012": {
+  "amount": 299630,
+  "first_seen": "2026-09-16",
+  "university": "Utah State University"
+ },
+ "USA:ASST_NON_20266704146680_012": {
+  "amount": 499957,
+  "first_seen": "2026-09-16",
+  "university": "Ohio State University, the"
+ },
+ "USA:ASST_NON_20266704146728_012": {
+  "amount": 499712,
+  "first_seen": "2026-09-16",
+  "university": "University of Florida"
+ },
+ "USA:ASST_NON_20266704146743_012": {
+  "amount": 499484,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20266704146745_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "Oregon State University"
+ },
+ "USA:ASST_NON_20266704146746_012": {
+  "amount": 500000,
+  "first_seen": "2026-09-16",
+  "university": "North Carolina State University"
+ },
+ "USA:ASST_NON_20266704146790_012": {
+  "amount": 499737,
+  "first_seen": "2026-09-16",
+  "university": "University of Georgia Research Foundation, Inc."
+ },
+ "USA:ASST_NON_20266801546651_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "Cary Institute of Ecosystem Studies, Inc"
+ },
+ "USA:ASST_NON_20266801546653_012": {
+  "amount": 980000,
+  "first_seen": "2026-09-16",
+  "university": "University of California, Davis"
+ },
+ "USA:ASST_NON_20266801546654_012": {
+  "amount": 25000,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20266801546664_012": {
+  "amount": 975110,
+  "first_seen": "2026-09-16",
+  "university": "Iowa State University of Science and Technology"
+ },
+ "USA:ASST_NON_20266801546665_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "Trustees of Indiana University"
+ },
+ "USA:ASST_NON_20266801546666_012": {
+  "amount": 195746,
+  "first_seen": "2026-09-16",
+  "university": "University of Delaware"
+ },
+ "USA:ASST_NON_20266801546673_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20266801546674_012": {
+  "amount": 980000,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20266801946729_012": {
+  "amount": 499834,
+  "first_seen": "2026-09-16",
+  "university": "Louisiana State University Agricultural Center"
+ },
+ "USA:ASST_NON_20266801946744_012": {
+  "amount": 496179,
+  "first_seen": "2026-09-16",
+  "university": "University of Missouri System"
+ },
+ "USA:ASST_NON_20266901546652_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "The Regents of the University of California"
+ },
+ "USA:ASST_NON_20266901546663_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "Sam Houston State University"
+ },
+ "USA:ASST_NON_20266901546739_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "The Research Foundation for the State University of New York"
+ },
+ "USA:ASST_NON_20266901946686_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "University of Hawaii"
+ },
+ "USA:ASST_NON_20266901946747_012": {
+  "amount": 398571,
+  "first_seen": "2026-09-16",
+  "university": "University of Delaware"
+ },
+ "USA:ASST_NON_20267000146670_012": {
+  "amount": 150000,
+  "first_seen": "2026-09-16",
+  "university": "Florida State University"
+ },
+ "USA:ASST_NON_20267000546979_012": {
+  "amount": 548008,
+  "first_seen": "2026-09-16",
+  "university": "Regents of the University of Idaho"
+ },
+ "USA:ASST_NON_20267000746902_012": {
+  "amount": 304356,
+  "first_seen": "2026-09-16",
+  "university": "Michigan State University"
+ },
+ "USA:ASST_NON_20267000746904_012": {
+  "amount": 304357,
+  "first_seen": "2026-09-16",
+  "university": "University of Maine System"
+ },
+ "USA:ASST_NON_20267002446858_012": {
+  "amount": 300000,
+  "first_seen": "2026-09-16",
+  "university": "University of Missouri System"
+ },
+ "USA:ASST_NON_20267841846891_012": {
+  "amount": 490000,
+  "first_seen": "2026-09-16",
+  "university": "The Pennsylvania State University"
+ },
+ "USA:ASST_NON_20267844646893_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "Division of Agriculture of the University of Arkansas"
+ },
+ "USA:ASST_NON_20267845246892_012": {
+  "amount": 294000,
+  "first_seen": "2026-09-16",
+  "university": "University of Tennessee"
+ }
+}
