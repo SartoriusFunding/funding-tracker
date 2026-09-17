@@ -230,8 +230,9 @@ class ReporterEmailSource:
 
     def __init__(self):
         self.consecutive_fails = 0
+        self.no_email_streak = 0
         self.disabled = False
-        self.disabled_reason = ""
+        self.logged_shape = False
 
     def get(self, appl: str, stats: dict) -> str:
         if self.disabled or not appl:
@@ -242,14 +243,28 @@ class ReporterEmailSource:
             time.sleep(REPORTER_SLEEP)
             if r.status_code != 200:
                 raise RuntimeError(f"HTTP {r.status_code}")
-            email = _walk_for_email(r.json())
+            payload = r.json()
+            if not self.logged_shape:
+                self.logged_shape = True
+                keys = (sorted(payload.keys())[:15]
+                        if isinstance(payload, dict) else type(payload).__name__)
+                log(f"  reporter payload shape: {keys}")
+            email = _walk_for_email(payload)
             self.consecutive_fails = 0
+            if email:
+                self.no_email_streak = 0
+            else:
+                self.no_email_streak += 1
+                if self.no_email_streak >= 8:
+                    self.disabled = True
+                    log("RePORTER endpoint responds but carries no email field "
+                        "- skipping it for the rest of this run (paste the "
+                        "'reporter payload shape' log line to Claude)")
             return email
         except Exception as exc:
             self.consecutive_fails += 1
             if self.consecutive_fails >= REPORTER_MAX_CONSECUTIVE_FAILS:
                 self.disabled = True
-                self.disabled_reason = str(exc)
                 log(f"RePORTER email endpoint unavailable ({exc}); "
                     f"falling back to PubMed for the rest of this run - "
                     f"report this line to Claude if it persists")
@@ -293,7 +308,19 @@ def _extract_edu_email(xml_text: str, first: str, last: str) -> str:
     return ""
 
 
-def _pubmed_email(first: str, last: str, university: str, stats: dict) -> str:
+def _ncbi_get(url: str, params: dict):
+    """GET with one polite retry on throttling (HTTP 429)."""
+    r = SESSION.get(url, params=params, timeout=TIMEOUT)
+    if r.status_code == 429:
+        time.sleep(2.5)
+        r = SESSION.get(url, params=params, timeout=TIMEOUT)
+    r.raise_for_status()
+    return r
+
+
+def _pubmed_email(first: str, last: str, university: str, stats: dict):
+    """Return an email str, '' for a clean no-hit, or None on transient error
+    (None is never cached, so the PI is retried next run)."""
     base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
     common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
     if NCBI_API_KEY:
@@ -304,24 +331,20 @@ def _pubmed_email(first: str, last: str, university: str, stats: dict) -> str:
         q += f" AND {terms}[Affiliation]"
     try:
         stats["net"] = stats.get("net", 0) + 1
-        r = SESSION.get(base + "esearch.fcgi",
-                        params=dict(common, term=q, retmax="8", retmode="json",
-                                    reldate="4000", datetype="pdat"),
-                        timeout=TIMEOUT)
-        r.raise_for_status()
+        r = _ncbi_get(base + "esearch.fcgi",
+                      dict(common, term=q, retmax="8", retmode="json",
+                           reldate="4000", datetype="pdat"))
         time.sleep(EMAIL_SLEEP)
         ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
         if not ids:
             return ""
-        r2 = SESSION.get(base + "efetch.fcgi",
-                         params=dict(common, id=",".join(ids), retmode="xml"),
-                         timeout=TIMEOUT)
-        r2.raise_for_status()
+        r2 = _ncbi_get(base + "efetch.fcgi",
+                       dict(common, id=",".join(ids), retmode="xml"))
         time.sleep(EMAIL_SLEEP)
         return _extract_edu_email(r2.text, first, last)
     except Exception as exc:
-        log(f"  PubMed lookup failed for {first} {last}: {exc}")
-        return ""
+        log(f"  PubMed lookup errored for {first} {last}: {exc}")
+        return None
 
 
 def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
@@ -342,8 +365,12 @@ def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
     if not email:
         parts = pi.split()
         if len(parts) >= 2:
-            email, src = _pubmed_email(parts[0], parts[-1], university,
-                                       stats), "PubMed"
+            pm = _pubmed_email(parts[0], parts[-1], university, stats)
+            if pm is None:  # transient error: don't cache, retry next run
+                return "", ""
+            email, src = pm, "PubMed"
+        else:
+            email = ""
     if not email:
         src = ""
     cache[key] = {"email": email, "src": src,
@@ -357,7 +384,14 @@ def sweep_pi_emails(data):
     if not ENABLE_EMAIL_LOOKUP:
         return data
     cache = load_json(email_cache_path(), {})
-    stats = {"net": 0}
+    # One-time flush (v2): earlier versions cached transient errors as
+    # 45-day misses. Drop all cached misses once so those PIs get a clean
+    # retry; confirmed hits are kept.
+    if (cache.get("_meta") or {}).get("v") != 2:
+        cache = {k: v for k, v in cache.items()
+                 if isinstance(v, dict) and v.get("email")}
+        cache["_meta"] = {"v": 2}
+    stats = {"net": 0, "pis": 0}
     reporter = ReporterEmailSource()
     filled = {"RePORTER": 0, "PubMed": 0}
     changed = False
@@ -366,7 +400,7 @@ def sweep_pi_emails(data):
         for e in entries if e.get("pi") and not e.get("pi_email"))
     if pending:
         log(f"PI email sweep: {pending} entries need emails "
-            f"(max {MAX_EMAIL_LOOKUPS_PER_RUN} lookups this run)")
+            f"(up to {MAX_EMAIL_LOOKUPS_PER_RUN} PIs attempted this run)")
 
     def finish():
         save_json(email_cache_path(), cache)
@@ -374,32 +408,36 @@ def sweep_pi_emails(data):
             save_json(DATA_FILE, data)
         none_n = max(pending - filled["RePORTER"] - filled["PubMed"], 0)
         log(f"emails: reporter={filled['RePORTER']}, pubmed={filled['PubMed']}, "
-            f"none={none_n} (queries: {stats['net']}, cache: {len(cache)})")
+            f"none={none_n} (PIs attempted: {stats['pis']}, "
+            f"API calls: {stats['net']}, cache: {len(cache) - 1})")
 
     for wk in reversed(data["dates"]):
         for row in data["rows"].values():
             for e in row["cells"].get(wk, []):
-                if stats["net"] >= MAX_EMAIL_LOOKUPS_PER_RUN:
-                    log("email lookup cap reached; the rest continue next run")
+                if stats["pis"] >= MAX_EMAIL_LOOKUPS_PER_RUN:
+                    log("PI lookup cap reached; the rest continue next run")
                     finish()
                     return data
                 if not e.get("pi") or e.get("pi_email"):
                     continue
                 m = re.search(r"project-details/(\d+)", e.get("url", ""))
                 appl = m.group(1) if m else ""
-                before = stats["net"]
+                ck = f"{e['pi']}|{row['university']}".lower()
+                fresh = ck not in cache
                 em, src = lookup_pi_email(e["pi"], row["university"], appl,
                                           cache, stats, reporter)
+                if fresh:
+                    stats["pis"] += 1
                 if em:
                     e["pi_email"] = em
                     e["pi_email_via"] = src
                     filled[src] = filled.get(src, 0) + 1
                     changed = True
-                if stats["net"] != before:
-                    if stats["net"] % 25 == 0:
-                        log(f"  progress: {stats['net']} lookups, "
+                if fresh:
+                    if stats["pis"] % 25 == 0:
+                        log(f"  progress: {stats['pis']} PIs attempted, "
                             f"{sum(filled.values())} emails found")
-                    if stats["net"] % 50 == 0:
+                    if stats["pis"] % 50 == 0:
                         save_json(email_cache_path(), cache)
                         if changed:
                             save_json(DATA_FILE, data)
@@ -834,7 +872,13 @@ def selftest() -> int:
     assert _extract_edu_email(xml, "Jane", "Big") == "jane_big@brown.edu"
     assert _extract_edu_email(xml, "Zed", "Nowhere") == ""
 
-    # email sweep with stubbed lookup (no network)
+    # email sweep with stubbed lookup (no network) + cache-flush check
+    save_json(email_cache_path(), {
+        "old hit|somewhere": {"email": "keep@x.edu", "src": "PubMed",
+                              "checked": "2026-09-01"},
+        "poisoned miss|somewhere": {"email": "", "src": "",
+                                    "checked": "2026-09-01"},
+    })
     orig = globals()["lookup_pi_email"]
     globals()["lookup_pi_email"] = (
         lambda pi, uni, appl, cache, stats, rep:
@@ -843,6 +887,10 @@ def selftest() -> int:
     globals()["lookup_pi_email"] = orig
     assert data["rows"]["brown university||biomedical engineering||nih (nigms)"][
         "cells"]["2026-09-06"][0]["pi_email"] == "jbig@brown.edu"
+    flushed = load_json(email_cache_path(), {})
+    assert "old hit|somewhere" in flushed, "flush must keep confirmed hits"
+    assert "poisoned miss|somewhere" not in flushed, "flush must drop misses"
+    assert flushed.get("_meta", {}).get("v") == 2
 
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
