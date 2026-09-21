@@ -2,6 +2,11 @@
  "_meta": {
   "v": 2
  },
+ "a. joshua wand|texas a&m agrilife research": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "aadel chaudhuri|mayo clinic rochester": {
   "checked": "2026-09-16",
   "email": "Chaudhuri.Aadel@mayo.edu"
@@ -20,10 +25,35 @@
   "checked": "2026-09-16",
   "email": "abel.baerga@upr.edu"
  },
+ "abhijit a date|university of arizona": {
+  "checked": "2026-09-21",
+  "email": "abhijitdate@arizona.edu",
+  "src": "PubMed"
+ },
+ "abigail shira vigderman|university of maryland baltimore": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "abraham bayer|tufts university boston": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "adam de smith|beckman research institute/city of hope": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "adam funk|univ of north carolina chapel hill": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "adan colon-carmona|university of massachusetts boston": {
+  "checked": "2026-09-21",
+  "email": "adan.colon-carmona@umb.edu",
+  "src": "PubMed"
  },
  "agata ewa patriotis|massachusetts institute of technology": {
   "checked": "2026-09-17",
@@ -34,6 +64,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "ajay k dhaka|university of washington": {
+  "checked": "2026-09-21",
+  "email": "dhaka@uw.edu",
+  "src": "PubMed"
  },
  "akl c fahed|massachusetts general hospital": {
   "checked": "2026-09-16",
@@ -48,6 +83,16 @@
   "email": "",
   "src": ""
  },
+ "alan david hutson|roswell park cancer institute corp": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "alejandro jose almarza|university of pittsburgh at pittsburgh": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "alekhya parvathaneni|washington university": {
   "checked": "2026-09-17",
   "email": "",
@@ -57,6 +102,16 @@
   "checked": "2026-09-16",
   "email": "amilosav@bcm.edu"
  },
+ "alexander g robling|indiana university indianapolis": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "alexander j travis|cornell university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "alexandra k. adams|montana state university - bozeman": {
   "checked": "2026-09-17",
   "email": "",
@@ -64,6 +119,11 @@
  },
  "alexandra m minnis|research triangle institute": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "alfredo g torres|university of texas med br galveston": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -77,12 +137,32 @@
   "email": "",
   "src": ""
  },
+ "alison l barth|carnegie-mellon university": {
+  "checked": "2026-09-21",
+  "email": "barth@cmu.edu",
+  "src": "PubMed"
+ },
+ "alla v ivanova|meharry medical college": {
+  "checked": "2026-09-21",
+  "email": "aivanova@mmc.edu",
+  "src": "PubMed"
+ },
  "allison d ebert|medical college of wisconsin": {
   "checked": "2026-09-16",
   "email": "aebert@mcw.edu"
  },
  "allison gardner|university of maine orono": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "allison r webel|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "alok joglekar|university of pittsburgh at pittsburgh": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -105,8 +185,38 @@
   "email": "",
   "src": ""
  },
+ "amanda l smith|touro university of california": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "amanda martinez-lincoln|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "amelia n deitchman|university of california, san francisco": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "amine mohamed laradji|california state univ-dominguez hills": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "amir alavi|university of pittsburgh at pittsburgh": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "amol p yadav|univ of north carolina chapel hill": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "amy celeste morrison|university of california at davis": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -147,6 +257,31 @@
   "email": "",
   "src": ""
  },
+ "andrea trubanova wieckowski|drexel university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "andres j garcia|georgia institute of technology": {
+  "checked": "2026-09-21",
+  "email": "andres.garcia@me.gatech.edu",
+  "src": "PubMed"
+ },
+ "andrew carl dudley|university of virginia": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "andrew louis sussman|university of new mexico health scis ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "andrew makoto subica|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "asubica@medsch.ucr.edu",
+  "src": "PubMed"
+ },
  "andrew michael pickering|university of texas hlth sci ctr houston": {
   "checked": "2026-09-17",
   "email": "",
@@ -161,9 +296,39 @@
   "email": "",
   "src": ""
  },
+ "andrew w browne|university of california-irvine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "andrij holian|university of montana": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "aneel k. aggarwal|icahn school of medicine at mount sinai": {
   "checked": "2026-09-16",
   "email": "aneel.aggarwal@mssm.edu"
+ },
+ "anish vaibhav sharda|yale university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "anjali sharma|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "ann b nattinger|medical college of wisconsin": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "anna degraff tischler|university of minnesota": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "anna duraj-thatte|virginia polytechnic inst and st univ": {
   "checked": "2026-09-16",
@@ -173,6 +338,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "anna pluciennik|thomas jefferson university": {
+  "checked": "2026-09-21",
+  "email": "anna.pluciennik@jefferson.edu",
+  "src": "PubMed"
  },
  "anna woloszynska-read|roswell park cancer institute corp": {
   "checked": "2026-09-17",
@@ -184,9 +354,39 @@
   "email": "",
   "src": ""
  },
+ "anton arkhipov|allen institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "antonio reyes porras perez|university of colorado denver": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "aric flint logsdon|texas tech university health scis center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "ariel lesa furst|massachusetts institute of technology": {
+  "checked": "2026-09-21",
+  "email": "afurst@mit.edu",
+  "src": "PubMed"
+ },
+ "arturo casadevall|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "arun kanakkanthara|mayo clinic rochester": {
   "checked": "2026-09-16",
   "email": "Kanakkanthara.Arun@mayo.edu"
+ },
+ "ashley cunningham|rockefeller university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "ashok k chopra|university of texas med br galveston": {
   "checked": "2026-09-17",
@@ -213,6 +413,11 @@
   "email": "",
   "src": ""
  },
+ "bao q vuong|city college of new york": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "baowei fei|university of texas dallas": {
   "checked": "2026-09-17",
   "email": "",
@@ -220,6 +425,26 @@
  },
  "barak a cohen|washington university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "barbara a gower|university of alabama at birmingham": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "barbara d. boyan|virginia commonwealth university": {
+  "checked": "2026-09-21",
+  "email": "bboyan@vcu.edu",
+  "src": "PubMed"
+ },
+ "ben ho park|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "benedict paten|university of california santa cruz": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -237,6 +462,11 @@
   "email": "",
   "src": ""
  },
+ "bettina r winckler|university of virginia": {
+  "checked": "2026-09-21",
+  "email": "bwinckler@virginia.edu",
+  "src": "PubMed"
+ },
  "bhavana ragipani|new york university": {
   "checked": "2026-09-17",
   "email": "",
@@ -246,12 +476,37 @@
   "checked": "2026-09-16",
   "email": "bilal.haider@bme.gatech.edu"
  },
+ "bing xu|brandeis university": {
+  "checked": "2026-09-21",
+  "email": "bxu@brandeis.edu",
+  "src": "PubMed"
+ },
  "bluma j lesch|yale university": {
   "checked": "2026-09-16",
   "email": "bluma.lesch@yale.edu"
  },
+ "bo huang|university of california, san francisco": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "bo ning|tulane university of louisiana": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "bodour salhia|university of southern california": {
+  "checked": "2026-09-21",
+  "email": "salhia@usc.edu",
+  "src": "PubMed"
+ },
  "boxuan zhao|university of illinois at urbana-champaign": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "boyla mainsah|duke university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -262,6 +517,21 @@
  },
  "brendan lee|baylor college of medicine": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "bret a hassel|university of maryland baltimore": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "bret a. payseur|university of wisconsin-madison": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "bret e.b. friday|essentia institute of rural health": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -291,6 +561,11 @@
   "checked": "2026-09-16",
   "email": "brian.bachmann@vanderbilt.edu"
  },
+ "brian o'shea|university of louisiana at lafayette": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "brien p riley|virginia commonwealth university": {
   "checked": "2026-09-17",
   "email": "",
@@ -298,6 +573,11 @@
  },
  "britta larsen|university of california, san diego": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "bruce colston trapnell|university of washington": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -315,8 +595,18 @@
   "email": "",
   "src": ""
  },
+ "cady berkel|arizona state university-tempe campus": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "caitlin dreisbach|university of rochester": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "carla d williams|howard university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -338,6 +628,11 @@
   "email": "",
   "src": ""
  },
+ "catherine anne marcinkiewcz|university of florida": {
+  "checked": "2026-09-21",
+  "email": "cmarcinkiewcz@cop.ufl.edu",
+  "src": "PubMed"
+ },
  "catherine elizabeth oldenburg|washington university": {
   "checked": "2026-09-17",
   "email": "",
@@ -353,8 +648,43 @@
   "email": "",
   "src": ""
  },
+ "chad a. mirkin|northwestern university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "chao lei|university of louisville": {
+  "checked": "2026-09-21",
+  "email": "chao.lei@louisville.edu",
+  "src": "PubMed"
+ },
+ "charles b. dhong|university of delaware": {
+  "checked": "2026-09-21",
+  "email": "cdhong@udel.edu",
+  "src": "PubMed"
+ },
+ "charles h. hubscher|university of louisville": {
+  "checked": "2026-09-21",
+  "email": "chhubs01@louisville.edu",
+  "src": "PubMed"
+ },
+ "charles lee|university of connecticut sch of med/dnt": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "charles patrick reynolds|texas tech university health scis center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "chelsea hu|texas engineering experiment station": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "chen x chen|university of arizona": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -367,8 +697,18 @@
   "email": "",
   "src": ""
  },
+ "chia-wei cheng|columbia university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "chien-po liao|columbia univ new york morningside": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "chin hur|columbia university health sciences": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -376,10 +716,50 @@
   "checked": "2026-09-16",
   "email": "chongxie@rice.edu"
  },
+ "chongwoo a kim|midwestern university (glendale az)": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "chris b schaffer|cornell university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "christian e vazquez|baylor research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "christian gabriel figueroa-espada|icahn school of medicine at mount sinai": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "christian l egly|university of houston": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "christian richard burgess|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "christian wolf|georgetown university": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "christina a muzny|university of alabama at birmingham": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "christina leigh stallings|washington university": {
+  "checked": "2026-09-21",
+  "email": "stallings@wustl.edu",
+  "src": "PubMed"
  },
  "christine m o'brien|washington university": {
   "checked": "2026-09-16",
@@ -390,9 +770,24 @@
   "email": "",
   "src": ""
  },
+ "christopher large|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "christopher michael cielo|children's hosp of philadelphia": {
   "checked": "2026-09-16",
   "email": "cieloc@chop.edu"
+ },
+ "christopher price|university of delaware": {
+  "checked": "2026-09-21",
+  "email": "cprice@udel.edu",
+  "src": "PubMed"
+ },
+ "christopher s. williams|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "christopher scott morrow|harvard university d/b/a harvard school of public health": {
   "checked": "2026-09-17",
@@ -408,8 +803,23 @@
   "email": "",
   "src": ""
  },
+ "chun-yuh huang|university of miami coral gables": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "chunxiu yu|michigan technological university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "claire nicole bedbrook|princeton university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "claire townsend ing|university of hawaii at manoa": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -417,8 +827,28 @@
   "checked": "2026-09-16",
   "email": "clarissa_coveney@fas.harvard.edu"
  },
+ "claudia fischbach|cornell university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "coen ottenheijm|university of arizona": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "cory abate-shen|columbia university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "costas andreas lyssiotis|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "courtney peasant bonner|research triangle institute": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -428,6 +858,26 @@
  },
  "cristina roman-vendrell|georgia southern university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "curt scharfe|yale university": {
+  "checked": "2026-09-21",
+  "email": "curt.scharfe@yale.edu",
+  "src": "PubMed"
+ },
+ "curtis william noonan|university of montana": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "dale d. tang|albany medical college": {
+  "checked": "2026-09-21",
+  "email": "tangd@amc.edu",
+  "src": "PubMed"
+ },
+ "damaris ortiz|indiana university indianapolis": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -444,8 +894,28 @@
   "checked": "2026-09-16",
   "email": "Daniel.Wozniak@osumc.edu"
  },
+ "daniel joseph france|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "daniel k mulkey|university of connecticut storrs": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "daniel kraushaar|baylor college of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "daniel n bolon|univ of massachusetts med sch worcester": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "daniel romo|baylor university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -453,6 +923,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "daniela salvemini|saint louis university": {
+  "checked": "2026-09-21",
+  "email": "daniela.salvemini@health.slu.edu",
+  "src": "PubMed"
  },
  "daohong zhou|university of texas hlth science center": {
   "checked": "2026-09-17",
@@ -469,9 +944,29 @@
   "email": "",
   "src": ""
  },
+ "david a baranger|medical college of wisconsin": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "david a. nathanson|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "dnathanson@mednet.ucla.edu",
+  "src": "PubMed"
+ },
+ "david aaron issadore|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "issadore@engineering.upenn.edu",
+  "src": "PubMed"
+ },
  "david aaron prober|california institute of technology": {
   "checked": "2026-09-16",
   "email": "dprober@caltech.edu"
+ },
+ "david b. weiner|wistar institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "david carl erickson|cornell university": {
   "checked": "2026-09-17",
@@ -482,9 +977,39 @@
   "checked": "2026-09-16",
   "email": "dave.dallas@oregonstate.edu"
  },
+ "david clifford flood|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "david guy kirsch|roswell park cancer institute corp": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "david lawrence aylor|north carolina state university raleigh": {
   "checked": "2026-09-16",
   "email": "dlaylor@ncsu.edu"
+ },
+ "david m aronoff|indiana university indianapolis": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "david m warshaw|university of vermont & st agric college": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "david martin gau|university of texas dallas": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "david s perlin|hackensack university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "david s. roos|university of pennsylvania": {
   "checked": "2026-09-17",
@@ -500,6 +1025,21 @@
   "email": "",
   "src": ""
  },
+ "deanna h. gates|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "debbie yee|university of iowa": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "debra ellyn weese-mayer|northwestern university": {
+  "checked": "2026-09-21",
+  "email": "D-Weese-Mayer@Northwestern.edu",
+  "src": "PubMed"
+ },
  "debra l. friedman|vanderbilt university medical center": {
   "checked": "2026-09-17",
   "email": "",
@@ -509,6 +1049,16 @@
   "checked": "2026-09-16",
   "email": "deeba_husain@meei.harvard.edu"
  },
+ "deepa bedi|tuskegee university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "degui zhi|yale university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "dennis carson|university of california, san diego": {
   "checked": "2026-09-16",
   "email": "dcarson@health.ucsd.edu"
@@ -517,6 +1067,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "deyu li|university of rhode island": {
+  "checked": "2026-09-21",
+  "email": "dlli@bio.ecnu.edu",
+  "src": "PubMed"
  },
  "diane jane burgess|university of connecticut storrs": {
   "checked": "2026-09-17",
@@ -542,14 +1097,34 @@
   "email": "",
   "src": ""
  },
+ "dirk hockemeyer|university of california berkeley": {
+  "checked": "2026-09-21",
+  "email": "hockemeyer@berkeley.edu",
+  "src": "PubMed"
+ },
  "dong wook chang|lundquist institute for biomedical innovation at harbor-ucla medical center": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "donnele daley|northwestern university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
  "douglas e. barrick|johns hopkins university": {
   "checked": "2026-09-16",
   "email": "barrick@jhu.edu"
+ },
+ "douglas weston sborov|utah state higher education system--university of utah": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "edie c goldsmith|university of south carolina at columbia": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "edward t. ryan|massachusetts general hospital": {
   "checked": "2026-09-16",
@@ -563,17 +1138,52 @@
   "checked": "2026-09-16",
   "email": "elena.ezhkova@mssm.edu"
  },
+ "elena vasileva|children's research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "elias lolis|yale university": {
   "checked": "2026-09-16",
   "email": "elias.lolis@yale.edu"
+ },
+ "elissa z faro|hackensack university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "elizabeth a bihn|cornell university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "elizabeth anne sully|guttmacher institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "elizabeth m iffrig|emory university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "elizabeth m mcclure|research triangle institute": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "elizabeth marjorie cespedes feliciano|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "emad s. ebbini|university of minnesota": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "emily allen paine|new york state psychiatric institute dba research foundation for mental hygiene, inc": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -586,6 +1196,26 @@
   "checked": "2026-09-16",
   "email": "elau6@mgh.harvard.edu"
  },
+ "emily m walker|wayne state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "emma m lessieur|doheny eye institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "engin deniz|yale university": {
+  "checked": "2026-09-21",
+  "email": "engin.deniz@yale.edu",
+  "src": "PubMed"
+ },
+ "eni halilaj|carnegie-mellon university": {
+  "checked": "2026-09-21",
+  "email": "ehalilaj@andrew.cmu.edu",
+  "src": "PubMed"
+ },
  "eric carter bartee|university of new mexico health scis ctr": {
   "checked": "2026-09-16",
   "email": "ebartee@salud.unm.edu"
@@ -595,10 +1225,20 @@
   "email": "",
   "src": ""
  },
+ "erica heinrich|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "erica.heinrich@medsch.ucr.edu",
+  "src": "PubMed"
+ },
  "erica l woodahl|university of montana": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "erica megan korb|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "ekorb@pennmedicine.upenn.edu",
+  "src": "PubMed"
  },
  "erica nguyen|university of pennsylvania": {
   "checked": "2026-09-17",
@@ -615,6 +1255,31 @@
   "email": "",
   "src": ""
  },
+ "ernest martinez|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "ernest.martinez@ucr.edu",
+  "src": "PubMed"
+ },
+ "estefania sanchez vasquez|university of california santa cruz": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "esti iturralde|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "euisik yoon|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "eun kyung lee|college of environmental sci & forestry": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "fabrizio pin|indiana university indianapolis": {
   "checked": "2026-09-17",
   "email": "",
@@ -628,6 +1293,16 @@
   "checked": "2026-09-16",
   "email": "fzhen2@uky.edu"
  },
+ "faraz shafique ahmad|northwestern university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "farrah jasmine mateen|northwestern university": {
+  "checked": "2026-09-21",
+  "email": "farrah.mateen@northwestern.edu",
+  "src": "PubMed"
+ },
  "fei liu|university of tennessee knoxville": {
   "checked": "2026-09-17",
   "email": "",
@@ -637,6 +1312,16 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "fernanda laezza|university of texas med br galveston": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "fikadu g. tafesse|oregon health & science university": {
+  "checked": "2026-09-21",
+  "email": "tafesse@ohsu.edu",
+  "src": "PubMed"
  },
  "filippo mancia|columbia university health sciences": {
   "checked": "2026-09-17",
@@ -652,8 +1337,33 @@
   "checked": "2026-09-16",
   "email": "florian.krammer@mssm.edu"
  },
+ "folarin erogbogbo|san jose state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "frances j northington|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "francisco j contijoch|university of california, san diego": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "francois j villinger|university of tx md anderson can ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "frank d. mckeon|wake forest university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "frank j symons|university of minnesota": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -668,6 +1378,11 @@
  },
  "frederick h epstein|university of virginia": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "fucheng liang|midwestern state university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -686,9 +1401,19 @@
   "email": "",
   "src": ""
  },
+ "geetu tuteja|iowa state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "gene fazil kwan|boston medical center": {
   "checked": "2026-09-16",
   "email": "genekwan@bu.edu"
+ },
+ "genesio karere|bethune-cookman college": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "georg michael lauer|massachusetts general hospital": {
   "checked": "2026-09-16",
@@ -698,8 +1423,28 @@
   "checked": "2026-09-16",
   "email": "george.burslem@pennmedicine.upenn.edu"
  },
+ "george robert painter|emory university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "georges el fakhri|yale university": {
+  "checked": "2026-09-21",
+  "email": "georges.elfakhri@yale.edu",
+  "src": "PubMed"
+ },
+ "gerardo chowell|georgia state university": {
+  "checked": "2026-09-21",
+  "email": "gchowell@gsu.edu",
+  "src": "PubMed"
+ },
  "gidon s felsen|university of colorado denver": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "grace kim muller|loyola university chicago": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -708,8 +1453,38 @@
   "email": "",
   "src": ""
  },
+ "graciela alexandra unguez|new mexico state university las cruces": {
+  "checked": "2026-09-21",
+  "email": "gunguez@nmsu.edu",
+  "src": "PubMed"
+ },
+ "grant pignatiello|case western reserve university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "grant rotskoff|stanford university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "gregory charles valentine|university of washington": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "gregory t reeves|texas engineering experiment station": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "gwen lapham|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "ha youn lee|university of southern california": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -732,6 +1507,11 @@
   "email": "",
   "src": ""
  },
+ "haojun yang|state university new york stony brook": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "harold i saavedra|ponce school of medicine": {
   "checked": "2026-09-17",
   "email": "",
@@ -742,13 +1522,43 @@
   "email": "",
   "src": ""
  },
+ "harry ledebur|southern research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "heather julie aaron|whitman-walker institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "heidi l rehm|broad institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "heidi lindroth|mayo clinic rochester": {
   "checked": "2026-09-16",
   "email": "Lindroth.heidi@mayo.edu"
  },
+ "hengameh h raissy|university of new mexico health scis ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "herbert m. sauro|university of washington": {
+  "checked": "2026-09-21",
+  "email": "hsauro@uw.edu",
+  "src": "PubMed"
+ },
  "hillel adesnik|university of california berkeley": {
   "checked": "2026-09-16",
   "email": "hadesnik@berkeley.edu"
+ },
+ "honggang cui|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "hcui6@jhu.edu",
+  "src": "PubMed"
  },
  "hongli wu|university of north texas hlth sci ctr": {
   "checked": "2026-09-16",
@@ -772,6 +1582,11 @@
   "checked": "2026-09-16",
   "email": "hugh.smyth@austin.utexas.edu"
  },
+ "hyacinth idu hyacinth|university of cincinnati": {
+  "checked": "2026-09-21",
+  "email": "hyacinhi@ucmail.uc.edu",
+  "src": "PubMed"
+ },
  "hye young lee|university of texas hlth science center": {
   "checked": "2026-09-17",
   "email": "",
@@ -779,6 +1594,11 @@
  },
  "hyunah cho|fairleigh dickinson university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "hyunkyung yun|university of california, san diego": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -799,6 +1619,11 @@
  "irene e chiolo|university of southern california": {
   "checked": "2026-09-16",
   "email": "chiolo@usc.edu"
+ },
+ "irene munk pedersen|scintillon institute for photobiology": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "irfan ahmed asangani|university of tx md anderson can ctr": {
   "checked": "2026-09-17",
@@ -831,6 +1656,16 @@
   "checked": "2026-09-16",
   "email": "ivan.zanoni@childrens.harvard.edu"
  },
+ "ivelin georgiev|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "j. michael wyss|university of alabama at birmingham": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jace w jones|university of maryland baltimore": {
   "checked": "2026-09-17",
   "email": "",
@@ -838,6 +1673,11 @@
  },
  "jaclyn t. eisdorfer|rutgers, the state univ of n.j.": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "jacob l scharer|veterans health research institute of central new york, inc.": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -851,8 +1691,33 @@
   "email": "",
   "src": ""
  },
+ "jacquelyn d lajiness|indiana university indianapolis": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jae m. sevelius|new york state psychiatric institute dba research foundation for mental hygiene, inc": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "james b munro|univ of massachusetts med sch worcester": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "james k chen|stanford university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "james m dupree|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "james r. heath|institute for systems biology": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -865,6 +1730,11 @@
   "email": "",
   "src": ""
  },
+ "jana portnow|beckman research institute/city of hope": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jana shen|university of maryland baltimore": {
   "checked": "2026-09-17",
   "email": "",
@@ -874,6 +1744,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "jason daniel buenrostro|broad institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "jason_buenrostro@harvard.edu",
+  "src": "PubMed"
  },
  "jason hays brickner|northwestern university": {
   "checked": "2026-09-16",
@@ -899,10 +1774,20 @@
   "email": "",
   "src": ""
  },
+ "jeffrey c nickel|oregon health & science university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jeffrey d amack|upstate medical university": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "jeffrey d macklis|harvard university": {
+  "checked": "2026-09-21",
+  "email": "jeffrey_macklis@harvard.edu",
+  "src": "PubMed"
  },
  "jeffrey s dome|children's research institute": {
   "checked": "2026-09-17",
@@ -919,6 +1804,31 @@
   "email": "",
   "src": ""
  },
+ "jennifer lee trilk|university of south carolina at columbia": {
+  "checked": "2026-09-21",
+  "email": "trilk@greenvillemed.sc.edu",
+  "src": "PubMed"
+ },
+ "jennifer margaret warmingham|university of rochester": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jennifer marie suga|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jeremy a miller|allen institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jeremy elias|ada forsyth institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jeremy michael stark|beckman research institute/city of hope": {
   "checked": "2026-09-17",
   "email": "",
@@ -927,6 +1837,11 @@
  "jerzy olgierd szablowski|rice university": {
   "checked": "2026-09-16",
   "email": "jszab@rice.edu"
+ },
+ "jessica duncan cance|research triangle institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "jessica edelstein|rehabilitation institute of chicago d/b/a shirley ryan abilitylab": {
   "checked": "2026-09-17",
@@ -937,13 +1852,38 @@
   "checked": "2026-09-16",
   "email": "jcantlon@andrew.cmu.edu"
  },
+ "jessica leigh mark welch|ada forsyth institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jessica whitaker-fornek|university of michigan at ann arbor": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "jessie villanueva|wistar institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jetze j. tepe|university of virginia": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "ji-xin cheng|boston university (charles river campus)": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jia-ray yu|university of maryland baltimore": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jiahe li|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -967,9 +1907,39 @@
   "email": "",
   "src": ""
  },
+ "jianxiong jiang|university of tennessee health sci ctr": {
+  "checked": "2026-09-21",
+  "email": "jjiang18@uthsc.edu",
+  "src": "PubMed"
+ },
+ "jill a rafael-fortney|ohio state university": {
+  "checked": "2026-09-21",
+  "email": "rafael-fortney.1@osu.edu",
+  "src": "PubMed"
+ },
  "jill m goldstein|brigham and women's hospital": {
   "checked": "2026-09-16",
   "email": "jill_goldstein@hms.harvard.edu"
+ },
+ "jing wang|augusta university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jing wen|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "jingwen@mednet.ucla.edu",
+  "src": "PubMed"
+ },
+ "jingjing yang|emory university": {
+  "checked": "2026-09-21",
+  "email": "jpyang@nju.edu",
+  "src": "PubMed"
+ },
+ "jiou wang|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "jirong long|vanderbilt university medical center": {
   "checked": "2026-09-17",
@@ -979,6 +1949,16 @@
  "joel a. spencer|university of california, merced": {
   "checked": "2026-09-16",
   "email": "joel.spencer@ucmerced.edu"
+ },
+ "joel erblich|hunter college": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "joel h rubenstein|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "johannes walter|harvard medical school": {
   "checked": "2026-09-17",
@@ -990,8 +1970,23 @@
   "email": "",
   "src": ""
  },
+ "john a. tainer|university of tx md anderson can ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "john daniel kelly|northern california institute/res/edu": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "john jeffrey reese|vanderbilt university medical center": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "john koethe|vanderbilt university medical center": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -999,8 +1994,23 @@
   "checked": "2026-09-16",
   "email": "maris@chop.edu"
  },
+ "john matthew inadomi|utah state higher education system--university of utah": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "john prensner|university of michigan at ann arbor": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "john r scheel|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "john r., rn, phd, faan lowe|university of texas at austin": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1009,14 +2019,44 @@
   "email": "",
   "src": ""
  },
+ "jonathan a kirk|university of chicago": {
+  "checked": "2026-09-21",
+  "email": "Jonathan.Kirk@bsd.uchicago.edu",
+  "src": "PubMed"
+ },
+ "jonathan a. epstein|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jonathan e. baker|university of nevada reno": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jonathan m white|midwest research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jonathan ross|albert einstein college of medicine": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "jonathan s berg|univ of north carolina chapel hill": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
  "jonathan samuel gootenberg|beth israel deaconess medical center": {
   "checked": "2026-09-16",
   "email": "jgootenb@bidmc.harvard.edu"
+ },
+ "jonathan w thornburg|research triangle institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "jonathon howard|yale university": {
   "checked": "2026-09-16",
@@ -1027,14 +2067,49 @@
   "email": "",
   "src": ""
  },
+ "jordan michael renna|university of akron": {
+  "checked": "2026-09-21",
+  "email": "jrenna@uakron.edu",
+  "src": "PubMed"
+ },
+ "jordan paul lewis|university of hawaii at manoa": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "jordon d. bosse|university of rhode island": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "jorge o munera|medical university of south carolina": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "jose luis herrero rubio|feinstein institute for medical research": {
+  "checked": "2026-09-21",
+  "email": "jrubio13@northwell.edu",
+  "src": "PubMed"
+ },
  "jose r. rodriguez-medina|university of puerto rico med sciences": {
   "checked": "2026-09-16",
   "email": "jose.rodriguez123@upr.edu"
+ },
+ "joseph andrew miri|northwestern university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "joseph b. ciolino|schepens eye research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "joseph david mougous|yale university": {
+  "checked": "2026-09-21",
+  "email": "joseph.mougous@yale.edu",
+  "src": "PubMed"
  },
  "joseph f. peterson|vanderbilt university medical center": {
   "checked": "2026-09-17",
@@ -1069,9 +2144,44 @@
   "email": "",
   "src": ""
  },
+ "juan manuel vazquez|pennsylvania state university, the": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "judith yanowitz|university of pittsburgh at pittsburgh": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "juhwan lee|case western reserve university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "julea vlassakis|rice university": {
+  "checked": "2026-09-21",
+  "email": "vlassakis@rice.edu",
+  "src": "PubMed"
+ },
+ "juli feigon|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "feigon@mbi.ucla.edu",
+  "src": "PubMed"
+ },
  "julia brasileiro|florida state university": {
   "checked": "2026-09-16",
   "email": "Jbrasileiro@fsu.edu"
+ },
+ "juliane grimm|albert einstein college of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "julie a fiez|university of pittsburgh at pittsburgh": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "julie elaine miller|new england research institutes, inc.": {
   "checked": "2026-09-17",
@@ -1087,9 +2197,39 @@
   "email": "",
   "src": ""
  },
+ "jung wan mok|baylor college of medicine": {
+  "checked": "2026-09-21",
+  "email": "jung-wan.mok@bcm.edu",
+  "src": "PubMed"
+ },
+ "justin l sonnenburg|stanford university": {
+  "checked": "2026-09-21",
+  "email": "jsonnenburg@stanford.edu",
+  "src": "PubMed"
+ },
+ "justin m balko|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "justin m kollman|university of washington": {
+  "checked": "2026-09-21",
+  "email": "jkoll@uw.edu",
+  "src": "PubMed"
+ },
+ "justin parent|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "justin richner|university of illinois at chicago": {
   "checked": "2026-09-16",
   "email": "richner@uic.edu"
+ },
+ "kallie schafner|west virginia university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "kanupriya pande|university of calif-lawrenc berkeley lab": {
   "checked": "2026-09-17",
@@ -1099,6 +2239,11 @@
  "karen hayden miga|university of california santa cruz": {
   "checked": "2026-09-16",
   "email": "khmiga@ucsc.edu"
+ },
+ "karim jean armache|new york university school of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "karin m musier-forsyth|ohio state university": {
   "checked": "2026-09-16",
@@ -1114,13 +2259,28 @@
   "email": "",
   "src": ""
  },
+ "karl daniel murray|university of california at davis": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "karthik goli|rice university": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "kasi e russell-lodrigue|tulane university of louisiana": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "kaspar podgorski|allen institute": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "katharine anthony bradley|kaiser foundation research institute": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1133,8 +2293,28 @@
   "checked": "2026-09-16",
   "email": "katherine.collins791@duke.edu"
  },
+ "katherine douglas van schaik|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "katherine gannett merrill|university of illinois at chicago": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "katherine m steele|university of washington": {
+  "checked": "2026-09-21",
+  "email": "kmsteele@uw.edu",
+  "src": "PubMed"
+ },
  "katherine n cahill|vanderbilt university medical center": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "katherine s elkington|new york state psychiatric institute dba research foundation for mental hygiene, inc": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1143,8 +2323,23 @@
   "email": "",
   "src": ""
  },
+ "kathleen elise o'neill|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "katie m edwards|university of michigan at ann arbor": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "kayla sprenger|university of colorado": {
+  "checked": "2026-09-21",
+  "email": "Kayla.Sprenger@colorado.edu",
+  "src": "PubMed"
+ },
+ "ke huang|texas a&m university health science ctr": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1153,9 +2348,59 @@
   "email": "",
   "src": ""
  },
+ "keith cole|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "keith syson chan|methodist hospital research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "keith thomas gagnon|wake forest university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "kelly e. o'connor|virginia commonwealth university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "kelly roballo|virginia college of osteopathic medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "kenan christopher garcia|stanford university": {
+  "checked": "2026-09-21",
+  "email": "kgarcia2@ncsu.edu",
+  "src": "PubMed"
+ },
  "kenneth p wright|university of colorado": {
   "checked": "2026-09-16",
   "email": "Kenneth.wright@colorado.edu"
+ },
+ "kerry leigh mcphail|utah state higher education system--university of utah": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "kevin freedman|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "kfreedman@engr.ucr.edu",
+  "src": "PubMed"
+ },
+ "kevin murach|university of missouri-columbia": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "kevin owen murray|colorado state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "kim lewis|northeastern university": {
   "checked": "2026-09-16",
@@ -1172,6 +2417,16 @@
  },
  "kimberly lynn cooper|university of california, san diego": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "kimberly theresa sibille|university of florida": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "kiran kumar nakka|ohio state university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1193,6 +2448,11 @@
   "email": "",
   "src": ""
  },
+ "kristin morgan|university of connecticut storrs": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "kristina schmidt|university of south florida": {
   "checked": "2026-09-16",
   "email": "kschmidt@usf.edu"
@@ -1201,6 +2461,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "kun cheng|university of missouri kansas city": {
+  "checked": "2026-09-21",
+  "email": "chengkun@umkc.edu",
+  "src": "PubMed"
  },
  "kurt c. marsden|north carolina state university raleigh": {
   "checked": "2026-09-17",
@@ -1215,9 +2480,19 @@
   "checked": "2026-09-16",
   "email": "LSTEWART@MMC.EDU"
  },
+ "lan huang|university of california-irvine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "lance r. mcmahon|texas tech university health scis center": {
   "checked": "2026-09-16",
   "email": "Lance.McMahon@ttuhsc.edu"
+ },
+ "lao-tzu allan-blitz|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "lallanblitz@mednet.ucla.edu",
+  "src": "PubMed"
  },
  "larry w. markham|vanderbilt university medical center": {
   "checked": "2026-09-17",
@@ -1228,6 +2503,11 @@
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "laura lorraine hernandez|university of wisconsin-madison": {
+  "checked": "2026-09-21",
+  "email": "llhernandez@wisc.edu",
+  "src": "PubMed"
  },
  "laura ruesch|south dakota state university": {
   "checked": "2026-09-17",
@@ -1246,14 +2526,59 @@
   "checked": "2026-09-16",
   "email": "Lauren_ghazal@urmc.rochester.edu"
  },
+ "laurent a. bentolila|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "lbento@chem.ucla.edu",
+  "src": "PubMed"
+ },
  "laurie beth joseph|rutgers biomedical and health sciences": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "lawrence t reiter|tulane university of louisiana": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "lea starita|university of washington": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "lee makowski|northeastern university": {
+  "checked": "2026-09-21",
+  "email": "l.makowski@northeastern.edu",
+  "src": "PubMed"
+ },
+ "lee-ann h allen|texas biomedical research institute": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
  "lei peng|yale university": {
   "checked": "2026-09-16",
   "email": "l.peng@yale.edu"
+ },
+ "lei stanley qi|stanford university": {
+  "checked": "2026-09-21",
+  "email": "sqi@stanford.edu",
+  "src": "PubMed"
+ },
+ "leonardo m.r. ferreira|medical university of south carolina": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "leor s weinberger|university of miami school of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "leslie susan gaynor|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "lianrui zuo|vanderbilt university": {
   "checked": "2026-09-17",
@@ -1263,6 +2588,11 @@
  "lilei zhang|baylor college of medicine": {
   "checked": "2026-09-16",
   "email": "Bing.Zhang@bcm.edu"
+ },
+ "limei tian|texas engineering experiment station": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "lin chen|university of southern california": {
   "checked": "2026-09-17",
@@ -1296,10 +2626,20 @@
   "email": "",
   "src": ""
  },
+ "lisa a ostrin|research foundation for the state university of new york, the": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "liuqing yang|university of tx md anderson can ctr": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "liviu m mirica|university of illinois at urbana-champaign": {
+  "checked": "2026-09-21",
+  "email": "mirica@illinois.edu",
+  "src": "PubMed"
  },
  "lloyd m smith|university of wisconsin-madison": {
   "checked": "2026-09-17",
@@ -1330,8 +2670,33 @@
   "email": "",
   "src": ""
  },
+ "loretta jo nastoupil|commonspirit health research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "lori beth chibnik|broad institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "lchibnik@hsph.harvard.edu",
+  "src": "PubMed"
+ },
  "lori l. isom|university of michigan at ann arbor": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "luis martinez-sobrido|texas biomedical research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "lusine poghosyan|columbia university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "lyandysha viktorovna zholudeva|j. david gladstone institutes": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1344,6 +2709,16 @@
   "checked": "2026-09-16",
   "email": "cegelski@stanford.edu"
  },
+ "lynn l. debar|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "lyse a norian|university of kentucky": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "m.-n. frances yap|northwestern university": {
   "checked": "2026-09-16",
   "email": "meichen.yap@duke.edu"
@@ -1353,13 +2728,48 @@
   "email": "",
   "src": ""
  },
+ "mahdi soltanolkotabi|university of southern california": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "mahul chakraborty|texas a&m university": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "majid minary|university of texas dallas": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "malisa sarntinoranont|university of florida": {
+  "checked": "2026-09-21",
+  "email": "msarnt@ufl.edu",
+  "src": "PubMed"
+ },
+ "manda linea keller-ross|university of minnesota": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "mande holford|harvard university": {
+  "checked": "2026-09-21",
+  "email": "mholford@fas.harvard.edu",
+  "src": "PubMed"
+ },
+ "manolis roulis|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "marc r. birtwistle|clemson university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "marcel paz goldschen-ohm|university of texas at austin": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1389,8 +2799,33 @@
   "email": "",
   "src": ""
  },
+ "margot l.k. williams|ohio state university": {
+  "checked": "2026-09-21",
+  "email": "ma.williams@northeastern.edu",
+  "src": "PubMed"
+ },
  "maria adela grando|arizona state university-tempe campus": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "maria cecilia garibaldi marcondes|san diego biomedical research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "maria m quinones cordero|university of rochester": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "maria medalla|boston university medical campus": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "maria v. barbolina|university of illinois at chicago": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1399,12 +2834,42 @@
   "email": "",
   "src": ""
  },
+ "mariana murea|wake forest university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "marianna sadagurski|wayne state university": {
+  "checked": "2026-09-21",
+  "email": "sadagurski@wayne.edu",
+  "src": "PubMed"
+ },
+ "marianthi ierapetritou|university of delaware": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "marie g gantz|research triangle institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "mario luca suva|massachusetts general hospital": {
   "checked": "2026-09-16",
   "email": "suva.mario@mgh.harvard.edu"
  },
+ "mark arthur frye|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "mark beenhakker|university of virginia": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "mark chaisson|university of southern california": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1418,8 +2883,53 @@
   "email": "",
   "src": ""
  },
+ "marmar moussa|university of oklahoma": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "marshall scott padilla|university of pennsylvania": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "marta overchuk|utah state higher education system--university of utah": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "martha j. shrubsole|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "mary beth monroe|texas engineering experiment station": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "mary frances paine|washington state university": {
+  "checked": "2026-09-21",
+  "email": "mary.paine@wsu.edu",
+  "src": "PubMed"
+ },
+ "mary katherine patricia joyce|boston university medical campus": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "matthew a. xu-friedman|state university of new york at buffalo": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "matthew akiyama|albert einstein college of medicine": {
+  "checked": "2026-09-21",
+  "email": "matthew.akiyama@einsteinmed.edu",
+  "src": "PubMed"
+ },
+ "matthew james jennings|northern michigan university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1429,6 +2939,11 @@
  },
  "matthew steven sachs|texas a&m university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "matthew wall semler|vanderbilt university medical center": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1447,6 +2962,11 @@
   "email": "",
   "src": ""
  },
+ "mehmet a. orman|university of wisconsin-madison": {
+  "checked": "2026-09-21",
+  "email": "maorman@wisc.edu",
+  "src": "PubMed"
+ },
  "melisa l wong|kaiser foundation research institute": {
   "checked": "2026-09-17",
   "email": "",
@@ -1461,10 +2981,30 @@
   "checked": "2026-09-16",
   "email": "wongme@ohsu.edu"
  },
+ "melissa laird smith|university of louisville": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "melissa morales|state university of ny,binghamton": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "melissa parsons beauchemin|columbia university health sciences": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "melissa suzanne cline|university of california santa cruz": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "meredith kells|university of rochester": {
+  "checked": "2026-09-21",
+  "email": "Meredith_Kells@urmc.rochester.edu",
+  "src": "PubMed"
  },
  "mi hye song|oakland university": {
   "checked": "2026-09-17",
@@ -1481,12 +3021,57 @@
   "email": "",
   "src": ""
  },
+ "michael francis wangler|baylor college of medicine": {
+  "checked": "2026-09-21",
+  "email": "michael.wangler@bcm.edu",
+  "src": "PubMed"
+ },
+ "michael g mcdonell|washington state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "michael hawrylycz|allen institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "michael j. garabedian|new york university school of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "michael joseph tisza|baylor college of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "michael p rout|rockefeller university": {
   "checked": "2026-09-16",
   "email": "rout@mail.rockefeller.edu"
  },
+ "michael p. snyder|stanford university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "michael patrick odonnell|yale university": {
+  "checked": "2026-09-21",
+  "email": "m.odonnell@yale.edu",
+  "src": "PubMed"
+ },
  "michael r betts|university of pennsylvania": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "michael s sidorov|children's research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "michael w. jenkins|case western reserve university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1503,6 +3088,11 @@
   "checked": "2026-09-16",
   "email": "blandm@wustl.edu"
  },
+ "michelle page|roswell park cancer institute corp": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "michelle trempel|university of rochester": {
   "checked": "2026-09-17",
   "email": "",
@@ -1513,14 +3103,34 @@
   "email": "",
   "src": ""
  },
+ "miguel valderrabano|methodist hospital research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "mike lin|university of south alabama": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "mikel garcia-marcos|boston university medical campus": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "milica margeta|schepens eye research institute": {
+  "checked": "2026-09-21",
+  "email": "milica_margeta@meei.harvard.edu",
+  "src": "PubMed"
+ },
  "min chen|university of massachusetts amherst": {
   "checked": "2026-09-16",
   "email": "mchen1@umass.edu"
+ },
+ "ming chen hammond|utah state higher education system--university of utah": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "mingming tong|stanford university": {
   "checked": "2026-09-17",
@@ -1546,6 +3156,26 @@
   "email": "",
   "src": ""
  },
+ "mohit hulsurkar|baylor college of medicine": {
+  "checked": "2026-09-21",
+  "email": "Mohit.Hulsurkar@bcm.edu",
+  "src": "PubMed"
+ },
+ "moises arturo huaman joo|emory university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "monique stephanie balthazar|pennsylvania state university, the": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "morgana lee mongraw-chaffin|medstar health research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "mukesh kumar jain|brown university": {
   "checked": "2026-09-17",
   "email": "",
@@ -1554,6 +3184,16 @@
  "muralidhar l hegde|methodist hospital research institute": {
   "checked": "2026-09-16",
   "email": "mghegde@bcm.edu"
+ },
+ "mustafa ozkaynak|university of colorado denver": {
+  "checked": "2026-09-21",
+  "email": "mustafa.ozkaynak@cuanschutz.edu",
+  "src": "PubMed"
+ },
+ "na ji|university of california berkeley": {
+  "checked": "2026-09-21",
+  "email": "jina@berkeley.edu",
+  "src": "PubMed"
  },
  "najib m el-sayed|univ of maryland, college park": {
   "checked": "2026-09-17",
@@ -1570,13 +3210,43 @@
   "email": "",
   "src": ""
  },
+ "narasimhan rajaram|university of arkansas at fayetteville": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "natasha j williams|thomas jefferson university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "nathan c. crook|north carolina state university raleigh": {
+  "checked": "2026-09-21",
+  "email": "nccrook@ncsu.edu",
+  "src": "PubMed"
+ },
  "nathan dale lord|university of pittsburgh at pittsburgh": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "navonil banerjee|university of texas hlth sci ctr houston": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "neil baugh|stanford university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "nevan j krogan|university of california, san francisco": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "nicholas s heaton|duke university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1587,6 +3257,11 @@
  "nicolas chevrier|university of chicago": {
   "checked": "2026-09-16",
   "email": "nchevrier@uchicago.edu"
+ },
+ "nicole a. pelot|duke university": {
+  "checked": "2026-09-21",
+  "email": "nikki.pelot@duke.edu",
+  "src": "PubMed"
  },
  "nikhil unni nair|tufts university medford": {
   "checked": "2026-09-17",
@@ -1601,9 +3276,34 @@
   "checked": "2026-09-16",
   "email": "goodeyn@montclair.edu"
  },
+ "ning yu|ada forsyth institute, inc.": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "nita ahuja|university of wisconsin-madison": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "noam beckmann|icahn school of medicine at mount sinai": {
+  "checked": "2026-09-21",
+  "email": "noam.beckmann@mssm.edu",
+  "src": "PubMed"
+ },
  "norbert o. reich|university of california santa barbara": {
   "checked": "2026-09-16",
   "email": "reich@chem.ucsb.edu"
+ },
+ "nuno macarico da costa|allen institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "olayinka shiyanbola|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "oliver jonas|brigham and women's hospital": {
   "checked": "2026-09-16",
@@ -1618,18 +3318,38 @@
   "email": "",
   "src": ""
  },
+ "pamela a. moalli|university of pittsburgh at pittsburgh": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "pamela j mclean|mayo clinic jacksonville": {
   "checked": "2026-09-16",
   "email": "mclean.pamela@mayo.edu"
+ },
+ "paola massari|tufts university boston": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "patricia ann d'amore|schepens eye research institute": {
   "checked": "2026-09-16",
   "email": "patricia_damore@meei.harvard.edu"
  },
+ "patricia k rivlin|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "patrick f sullivan|univ of north carolina chapel hill": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "patrick o kanold|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "pkanold@jhmi.edu",
+  "src": "PubMed"
  },
  "patrick sung|university of texas hlth science center": {
   "checked": "2026-09-17",
@@ -1641,6 +3361,26 @@
   "email": "",
   "src": ""
  },
+ "paul l babitzke|pennsylvania state university, the": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "paula r sherwood|university of virginia": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "petar m djuric|state university new york stony brook": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "peter belenky|brown university": {
+  "checked": "2026-09-21",
+  "email": "peter_belenky@brown.edu",
+  "src": "PubMed"
+ },
  "peter james turnbaugh|university of california, san francisco": {
   "checked": "2026-09-17",
   "email": "",
@@ -1651,9 +3391,34 @@
   "email": "",
   "src": ""
  },
+ "peter t. so|massachusetts institute of technology": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "peter w pisters|university of tx md anderson can ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "peter yiwen liu|lundquist institute for biomedical innovation at harbor-ucla medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "phil holland alday|oregon health & science university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "philip kreniske|graduate school of public health and health policy": {
   "checked": "2026-09-16",
   "email": "philip.kreniske@sph.cuny.edu"
+ },
+ "phillip t yuhas|ohio state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "ping mu|yale university": {
   "checked": "2026-09-16",
@@ -1663,12 +3428,27 @@
   "checked": "2026-09-16",
   "email": "pfordyce@stanford.edu"
  },
+ "pooja flora|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "pradip chaudhari|children's hospital of los angeles": {
   "checked": "2026-09-16",
   "email": "pchaudhari@chla.usc.edu"
  },
+ "prashant kumar singh|roswell park cancer institute corp": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "pratik banerjee|university of illinois at urbana-champaign": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "prudence plummer|mgh institute of health professions": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1682,10 +3462,20 @@
   "email": "",
   "src": ""
  },
+ "qiaobing xu|tufts university medford": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "qin m chen|university of arizona": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "qing deng|purdue university": {
+  "checked": "2026-09-21",
+  "email": "qingdeng@purdue.edu",
+  "src": "PubMed"
  },
  "qiwen dong|university of kansas medical center": {
   "checked": "2026-09-17",
@@ -1701,8 +3491,33 @@
   "email": "",
   "src": ""
  },
+ "rachel hongo|harvard medical school": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "rachel l. flynn|boston university medical campus": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "rachel o. niederer|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "radojka savic|university of california, san francisco": {
+  "checked": "2026-09-21",
+  "email": "rada.savic@ucsf.edu",
+  "src": "PubMed"
+ },
  "raghu kalluri|university of tx md anderson can ctr": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "raina plowright|cornell university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1724,9 +3539,29 @@
   "checked": "2026-09-16",
   "email": "rraparasu@uh.edu"
  },
+ "ramesh raghupathi|drexel university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "rami kantor|miriam hospital": {
   "checked": "2026-09-16",
   "email": "rkantor@brown.edu"
+ },
+ "rana f. chehab|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "randall eck|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "randall h goldsmith|university of wisconsin-madison": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "rasmani hazra|university of new haven": {
   "checked": "2026-09-17",
@@ -1747,12 +3582,22 @@
   "email": "",
   "src": ""
  },
+ "rebecca elizabeth hasson|university of michigan at ann arbor": {
+  "checked": "2026-09-21",
+  "email": "hassonr@umich.edu",
+  "src": "PubMed"
+ },
  "rebecca lewison|san diego state university": {
   "checked": "2026-09-16",
   "email": "rlewison@sdsu.edu"
  },
  "rebecca r. richards-kortum|rice university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "reddick walker|johns hopkins university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1781,8 +3626,33 @@
   "email": "",
   "src": ""
  },
+ "rexxi diptya prasasya|coriell institute for medical research": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "reza shadmehr|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "richard a. cerione|cornell university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "richard e debski|university of pittsburgh at pittsburgh": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "richard fishel|ohio state university": {
+  "checked": "2026-09-21",
+  "email": "fishel.7@osu.edu",
+  "src": "PubMed"
+ },
+ "richard g. gorlick|university of tx md anderson can ctr": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1796,9 +3666,19 @@
   "email": "",
   "src": ""
  },
+ "richard t lee|beckman research institute/city of hope": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "rick h cote|university of new hampshire": {
   "checked": "2026-09-16",
   "email": "Rick.Cote@unh.edu"
+ },
+ "rikki cannioto|roswell park cancer institute corp": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "rita elena serda|university of new mexico health scis ctr": {
   "checked": "2026-09-16",
@@ -1814,6 +3694,11 @@
   "email": "",
   "src": ""
  },
+ "robert adam schnoll|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "schnoll@pennmedicine.upenn.edu",
+  "src": "PubMed"
+ },
  "robert c flaumenhaft|beth israel deaconess medical center": {
   "checked": "2026-09-16",
   "email": "rflaumen@bidmc.harvard.edu"
@@ -1822,14 +3707,34 @@
   "checked": "2026-09-16",
   "email": "rstansbury@hsc.wvu.edu"
  },
+ "robert gerd salomon|case western reserve university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "robert james webster|vanderbilt university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "robert joseph dawson|university of florida": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
  "robert k ernst|university of maryland baltimore": {
   "checked": "2026-09-16",
   "email": "rkernst@umaryland.edu"
+ },
+ "robert rissman|university of southern california": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "robert w cross|university of texas med br galveston": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "roberta freitas-lemos|medical university of south carolina": {
   "checked": "2026-09-17",
@@ -1851,17 +3756,57 @@
   "email": "",
   "src": ""
  },
+ "rodney kiplin guy|university of minnesota": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "rodrigo del rio|university of kansas medical center": {
   "checked": "2026-09-16",
   "email": "rdelrio@kumc.edu"
+ },
+ "rohini pahwa|new york university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "rohit varma|southern california eye institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "ronald anthony depinho|university of tx md anderson can ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "ronald i swanstrom|univ of north carolina chapel hill": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "ronald j buckanovich|university of pittsburgh at pittsburgh": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "rongguang liang|university of arizona": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "rongxue \"rosie\" wu|ohio state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "rory tristan coleman|new york university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "ross c brownson|washington university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1879,8 +3824,33 @@
   "email": "",
   "src": ""
  },
+ "ruth palan lopez|boston college": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "ryan j marker|university of montana": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "sahib s. khalsa|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "skhalsa@mednet.ucla.edu",
+  "src": "PubMed"
+ },
+ "sally lynn hodder|west virginia university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "samie r jaffrey|weill medical coll of cornell univ": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "samie tootooni|loyola university chicago": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1889,8 +3859,18 @@
   "email": "",
   "src": ""
  },
+ "samuel longworth swift|university of new mexico health scis ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "sandra cascio|university of pittsburgh at pittsburgh": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "sangly p srinivas|trustees of indiana university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1912,8 +3892,23 @@
   "checked": "2026-09-16",
   "email": "sarah.bowling@stanford.edu"
  },
+ "sarah elizabeth latchney|st. mary's college of maryland": {
+  "checked": "2026-09-21",
+  "email": "selatchney@smcm.edu",
+  "src": "PubMed"
+ },
  "sarah lin ly|scripps research institute, the": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "sarah m. belcher|ohio state university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "sarah marie wignall|northwestern university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1946,6 +3941,11 @@
   "email": "",
   "src": ""
  },
+ "saurabh s kulkarni|university of virginia": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "scott a armstrong|dana-farber cancer inst": {
   "checked": "2026-09-16",
   "email": "Scott_Armstrong@dfci.harvard.edu"
@@ -1955,12 +3955,37 @@
   "email": "",
   "src": ""
  },
+ "scott danielson barnett|university of nevada reno": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "scott dusan pegan|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "scott.pegan@medsch.ucr.edu",
+  "src": "PubMed"
+ },
+ "scott h soderling|duke university": {
+  "checked": "2026-09-21",
+  "email": "scott.soderling@duke.edu",
+  "src": "PubMed"
+ },
  "scott m. coyle|university of wisconsin-madison": {
   "checked": "2026-09-16",
   "email": "smcoyle@wisc.edu"
  },
+ "sean e o'leary|university of california riverside": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "seong jun han|harvard medical school": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "shabana amanda ali|henry ford health + michigan state university health sciences": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -1976,6 +4001,16 @@
  "shangming tang|university of virginia": {
   "checked": "2026-09-16",
   "email": "simon.tang@wustl.edu"
+ },
+ "shannon rose|university of tennessee health sci ctr": {
+  "checked": "2026-09-21",
+  "email": "srose37@uthsc.edu",
+  "src": "PubMed"
+ },
+ "sharona e gordon|university of washington": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "sheida nabavi|university of connecticut storrs": {
   "checked": "2026-09-17",
@@ -1997,9 +4032,39 @@
   "email": "",
   "src": ""
  },
+ "shristi rawal|rutgers biomedical and health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "shufang sun|brown university": {
+  "checked": "2026-09-21",
+  "email": "shufang_sun@brown.edu",
+  "src": "PubMed"
+ },
  "shuya li|johns hopkins university": {
   "checked": "2026-09-16",
   "email": "gordonliu@nsd.pku.edu"
+ },
+ "si wu|university of alabama in tuscaloosa": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "sin yi rose lin|university of rochester": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "siyuan wang|yale university": {
+  "checked": "2026-09-21",
+  "email": "sanwangwang@bjmu.edu",
+  "src": "PubMed"
+ },
+ "smita krishnaswamy|yale university": {
+  "checked": "2026-09-21",
+  "email": "smita.krishnaswamy@yale.edu",
+  "src": "PubMed"
  },
  "sneha sarah mani|johns hopkins university": {
   "checked": "2026-09-16",
@@ -2007,6 +4072,11 @@
  },
  "song yao|roswell park cancer institute corp": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "sonia minikel vallabh|broad institute, inc.": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2019,8 +4089,33 @@
   "email": "",
   "src": ""
  },
+ "sounak sahu|new york university school of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "sridevi v. sarma|johns hopkins university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "srinivas r sadda|doheny eye institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "stacy ann sterling|kaiser foundation research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "stavroula kousteni|columbia university health sciences": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "stefan stamm|university of kentucky": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2035,6 +4130,16 @@
  },
  "stephan c schurer|university of miami school of medicine": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "stephan zuchner|university of miami school of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "stephanie elizabeth martinez|utah state university": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2060,14 +4165,49 @@
   "checked": "2026-09-16",
   "email": "Fiering@dartmouth.edu"
  },
+ "steven h. kleinstein|yale university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "sumeet s. chugh|cedars-sinai medical center": {
   "checked": "2026-09-16",
   "email": "sumeet.chugh@csmc.edu"
+ },
+ "sumire dorothy sato|university of florida": {
+  "checked": "2026-09-21",
+  "email": "sumiresato@ufl.edu",
+  "src": "PubMed"
+ },
+ "sunil d kapila|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "skapila@dentistry.ucla.edu",
+  "src": "PubMed"
+ },
+ "sunil k. agrawal|columbia univ new york morningside": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "suzanne mj fleiszig|university of california berkeley": {
+  "checked": "2026-09-21",
+  "email": "fleiszig@berkeley.edu",
+  "src": "PubMed"
  },
  "sweta narayan|university of pennsylvania": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
+ },
+ "syed m. anwar|children's research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "takaki komiyama|university of california, san diego": {
+  "checked": "2026-09-21",
+  "email": "tkomiyama@ucsd.edu",
+  "src": "PubMed"
  },
  "tanya s. freedman|university of minnesota": {
   "checked": "2026-09-17",
@@ -2082,6 +4222,21 @@
  "tara a. teslaa|university of california los angeles": {
   "checked": "2026-09-16",
   "email": "tteslaa@mednet.ucla.edu"
+ },
+ "tarik f haydar|boston university medical campus": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "tatiana engel|princeton university": {
+  "checked": "2026-09-21",
+  "email": "tatiana.engel@princeton.edu",
+  "src": "PubMed"
+ },
+ "tatyana svitkina|university of pennsylvania": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "taylor j. kelty|university of missouri-columbia": {
   "checked": "2026-09-17",
@@ -2107,6 +4262,11 @@
   "email": "",
   "src": ""
  },
+ "thomas hainmueller|stanford university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "thomas j roussel|university of louisville": {
   "checked": "2026-09-17",
   "email": "",
@@ -2121,9 +4281,24 @@
   "email": "",
   "src": ""
  },
+ "tiffany l weir|colorado state university": {
+  "checked": "2026-09-21",
+  "email": "tiffany.weir@colostate.edu",
+  "src": "PubMed"
+ },
  "tim van opijnen|boston children's hospital": {
   "checked": "2026-09-16",
   "email": "tim.vanopijnen@childrens.harvard.edu"
+ },
+ "timothy turner|tuskegee university": {
+  "checked": "2026-09-21",
+  "email": "timothy.turner@jsums.edu",
+  "src": "PubMed"
+ },
+ "timothy yikai huang|sanford burnham prebys medical discovery institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "ting xu|university of california berkeley": {
   "checked": "2026-09-16",
@@ -2134,12 +4309,32 @@
   "email": "",
   "src": ""
  },
+ "tong chen|university of colorado": {
+  "checked": "2026-09-21",
+  "email": "Thmoas.Chen@colostate.edu",
+  "src": "PubMed"
+ },
  "toni choueiri|dana-farber cancer inst": {
   "checked": "2026-09-16",
   "email": "toni_choueiri@dfci.harvard.edu"
  },
+ "travis erik losey|loma linda university": {
+  "checked": "2026-09-21",
+  "email": "tlosey@llu.edu",
+  "src": "PubMed"
+ },
  "trevor van eeuwen|rockefeller university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "tung t hoang|university of hawaii at manoa": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "tuya pal|vanderbilt university medical center": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2159,12 +4354,27 @@
   "checked": "2026-09-16",
   "email": "vtiwar@midwestern.edu"
  },
+ "vaithilingaraja arumugaswami|university of california los angeles": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "valerie wojna|university of puerto rico med sciences": {
   "checked": "2026-09-16",
   "email": "valerie.wojna1@upr.edu"
  },
  "vasant muralidharan|university of georgia": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "vasiliki machairaki|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "vmachai1@jhmi.edu",
+  "src": "PubMed"
+ },
+ "venigalla b. rao|catholic university of america": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2192,6 +4402,16 @@
   "email": "",
   "src": ""
  },
+ "vinay v abhyankar|rochester institute of technology": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "vincent p vinciguerra|feinstein institute for medical research": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "vivek kumar|university of houston": {
   "checked": "2026-09-16",
   "email": "vkumar24@cougarnet.uh.edu"
@@ -2199,6 +4419,11 @@
  "waldemar debinski|wake forest university health sciences": {
   "checked": "2026-09-16",
   "email": "debinski@wakehealth.edu"
+ },
+ "wei liu|albert einstein college of medicine": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  },
  "wei zheng|vanderbilt university medical center": {
   "checked": "2026-09-17",
@@ -2224,6 +4449,11 @@
   "email": "",
   "src": ""
  },
+ "wenyun lu|princeton university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "wesley chiang|university of rochester": {
   "checked": "2026-09-17",
   "email": "",
@@ -2236,6 +4466,11 @@
  "william e. van nostrand|university of rhode island": {
   "checked": "2026-09-16",
   "email": "wvannostrand@uri.edu"
+ },
+ "william henry conrad|lake forest college": {
+  "checked": "2026-09-21",
+  "email": "conrad@lakeforest.edu",
+  "src": "PubMed"
  },
  "wilton thomas snead|northwestern university": {
   "checked": "2026-09-16",
@@ -2270,6 +4505,16 @@
   "email": "",
   "src": ""
  },
+ "xiaoping du|university of illinois at chicago": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "xinqiao jia|university of delaware": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "xinxing zhang|university of oklahoma hlth sciences ctr": {
   "checked": "2026-09-17",
   "email": "",
@@ -2290,14 +4535,54 @@
   "email": "",
   "src": ""
  },
+ "xuehong zhang|yale university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "yacob g tedla|vanderbilt university medical center": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "yakeel t. quiroz|boston university (charles river campus)": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "yang liu|university of illinois at urbana-champaign": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "yang li|university of texas at austin": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "yang yang|van andel research institute": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
  "yang yu|university of rochester": {
   "checked": "2026-09-16",
   "email": "yujiwang1036@njmu.edu"
+ },
+ "yangming lee|rochester institute of technology": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "yao-ying ma|indiana university indianapolis": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "yichen luo|university of washington": {
+  "checked": "2026-09-21",
+  "email": "luoyun8@mail.sysu.edu",
+  "src": "PubMed"
  },
  "yisong guo|carnegie-mellon university": {
   "checked": "2026-09-17",
@@ -2318,12 +4603,37 @@
   "email": "",
   "src": ""
  },
+ "younan xia|johns hopkins university": {
+  "checked": "2026-09-21",
+  "email": "yxia17@jhmi.edu",
+  "src": "PubMed"
+ },
+ "youssef a kousa|children's research institute": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "yu-lun chen|kessler foundation, inc.": {
   "checked": "2026-09-16",
   "email": "yuyingchen@uabmc.edu"
  },
+ "yuan gao|case western reserve university": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "yuan wan|state university of ny,binghamton": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "yuchuan miao|johns hopkins university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "yue jane wu|university of california riverside": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2337,13 +4647,28 @@
   "email": "",
   "src": ""
  },
+ "yuxiao zhou|texas engineering experiment station": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "zhaohui gu|beckman research institute/city of hope": {
   "checked": "2026-09-17",
   "email": "",
   "src": ""
  },
+ "zhaoyang liu|university of southern california": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
  "zhaozhu qiu|johns hopkins university": {
   "checked": "2026-09-17",
+  "email": "",
+  "src": ""
+ },
+ "zhen zhao|tulane university of louisiana": {
+  "checked": "2026-09-21",
   "email": "",
   "src": ""
  },
@@ -2354,5 +4679,30 @@
  "zhenhua zhu|university of wisconsin-madison": {
   "checked": "2026-09-16",
   "email": "zjzhu@stanford.edu"
+ },
+ "zhi zhong|medical university of south carolina": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "zhijie \"jason\" liu|university of texas el paso": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "zhilei chen|texas a&m university health science ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
+ },
+ "zhongyue yang|vanderbilt university": {
+  "checked": "2026-09-21",
+  "email": "zhongyue.yang@vanderbilt.edu",
+  "src": "PubMed"
+ },
+ "zsolt j nagykaldi|university of oklahoma hlth sciences ctr": {
+  "checked": "2026-09-21",
+  "email": "",
+  "src": ""
  }
 }
