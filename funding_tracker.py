@@ -1548,9 +1548,10 @@ a:hover {{ border-bottom-color:var(--grow); }}
 .controls input:focus {{ outline:2px solid var(--broth); border-color:var(--grow); }}
 .wrap {{ overflow:auto; max-height:calc(100vh - 150px);
   border-top:1px solid var(--line); }}
-table {{ border-collapse:separate; border-spacing:0; min-width:100%;
+/* every rule below is scoped to #t so none of it leaks into the popup table */
+#t {{ border-collapse:separate; border-spacing:0; min-width:100%;
   font-variant-numeric:tabular-nums; }}
-th, td {{ padding:9px 14px; border-bottom:1px solid var(--line);
+#t th, #t td {{ padding:9px 14px; border-bottom:1px solid var(--line);
   white-space:nowrap; text-align:right; font-size:14px; vertical-align:top; }}
 .aline {{ display:block; line-height:1.6; }}
 .tot {{ display:inline-block; border-top:1px solid var(--ink); margin-top:3px;
@@ -1558,31 +1559,31 @@ th, td {{ padding:9px 14px; border-bottom:1px solid var(--line);
 .pib {{ margin-top:7px; font-size:12px; color:var(--mut); font-weight:400;
   line-height:1.5; }}
 .pib a {{ color:var(--grow); border-bottom-color:#BFE0CC; }}
-th {{ position:sticky; top:0; background:var(--bg); z-index:3; cursor:pointer;
+#t th {{ position:sticky; top:0; background:var(--bg); z-index:3; cursor:pointer;
   font-weight:500; user-select:none; }}
-th::after {{ content:"\u21C5"; margin-left:6px; font-size:11px; color:var(--mut); }}
-th:first-child {{ cursor:default; }}
-th:first-child::after {{ content:""; }}
-th.sorted {{ box-shadow:inset 0 -2px 0 var(--grow); color:var(--grow); }}
-th.sorted.asc::after {{ content:"\u25B2"; color:var(--grow); }}
-th.sorted.desc::after {{ content:"\u25BC"; color:var(--grow); }}
-th:hover {{ color:var(--grow); }}
-th.sel {{ background:var(--broth); }}
-th:nth-child(1), td.rownum {{ position:sticky; left:0; background:var(--bg);
+#t th::after {{ content:"\u21C5"; margin-left:6px; font-size:11px; color:var(--mut); }}
+#t th:first-child {{ cursor:default; }}
+#t th:first-child::after {{ content:""; }}
+#t th.sorted {{ box-shadow:inset 0 -2px 0 var(--grow); color:var(--grow); }}
+#t th.sorted.asc::after {{ content:"\u25B2"; color:var(--grow); }}
+#t th.sorted.desc::after {{ content:"\u25BC"; color:var(--grow); }}
+#t th:hover {{ color:var(--grow); }}
+#t th.sel {{ background:var(--broth); }}
+#t th:nth-child(1), #t td.rownum {{ position:sticky; left:0; background:var(--bg);
   text-align:right; min-width:48px; max-width:48px; z-index:2;
   color:var(--mut); font-size:12.5px; }}
-th:nth-child(2), td.uni {{ position:sticky; left:48px; background:var(--bg);
+#t th:nth-child(2), #t td.uni {{ position:sticky; left:48px; background:var(--bg);
   text-align:left; min-width:220px; max-width:220px; white-space:normal;
   z-index:2; font-weight:500; }}
-th:nth-child(3), td.dept {{ position:sticky; left:268px; background:var(--bg);
+#t th:nth-child(3), #t td.dept {{ position:sticky; left:268px; background:var(--bg);
   text-align:left; min-width:200px; max-width:200px; white-space:normal;
   z-index:2; color:#3C444C; }}
-th:nth-child(4), td.funder {{ position:sticky; left:468px; background:var(--bg);
+#t th:nth-child(4), #t td.funder {{ position:sticky; left:468px; background:var(--bg);
   text-align:left; min-width:130px; max-width:170px; white-space:normal;
   z-index:2; box-shadow:2px 0 0 var(--line); }}
-th:nth-child(-n+4) {{ z-index:4; }}
-td[data-v]:not(.zero) {{ background:#fff; }}
-tr:hover td {{ background:#F3F7F4; }}
+#t th:nth-child(-n+4) {{ z-index:4; }}
+#t td[data-v]:not(.zero) {{ background:#fff; }}
+#t tr:hover td {{ background:#F3F7F4; }}
 .zero {{ color:var(--mut); }}
 .legend {{ padding:12px 32px 40px; color:var(--mut); font-size:12.5px; }}
 {POPUP_CSS}
@@ -1686,8 +1687,10 @@ function applyFilter() {{
       && (!only.checked || r.dataset.he === '1')
       && (!onlyName.checked || r.dataset.hn === '1')
       && (!onlyInst.checked || r.dataset.hi === '1')
-      && (!onlyLinked.checked || r.dataset.pl === '1')
-      && (!onlyRecent.checked || r.dataset.pr === '1');
+      // the two publication boxes combine as OR: checking both widens the set
+      && (!(onlyLinked.checked || onlyRecent.checked)
+          || (onlyLinked.checked && r.dataset.pl === '1')
+          || (onlyRecent.checked && r.dataset.pr === '1'));
     r.style.display = ok ? '' : 'none';
   }});
   renumber();
@@ -1879,6 +1882,13 @@ def selftest() -> int:
     assert ">Author Order<" in page and "Author Contribution" not in page, "renamed header"
     assert '<th data-t="text">Institution</th>' in page, "Institution column"
     assert "\u21C5" in page and "1C5" not in page, "popup arrows must be real glyphs"
+    css = page.split("<style>")[1].split("</style>")[0]
+    leaks = [ln.strip() for ln in css.splitlines()
+             if re.match(r"^(table|th|td|tr)[\s,{:.\[]", ln.strip())]
+    assert not leaks, f"unscoped table CSS would leak into the popup: {leaks}"
+    js = page.split("<script>")[1]
+    assert "!(onlyLinked.checked || onlyRecent.checked)" in js, \
+        "the two publication filters must combine as OR"
     assert 'data-hn="1"' in page and 'data-hi="1"' in page, "row flags"
     assert "Institution: Brown University" in page, "institution line"
     assert "onlyName.checked" in page and "onlyInst.checked" in page, "combined filter"
