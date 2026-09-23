@@ -1,64 +1,131 @@
-# Biotech Department Funding Tracker (weekly, NIH-only)
+# Biotech Department Funding Tracker
 
 A self-updating ledger of NIH awards granted each week to biotech-adjacent
-university departments. Runs automatically **every Monday morning** on
+university departments, with the contact PI's email, institution, and
+recent publications. Runs automatically **every Monday morning** on
 GitHub's servers (right after NIH RePORTER's Sunday-night refresh) and
-publishes a sortable, shareable table to GitHub Pages — no software needed
-on your computer.
+publishes a sortable, filterable page to GitHub Pages — nothing to install
+or run on your own computer.
 
-**Live page:** `https://sartoriusfunding.github.io/funding-tracker/`
+**Live page:** https://biotech-funding-ledger.github.io/funding-tracker/
 
-## How it works
+Personal project built from public data sources (NIH RePORTER, PubMed,
+Europe PMC, OpenAlex). Not affiliated with or endorsed by any employer.
 
-- Columns are completed **Sunday–Saturday weeks** ("Sep 6 – Sep 12"). An
-  award lands in the week of its NIH **award-notice date**, exactly once —
-  never double-counted. Each Monday run adds the just-finished week.
-- Rows: **#** (position number that always follows the current sort/filter —
-  the visible top row is always 1), University, Department (NIH's
-  standardized name, or `--` when NIH reported none and the award matched
-  the bio keywords), and Funder (the NIH institute, e.g. *NIH (NIGMS)*).
-- Cells stack each award's amount (hyperlinked to its RePORTER project
-  page), show a ruled unlinked **= total** when there are several, and list
-  the contact **PI Name / PI Email / Institution** of the cell's largest
-  award (institution = the awardee organization NIH lists).
-- **Emails**, in order: (1) NIH's own project record — the same email the
-  "View Email" button on a project page reveals; (2) the PI's recent PubMed
-  publications (`.edu` addresses containing the PI's name); (3) `--` if
-  neither had one. Hover an email to see its source. All lookups are cached
-  in `data/pi_email_cache.json`.
-- Top-right checkboxes: **Only show rows with a PI email / a PI name / an
-  institution** — combinable; a row must satisfy every checked box. The search box filters by university, department,
-  or funder. Every column header sorts (⇅ → ▲/▼).
-- Scope: clinical/medical departments and companies (SBIR/STTR) are
-  excluded; tune the include-list and keywords in the CONFIG block at the
-  top of `funding_tracker.py`.
+## What the page shows
 
-## Setup / updating
+**One column per completed Sunday–Saturday week** ("Sep 13 – Sep 19"). An
+award lands in the week of its NIH award-notice date, exactly once — never
+double-counted. Each Monday run adds the just-finished week.
 
-Browser-only, in the `funding-tracker` repo (account **SartoriusFunding**):
+**Fixed columns:** # (position number that always follows the current
+sort and filter), Institution (the awardee organization NIH lists),
+Department (NIH's standardized name, or `--` when NIH reported none and the
+award matched the bio keywords), Funder (the NIH institute, e.g.
+*NIH (NIGMS)*).
 
-1. Replace `funding_tracker.py` and `.github/workflows/update.yml` with the
-   current versions (open file → pencil icon → select-all → paste → *Commit
-   directly to main*). Replace `requirements.txt` too (it's now just
-   `requests`).
-2. Actions → **Weekly funding tracker** → *Run workflow* once. The first run
-   under this version automatically clears the old daily-format data and
-   builds the most recently completed week; after that, Mondays are
-   automatic. Old-format data needs no manual deletion.
-3. Page refreshes ~1 minute after the run's green check (Ctrl+F5).
+**Each funding cell** stacks the week's awards (each amount linked to its
+RePORTER project page), shows a ruled unlinked **= total** when there are
+several, then for the largest award:
 
-**Run time:** the workflow runs in two stages. Stage 1 pulls the week's
-awards and publishes the page in ~2 minutes. Stage 2 looks up emails for
-PIs never seen before (several in parallel, within NCBI's rate limit) and
-publishes again — roughly 5–10 minutes on a normal Monday. Re-running on
-the same week is quick: every PI already has a cached result, and only
-lookups that hit a transient error are retried. The log ends with
-`emails: reporter=X, pubmed=Y, none=Z`; if `reporter` sits at 0 with
-repeated endpoint errors, report that log line for a fix.
+- **PI Name / PI Email** — name from NIH; email recovered from the PI's own
+  publications (PubMed affiliation lines, then Europe PMC open-access full
+  text). `--` when nothing was found yet. Hover an email for its source.
+  An email domain that doesn't match the institution usually means the PI
+  moved — verify before sending.
+- **Institution** — the awardee organization.
+- **Publication line** — one of three:
+  - **Publication Linked To Grant** (clickable) when NIH links a paper to
+    the grant: opens a one-row popup with that paper (the most recent, any
+    year).
+  - **Publications Within The Past 5 Years? Yes** (whole line clickable)
+    when no paper is linked but OpenAlex finds the PI's recent journal
+    articles. A **?** marks an uncertain name match — check the affiliations
+    in the popup.
+  - **Publications Within The Past 5 Years? No** (plain) when neither
+    exists, or *not checked yet* until the PI's first lookup.
 
-**Notes:** the RePORTER project-info endpoint used for emails is
-undocumented — if NIH changes it, the run logs it and PubMed carries on.
-Weekly commits keep the schedule alive (GitHub disables schedules only
-after 60 days with no commits). Optional: a free NCBI API key as an Actions
-secret `NCBI_API_KEY` speeds the PubMed fallback. Offline test:
-`python funding_tracker.py --selftest`.
+**The publications popup** lists #, Year, Author Order (first = red,
+middle = yellow, last = green — in biomedicine the last author is usually
+the lab head; the first author is the student or postdoc who did the work),
+and the title (linked when a link is known). Every column sorts (Author
+Order cycles green → yellow → red first), row numbers follow the sort, and
+column edges drag to resize. The header shows the PI, whether the paper is
+grant-linked, and a warning if the OpenAlex match was uncertain or merged
+from two profiles.
+
+## Controls
+
+- **Click any week header** to select that week. The big total and the
+  "granted" caption switch to it, and the highlight follows.
+- **Search box** filters by institution, department, or funder.
+- **Checkboxes** (top right) — every one is evaluated against the cell in
+  the *selected* week, not the row as a whole:
+  - Only show rows with a PI email
+  - Only show rows with a PI name
+  - Only show rows with an institution
+  - Only rows with publication linked to grant
+  - Only rows with publications within the last 5 years
+
+  The first three combine as AND. The two publication boxes combine as OR,
+  so checking both gives linked count + recent count exactly.
+- **Total Count For Column = X** — visible rows with funding in the
+  selected week, after filters. It updates as you click weeks or boxes.
+- **Column headers** sort: Institution / Department / Funder alphabetically,
+  week columns by amount (descending first). ⇅ means sortable; ▲/▼ shows
+  the active direction.
+
+## How the data is gathered
+
+1. **NIH RePORTER** (official API) — the week's awards, filtered to
+   biotech-adjacent departments. Clinical/medical departments and
+   companies (SBIR/STTR) are excluded; the include-list and keywords are
+   in the CONFIG block at the top of `funding_tracker.py`.
+2. **PI emails** — papers NIH links to the grant first, then a PubMed
+   author search, then Europe PMC full text. Only institutional addresses
+   (no free-mail). Every lookup is cached in `data/pi_email_cache.json`;
+   misses retry after 45 days; transient errors retry next run.
+3. **Publications** — grant-linked papers via RePORTER (batched), otherwise
+   the PI's journal articles from OpenAlex, matched by name plus affiliation
+   history (so PIs who moved institutions still match). Cached in
+   `data/pubs_cache.json` and `data/linked_pubs_cache.json`; each popup is a
+   small file under `docs/pubs/` loaded on click.
+
+## Setup (all in the browser)
+
+1. **Secrets** — repo → Settings → Secrets and variables → Actions:
+   - `OPENALEX_API_KEY` (required for publications; free at
+     openalex.org/settings/api, $1/day of usage included)
+   - `NCBI_API_KEY` (optional; free from your NCBI account; triples the
+     PubMed lookup rate)
+2. **Files** — `funding_tracker.py` and `requirements.txt` at the repo root;
+   the workflow at `.github/workflows/update.yml`. To update a file, open
+   it → pencil icon → select all → paste → *Commit directly to main*.
+   (Uploading a file with the same name from your Downloads folder is where
+   stale copies sneak in — check the file after committing.)
+3. **Pages** — Settings → Pages → Deploy from a branch → `main` / `docs`.
+4. **Run** — Actions → *Weekly funding tracker* → Run workflow. After that,
+   Mondays are automatic.
+
+## Run time and what the log says
+
+The workflow runs in **two stages**, each ending in its own commit:
+
+- **Stage 1 (~2 min):** pull the week's awards and publish the table.
+- **Stage 2:** emails, then publications, for PIs not seen before; publish
+  again. On a normal Monday this is 5–15 minutes. Re-running on the same
+  week is quick, because every PI already has a cached result.
+
+Log lines worth reading: `emails: found=X, none=Y`, `grant-linked papers:
+X found among Y grant(s)`, and `publications: N looked up - A with recent
+papers, B without, C uncertain match`. `OpenAlex daily budget reached` is
+normal on a large backfill — the rest continues on the next run.
+
+## Notes
+
+- Weekly commits keep the schedule alive (GitHub disables schedules only
+  after 60 days with no commits).
+- `python funding_tracker.py --selftest` runs an offline test of the
+  ledger, rendering, and lookup logic on any machine with Python.
+- Amounts are NIH award amounts for the notice date, so a week's total is
+  award value granted that week, not money spent that week.
