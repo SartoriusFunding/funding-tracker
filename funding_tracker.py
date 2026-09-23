@@ -42,7 +42,9 @@ import json
 import os
 import re
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
@@ -92,12 +94,14 @@ ENABLE_EMAIL_LOOKUP = True
 # NOTE: RePORTER's own "View Email" button is reCAPTCHA-gated and its
 # project-info service carries no email field (verified), so PubMed /
 # Europe PMC publications are the email source.
-EUROPEPMC_SLEEP = 0.3
-MAX_PMC_FULLTEXT_PER_PI = 3  # open-access full texts to inspect per PI
 NCBI_API_KEY = os.environ.get("NCBI_API_KEY", "").strip()  # optional, free
-EMAIL_SLEEP = 0.12 if NCBI_API_KEY else 0.35
+EMAIL_WORKERS = 6                 # parallel PI lookups
+NCBI_RATE = 8.0 if NCBI_API_KEY else 2.5   # requests/sec (limit: 10 / 3)
+EPMC_RATE = 4.0                   # Europe PMC requests/sec (be polite)
+MAX_PMC_FULLTEXT_PER_PI = 1       # open-access full texts to inspect per PI
 EMAIL_RETRY_DAYS = 45
 MAX_EMAIL_LOOKUPS_PER_RUN = 900
+CACHE_VERSION = 7                 # bump ONLY to force a re-try of cached misses
 
 # ----------------------------------------------------------------------------
 # Paths & session
@@ -114,8 +118,52 @@ SESSION.headers.update({"User-Agent": "biotech-funding-tracker/2.0 (personal res
 TIMEOUT = 40
 
 
+class _RateLimiter:
+    """Shared, thread-safe pacing so N workers never exceed a host's limit."""
+
+    def __init__(self, per_sec: float):
+        self.interval = 1.0 / per_sec
+        self._lock = threading.Lock()
+        self._next = 0.0
+
+    def wait(self):
+        with self._lock:
+            slot = max(time.monotonic(), self._next)
+            self._next = slot + self.interval
+        delay = slot - time.monotonic()
+        if delay > 0:
+            time.sleep(delay)
+
+
+NCBI_LIMIT = _RateLimiter(NCBI_RATE)
+EPMC_LIMIT = _RateLimiter(EPMC_RATE)
+_STATS_LOCK = threading.Lock()
+_TLS = threading.local()
+
+
+def _session():
+    """requests.Session per worker thread; the main thread uses SESSION."""
+    if threading.current_thread() is threading.main_thread():
+        return SESSION
+    s = getattr(_TLS, "session", None)
+    if s is None:
+        s = requests.Session()
+        s.headers.update(SESSION.headers)
+        _TLS.session = s
+    return s
+
+
+def _bump(stats: dict, key: str = "net", n: int = 1):
+    with _STATS_LOCK:
+        stats[key] = stats.get(key, 0) + n
+
+
+_LOG_LOCK = threading.Lock()
+
+
 def log(msg: str) -> None:
-    print(f"[tracker] {msg}", flush=True)
+    with _LOG_LOCK:
+        print(f"[tracker] {msg}", flush=True)
 
 
 def load_json(path: Path, default):
@@ -314,41 +362,75 @@ def _extract_email(xml_text: str, forms) -> str:
 
 
 def _ncbi_get(url: str, params: dict):
-    """GET with one polite retry on throttling (HTTP 429)."""
-    r = SESSION.get(url, params=params, timeout=TIMEOUT)
-    if r.status_code == 429:
-        time.sleep(2.5)
-        r = SESSION.get(url, params=params, timeout=TIMEOUT)
-    r.raise_for_status()
-    return r
+    """Rate-limited GET with polite retries: throttling (429), NCBI server
+    hiccups (500/502/503/504) and dropped connections, growing pauses."""
+    last_exc = None
+    for attempt, pause in enumerate((0, 2.5, 6.0)):
+        if pause:
+            time.sleep(pause)
+        NCBI_LIMIT.wait()
+        try:
+            r = _session().get(url, params=params, timeout=TIMEOUT)
+        except requests.exceptions.RequestException as exc:
+            last_exc = exc
+            continue
+        if r.status_code in (429, 500, 502, 503, 504) and attempt < 2:
+            last_exc = requests.HTTPError(f"{r.status_code}")
+            continue
+        r.raise_for_status()
+        return r
+    raise last_exc or RuntimeError("NCBI request failed")
 
 
-def _grant_pmids(appl: str, stats: dict, verbose: bool = False, core: str = ""):
-    """PMIDs NIH itself links to this grant - far more precise than guessing
-    by author name (crucial for common names like 'Yu N'). The core project
-    number spans every year of the award, so it catches papers a brand-new
-    -01 application hasn't been linked to yet."""
-    if not appl and not core:
-        return []
-    criteria = ({"core_project_nums": [core]} if core
-                else {"appl_ids": [int(appl)]})
-    try:
-        stats["net"] = stats.get("net", 0) + 1
-        r = SESSION.post("https://api.reporter.nih.gov/v2/publications/search",
-                         json={"criteria": criteria,
-                               "limit": 20, "offset": 0}, timeout=TIMEOUT)
-        time.sleep(0.4)
-        if r.status_code != 200:
-            return []
-        pmids = [str(x.get("pmid")) for x in (r.json().get("results") or [])
-                 if x.get("pmid")]
-        if verbose:
-            log(f"    grant-linked publications: {len(pmids)} pmid(s)")
-        return pmids[:20]
-    except Exception as exc:
-        if verbose:
-            log(f"    grant publications lookup failed: {exc}")
-        return []
+_REPORTER_FAIL_LOGS = [0]
+
+
+def _reporter_post(url: str, payload: dict):
+    """POST to RePORTER politely (~1 req/s, main thread only); log the first
+    few failures so an HTTP error is never mistaken for 'no results'."""
+    r = SESSION.post(url, json=payload, timeout=TIMEOUT)
+    time.sleep(1.0)
+    if r.status_code != 200:
+        if _REPORTER_FAIL_LOGS[0] < 3:
+            _REPORTER_FAIL_LOGS[0] += 1
+            log(f"    RePORTER {url.rsplit('/', 2)[-2]} HTTP {r.status_code}: "
+                f"{r.text[:160]!r}")
+        return None
+    return r.json()
+
+
+def _batch_grant_pmids(cores) -> dict:
+    """{core project number: [pmids, newest first]} for many grants in a few
+    calls, instead of one RePORTER call per PI. Papers NIH links to the
+    grant are the most precise identity match for common names."""
+    cores = [c for c in dict.fromkeys(cores) if c]
+    out = {}
+    shape_logged = False
+    for i in range(0, len(cores), 40):
+        chunk = cores[i:i + 40]
+        try:
+            for offset in (0, 500, 1000):
+                data = _reporter_post(
+                    "https://api.reporter.nih.gov/v2/publications/search",
+                    {"criteria": {"core_project_nums": chunk},
+                     "limit": 500, "offset": offset})
+                results = (data or {}).get("results") or []
+                if results and not shape_logged:
+                    shape_logged = True
+                    log(f"  publications record keys: {sorted(results[0].keys())[:8]}")
+                for x in results:
+                    core = x.get("coreproject") or x.get("core_project_num") or ""
+                    pm = x.get("pmid")
+                    if core and pm:
+                        out.setdefault(core, []).append(str(pm))
+                if len(results) < 500:
+                    break
+        except Exception as exc:
+            log(f"  grant publications batch failed: {exc}")
+    for core, lst in out.items():
+        lst = sorted(set(lst), key=int, reverse=True)  # PMIDs grow over time
+        out[core] = lst[:20]
+    return out
 
 
 def _pmcids_in(xml_text: str):
@@ -361,9 +443,9 @@ def _europepmc_email(pmcid: str, forms, stats, verbose=False) -> str:
     <email> tags that PubMed's affiliation field often omits."""
     url = f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML"
     try:
-        stats["net"] = stats.get("net", 0) + 1
-        r = SESSION.get(url, timeout=TIMEOUT)
-        time.sleep(EUROPEPMC_SLEEP)
+        _bump(stats)
+        EPMC_LIMIT.wait()
+        r = _session().get(url, timeout=TIMEOUT)
         if r.status_code != 200 or not r.text:
             return ""
         for e in EMAIL_RE.findall(r.text):
@@ -382,10 +464,9 @@ def _efetch_email(pmids, forms, stats, verbose=False):
     common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
     if NCBI_API_KEY:
         common["api_key"] = NCBI_API_KEY
-    stats["net"] = stats.get("net", 0) + 1
+    _bump(stats)
     r = _ncbi_get(base + "efetch.fcgi",
                   dict(common, id=",".join(pmids), retmode="xml"))
-    time.sleep(EMAIL_SLEEP)
     email = _extract_email(r.text, forms)
     if verbose:
         log(f"    -> {email or 'no matching institutional email in affiliations'}")
@@ -398,8 +479,8 @@ def _efetch_email(pmids, forms, stats, verbose=False):
     return ""
 
 
-def _pubmed_email(pi: str, university: str, appl: str, stats: dict,
-                  verbose: bool = False, core: str = ""):
+def _pubmed_email(pi: str, university: str, linked, stats: dict,
+                  verbose: bool = False):
     """Return an email str, '' for a clean no-hit, or None on transient error
     (None is never cached, so the PI is retried next run).
 
@@ -412,7 +493,8 @@ def _pubmed_email(pi: str, university: str, appl: str, stats: dict,
     if NCBI_API_KEY:
         common["api_key"] = NCBI_API_KEY
     try:
-        linked = _grant_pmids(appl, stats, verbose, core)
+        if verbose:
+            log(f"    grant-linked publications: {len(linked or [])} pmid(s)")
         if linked:
             email = _efetch_email(linked, forms, stats, verbose)
             if email:
@@ -430,11 +512,10 @@ def _pubmed_email(pi: str, university: str, appl: str, stats: dict,
             if q in seen_q:
                 continue
             seen_q.add(q)
-            stats["net"] = stats.get("net", 0) + 1
+            _bump(stats)
             r = _ncbi_get(base + "esearch.fcgi",
                           dict(common, term=q, retmax="20", retmode="json",
                                reldate="4000", datetype="pdat"))
-            time.sleep(EMAIL_SLEEP)
             ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
             if verbose:
                 log(f"    pubmed q=[{q}] -> {len(ids)} pmid(s)")
@@ -449,29 +530,14 @@ def _pubmed_email(pi: str, university: str, appl: str, stats: dict,
         return None
 
 
-def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
-                    stats: dict, verbose: bool = False, core: str = ""):
-    """Return (email, source). Cached forever; misses retried after a while."""
-    key = f"{pi}|{university}".lower()
-    ent = cache.get(key)
-    if ent is not None:
-        if ent.get("email"):
-            return ent["email"], ent.get("src", "")
-        try:
-            checked = date.fromisoformat(ent.get("checked", "1970-01-01"))
-        except ValueError:
-            checked = date(1970, 1, 1)
-        if (date.today() - checked).days < EMAIL_RETRY_DAYS:
-            return "", ""
-    # The RePORTER project-info service was verified to carry no email field
-    # (its "View Email" button is reCAPTCHA-gated), so PubMed is the source.
-    pm = _pubmed_email(pi, university, appl, stats, verbose, core)
-    if pm is None:  # transient error: don't cache, retry next run
-        return "", ""
-    email, src = pm, ("PubMed" if pm else "")
-    cache[key] = {"email": email, "src": src,
-                  "checked": date.today().isoformat()}
-    return email, src
+def lookup_pi_email(pi: str, university: str, linked, stats: dict,
+                    verbose: bool = False):
+    """Return (email, source); ('', '') for a clean miss; (None, None) on a
+    transient error (never cached). Runs inside a worker thread."""
+    pm = _pubmed_email(pi, university, linked, stats, verbose)
+    if pm is None:
+        return None, None
+    return pm, ("PubMed" if pm else "")
 
 
 def _backfill_core_numbers(data) -> None:
@@ -495,13 +561,12 @@ def _backfill_core_numbers(data) -> None:
     for i in range(0, len(ids), 500):
         chunk = ids[i:i + 500]
         try:
-            r = SESSION.post("https://api.reporter.nih.gov/v2/projects/search",
-                             json={"criteria": {"appl_ids": [int(x) for x in chunk]},
-                                   "include_fields": ["ApplId", "CoreProjectNum"],
-                                   "limit": 500, "offset": 0}, timeout=TIMEOUT)
-            time.sleep(1)
-            r.raise_for_status()
-            for p in r.json().get("results", []):
+            data_json = _reporter_post(
+                "https://api.reporter.nih.gov/v2/projects/search",
+                {"criteria": {"appl_ids": [int(x) for x in chunk]},
+                 "include_fields": ["ApplId", "CoreProjectNum"],
+                 "limit": 500, "offset": 0})
+            for p in (data_json or {}).get("results") or []:
                 core = p.get("core_project_num") or ""
                 for e in missing.get(str(p.get("appl_id")), []):
                     e["core"] = core
@@ -516,78 +581,114 @@ def _backfill_core_numbers(data) -> None:
 
 
 def sweep_pi_emails(data):
-    """Fill missing PI emails, newest weeks first. Progress-logged and
-    checkpointed so an interrupted run keeps its work."""
+    """Fill missing PI emails. Cache-first (so re-runs cost nothing), then
+    the remaining PIs are looked up in parallel, newest weeks first.
+    Progress-logged and checkpointed so an interrupted run keeps its work."""
     if not ENABLE_EMAIL_LOOKUP:
         return data
     cache = load_json(email_cache_path(), {})
-    # One-time flush (v2): earlier versions cached transient errors as
-    # 45-day misses. Drop all cached misses once so those PIs get a clean
-    # retry; confirmed hits are kept.
-    if (cache.get("_meta") or {}).get("v") != 5:
-        dropped = sum(1 for k, v in cache.items()
-                      if isinstance(v, dict) and not v.get("email"))
+    meta = cache.get("_meta") or {}
+    if meta.get("v", 0) < 5:
+        # legacy caches (before v5) stored transient errors as misses
         cache = {k: v for k, v in cache.items()
                  if isinstance(v, dict) and v.get("email")}
-        cache["_meta"] = {"v": 5}
-        if dropped:
-            log(f"cleared {dropped} cached miss(es) so they retry now")
+    cache["_meta"] = {"v": CACHE_VERSION}
     _backfill_core_numbers(data)
-    stats = {"net": 0, "pis": 0}
-    filled = {"PubMed": 0}
-    changed = False
-    pending = sum(
-        1 for row in data["rows"].values() for entries in row["cells"].values()
-        for e in entries if e.get("pi") and not e.get("pi_email"))
-    if pending:
-        log(f"PI email sweep: {pending} entries need emails "
-            f"(up to {MAX_EMAIL_LOOKUPS_PER_RUN} PIs attempted this run)")
 
-    def finish():
-        save_json(email_cache_path(), cache)
-        if changed:
-            save_json(DATA_FILE, data)
-        none_n = max(pending - filled["PubMed"], 0)
-        log(f"emails: found={filled['PubMed']}, "
-            f"none={none_n} (PIs attempted: {stats['pis']}, "
-            f"API calls: {stats['net']}, cache: {len(cache) - 1})")
-
+    # group every entry that still lacks an email by PI + university
+    groups, order = {}, []
     for wk in reversed(data["dates"]):
         for row in data["rows"].values():
             for e in row["cells"].get(wk, []):
-                if stats["pis"] >= MAX_EMAIL_LOOKUPS_PER_RUN:
-                    log("PI lookup cap reached; the rest continue next run")
-                    finish()
-                    return data
                 if not e.get("pi") or e.get("pi_email"):
                     continue
-                m = re.search(r"project-details/(\d+)", e.get("url", ""))
-                appl = m.group(1) if m else ""
-                ck = f"{e['pi']}|{row['university']}".lower()
-                fresh = ck not in cache
-                verbose = fresh and stats["pis"] < 3  # trace the first few
-                if verbose:
-                    log(f"  lookup: {e['pi']} @ {row['university']} "
-                        f"(appl {appl or 'n/a'})")
-                em, src = lookup_pi_email(e["pi"], row["university"], appl,
-                                          cache, stats, verbose,
-                                          e.get("core", ""))
-                if fresh:
-                    stats["pis"] += 1
-                if em:
-                    e["pi_email"] = em
-                    e["pi_email_via"] = src
-                    filled[src] = filled.get(src, 0) + 1
-                    changed = True
-                if fresh:
-                    if stats["pis"] % 25 == 0:
-                        log(f"  progress: {stats['pis']} PIs attempted, "
-                            f"{sum(filled.values())} emails found")
-                    if stats["pis"] % 50 == 0:
-                        save_json(email_cache_path(), cache)
-                        if changed:
-                            save_json(DATA_FILE, data)
-    finish()
+                key = f"{e['pi']}|{row['university']}".lower()
+                if key not in groups:
+                    groups[key] = {"pi": e["pi"], "university": row["university"],
+                                   "core": e.get("core", ""), "entries": []}
+                    order.append(key)
+                groups[key]["entries"].append(e)
+    pending = sum(len(g["entries"]) for g in groups.values())
+    if not pending:
+        log("PI email sweep: nothing to look up")
+        save_json(email_cache_path(), cache)
+        return data
+
+    changed = False
+    filled = 0
+    todo = []
+    today = date.today()
+    for key in order:
+        g = groups[key]
+        ent = cache.get(key)
+        if ent and ent.get("email"):
+            for e in g["entries"]:
+                e["pi_email"] = ent["email"]
+                e["pi_email_via"] = ent.get("src", "PubMed")
+            filled += len(g["entries"])
+            changed = True
+            continue
+        if ent:
+            try:
+                checked = date.fromisoformat(ent.get("checked", "1970-01-01"))
+            except ValueError:
+                checked = date(1970, 1, 1)
+            if (today - checked).days < EMAIL_RETRY_DAYS:
+                continue  # recent miss: wait it out
+        todo.append(g)
+    skipped_cap = max(len(todo) - MAX_EMAIL_LOOKUPS_PER_RUN, 0)
+    todo = todo[:MAX_EMAIL_LOOKUPS_PER_RUN]
+    log(f"PI email sweep: {pending} entries need emails; {filled} filled from "
+        f"cache, {len(todo)} PI(s) to look up"
+        + (f", {skipped_cap} deferred to next run" if skipped_cap else ""))
+
+    stats = {"net": 0, "pis": 0}
+    if todo:
+        core_map = _batch_grant_pmids(g["core"] for g in todo)
+        log(f"  grant-linked papers found for {len(core_map)} of {len(todo)} grant(s)")
+
+        def work(g, verbose):
+            if verbose:
+                log(f"  lookup: {g['pi']} @ {g['university']}")
+            return lookup_pi_email(g["pi"], g["university"],
+                                   core_map.get(g["core"], []), stats, verbose)
+
+        found_new = 0
+        with ThreadPoolExecutor(max_workers=EMAIL_WORKERS) as pool:
+            futures = {pool.submit(work, g, i < 3): g for i, g in enumerate(todo)}
+            for fut in as_completed(futures):
+                g = futures[fut]
+                key = f"{g['pi']}|{g['university']}".lower()
+                try:
+                    email, src = fut.result()
+                except Exception as exc:
+                    log(f"  lookup crashed for {g['pi']}: {exc}")
+                    email, src = None, None
+                stats["pis"] += 1
+                if email is not None:  # None = transient error: not cached
+                    cache[key] = {"email": email, "src": src,
+                                  "checked": today.isoformat()}
+                    if email:
+                        for e in g["entries"]:
+                            e["pi_email"] = email
+                            e["pi_email_via"] = src
+                        filled += len(g["entries"])
+                        found_new += 1
+                        changed = True
+                if stats["pis"] % 25 == 0:
+                    log(f"  progress: {stats['pis']}/{len(todo)} PIs, "
+                        f"{found_new} new emails")
+                if stats["pis"] % 50 == 0:
+                    save_json(email_cache_path(), cache)
+                    if changed:
+                        save_json(DATA_FILE, data)
+
+    save_json(email_cache_path(), cache)
+    if changed:
+        save_json(DATA_FILE, data)
+    log(f"emails: found={filled}, none={max(pending - filled, 0)} "
+        f"(PIs looked up: {stats['pis']}, API calls: {stats['net']}, "
+        f"cache: {len(cache) - 1})")
     return data
 
 
@@ -738,7 +839,7 @@ def ingest(awards, week_start_iso: str):
 # HTML RENDER
 # ----------------------------------------------------------------------------
 
-def _cell_html(entries):
+def _cell_html(entries, institution=""):
     if not entries:
         return '<td class="zero" data-v="0">0</td>'
     total = sum(e["amount"] for e in entries)
@@ -759,7 +860,9 @@ def _cell_html(entries):
                    f"{html_lib.escape(email)}</a>")
     else:
         pi_mail = "--"
-    lines += f'<div class="pib">PI Name: {pi_name}<br>PI Email: {pi_mail}</div>'
+    inst = html_lib.escape(institution.strip() or "--")
+    lines += (f'<div class="pib">PI Name: {pi_name}<br>PI Email: {pi_mail}'
+              f'<br>Institution: {inst}</div>')
     return f'<td data-v="{total}">{lines}</td>'
 
 
@@ -785,11 +888,15 @@ def render_html(data) -> str:
 
     body = []
     for i, r in enumerate(rows, start=1):
-        has_email = any(e.get("pi_email")
-                        for v in r["cells"].values() for e in v)
-        cells = "".join(_cell_html(r["cells"].get(w, [])) for w in weeks)
+        all_entries = [e for v in r["cells"].values() for e in v]
+        has_email = any(e.get("pi_email") for e in all_entries)
+        has_name = any((e.get("pi") or "").strip() for e in all_entries)
+        has_inst = bool((r.get("university") or "").strip())
+        cells = "".join(_cell_html(r["cells"].get(w, []), r.get("university", ""))
+                        for w in weeks)
         body.append(
-            f'<tr data-he="{1 if has_email else 0}">'
+            f'<tr data-he="{1 if has_email else 0}" data-hn="{1 if has_name else 0}" '
+            f'data-hi="{1 if has_inst else 0}">'
             f'<td class="rownum">{i}</td>'
             f'<td class="uni">{html_lib.escape(r["university"])}</td>'
             f'<td class="dept">{html_lib.escape(r["department"])}</td>'
@@ -824,8 +931,9 @@ a:hover {{ border-bottom-color:var(--grow); }}
   font-variant-numeric:tabular-nums; }}
 .todaybox .cap {{ font-size:12px; color:var(--mut); }}
 .emailchk {{ display:flex; gap:7px; align-items:center; justify-content:flex-end;
-  margin-top:9px; font-size:13px; color:var(--ink); cursor:pointer;
+  margin-top:6px; font-size:13px; color:var(--ink); cursor:pointer;
   user-select:none; }}
+.emailchk:first-of-type {{ margin-top:9px; }}
 .emailchk input {{ width:15px; height:15px; accent-color:var(--grow);
   cursor:pointer; }}
 .controls {{ display:flex; gap:16px; align-items:center; flex-wrap:wrap;
@@ -886,6 +994,10 @@ tr:hover td {{ background:#F3F7F4; }}
     <div class="cap">granted <span id="cap">{wlabel(latest) if latest else "-"}</span></div>
     <label class="emailchk"><input type="checkbox" id="onlyemail">
       Only show rows with a PI email</label>
+    <label class="emailchk"><input type="checkbox" id="onlyname">
+      Only show rows with a PI name</label>
+    <label class="emailchk"><input type="checkbox" id="onlyinst">
+      Only show rows with an institution</label>
   </div>
 </div>
 
@@ -926,6 +1038,8 @@ const tbody = table.tBodies[0];
 const ths = [...table.tHead.rows[0].cells];
 const q = document.getElementById('q');
 const only = document.getElementById('onlyemail');
+const onlyName = document.getElementById('onlyname');
+const onlyInst = document.getElementById('onlyinst');
 let cur = {{ i:-1, dir:1 }};
 
 function renumber() {{
@@ -939,7 +1053,10 @@ function applyFilter() {{
   [...tbody.rows].forEach(r => {{
     const hay = (r.cells[1].innerText + ' ' + r.cells[2].innerText + ' '
                  + r.cells[3].innerText).toLowerCase();
-    const ok = hay.includes(v) && (!only.checked || r.dataset.he === '1');
+    const ok = hay.includes(v)
+      && (!only.checked || r.dataset.he === '1')
+      && (!onlyName.checked || r.dataset.hn === '1')
+      && (!onlyInst.checked || r.dataset.hi === '1');
     r.style.display = ok ? '' : 'none';
   }});
   renumber();
@@ -972,6 +1089,8 @@ ths.forEach((th, i) => {{
 }});
 q.addEventListener('input', applyFilter);
 only.addEventListener('change', applyFilter);
+onlyName.addEventListener('change', applyFilter);
+onlyInst.addEventListener('change', applyFilter);
 </script>
 </body></html>"""
 
@@ -1083,18 +1202,29 @@ def selftest() -> int:
         "poisoned miss|somewhere": {"email": "", "src": "",
                                     "checked": "2026-09-01"},
     })
-    orig = globals()["lookup_pi_email"]
+    orig_lookup = globals()["lookup_pi_email"]
+    orig_batch = globals()["_batch_grant_pmids"]
+    calls = []
+    globals()["_batch_grant_pmids"] = lambda cores: {}
     globals()["lookup_pi_email"] = (
-        lambda pi, uni, appl, cache, stats, verbose=False, core="":
-        (("jbig@brown.edu", "PubMed") if pi == "Jane Big" else ("", "")))
+        lambda pi, uni, linked, stats, verbose=False:
+        (calls.append(pi) or (("jbig@brown.edu", "PubMed") if pi == "Jane Big"
+                              else ("", ""))))
     data = sweep_pi_emails(data)
-    globals()["lookup_pi_email"] = orig
     assert data["rows"]["brown university||biomedical engineering||nih (nigms)"][
         "cells"]["2026-09-06"][0]["pi_email"] == "jbig@brown.edu"
     flushed = load_json(email_cache_path(), {})
-    assert "old hit|somewhere" in flushed, "flush must keep confirmed hits"
-    assert "poisoned miss|somewhere" not in flushed, "flush must drop misses"
-    assert flushed.get("_meta", {}).get("v") == 5
+    assert "old hit|somewhere" in flushed, "legacy flush must keep confirmed hits"
+    assert "poisoned miss|somewhere" not in flushed, "legacy flush must drop misses"
+    assert flushed.get("_meta", {}).get("v") == CACHE_VERSION
+    assert len(calls) == 4, f"expected 4 fresh lookups, got {len(calls)}"
+
+    # re-run: every PI is now cached (hit or fresh miss) -> ZERO lookups
+    calls.clear()
+    data = sweep_pi_emails(data)
+    assert calls == [], f"re-run must not query anything, but queried {calls}"
+    globals()["lookup_pi_email"] = orig_lookup
+    globals()["_batch_grant_pmids"] = orig_batch
 
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
@@ -1102,6 +1232,10 @@ def selftest() -> int:
     assert "Sep 6 \u2013 Sep 12" in page and "Sep 13 \u2013 Sep 19" in page
     assert '<td class="rownum">1</td>' in page and '<td class="rownum">3</td>' in page
     assert 'id="onlyemail"' in page and 'data-he="1"' in page and 'data-he="0"' in page
+    assert 'id="onlyname"' in page and 'id="onlyinst"' in page, "new checkboxes"
+    assert 'data-hn="1"' in page and 'data-hi="1"' in page, "row flags"
+    assert "Institution: Brown University" in page, "institution line"
+    assert "onlyName.checked" in page and "onlyInst.checked" in page, "combined filter"
     assert '<div class="tot">= $5,100,000</div>' in page
     assert "PI Name: Jane Big" in page and 'href="mailto:jbig@brown.edu"' in page
     assert 'title="source: PubMed"' in page
@@ -1128,13 +1262,20 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--skip-emails", action="store_true",
-                    help="skip the PI-email sweep this run")
+                    help="update the table only; skip the PI-email sweep")
+    ap.add_argument("--emails-only", action="store_true",
+                    help="skip the NIH fetch; only fill PI emails and re-render")
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
     if args.skip_emails:
         ENABLE_EMAIL_LOOKUP = False
+    if args.emails_only:
+        data = load_json(DATA_FILE, {"dates": [], "rows": {}, "meta": {}})
+        data = sweep_pi_emails(data)
+        write_site(data)
+        return 0
 
     start, end = last_completed_week(date.today())
     log(f"target week: {start} .. {end} (awards by NIH award-notice date)")
