@@ -23,15 +23,26 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run tracker
-        env:
-          # Optional: a free NCBI API key speeds up the PubMed email fallback.
-          # Add it under Settings > Secrets and variables > Actions as NCBI_API_KEY.
-          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
-        run: python funding_tracker.py
+      # Stage 1: pull the week's awards and publish the page right away (~2 min)
+      - name: Update funding table
+        run: python funding_tracker.py --skip-emails
 
-      - name: Commit updated ledger and page
+      - name: Publish funding table
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Weekly funding update"
+          file_pattern: "data/* docs/*"
+
+      # Stage 2: fill in PI emails (only PIs not seen before) and publish again
+      - name: Look up PI emails
+        env:
+          # Optional: a free NCBI API key triples the PubMed lookup rate.
+          # Add it under Settings > Secrets and variables > Actions as NCBI_API_KEY.
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        run: python funding_tracker.py --emails-only
+
+      - name: Publish PI emails
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "PI email update"
           file_pattern: "data/* docs/*"
