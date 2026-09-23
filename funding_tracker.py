@@ -392,6 +392,27 @@ def _ncbi_get(url: str, params: dict):
     raise last_exc or RuntimeError("NCBI request failed")
 
 
+def _ncbi_post(url: str, data: dict):
+    """Rate-limited POST (for long term lists / big id batches), same retries
+    as _ncbi_get."""
+    last_exc = None
+    for attempt, pause in enumerate((0, 2.5, 6.0)):
+        if pause:
+            time.sleep(pause)
+        NCBI_LIMIT.wait()
+        try:
+            r = _session().post(url, data=data, timeout=TIMEOUT)
+        except requests.exceptions.RequestException as exc:
+            last_exc = exc
+            continue
+        if r.status_code in (429, 500, 502, 503, 504) and attempt < 2:
+            last_exc = requests.HTTPError(f"{r.status_code}")
+            continue
+        r.raise_for_status()
+        return r
+    raise last_exc or RuntimeError("NCBI request failed")
+
+
 _REPORTER_FAIL_LOGS = [0]
 
 
@@ -867,6 +888,18 @@ def _position_for(w, author_ids=(), pi: str = "") -> str:
     return "unknown"
 
 
+def _pmid_from_ids(w) -> str:
+    """OpenAlex lists PubMed ids as 'https://pubmed.ncbi.nlm.nih.gov/12345'."""
+    v = ((w.get("ids") or {}).get("pmid")) or ""
+    m = re.search(r"(\d+)\s*$", str(v))
+    return m.group(1) if m else ""
+
+
+def _doi_from_url(url: str) -> str:
+    m = re.search(r"doi\.org/(10\.\S+)", url or "", re.I)
+    return m.group(1).strip().rstrip("/").lower() if m else ""
+
+
 def _works_to_rows(works, author_ids, pi: str = ""):
     rows, seen = [], set()
     for w in works:
@@ -879,6 +912,7 @@ def _works_to_rows(works, author_ids, pi: str = ""):
             "position": _position_for(w, author_ids, pi),
             "title": (w.get("title") or "").strip() or "(untitled)",
             "url": _work_link(w),
+            "pmid": _pmid_from_ids(w),
         })
     rows.sort(key=lambda r: r["year"], reverse=True)
     return rows[:MAX_PUBS_PER_PI]
@@ -904,7 +938,7 @@ def _openalex_profile_and_works(pi: str, university: str):
         page = _openalex_get("/works", {
             "filter": filt, "per_page": 100, "cursor": cursor,
             "sort": "publication_year:desc",
-            "select": "id,title,publication_year,doi,authorships,primary_location",
+            "select": "id,title,publication_year,doi,authorships,primary_location,ids",
         })
         results = (page or {}).get("results") or []
         works.extend(results)
@@ -1054,7 +1088,120 @@ def sweep_publications(data):
         log(f"publications: {counts['done']} looked up - {counts['yes']} with "
             f"recent papers, {counts['no']} without, {counts['uncertain']} uncertain match")
     save_json(pubs_cache_path(), pubs)
+    try:
+        sweep_abstract_flags(pubs, linked)
+    except Exception as exc:
+        log(f"abstract flag sweep failed: {exc}")
     return data
+
+
+MAX_ABSTRACT_FLAG_PIS_PER_RUN = 800
+
+
+def _parse_pubmed_flags(xml_text: str) -> dict:
+    """{pmid: {"doi": lowercase doi or "", "abs": bool}} from efetch XML.
+    Only presence is recorded - abstract text is never stored."""
+    import xml.etree.ElementTree as ET
+    out = {}
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return out
+    for art in root.iter("PubmedArticle"):
+        pmid = (art.findtext(".//MedlineCitation/PMID") or "").strip()
+        if not pmid:
+            continue
+        doi = ""
+        for aid in art.iter("ArticleId"):
+            if (aid.get("IdType") or "").lower() == "doi" and aid.text:
+                doi = aid.text.strip().lower()
+                break
+        has_abs = any((el.text or "").strip() or list(el)
+                      for el in art.iter("AbstractText"))
+        out[pmid] = {"doi": doi, "abs": bool(has_abs)}
+    return out
+
+
+def _pubmed_flags_for(pmids, dois, stats) -> dict:
+    """Resolve DOIs to PMIDs (batched esearch) and check abstract presence
+    (batched efetch). Returns {pmid: {...}} plus {doi: pmid} under '_bydoi'."""
+    base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+    common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
+    if NCBI_API_KEY:
+        common["api_key"] = NCBI_API_KEY
+    found = set(p for p in pmids if p)
+    dois = [d for d in dict.fromkeys(dois) if d]
+    for i in range(0, len(dois), 50):
+        chunk = dois[i:i + 50]
+        term = " OR ".join(f'"{d}"[DOI]' for d in chunk)
+        _bump(stats)
+        r = _ncbi_post(base + "esearch.fcgi",
+                       dict(common, term=term, retmax="200", retmode="json"))
+        ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
+        found.update(ids)
+    result, bydoi = {}, {}
+    ids = sorted(found)
+    for i in range(0, len(ids), 200):
+        chunk = ids[i:i + 200]
+        _bump(stats)
+        r = _ncbi_post(base + "efetch.fcgi",
+                       dict(common, id=",".join(chunk), retmode="xml"))
+        parsed = _parse_pubmed_flags(r.text)
+        result.update(parsed)
+        for pm, info in parsed.items():
+            if info["doi"]:
+                bydoi[info["doi"]] = pm
+    result["_bydoi"] = bydoi
+    return result
+
+
+def sweep_abstract_flags(pubs: dict, linked: dict) -> None:
+    """Mark every publication row / linked paper with whether PubMed has an
+    abstract for it (row['abs']). Text is fetched by the browser on click,
+    never stored. Works in place on cached lists, so no OpenAlex re-pull."""
+    stats = {"net": 0}
+    todo = [k for k, v in pubs.items()
+            if not k.startswith("_") and isinstance(v, dict)
+            and any("abs" not in r for r in v.get("rows") or [])]
+    todo = todo[:MAX_ABSTRACT_FLAG_PIS_PER_RUN]
+    linked_todo = [c for c, v in linked.items()
+                   if isinstance(v, dict) and v.get("pmid") and "abs" not in v]
+    if not todo and not linked_todo:
+        return
+    log(f"abstract flags: {len(todo)} PI list(s) + {len(linked_todo)} linked paper(s) to check")
+    done = 0
+    for key in todo:
+        rows = pubs[key].get("rows") or []
+        pending = [r for r in rows if "abs" not in r]
+        pmids = [r.get("pmid") for r in pending if r.get("pmid")]
+        dois = [_doi_from_url(r.get("url", "")) for r in pending if not r.get("pmid")]
+        try:
+            info = _pubmed_flags_for(pmids, dois, stats)
+        except Exception as exc:
+            log(f"  abstract flags failed for {key.split('|')[0]}: {exc}")
+            continue  # left unmarked: retried next run
+        bydoi = info.get("_bydoi", {})
+        for r in pending:
+            pm = r.get("pmid") or bydoi.get(_doi_from_url(r.get("url", "")), "")
+            r["pmid"] = pm
+            r["abs"] = bool(pm and info.get(pm, {}).get("abs"))
+        done += 1
+        if done % 100 == 0:
+            log(f"  progress: {done}/{len(todo)} PI lists")
+            save_json(pubs_cache_path(), pubs)
+    if linked_todo:
+        try:
+            info = _pubmed_flags_for([str(linked[c]["pmid"]) for c in linked_todo], [], stats)
+            for c in linked_todo:
+                linked[c]["abs"] = bool(info.get(str(linked[c]["pmid"]), {}).get("abs"))
+        except Exception as exc:
+            log(f"  abstract flags failed for linked papers: {exc}")
+    save_json(pubs_cache_path(), pubs)
+    save_json(linked_cache_path(), linked)
+    yes = sum(1 for v in pubs.values() if isinstance(v, dict)
+              for r in v.get("rows") or [] if r.get("abs"))
+    log(f"abstract flags: done ({done} lists this run, {stats['net']} PubMed calls, "
+        f"{yes} papers with abstracts overall)")
 
 
 def _pub_status(entry, university, pubs, linked):
@@ -1090,7 +1237,9 @@ def write_pub_files(data, pubs, linked) -> int:
                        "rows": [{"year": lk.get("year", 0),
                                  "position": lk.get("position", "unknown"),
                                  "title": lk.get("title", ""),
-                                 "url": lk.get("url", "")}]}
+                                 "url": lk.get("url", ""),
+                                 "pmid": str(lk.get("pmid") or ""),
+                                 "abs": bool(lk.get("abs"))}]}
         else:
             pc = pubs[f"{e.get('pi', '')}|{uni}".lower()]
             payload = {"pi": e.get("pi", ""), "university": uni, "linked": False,
@@ -1338,6 +1487,24 @@ POPUP_CSS = """
 #pubtable th { position:sticky; }
 #pubtable th .thwrap { position:relative; display:block; padding-right:8px; }
 .pubempty { padding:24px; color:var(--mut); }
+#pubtable td.absc a { color:var(--grow); border-bottom:1px solid #BFE0CC; cursor:pointer; }
+#pubtable td.absc.no { color:var(--mut); }
+#absmodal { position:fixed; inset:0; background:rgba(16,20,24,.35); z-index:60;
+  display:flex; align-items:center; justify-content:center; padding:24px; }
+#absmodal[hidden] { display:none; }
+.absbox { background:#fff; color:var(--ink); border-radius:10px; width:min(760px,100%);
+  max-height:85vh; display:flex; flex-direction:column;
+  box-shadow:0 20px 60px rgba(0,0,0,.3); border:2px solid #BFE0CC; }
+.abshead { display:flex; justify-content:space-between; align-items:flex-start;
+  gap:16px; padding:16px 20px 10px; border-bottom:1px solid var(--grid); }
+.abshead h2 { margin:0 0 4px; font-size:16px; font-weight:600; line-height:1.35; }
+.abshead .sub { font-size:12.5px; color:var(--mut); }
+.absbody { overflow:auto; padding:14px 20px; font-size:14px; line-height:1.6; }
+.absbody p { margin:0 0 10px; }
+.absbody .lbl { font-weight:600; color:var(--ink); display:block; margin-top:8px; }
+.absbody .wait, .absbody .err { color:var(--mut); }
+.absfoot { padding:10px 20px 14px; border-top:1px solid var(--grid); font-size:12.5px;
+  color:var(--mut); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 """
 
 POPUP_HTML = """
@@ -1353,18 +1520,32 @@ POPUP_HTML = """
     <div class="pubscroll">
       <table id="pubtable">
         <colgroup>
-          <col style="width:56px"><col style="width:92px"><col style="width:148px"><col>
+          <col style="width:56px"><col style="width:92px"><col style="width:148px"><col><col style="width:126px">
         </colgroup>
         <thead><tr>
           <th><span class="thwrap">#<span class="rz"></span></span></th>
           <th class="sortable" data-k="year"><span class="thwrap">Year<span class="rz"></span></span></th>
           <th class="sortable" data-k="pos"><span class="thwrap">Author Order<span class="rz"></span></span></th>
-          <th class="sortable" data-k="title"><span class="thwrap">Publication Title</span></th>
+          <th class="sortable" data-k="title"><span class="thwrap">Publication Title<span class="rz"></span></span></th>
+          <th class="sortable" data-k="abs"><span class="thwrap">Abstract (Yes/No)</span></th>
         </tr></thead>
         <tbody></tbody>
       </table>
       <div class="pubempty" id="pubempty" hidden>No publications found.</div>
     </div>
+  </div>
+</div>
+<div id="absmodal" hidden>
+  <div class="absbox" role="dialog" aria-modal="true" aria-labelledby="abstitle">
+    <div class="abshead">
+      <div>
+        <h2 id="abstitle">Abstract</h2>
+        <div class="sub" id="absmeta"></div>
+      </div>
+      <button class="pubclose" id="absclose" aria-label="Close">&times;</button>
+    </div>
+    <div class="absbody" id="absbody"></div>
+    <div class="absfoot" id="absfoot"></div>
   </div>
 </div>
 """
@@ -1393,8 +1574,12 @@ POPUP_JS = """
       const title = r.url
         ? `<a href="${r.url.replace(/"/g, '&quot;')}" target="_blank" rel="noopener">${esc(r.title)}</a>`
         : esc(r.title);
+      const absCell = r.abs
+        ? `<td class="absc"><a class="abslink" data-pmid="${esc(r.pmid || '')}" href="#">Yes</a></td>`
+        : `<td class="absc no">No</td>`;
       tr.innerHTML = `<td class="num"></td><td class="year">${r.year || ''}</td>` +
-        `<td class="pos-${r.position}">${POS[r.position] || r.position}</td><td>${title}</td>`;
+        `<td class="pos-${r.position}">${POS[r.position] || r.position}</td><td>${title}</td>` + absCell;
+      tr._row = r;
       tb.appendChild(tr);
     }
     renumber();
@@ -1427,7 +1612,75 @@ POPUP_JS = """
   });
   document.getElementById('pubclose').addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) close(); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!absModal.hidden) closeAbs(); else if (!modal.hidden) close();
+  });
+
+  // ---- abstract window: text is fetched live from Europe PMC / PubMed on click,
+  // ---- never stored on this site
+  const absModal = document.getElementById('absmodal');
+  const absBody = document.getElementById('absbody');
+  const absMeta = document.getElementById('absmeta');
+  const absFoot = document.getElementById('absfoot');
+  function closeAbs() { absModal.hidden = true; }
+  document.getElementById('absclose').addEventListener('click', closeAbs);
+  absModal.addEventListener('click', e => { if (e.target === absModal) closeAbs(); });
+
+  function renderParts(parts) {
+    absBody.innerHTML = '';
+    for (const p of parts) {
+      if (p.label) { const l = document.createElement('span'); l.className = 'lbl'; l.textContent = p.label; absBody.appendChild(l); }
+      const para = document.createElement('p'); para.textContent = p.text; absBody.appendChild(para);
+    }
+  }
+  async function fromEuropePmc(pmid) {
+    const r = await fetch(`https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:${pmid}%20AND%20SRC:MED&resultType=core&format=json`);
+    if (!r.ok) return null;
+    const j = await r.json();
+    const t = (((j.resultList || {}).result || [])[0] || {}).abstractText;
+    if (!t) return null;
+    // structured abstracts arrive as <h4>Label</h4><p>text</p>; parse into a detached document
+    const doc = new DOMParser().parseFromString(t, 'text/html');
+    const parts = []; let label = null;
+    doc.body.childNodes.forEach(n => {
+      if (n.nodeName === 'H4' || n.nodeName === 'H3' || n.nodeName === 'STRONG') { label = n.textContent.trim(); return; }
+      const txt = n.textContent.trim();
+      if (txt) { parts.push({ label, text: txt }); label = null; }
+    });
+    return parts.length ? parts : [{ label: null, text: doc.body.textContent.trim() }];
+  }
+  async function fromPubMed(pmid) {
+    const r = await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${pmid}&retmode=xml`);
+    if (!r.ok) return null;
+    const xml = new DOMParser().parseFromString(await r.text(), 'text/xml');
+    const parts = [...xml.querySelectorAll('Abstract AbstractText')]
+      .map(el => ({ label: el.getAttribute('Label'), text: el.textContent.trim() }))
+      .filter(p => p.text);
+    return parts.length ? parts : null;
+  }
+  async function openAbs(row) {
+    absModal.hidden = false;
+    document.getElementById('abstitle').textContent = row.title || 'Abstract';
+    absMeta.textContent = [row.year || '', POS[row.position] || ''].filter(Boolean).join(' · ');
+    absBody.innerHTML = '<p class="wait">Loading abstract…</p>';
+    const paper = row.url || (row.pmid ? `https://pubmed.ncbi.nlm.nih.gov/${row.pmid}/` : '');
+    absFoot.innerHTML =
+      (paper ? `<a href="${paper.replace(/"/g, '&quot;')}" target="_blank" rel="noopener">Open paper ↗</a>` : '<span></span>') +
+      `<span>Abstract shown live from PubMed / Europe PMC (PMID ${esc(row.pmid || '')})</span>`;
+    let parts = null;
+    try { parts = await fromEuropePmc(row.pmid); } catch (e) {}
+    if (!parts) { try { parts = await fromPubMed(row.pmid); } catch (e) {} }
+    if (parts) renderParts(parts);
+    else absBody.innerHTML = '<p class="err">Could not load the abstract right now. Use the paper link above.</p>';
+  }
+  tb.addEventListener('click', e => {
+    const a = e.target.closest('a.abslink');
+    if (!a) return;
+    e.preventDefault();
+    const tr = a.closest('tr');
+    if (tr && tr._row) openAbs(tr._row);
+  });
 
   // sorting: year (desc/asc), title (A-Z/Z-A), contribution (green -> yellow -> red first)
   tbl.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', e => {
@@ -1441,6 +1694,11 @@ POPUP_JS = """
       const rank = p => { const i = order.indexOf(p); return i < 0 ? 9 : i; };
       list.sort((a, b) => rank(a.position) - rank(b.position) || (b.year - a.year));
       th.classList.add('sorted', 'c-' + order[0]);
+    } else if (k === 'abs') {
+      // Yes first, click again for No first
+      sortState.dir = (sortState.k === k) ? -sortState.dir : 1;
+      list.sort((a, b) => ((b.abs ? 1 : 0) - (a.abs ? 1 : 0)) * sortState.dir || (b.year - a.year));
+      th.classList.add('sorted', sortState.dir === 1 ? 'asc' : 'desc');
     } else {
       sortState.dir = (sortState.k === k) ? -sortState.dir : (k === 'year' ? -1 : 1);
       if (k === 'year') list.sort((a, b) => ((a.year || 0) - (b.year || 0)) * sortState.dir);
@@ -1902,6 +2160,15 @@ def selftest() -> int:
                       {"R01Y": {"pmid": None, "checked": "2026-09-20"}})
     assert 'href="#">Publications Within The Past 5 Years? Yes</a>' in demo, \
         "whole 5-year line must be the popup link"
+    for need in ["Abstract (Yes/No)", 'class="abslink"', 'id="absmodal"', "k === 'abs'",
+                 "europepmc/webservices/rest/search"]:
+        assert need in page, f"abstract feature markup missing: {need}"
+    fx = ("<PubmedArticleSet><PubmedArticle><MedlineCitation><PMID>9</PMID><Article>"
+          "<Abstract><AbstractText>t</AbstractText></Abstract></Article></MedlineCitation>"
+          "<PubmedData><ArticleIdList><ArticleId IdType=\"doi\">10.1/X</ArticleId>"
+          "</ArticleIdList></PubmedData></PubmedArticle></PubmedArticleSet>")
+    assert _parse_pubmed_flags(fx) == {"9": {"doi": "10.1/x", "abs": True}}
+    assert _pmid_from_ids({"ids": {"pmid": "https://pubmed.ncbi.nlm.nih.gov/77"}}) == "77"
     assert ' data-pr="1"' in demo and ' data-pl="0"' in demo, "cell flags for a recent cell"
     assert 'data-hn="1"' in page and 'data-hi="1"' in page, "row flags"
     assert "Institution: Brown University" in page, "institution line"
