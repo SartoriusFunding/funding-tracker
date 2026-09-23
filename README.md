@@ -1,75 +1,64 @@
-# Biotech Department Funding Tracker
+# Biotech Department Funding Tracker (weekly, NIH-only)
 
-A self-updating ledger of new research funding awarded to biotech-adjacent
-university departments. Runs automatically every day **on GitHub's own
-servers** (GitHub Actions) and publishes a sortable, shareable table to
-GitHub Pages — no Python or software needed on your computer, ever.
+A self-updating ledger of NIH awards granted each week to biotech-adjacent
+university departments. Runs automatically **every Monday morning** on
+GitHub's servers (right after NIH RePORTER's Sunday-night refresh) and
+publishes a sortable, shareable table to GitHub Pages — no software needed
+on your computer.
 
-**Live page (after setup):** `https://sartoriusfunding.github.io/funding-tracker/`
+**Live page:** `https://sartoriusfunding.github.io/funding-tracker/`
 
 ## How it works
 
-- Column A = University, Column B = Department, and every run date becomes a
-  new column. Old columns are never touched.
-- An award appears **only on the day it is first detected** (tracked forever in
-  `data/seen_awards.json`), so nothing is ever double-counted. Days with no new
-  money show **0** — normal, since NIH RePORTER refreshes weekly.
-- Amounts are hyperlinked to their source (NIH project page, NSF award page,
-  USAspending record, or press release).
-- Amber `~` amounts are best-effort parses from press coverage (Tier 2) —
-  click through before quoting them.
-- Click any header to sort: University/Department alphabetically, date columns
-  by amount (descending first, click again for ascending). The search box
-  filters rows.
+- Columns are completed **Sunday–Saturday weeks** ("Sep 6 – Sep 12"). An
+  award lands in the week of its NIH **award-notice date**, exactly once —
+  never double-counted. Each Monday run adds the just-finished week.
+- Rows: **#** (position number that always follows the current sort/filter —
+  the visible top row is always 1), University, Department (NIH's
+  standardized name, or `--` when NIH reported none and the award matched
+  the bio keywords), and Funder (the NIH institute, e.g. *NIH (NIGMS)*).
+- Cells stack each award's amount (hyperlinked to its RePORTER project
+  page), show a ruled unlinked **= total** when there are several, and list
+  the contact **PI Name / PI Email / Institution** of the cell's largest
+  award (institution = the awardee organization NIH lists).
+- **Emails**, in order: (1) NIH's own project record — the same email the
+  "View Email" button on a project page reveals; (2) the PI's recent PubMed
+  publications (`.edu` addresses containing the PI's name); (3) `--` if
+  neither had one. Hover an email to see its source. All lookups are cached
+  in `data/pi_email_cache.json`.
+- Top-right checkboxes: **Only show rows with a PI email / a PI name / an
+  institution** — combinable; a row must satisfy every checked box. The search box filters by university, department,
+  or funder. Every column header sorts (⇅ → ▲/▼).
+- Scope: clinical/medical departments and companies (SBIR/STTR) are
+  excluded; tune the include-list and keywords in the CONFIG block at the
+  top of `funding_tracker.py`.
 
-**Sources.** Tier 1 (APIs): NIH RePORTER (the only source with real department
-names), NSF, USAspending (ARPA-H, ASPR/BARDA, USDA NIFA, DOE Office of
-Science, Army MRAA). Tier 2 (best effort): CPRIT, EurekAlert RSS, Google News
-RSS. Clinical/medical departments are excluded by the include-list at the top
-of `funding_tracker.py` — edit that config block to tune scope.
+## Setup / updating
 
-## Setup (one time, ~10 minutes, all in the browser)
+Browser-only, in the `funding-tracker` repo (account **SartoriusFunding**):
 
-Do this logged in as **SartoriusFunding** on github.com. Make sure the
-account's email address is verified first — GitHub won't run Actions on an
-unverified account.
+1. Replace `funding_tracker.py` and `.github/workflows/update.yml` with the
+   current versions (open file → pencil icon → select-all → paste → *Commit
+   directly to main*). Replace `requirements.txt` too (it's now just
+   `requests`).
+2. Actions → **Weekly funding tracker** → *Run workflow* once. The first run
+   under this version automatically clears the old daily-format data and
+   builds the most recently completed week; after that, Mondays are
+   automatic. Old-format data needs no manual deletion.
+3. Page refreshes ~1 minute after the run's green check (Ctrl+F5).
 
-1. **Create the repo.** Top-right **+** → *New repository* → name it
-   `funding-tracker` → **Public** → tick *Add a README file* → Create.
-2. **Upload the three root files.** *Add file → Upload files* → drag in
-   `funding_tracker.py`, `requirements.txt`, and this `README.md` → *Commit
-   changes* (it's fine that README gets replaced).
-3. **Add the workflow.** *Add file → Create new file* → in the name box type
-   exactly `.github/workflows/update.yml` (typing the slashes creates the
-   folders) → paste the contents of `update.yml` → *Commit changes*.
-4. **First run.** *Actions* tab → click **Daily funding tracker** in the left
-   sidebar → **Run workflow** → green *Run workflow* button. It takes ~2–3
-   minutes: it backfills the recent lookback window (NIH 10 days, NSF 14,
-   USAspending 45) into the first column and commits `data/` + `docs/`.
-   Click into the run and expand the *Run tracker* step to see per-source
-   counts.
-5. **Turn on Pages.** Settings → Pages → Source: *Deploy from a branch* →
-   Branch: `main`, Folder: `/docs` → Save. (Do this *after* step 4 — the
-   `/docs` folder only exists once the first run has committed it.)
-6. **Open the page.** After ~1 minute, visit
-   `https://sartoriusfunding.github.io/funding-tracker/` — that's the link to
-   share with colleagues.
+**Run time:** the workflow runs in two stages. Stage 1 pulls the week's
+awards and publishes the page in ~2 minutes. Stage 2 looks up emails for
+PIs never seen before (several in parallel, within NCBI's rate limit) and
+publishes again — roughly 5–10 minutes on a normal Monday. Re-running on
+the same week is quick: every PI already has a cached result, and only
+lookups that hit a transient error are retried. The log ends with
+`emails: reporter=X, pubmed=Y, none=Z`; if `reporter` sits at 0 with
+repeated endpoint errors, report that log line for a fix.
 
-From then on it runs by itself every morning at 09:17 UTC (~5:17 AM ET).
-No laptop needed.
-
-## Maintenance notes
-
-- **Keepalive:** GitHub disables scheduled workflows in public repos after 60
-  days without commits. The daily data commit normally keeps it alive; if the
-  Actions tab ever shows the schedule disabled, one click re-enables it.
-- **Tuning:** all filters (NIH department include-list, bio keywords, NSF
-  divisions, USAspending agencies, news queries) sit in the CONFIG block at
-  the top of `funding_tracker.py`. If a USAspending agency logs 0 results
-  forever, its name string likely needs adjusting there.
-- **Resilience:** every source is wrapped independently — one failing (Tier-2
-  scrapers especially) never blocks the rest.
-- **Testing:** `python funding_tracker.py --selftest` runs an offline
-  simulation (dedup, column preservation, rendering) with no network — only
-  needed if you edit the code, and can run on any machine with Python (e.g.
-  your personal laptop).
+**Notes:** the RePORTER project-info endpoint used for emails is
+undocumented — if NIH changes it, the run logs it and PubMed carries on.
+Weekly commits keep the schedule alive (GitHub disables schedules only
+after 60 days with no commits). Optional: a free NCBI API key as an Actions
+secret `NCBI_API_KEY` speeds the PubMed fallback. Offline test:
+`python funding_tracker.py --selftest`.
