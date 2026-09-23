@@ -1274,8 +1274,8 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
         pub_line = (f'<a class="publink" data-pub="{slug}" href="#">'
                     f'Publication Linked To Grant</a>')
     elif kind == "recent":
-        pub_line = (f'Publications Within The Past 5 Years? '
-                    f'<a class="publink" data-pub="{slug}" href="#">Yes</a>'
+        pub_line = (f'<a class="publink" data-pub="{slug}" href="#">'
+                    f'Publications Within The Past 5 Years? Yes</a>'
                     + (' <span class="unc" title="name match uncertain - check '
                        'affiliations in the popup">?</span>' if match == "uncertain" else ""))
     elif kind == "none":
@@ -1284,7 +1284,13 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
         pub_line = '<span class="pend">Publications: not checked yet</span>'
     lines += (f'<div class="pib">PI Name: {pi_name}<br>PI Email: {pi_mail}'
               f'<br>Institution: {inst}<br>{pub_line}</div>')
-    return f'<td data-v="{total}">{lines}</td>'
+    # per-cell flags: the checkboxes and the count apply to the selected week
+    flags = (f' data-he="{1 if email else 0}"'
+             f' data-hn="{1 if (top.get("pi") or "").strip() else 0}"'
+             f' data-hi="{1 if institution.strip() else 0}"'
+             f' data-pl="{1 if kind == "linked" else 0}"'
+             f' data-pr="{1 if kind == "recent" else 0}"')
+    return f'<td data-v="{total}"{flags}>{lines}</td>'
 
 
 POPUP_CSS = """
@@ -1482,22 +1488,11 @@ def render_html(data, pubs=None, linked=None) -> str:
 
     body = []
     for i, r in enumerate(rows, start=1):
-        all_entries = [e for v in r["cells"].values() for e in v]
-        has_email = any(e.get("pi_email") for e in all_entries)
-        has_name = any((e.get("pi") or "").strip() for e in all_entries)
-        has_inst = bool((r.get("university") or "").strip())
-        statuses = [_pub_status(max(v, key=lambda e: e["amount"]),
-                                r.get("university", ""), pubs, linked)[0]
-                    for v in r["cells"].values() if v]
-        has_linked = "linked" in statuses
-        has_recent = "recent" in statuses
         cells = "".join(_cell_html(r["cells"].get(w, []), r.get("university", ""),
                                    pubs, linked)
                         for w in weeks)
         body.append(
-            f'<tr data-he="{1 if has_email else 0}" data-hn="{1 if has_name else 0}" '
-            f'data-hi="{1 if has_inst else 0}" data-pl="{1 if has_linked else 0}" '
-            f'data-pr="{1 if has_recent else 0}">'
+            "<tr>"
             f'<td class="rownum">{i}</td>'
             f'<td class="uni">{html_lib.escape(r["university"])}</td>'
             f'<td class="dept">{html_lib.escape(r["department"])}</td>'
@@ -1539,6 +1534,7 @@ a:hover {{ border-bottom-color:var(--grow); }}
 .colcount {{ margin-top:10px; padding-top:8px; font-size:13px; color:var(--mut);
   border-top:1px solid var(--line); }}
 .colcount b {{ color:var(--ink); font-variant-numeric:tabular-nums; }}
+.colhint {{ font-size:11.5px; color:var(--mut); margin-top:3px; }}
 .emailchk input {{ width:15px; height:15px; accent-color:var(--grow);
   cursor:pointer; }}
 .controls {{ display:flex; gap:16px; align-items:center; flex-wrap:wrap;
@@ -1609,7 +1605,9 @@ a:hover {{ border-bottom-color:var(--grow); }}
       Only rows with publication linked to grant</label>
     <label class="emailchk"><input type="checkbox" id="onlyrecent">
       Only rows with publications within the last 5 years</label>
-    <div class="colcount">Total Count For Column = <b id="colcount">0</b></div>
+    <div class="colcount">Total Count For Column = <b id="colcount">0</b>
+      <div class="colhint">Checkboxes and count apply to the highlighted week
+        &mdash; click a week header to switch</div></div>
   </div>
 </div>
 
@@ -1679,18 +1677,21 @@ function updateCount() {{
   countEl.textContent = n.toLocaleString('en-US');
 }}
 function applyFilter() {{
+  // every checkbox is evaluated against the SELECTED (highlighted) week column
   const v = q.value.toLowerCase();
+  const sel = ths.findIndex(h => h.classList.contains('sel'));
+  const anyPub = onlyLinked.checked || onlyRecent.checked;
   [...tbody.rows].forEach(r => {{
     const hay = (r.cells[1].innerText + ' ' + r.cells[2].innerText + ' '
                  + r.cells[3].innerText).toLowerCase();
+    const c = sel >= 0 ? r.cells[sel] : null;
+    const has = k => !!c && c.dataset[k] === '1';
     const ok = hay.includes(v)
-      && (!only.checked || r.dataset.he === '1')
-      && (!onlyName.checked || r.dataset.hn === '1')
-      && (!onlyInst.checked || r.dataset.hi === '1')
-      // the two publication boxes combine as OR: checking both widens the set
-      && (!(onlyLinked.checked || onlyRecent.checked)
-          || (onlyLinked.checked && r.dataset.pl === '1')
-          || (onlyRecent.checked && r.dataset.pr === '1'));
+      && (!only.checked || has('he'))
+      && (!onlyName.checked || has('hn'))
+      && (!onlyInst.checked || has('hi'))
+      // linked + recent combine as OR, so both boxes = linked count + recent count
+      && (!anyPub || (onlyLinked.checked && has('pl')) || (onlyRecent.checked && has('pr')));
     r.style.display = ok ? '' : 'none';
   }});
   renumber();
@@ -1720,7 +1721,7 @@ ths.forEach((th, i) => {{
     }});
     rows.forEach(r => tbody.appendChild(r));
     renumber();
-    updateCount();
+    if (num) applyFilter(); else updateCount();
   }});
 }});
 q.addEventListener('input', applyFilter);
@@ -1729,7 +1730,7 @@ onlyName.addEventListener('change', applyFilter);
 onlyInst.addEventListener('change', applyFilter);
 onlyLinked.addEventListener('change', applyFilter);
 onlyRecent.addEventListener('change', applyFilter);
-updateCount();
+applyFilter();
 {POPUP_JS}
 </script>
 </body></html>"""
@@ -1887,8 +1888,21 @@ def selftest() -> int:
              if re.match(r"^(table|th|td|tr)[\s,{:.\[]", ln.strip())]
     assert not leaks, f"unscoped table CSS would leak into the popup: {leaks}"
     js = page.split("<script>")[1]
-    assert "!(onlyLinked.checked || onlyRecent.checked)" in js, \
+    assert "(onlyLinked.checked && has('pl')) || (onlyRecent.checked && has('pr'))" in js, \
         "the two publication filters must combine as OR"
+    assert "ths.findIndex(h => h.classList.contains('sel'))" in js.split("function applyFilter")[1], \
+        "filters must be evaluated against the selected week column"
+    assert "<tr data-he=" not in page and ' data-pl="' in page.split("<tbody>")[1] \
+        and ' data-he="1"' in page, "flags must live on cells, not rows"
+    demo = _cell_html([{"amount": 1, "label": "$1", "url": "u", "pi": "Amy New",
+                        "pi_email": "", "core": "R01Y"}], "Tufts University",
+                      {"amy new|tufts university": {"match": "exact", "rows": [
+                          {"year": 2024, "position": "first", "title": "R", "url": ""}],
+                          "checked": "2026-09-20"}},
+                      {"R01Y": {"pmid": None, "checked": "2026-09-20"}})
+    assert 'href="#">Publications Within The Past 5 Years? Yes</a>' in demo, \
+        "whole 5-year line must be the popup link"
+    assert ' data-pr="1"' in demo and ' data-pl="0"' in demo, "cell flags for a recent cell"
     assert 'data-hn="1"' in page and 'data-hi="1"' in page, "row flags"
     assert "Institution: Brown University" in page, "institution line"
     assert "onlyName.checked" in page and "onlyInst.checked" in page, "combined filter"
