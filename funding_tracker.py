@@ -195,7 +195,9 @@ def wlabel(week_start_iso: str) -> str:
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 EMAIL_EDU_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.edu\b", re.I)
 AFFIL_STOP = {"university", "of", "the", "at", "and", "a", "an", "in", "for",
-              "system"}
+              "system", "medical", "college", "school", "institute", "center",
+              "centre", "hospital", "health", "sciences", "science",
+              "research", "graduate", "state"}
 
 
 def _walk_for_email(obj, require_pi=True):
@@ -272,19 +274,31 @@ class ReporterEmailSource:
 
 
 def _uni_affil_terms(university: str) -> str:
+    """One distinctive token, e.g. 'Vanderbilt University Medical Center' ->
+    Vanderbilt. Stitching two non-adjacent words into a quoted phrase (the
+    old behaviour) never matched real affiliation strings."""
     toks = [w for w in re.split(r"[^A-Za-z]+", university)
-            if w and w.lower() not in AFFIL_STOP]
-    return f'"{" ".join(toks[:2])}"' if toks else ""
+            if w and w.lower() not in AFFIL_STOP and len(w) > 2]
+    if not toks:
+        toks = [w for w in re.split(r"[^A-Za-z]+", university)
+                if w and w.lower() not in {"of", "the", "at", "and"}]
+    return toks[0] if toks else ""
 
 
 def _plausible_own_email(email: str, first: str, last: str) -> bool:
+    """Accept jane_big@, jbig@, big@, bigj@, j.big@ - reject co-authors."""
     lp = email.split("@")[0].lower()
     last_l = re.sub(r"[^a-z]", "", last.lower())
-    fi = first[:1].lower()
-    return bool(last_l) and (
-        last_l[:5] in lp
-        or (fi and lp.startswith(fi) and last_l[:4] in lp)
-    )
+    fi = re.sub(r"[^a-z]", "", first.lower())[:1]
+    if not last_l:
+        return False
+    if len(last_l) >= 4 and last_l[:4] in lp:
+        return True
+    if len(last_l) == 3 and (lp.startswith(last_l) or lp.endswith(last_l)):
+        return True
+    if fi and lp.startswith(fi) and len(last_l) >= 3 and last_l[:3] in lp:
+        return True
+    return False
 
 
 def _extract_edu_email(xml_text: str, first: str, last: str) -> str:
@@ -318,37 +332,47 @@ def _ncbi_get(url: str, params: dict):
     return r
 
 
-def _pubmed_email(first: str, last: str, university: str, stats: dict):
+def _pubmed_email(first: str, last: str, university: str, stats: dict,
+                  verbose: bool = False):
     """Return an email str, '' for a clean no-hit, or None on transient error
     (None is never cached, so the PI is retried next run)."""
     base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
     common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
     if NCBI_API_KEY:
         common["api_key"] = NCBI_API_KEY
-    q = f"{last} {first[:1]}[Author]"
-    terms = _uni_affil_terms(university)
-    if terms:
-        q += f" AND {terms}[Affiliation]"
+    author = f"{last} {first[:1]}[Author]"
+    term = _uni_affil_terms(university)
+    queries = ([f"{author} AND {term}[Affiliation]"] if term else []) + [author]
     try:
-        stats["net"] = stats.get("net", 0) + 1
-        r = _ncbi_get(base + "esearch.fcgi",
-                      dict(common, term=q, retmax="8", retmode="json",
-                           reldate="4000", datetype="pdat"))
-        time.sleep(EMAIL_SLEEP)
-        ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
-        if not ids:
-            return ""
-        r2 = _ncbi_get(base + "efetch.fcgi",
-                       dict(common, id=",".join(ids), retmode="xml"))
-        time.sleep(EMAIL_SLEEP)
-        return _extract_edu_email(r2.text, first, last)
+        for q in queries:
+            stats["net"] = stats.get("net", 0) + 1
+            r = _ncbi_get(base + "esearch.fcgi",
+                          dict(common, term=q, retmax="10", retmode="json",
+                               reldate="4000", datetype="pdat"))
+            time.sleep(EMAIL_SLEEP)
+            ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
+            if verbose:
+                log(f"    pubmed q=[{q}] -> {len(ids)} pmid(s)")
+            if not ids:
+                continue
+            stats["net"] += 1
+            r2 = _ncbi_get(base + "efetch.fcgi",
+                           dict(common, id=",".join(ids), retmode="xml"))
+            time.sleep(EMAIL_SLEEP)
+            email = _extract_edu_email(r2.text, first, last)
+            if verbose:
+                log(f"    -> {email or 'no matching .edu email in affiliations'}")
+            if email:
+                return email
+        return ""
     except Exception as exc:
         log(f"  PubMed lookup errored for {first} {last}: {exc}")
         return None
 
 
 def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
-                    stats: dict, reporter: "ReporterEmailSource"):
+                    stats: dict, reporter: "ReporterEmailSource",
+                    verbose: bool = False):
     """Return (email, source). Cached forever; misses retried after a while."""
     key = f"{pi}|{university}".lower()
     ent = cache.get(key)
@@ -365,7 +389,7 @@ def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
     if not email:
         parts = pi.split()
         if len(parts) >= 2:
-            pm = _pubmed_email(parts[0], parts[-1], university, stats)
+            pm = _pubmed_email(parts[0], parts[-1], university, stats, verbose)
             if pm is None:  # transient error: don't cache, retry next run
                 return "", ""
             email, src = pm, "PubMed"
@@ -387,10 +411,14 @@ def sweep_pi_emails(data):
     # One-time flush (v2): earlier versions cached transient errors as
     # 45-day misses. Drop all cached misses once so those PIs get a clean
     # retry; confirmed hits are kept.
-    if (cache.get("_meta") or {}).get("v") != 2:
+    if (cache.get("_meta") or {}).get("v") != 3:
+        dropped = sum(1 for k, v in cache.items()
+                      if isinstance(v, dict) and not v.get("email"))
         cache = {k: v for k, v in cache.items()
                  if isinstance(v, dict) and v.get("email")}
-        cache["_meta"] = {"v": 2}
+        cache["_meta"] = {"v": 3}
+        if dropped:
+            log(f"cleared {dropped} cached miss(es) so they retry now")
     stats = {"net": 0, "pis": 0}
     reporter = ReporterEmailSource()
     filled = {"RePORTER": 0, "PubMed": 0}
@@ -424,8 +452,12 @@ def sweep_pi_emails(data):
                 appl = m.group(1) if m else ""
                 ck = f"{e['pi']}|{row['university']}".lower()
                 fresh = ck not in cache
+                verbose = fresh and stats["pis"] < 3  # trace the first few
+                if verbose:
+                    log(f"  lookup: {e['pi']} @ {row['university']} "
+                        f"(appl {appl or 'n/a'})")
                 em, src = lookup_pi_email(e["pi"], row["university"], appl,
-                                          cache, stats, reporter)
+                                          cache, stats, reporter, verbose)
                 if fresh:
                     stats["pis"] += 1
                 if em:
@@ -449,11 +481,12 @@ def sweep_pi_emails(data):
 # NIH fetch: awards NOTICED during the target week
 # ----------------------------------------------------------------------------
 
-def make_award(key, university, department, amount, url, funder, pi):
+def make_award(key, university, department, amount, url, funder, pi,
+               pi_email=""):
     return {
         "key": key, "university": university, "department": department,
         "funder": funder, "amount": int(amount), "url": url, "pi": pi,
-        "pi_email": "",
+        "pi_email": pi_email,
     }
 
 
@@ -471,6 +504,7 @@ def fetch_nih_week(week_start: date, week_end: date):
                 "ApplId", "ProjectNum", "ProjectTitle", "AwardAmount",
                 "Organization", "AwardNoticeDate", "ProjectDetailUrl",
                 "PrefTerms", "AgencyIcAdmin", "ContactPiName",
+                "PrincipalInvestigators",
             ],
             "limit": 500,
             "offset": offset,
@@ -479,6 +513,14 @@ def fetch_nih_week(week_start: date, week_end: date):
                          json=payload, timeout=TIMEOUT)
         r.raise_for_status()
         results = r.json().get("results", [])
+        if offset == 0 and results:
+            # One-time diagnostic: does the public API carry PI emails at all?
+            p0 = results[0]
+            pis0 = p0.get("principal_investigators") or []
+            log(f"  NIH PI object keys: "
+                f"{sorted(pis0[0].keys()) if pis0 else 'no PI array returned'}")
+            found = EMAIL_RE.findall(json.dumps(p0))
+            log(f"  emails inside the API record: {found[:2] if found else 'NONE'}")
         for p in results:
             amt = p.get("award_amount") or 0
             org = p.get("organization") or {}
@@ -503,10 +545,22 @@ def fetch_nih_week(week_start: date, week_end: date):
             appl = p.get("appl_id")
             url = p.get("project_detail_url") or \
                 f"https://reporter.nih.gov/project-details/{appl}"
+            # If the API itself carries an email, take it - free and exact.
+            api_email = ""
+            pis = p.get("principal_investigators") or []
+            for pi_obj in pis:
+                if not isinstance(pi_obj, dict):
+                    continue
+                cand = _walk_for_email(pi_obj)
+                if cand and (pi_obj.get("is_contact_pi") or not api_email):
+                    api_email = cand
+                    if pi_obj.get("is_contact_pi"):
+                        break
             awards.append(make_award(
                 key=f"NIH:{appl}", university=nice_name(name),
                 department=dept_label, amount=amt, url=url, funder=funder,
                 pi=flip_name(p.get("contact_pi_name") or ""),
+                pi_email=api_email,
             ))
         if len(results) < 500:
             break
@@ -881,7 +935,7 @@ def selftest() -> int:
     })
     orig = globals()["lookup_pi_email"]
     globals()["lookup_pi_email"] = (
-        lambda pi, uni, appl, cache, stats, rep:
+        lambda pi, uni, appl, cache, stats, rep, verbose=False:
         (("jbig@brown.edu", "RePORTER") if pi == "Jane Big" else ("", "")))
     data = sweep_pi_emails(data)
     globals()["lookup_pi_email"] = orig
@@ -890,7 +944,7 @@ def selftest() -> int:
     flushed = load_json(email_cache_path(), {})
     assert "old hit|somewhere" in flushed, "flush must keep confirmed hits"
     assert "poisoned miss|somewhere" not in flushed, "flush must drop misses"
-    assert flushed.get("_meta", {}).get("v") == 2
+    assert flushed.get("_meta", {}).get("v") == 3
 
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
