@@ -48,6 +48,7 @@
   "pmid": null
  },
  "D43TW012275": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42564188",
   "position": "unknown",
@@ -64,6 +65,7 @@
   "pmid": null
  },
  "DP1CA290563": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42523512",
   "position": "last",
@@ -76,6 +78,7 @@
   "pmid": null
  },
  "DP1DA060580": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42470641",
   "position": "last",
@@ -84,6 +87,7 @@
   "year": 2026
  },
  "DP1NS137219": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41922519",
   "position": "last",
@@ -92,6 +96,7 @@
   "year": 2026
  },
  "DP1NS149613": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42126616",
   "position": "first",
@@ -108,6 +113,7 @@
   "pmid": null
  },
  "DP2AT012795": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40985585",
   "position": "last",
@@ -120,6 +126,7 @@
   "pmid": null
  },
  "DP2CA290802": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41371624",
   "position": "last",
@@ -144,6 +151,7 @@
   "pmid": null
  },
  "DP2EB035905": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42203776",
   "position": "unknown",
@@ -152,6 +160,7 @@
   "year": 0
  },
  "DP2GM154014": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42307979",
   "position": "middle",
@@ -160,6 +169,7 @@
   "year": 2026
  },
  "DP2GM154015": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40843437",
   "position": "last",
@@ -168,6 +178,7 @@
   "year": 2025
  },
  "DP2GM154019": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42409242",
   "position": "last",
@@ -180,6 +191,7 @@
   "pmid": null
  },
  "DP2HD115158": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41292756",
   "position": "middle",
@@ -200,6 +212,7 @@
   "pmid": null
  },
  "DP2MH136390": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41648353",
   "position": "last",
@@ -208,6 +221,7 @@
   "year": 2026
  },
  "DP2MH136494": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42225982",
   "position": "last",
@@ -216,6 +230,7 @@
   "year": 2026
  },
  "DP2NS120847": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41332686",
   "position": "unknown",
@@ -236,6 +251,7 @@
   "pmid": null
  },
  "F30HL162200": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42619834",
   "position": "middle",
@@ -252,6 +268,7 @@
   "pmid": null
  },
  "F30HL178288": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42460476",
   "position": "unknown",
@@ -280,6 +297,7 @@
   "pmid": null
  },
  "F31CA288051": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41990760",
   "position": "middle",
@@ -292,6 +310,7 @@
   "pmid": null
  },
  "F31CA294904": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42551490",
   "position": "first",
@@ -300,6 +319,7 @@
   "year": 2026
  },
  "F31HL172642": {
+  "abs": false,
   "checked": "2026-09-23",
   "pmid": "42574734",
   "position": "first",
@@ -308,6 +328,7 @@
   "year": 2026
  },
  "F31HL175888": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41280031",
   "position": "middle",
@@ -344,6 +365,7 @@
   "pmid": null
  },
  "K00AG088436": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41485061",
   "position": "middle",
@@ -352,6 +374,7 @@
   "year": 2026
  },
  "K00AG095126": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41235942",
   "position": "first",
@@ -360,6 +383,7 @@
   "year": 2025
  },
  "K00CA284294": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41873855",
   "position": "middle",
@@ -368,6 +392,7 @@
   "year": 2026
  },
  "K00CA294168": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40866292",
   "position": "first",
@@ -376,6 +401,7 @@
   "year": 2025
  },
  "K00CA305585": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42040940",
   "position": "first",
@@ -392,6 +418,7 @@
   "pmid": null
  },
  "K01AG081455": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42461505",
   "position": "last",
@@ -400,6 +427,7 @@
   "year": 2026
  },
  "K01AG083115": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42212445",
   "position": "middle",
@@ -420,6 +448,7 @@
   "pmid": null
  },
  "K01AT012495": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40718762",
   "position": "first",
@@ -428,6 +457,7 @@
   "year": 2024
  },
  "K01CA279490": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42559320",
   "position": "first",
@@ -436,6 +466,7 @@
   "year": 2026
  },
  "K01DK133533": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41372150",
   "position": "middle",
@@ -452,6 +483,7 @@
   "pmid": null
  },
  "K01HL171795": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40161391",
   "position": "first",
@@ -460,6 +492,7 @@
   "year": 2025
  },
  "K01HL177266": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42677907",
   "position": "unknown",
@@ -472,6 +505,7 @@
   "pmid": null
  },
  "K01HL181305": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42581212",
   "position": "first",
@@ -480,6 +514,7 @@
   "year": 2026
  },
  "K01MH137518": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41300783",
   "position": "middle",
@@ -488,6 +523,7 @@
   "year": 2025
  },
  "K01NS127936": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42120752",
   "position": "last",
@@ -496,6 +532,7 @@
   "year": 2026
  },
  "K02AG088465": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42427677",
   "position": "last",
@@ -512,6 +549,7 @@
   "pmid": null
  },
  "K08CA282374": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42411381",
   "position": "last",
@@ -528,6 +566,7 @@
   "pmid": null
  },
  "K08HL177342": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41659607",
   "position": "first",
@@ -548,6 +587,7 @@
   "pmid": null
  },
  "K23AI182453": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42614579",
   "position": "last",
@@ -564,6 +604,7 @@
   "pmid": null
  },
  "K23HL161437": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40126170",
   "position": "first",
@@ -588,6 +629,7 @@
   "pmid": null
  },
  "K25CA270079": {
+  "abs": false,
   "checked": "2026-09-23",
   "pmid": "42126997",
   "position": "middle",
@@ -724,6 +766,7 @@
   "pmid": null
  },
  "P01AI165066": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42396495",
   "position": "last",
@@ -740,6 +783,7 @@
   "pmid": null
  },
  "P01CA092584": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "15225546",
   "position": "unknown",
@@ -756,6 +800,7 @@
   "pmid": null
  },
  "P01CA285250": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42314682",
   "position": "unknown",
@@ -772,6 +817,7 @@
   "pmid": null
  },
  "P20GM103440": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42730212",
   "position": "unknown",
@@ -780,6 +826,7 @@
   "year": 2026
  },
  "P20GM103447": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42723144",
   "position": "unknown",
@@ -788,6 +835,7 @@
   "year": 2026
  },
  "P20GM103475": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42646759",
   "position": "unknown",
@@ -796,6 +844,7 @@
   "year": 2026
  },
  "P20GM103476": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42651902",
   "position": "unknown",
@@ -804,6 +853,7 @@
   "year": 2026
  },
  "P20GM103499": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42725968",
   "position": "unknown",
@@ -812,6 +862,7 @@
   "year": 2026
  },
  "P20GM103506": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42730253",
   "position": "unknown",
@@ -820,6 +871,7 @@
   "year": 2025
  },
  "P20GM113131": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42677522",
   "position": "unknown",
@@ -828,6 +880,7 @@
   "year": 2026
  },
  "P20GM130418": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42597891",
   "position": "unknown",
@@ -836,6 +889,7 @@
   "year": 2026
  },
  "P20GM130457": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42725204",
   "position": "unknown",
@@ -848,6 +902,7 @@
   "pmid": null
  },
  "P30AR083854": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42612870",
   "position": "unknown",
@@ -856,6 +911,7 @@
   "year": 2026
  },
  "P30CA016672": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "22511276",
   "position": "unknown",
@@ -864,6 +920,7 @@
   "year": 2012
  },
  "P30CA068485": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42677778",
   "position": "unknown",
@@ -872,6 +929,7 @@
   "year": 2026
  },
  "P30CA071789": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42596913",
   "position": "unknown",
@@ -880,6 +938,7 @@
   "year": 2026
  },
  "P30EY003790": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42699245",
   "position": "unknown",
@@ -892,6 +951,7 @@
   "pmid": null
  },
  "P30GM124166": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42677922",
   "position": "unknown",
@@ -900,6 +960,7 @@
   "year": 2026
  },
  "P30GM124169": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42725982",
   "position": "unknown",
@@ -908,6 +969,7 @@
   "year": 2026
  },
  "P30GM145765": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42424096",
   "position": "unknown",
@@ -916,6 +978,7 @@
   "year": 2026
  },
  "P30GM154593": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41004191",
   "position": "unknown",
@@ -924,6 +987,7 @@
   "year": 2025
  },
  "P50AA022537": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42497236",
   "position": "unknown",
@@ -932,6 +996,7 @@
   "year": 2026
  },
  "P50HD118708": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41555826",
   "position": "unknown",
@@ -948,6 +1013,7 @@
   "pmid": null
  },
  "P60AA026112": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41429291",
   "position": "unknown",
@@ -956,6 +1022,7 @@
   "year": 2025
  },
  "R00AA030808": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42704308",
   "position": "middle",
@@ -964,6 +1031,7 @@
   "year": 2026
  },
  "R00AG078499": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41818367",
   "position": "first",
@@ -972,6 +1040,7 @@
   "year": 2026
  },
  "R00AG087723": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42454485",
   "position": "first",
@@ -980,6 +1049,7 @@
   "year": 2026
  },
  "R00AG088361": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41636453",
   "position": "middle",
@@ -988,6 +1058,7 @@
   "year": 2026
  },
  "R00AI187730": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42465452",
   "position": "unknown",
@@ -996,6 +1067,7 @@
   "year": 2026
  },
  "R00AR082956": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41413035",
   "position": "first",
@@ -1004,6 +1076,7 @@
   "year": 2025
  },
  "R00CA267180": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42638483",
   "position": "last",
@@ -1012,6 +1085,7 @@
   "year": 2026
  },
  "R00CA270282": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39554045",
   "position": "first",
@@ -1020,6 +1094,7 @@
   "year": 2024
  },
  "R00CA273523": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41362255",
   "position": "middle",
@@ -1028,6 +1103,7 @@
   "year": 2025
  },
  "R00CA279648": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39779848",
   "position": "first",
@@ -1036,6 +1112,7 @@
   "year": 2025
  },
  "R00CA300924": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41503071",
   "position": "first",
@@ -1044,6 +1121,7 @@
   "year": 2025
  },
  "R00DE033794": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41459732",
   "position": "middle",
@@ -1052,6 +1130,7 @@
   "year": 2025
  },
  "R00EY031373": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41856808",
   "position": "middle",
@@ -1060,6 +1139,7 @@
   "year": 2026
  },
  "R00GM141319": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41763206",
   "position": "middle",
@@ -1068,6 +1148,7 @@
   "year": 2026
  },
  "R00GM149757": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40768359",
   "position": "first",
@@ -1076,6 +1157,7 @@
   "year": 2025
  },
  "R00GM152794": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42103704",
   "position": "middle",
@@ -1084,6 +1166,7 @@
   "year": 2026
  },
  "R00HD111574": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40701392",
   "position": "first",
@@ -1092,6 +1175,7 @@
   "year": 2025
  },
  "R00HD112543": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42448565",
   "position": "first",
@@ -1108,6 +1192,7 @@
   "pmid": null
  },
  "R00HD115785": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40915529",
   "position": "first",
@@ -1116,6 +1201,7 @@
   "year": 2025
  },
  "R00HD115836": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41779453",
   "position": "first",
@@ -1124,6 +1210,7 @@
   "year": 2026
  },
  "R00HG013129": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40169572",
   "position": "middle",
@@ -1132,6 +1219,7 @@
   "year": 2025
  },
  "R00HL163412": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40401373",
   "position": "unknown",
@@ -1140,6 +1228,7 @@
   "year": 2025
  },
  "R00HL173688": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41824555",
   "position": "first",
@@ -1148,6 +1237,7 @@
   "year": 2026
  },
  "R00MH133912": {
+  "abs": false,
   "checked": "2026-09-23",
   "pmid": "42634379",
   "position": "last",
@@ -1160,6 +1250,7 @@
   "pmid": null
  },
  "R01AA030786": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39595694",
   "position": "middle",
@@ -1184,6 +1275,7 @@
   "pmid": null
  },
  "R01AG056130": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41588135",
   "position": "unknown",
@@ -1192,6 +1284,7 @@
   "year": 2026
  },
  "R01AG070881": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "37497618",
   "position": "last",
@@ -1200,6 +1293,7 @@
   "year": 2023
  },
  "R01AG077627": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42440956",
   "position": "last",
@@ -1208,6 +1302,7 @@
   "year": 2025
  },
  "R01AG079303": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41905475",
   "position": "unknown",
@@ -1216,6 +1311,7 @@
   "year": 2026
  },
  "R01AG079946": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42245791",
   "position": "last",
@@ -1232,6 +1328,7 @@
   "pmid": null
  },
  "R01AG083206": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41857244",
   "position": "last",
@@ -1240,6 +1337,7 @@
   "year": 2026
  },
  "R01AG083801": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40771537",
   "position": "unknown",
@@ -1248,6 +1346,7 @@
   "year": 2025
  },
  "R01AG083937": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42704189",
   "position": "last",
@@ -1280,6 +1379,7 @@
   "pmid": null
  },
  "R01AI127465": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40600052",
   "position": "unknown",
@@ -1288,6 +1388,7 @@
   "year": 2025
  },
  "R01AI150322": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42523129",
   "position": "unknown",
@@ -1296,6 +1397,7 @@
   "year": 2026
  },
  "R01AI155170": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41540012",
   "position": "last",
@@ -1304,6 +1406,7 @@
   "year": 2026
  },
  "R01AI166537": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41066371",
   "position": "last",
@@ -1312,6 +1415,7 @@
   "year": 2025
  },
  "R01AI173039": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "37918513",
   "position": "last",
@@ -1324,6 +1428,7 @@
   "pmid": null
  },
  "R01AI182159": {
+  "abs": false,
   "checked": "2026-09-23",
   "pmid": "42735222",
   "position": "middle",
@@ -1332,6 +1437,7 @@
   "year": 2026
  },
  "R01AI184285": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41776101",
   "position": "unknown",
@@ -1344,6 +1450,7 @@
   "pmid": null
  },
  "R01AI187352": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41307169",
   "position": "middle",
@@ -1404,6 +1511,7 @@
   "pmid": null
  },
  "R01AI203665": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41888147",
   "position": "middle",
@@ -1416,6 +1524,7 @@
   "pmid": null
  },
  "R01AR069503": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42128285",
   "position": "middle",
@@ -1424,6 +1533,7 @@
   "year": 2026
  },
  "R01AR080310": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42539015",
   "position": "first",
@@ -1432,6 +1542,7 @@
   "year": 2026
  },
  "R01AR080707": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42338420",
   "position": "middle",
@@ -1444,6 +1555,7 @@
   "pmid": null
  },
  "R01AR084525": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41916428",
   "position": "last",
@@ -1452,6 +1564,7 @@
   "year": 2026
  },
  "R01AR085137": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42620708",
   "position": "middle",
@@ -1480,6 +1593,7 @@
   "pmid": null
  },
  "R01AT012826": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41527363",
   "position": "unknown",
@@ -1504,6 +1618,7 @@
   "pmid": null
  },
  "R01CA142746": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42540203",
   "position": "last",
@@ -1512,6 +1627,7 @@
   "year": 2026
  },
  "R01CA193481": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40913457",
   "position": "middle",
@@ -1520,6 +1636,7 @@
   "year": 2025
  },
  "R01CA217251": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "35947641",
   "position": "last",
@@ -1528,6 +1645,7 @@
   "year": 2022
  },
  "R01CA226833": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42720181",
   "position": "unknown",
@@ -1536,6 +1654,7 @@
   "year": 2026
  },
  "R01CA255116": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41806833",
   "position": "middle",
@@ -1544,6 +1663,7 @@
   "year": 2026
  },
  "R01CA256285": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41146202",
   "position": "first",
@@ -1552,6 +1672,7 @@
   "year": 2025
  },
  "R01CA257926": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42522908",
   "position": "last",
@@ -1560,6 +1681,7 @@
   "year": 2026
  },
  "R01CA269568": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42367819",
   "position": "last",
@@ -1568,6 +1690,7 @@
   "year": 2026
  },
  "R01CA272906": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42567470",
   "position": "unknown",
@@ -1576,6 +1699,7 @@
   "year": 2026
  },
  "R01CA275005": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42412914",
   "position": "unknown",
@@ -1584,6 +1708,7 @@
   "year": 2026
  },
  "R01CA276134": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41141366",
   "position": "last",
@@ -1592,6 +1717,7 @@
   "year": 2025
  },
  "R01CA276392": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42696582",
   "position": "middle",
@@ -1600,6 +1726,7 @@
   "year": 2026
  },
  "R01CA278100": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42595792",
   "position": "last",
@@ -1612,6 +1739,7 @@
   "pmid": null
  },
  "R01CA284268": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42477897",
   "position": "unknown",
@@ -1620,6 +1748,7 @@
   "year": 2026
  },
  "R01CA288236": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42050146",
   "position": "last",
@@ -1628,6 +1757,7 @@
   "year": 2026
  },
  "R01CA288379": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41994082",
   "position": "last",
@@ -1636,6 +1766,7 @@
   "year": 2026
  },
  "R01CA290828": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41824954",
   "position": "last",
@@ -1644,6 +1775,7 @@
   "year": 2026
  },
  "R01CA292482": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42273167",
   "position": "unknown",
@@ -1656,6 +1788,7 @@
   "pmid": null
  },
  "R01CA293942": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41047076",
   "position": "middle",
@@ -1664,6 +1797,7 @@
   "year": 2025
  },
  "R01CA297855": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42592449",
   "position": "last",
@@ -1676,6 +1810,7 @@
   "pmid": null
  },
  "R01CA299870": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42553046",
   "position": "last",
@@ -1684,6 +1819,7 @@
   "year": 2026
  },
  "R01CA300848": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42477113",
   "position": "middle",
@@ -1728,6 +1864,7 @@
   "pmid": null
  },
  "R01DC005779": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42172488",
   "position": "first",
@@ -1736,6 +1873,7 @@
   "year": 2026
  },
  "R01DC014461": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42427564",
   "position": "middle",
@@ -1768,6 +1906,7 @@
   "pmid": null
  },
  "R01DK085025": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42619926",
   "position": "last",
@@ -1776,6 +1915,7 @@
   "year": 2026
  },
  "R01DK133442": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42310695",
   "position": "unknown",
@@ -1800,6 +1940,7 @@
   "pmid": null
  },
  "R01EB031935": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42060756",
   "position": "last",
@@ -1836,6 +1977,7 @@
   "pmid": null
  },
  "R01EY003611": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42549843",
   "position": "last",
@@ -1844,6 +1986,7 @@
   "year": 2026
  },
  "R01EY005665": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42403928",
   "position": "last",
@@ -1852,6 +1995,7 @@
   "year": 2026
  },
  "R01EY011221": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40790115",
   "position": "last",
@@ -1864,6 +2008,7 @@
   "pmid": null
  },
  "R01EY022645": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39446806",
   "position": "last",
@@ -1872,6 +2017,7 @@
   "year": 2024
  },
  "R01EY026031": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42585007",
   "position": "last",
@@ -1880,6 +2026,7 @@
   "year": 2026
  },
  "R01EY030614": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42390175",
   "position": "last",
@@ -1888,6 +2035,7 @@
   "year": 2026
  },
  "R01EY032149": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41650176",
   "position": "middle",
@@ -1896,6 +2044,7 @@
   "year": 2026
  },
  "R01EY033978": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42502916",
   "position": "last",
@@ -1904,6 +2053,7 @@
   "year": 2026
  },
  "R01EY034075": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41101738",
   "position": "last",
@@ -1912,6 +2062,7 @@
   "year": 2025
  },
  "R01EY034851": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40180030",
   "position": "unknown",
@@ -1936,6 +2087,7 @@
   "pmid": null
  },
  "R01GM080203": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42239226",
   "position": "last",
@@ -1944,6 +2096,7 @@
   "year": 2026
  },
  "R01GM112108": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41495905",
   "position": "last",
@@ -1952,6 +2105,7 @@
   "year": 2025
  },
  "R01GM125924": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42221699",
   "position": "middle",
@@ -1960,6 +2114,7 @@
   "year": 2025
  },
  "R01GM126228": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42112826",
   "position": "middle",
@@ -1968,6 +2123,7 @@
   "year": 2026
  },
  "R01GM138939": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40667164",
   "position": "last",
@@ -1976,6 +2132,7 @@
   "year": 2025
  },
  "R01GM148702": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40033152",
   "position": "middle",
@@ -1984,6 +2141,7 @@
   "year": 2025
  },
  "R01GM149949": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42438379",
   "position": "last",
@@ -1992,6 +2150,7 @@
   "year": 2026
  },
  "R01GM151409": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41758951",
   "position": "last",
@@ -2000,6 +2159,7 @@
   "year": 2026
  },
  "R01GM159415": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41014640",
   "position": "last",
@@ -2016,6 +2176,7 @@
   "pmid": null
  },
  "R01HD080205": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42539284",
   "position": "first",
@@ -2024,6 +2185,7 @@
   "year": 2026
  },
  "R01HD106140": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40959995",
   "position": "last",
@@ -2032,6 +2194,7 @@
   "year": 2025
  },
  "R01HD111532": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40592757",
   "position": "last",
@@ -2044,6 +2207,7 @@
   "pmid": null
  },
  "R01HD117164": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41484562",
   "position": "first",
@@ -2116,6 +2280,7 @@
   "pmid": null
  },
  "R01HG010086": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42412836",
   "position": "middle",
@@ -2124,6 +2289,7 @@
   "year": 2026
  },
  "R01HG011649": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42539208",
   "position": "middle",
@@ -2140,6 +2306,7 @@
   "pmid": null
  },
  "R01HL121500": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42530086",
   "position": "last",
@@ -2148,6 +2315,7 @@
   "year": 2025
  },
  "R01HL122593": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41806833",
   "position": "middle",
@@ -2156,6 +2324,7 @@
   "year": 2026
  },
  "R01HL145590": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42559154",
   "position": "last",
@@ -2164,6 +2333,7 @@
   "year": 2026
  },
  "R01HL146921": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42345337",
   "position": "last",
@@ -2172,6 +2342,7 @@
   "year": 2026
  },
  "R01HL156779": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41987917",
   "position": "unknown",
@@ -2180,6 +2351,7 @@
   "year": 2026
  },
  "R01HL157256": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42289845",
   "position": "unknown",
@@ -2188,6 +2360,7 @@
   "year": 2026
  },
  "R01HL159647": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40265587",
   "position": "middle",
@@ -2196,6 +2369,7 @@
   "year": 2025
  },
  "R01HL162671": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "38237901",
   "position": "first",
@@ -2208,6 +2382,7 @@
   "pmid": null
  },
  "R01HL164446": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42030224",
   "position": "last",
@@ -2216,6 +2391,7 @@
   "year": 2026
  },
  "R01HL165343": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42438369",
   "position": "middle",
@@ -2224,6 +2400,7 @@
   "year": 2026
  },
  "R01HL168180": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40977564",
   "position": "last",
@@ -2232,6 +2409,7 @@
   "year": 2025
  },
  "R01HL168858": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41619951",
   "position": "middle",
@@ -2240,6 +2418,7 @@
   "year": 2026
  },
  "R01HL170622": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42647654",
   "position": "middle",
@@ -2248,6 +2427,7 @@
   "year": 2026
  },
  "R01HL170945": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40834879",
   "position": "unknown",
@@ -2256,6 +2436,7 @@
   "year": 2025
  },
  "R01HL171586": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42302746",
   "position": "unknown",
@@ -2264,6 +2445,7 @@
   "year": 2026
  },
  "R01HL171728": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41950645",
   "position": "middle",
@@ -2280,6 +2462,7 @@
   "pmid": null
  },
  "R01HL172293": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42301850",
   "position": "middle",
@@ -2288,6 +2471,7 @@
   "year": 2026
  },
  "R01HL172492": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42422954",
   "position": "last",
@@ -2296,6 +2480,7 @@
   "year": 2026
  },
  "R01HL172840": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41567707",
   "position": "middle",
@@ -2308,6 +2493,7 @@
   "pmid": null
  },
  "R01HL175373": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42166700",
   "position": "middle",
@@ -2316,6 +2502,7 @@
   "year": 2026
  },
  "R01HL175964": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42465433",
   "position": "unknown",
@@ -2336,6 +2523,7 @@
   "pmid": null
  },
  "R01HL176779": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41449201",
   "position": "last",
@@ -2364,6 +2552,7 @@
   "pmid": null
  },
  "R01HL179676": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42351978",
   "position": "last",
@@ -2380,6 +2569,7 @@
   "pmid": null
  },
  "R01HL180725": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42372139",
   "position": "middle",
@@ -2388,6 +2578,7 @@
   "year": 2026
  },
  "R01HL181257": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42090755",
   "position": "last",
@@ -2436,6 +2627,7 @@
   "pmid": null
  },
  "R01LM014508": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42315965",
   "position": "last",
@@ -2444,6 +2636,7 @@
   "year": 2026
  },
  "R01LM014720": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39877095",
   "position": "first",
@@ -2464,6 +2657,7 @@
   "pmid": null
  },
  "R01MH104603": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42492846",
   "position": "last",
@@ -2472,6 +2666,7 @@
   "year": 2026
  },
  "R01MH123724": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42633314",
   "position": "unknown",
@@ -2484,6 +2679,7 @@
   "pmid": null
  },
  "R01MH128279": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42190811",
   "position": "last",
@@ -2492,6 +2688,7 @@
   "year": 2026
  },
  "R01MH129285": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39222184",
   "position": "last",
@@ -2500,6 +2697,7 @@
   "year": 2024
  },
  "R01MH130675": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41162786",
   "position": "middle",
@@ -2508,6 +2706,7 @@
   "year": 2025
  },
  "R01MH130845": {
+  "abs": false,
   "checked": "2026-09-23",
   "pmid": "37680040",
   "position": "last",
@@ -2516,6 +2715,7 @@
   "year": 2023
  },
  "R01MH131507": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "37081534",
   "position": "first",
@@ -2584,6 +2784,7 @@
   "pmid": null
  },
  "R01NS079518": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41690568",
   "position": "middle",
@@ -2592,6 +2793,7 @@
   "year": 2026
  },
  "R01NS091056": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42533287",
   "position": "unknown",
@@ -2600,6 +2802,7 @@
   "year": 2026
  },
  "R01NS095799": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40558500",
   "position": "last",
@@ -2608,6 +2811,7 @@
   "year": 2025
  },
  "R01NS104194": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40198697",
   "position": "last",
@@ -2616,6 +2820,7 @@
   "year": 2025
  },
  "R01NS117101": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40132053",
   "position": "last",
@@ -2624,6 +2829,7 @@
   "year": 2025
  },
  "R01NS125298": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41604482",
   "position": "last",
@@ -2636,6 +2842,7 @@
   "pmid": null
  },
  "R01NS126183": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41609249",
   "position": "last",
@@ -2644,6 +2851,7 @@
   "year": 2026
  },
  "R01NS126654": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41833011",
   "position": "middle",
@@ -2652,6 +2860,7 @@
   "year": 2026
  },
  "R01NS128947": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41693900",
   "position": "last",
@@ -2660,6 +2869,7 @@
   "year": 2026
  },
  "R01NS129133": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42305577",
   "position": "middle",
@@ -2668,6 +2878,7 @@
   "year": 2026
  },
  "R01NS131762": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42481563",
   "position": "middle",
@@ -2680,6 +2891,7 @@
   "pmid": null
  },
  "R01NS133047": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42436221",
   "position": "unknown",
@@ -2688,6 +2900,7 @@
   "year": 2026
  },
  "R01NS134755": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41422507",
   "position": "last",
@@ -2700,6 +2913,7 @@
   "pmid": null
  },
  "R01NS137919": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42319928",
   "position": "middle",
@@ -2708,6 +2922,7 @@
   "year": 2026
  },
  "R01NS139346": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42305577",
   "position": "middle",
@@ -2716,6 +2931,7 @@
   "year": 2026
  },
  "R01NS139561": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40678737",
   "position": "last",
@@ -2724,6 +2940,7 @@
   "year": 2023
  },
  "R01NS141171": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41267909",
   "position": "last",
@@ -2736,6 +2953,7 @@
   "pmid": null
  },
  "R01NS142069": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42013854",
   "position": "unknown",
@@ -2916,6 +3134,7 @@
   "pmid": null
  },
  "R16EY037336": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42416265",
   "position": "last",
@@ -2972,6 +3191,7 @@
   "pmid": null
  },
  "R21AG093414": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40359163",
   "position": "unknown",
@@ -3076,6 +3296,7 @@
   "pmid": null
  },
  "R21EY036651": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41962164",
   "position": "first",
@@ -3232,6 +3453,7 @@
   "pmid": null
  },
  "R24GM146616": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42427874",
   "position": "first",
@@ -3240,6 +3462,7 @@
   "year": 2026
  },
  "R25CA186872": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41982198",
   "position": "unknown",
@@ -3248,6 +3471,7 @@
   "year": 2026
  },
  "R25CA244092": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41845301",
   "position": "unknown",
@@ -3260,6 +3484,7 @@
   "pmid": null
  },
  "R25CA285813": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42073515",
   "position": "unknown",
@@ -3280,6 +3505,7 @@
   "pmid": null
  },
  "R25GM150146": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41577702",
   "position": "last",
@@ -3292,6 +3518,7 @@
   "pmid": null
  },
  "R25LM014209": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40473516",
   "position": "last",
@@ -3312,6 +3539,7 @@
   "pmid": null
  },
  "R33AI180006": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39677325",
   "position": "unknown",
@@ -3320,6 +3548,7 @@
   "year": 2024
  },
  "R33CA287046": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40131046",
   "position": "last",
@@ -3328,6 +3557,7 @@
   "year": 2025
  },
  "R33CA287135": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40379646",
   "position": "last",
@@ -3336,6 +3566,7 @@
   "year": 2025
  },
  "R33CA297902": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42065235",
   "position": "last",
@@ -3344,6 +3575,7 @@
   "year": 2026
  },
  "R33CA302206": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41481462",
   "position": "middle",
@@ -3356,6 +3588,7 @@
   "pmid": null
  },
  "R33DA059924": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42337350",
   "position": "middle",
@@ -3364,6 +3597,7 @@
   "year": 2026
  },
  "R33DA060627": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41349559",
   "position": "middle",
@@ -3376,6 +3610,7 @@
   "pmid": null
  },
  "R33HL164873": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42626775",
   "position": "last",
@@ -3384,6 +3619,7 @@
   "year": 2026
  },
  "R33HL166976": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42008124",
   "position": "first",
@@ -3400,6 +3636,7 @@
   "pmid": null
  },
  "R33NS124922": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42276815",
   "position": "last",
@@ -3408,6 +3645,7 @@
   "year": 2026
  },
  "R33NS130199": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42331232",
   "position": "last",
@@ -3416,6 +3654,7 @@
   "year": 2026
  },
  "R33NS134960": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42002773",
   "position": "unknown",
@@ -3424,6 +3663,7 @@
   "year": 2026
  },
  "R33TW012608": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41248172",
   "position": "last",
@@ -3452,6 +3692,7 @@
   "pmid": null
  },
  "R35CA197569": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42301777",
   "position": "last",
@@ -3460,6 +3701,7 @@
   "year": 2026
  },
  "R35CA197589": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42062483",
   "position": "last",
@@ -3468,6 +3710,7 @@
   "year": 2026
  },
  "R35CA220430": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42697814",
   "position": "middle",
@@ -3476,6 +3719,7 @@
   "year": 2026
  },
  "R35CA253127": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42149820",
   "position": "last",
@@ -3484,6 +3728,7 @@
   "year": 2026
  },
  "R35CA263815": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41027940",
   "position": "last",
@@ -3492,6 +3737,7 @@
   "year": 2025
  },
  "R35GM118043": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41853549",
   "position": "last",
@@ -3500,6 +3746,7 @@
   "year": 2024
  },
  "R35GM122481": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42666875",
   "position": "last",
@@ -3508,6 +3755,7 @@
   "year": 2026
  },
  "R35GM126914": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42677830",
   "position": "last",
@@ -3516,6 +3764,7 @@
   "year": 2026
  },
  "R35GM127102": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41082949",
   "position": "middle",
@@ -3524,6 +3773,7 @@
   "year": 2025
  },
  "R35GM130207": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41885206",
   "position": "last",
@@ -3532,6 +3782,7 @@
   "year": 2026
  },
  "R35GM131780": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40473611",
   "position": "last",
@@ -3540,6 +3791,7 @@
   "year": 2025
  },
  "R35GM138216": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41193692",
   "position": "last",
@@ -3548,6 +3800,7 @@
   "year": 2025
  },
  "R35GM139412": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41279728",
   "position": "first",
@@ -3556,6 +3809,7 @@
   "year": 2026
  },
  "R35GM140832": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41650966",
   "position": "middle",
@@ -3564,6 +3818,7 @@
   "year": 2026
  },
  "R35GM140876": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41648339",
   "position": "last",
@@ -3572,6 +3827,7 @@
   "year": 2026
  },
  "R35GM141880": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40274265",
   "position": "last",
@@ -3580,6 +3836,7 @@
   "year": 2025
  },
  "R35GM142505": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42671073",
   "position": "last",
@@ -3588,6 +3845,7 @@
   "year": 2026
  },
  "R35GM145213": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42238766",
   "position": "last",
@@ -3596,6 +3854,7 @@
   "year": 2026
  },
  "R35GM145225": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42080842",
   "position": "middle",
@@ -3604,6 +3863,7 @@
   "year": 2026
  },
  "R35GM145249": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41861815",
   "position": "middle",
@@ -3612,6 +3872,7 @@
   "year": 2026
  },
  "R35GM146982": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42722895",
   "position": "last",
@@ -3620,6 +3881,7 @@
   "year": 2026
  },
  "R35GM148261": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42039445",
   "position": "last",
@@ -3628,6 +3890,7 @@
   "year": 2026
  },
  "R35GM149542": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42557312",
   "position": "unknown",
@@ -3636,6 +3899,7 @@
   "year": 0
  },
  "R35GM150887": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42717503",
   "position": "first",
@@ -3644,6 +3908,7 @@
   "year": 2026
  },
  "R35GM151115": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42487561",
   "position": "last",
@@ -3652,6 +3917,7 @@
   "year": 2026
  },
  "R35GM151218": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42237462",
   "position": "middle",
@@ -3660,6 +3926,7 @@
   "year": 2026
  },
  "R35GM152258": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42647631",
   "position": "unknown",
@@ -3668,6 +3935,7 @@
   "year": 0
  },
  "R35GM153190": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42711332",
   "position": "middle",
@@ -3676,6 +3944,7 @@
   "year": 2026
  },
  "R35GM158123": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42466865",
   "position": "middle",
@@ -3684,6 +3953,7 @@
   "year": 2026
  },
  "R35GM158127": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42670863",
   "position": "last",
@@ -3700,6 +3970,7 @@
   "pmid": null
  },
  "R35GM159834": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42734540",
   "position": "unknown",
@@ -3708,6 +3979,7 @@
   "year": 0
  },
  "R35GM160046": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41973624",
   "position": "last",
@@ -3716,6 +3988,7 @@
   "year": 2026
  },
  "R35GM160234": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40269155",
   "position": "last",
@@ -3796,6 +4069,7 @@
   "pmid": null
  },
  "R35HL150797": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41190427",
   "position": "last",
@@ -3804,6 +4078,7 @@
   "year": 2025
  },
  "R35NS122172": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42013861",
   "position": "last",
@@ -3812,6 +4087,7 @@
   "year": 2026
  },
  "R37CA229861": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41310231",
   "position": "last",
@@ -3820,6 +4096,7 @@
   "year": 2025
  },
  "R37CA255948": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42592330",
   "position": "last",
@@ -3828,6 +4105,7 @@
   "year": 2026
  },
  "R37CA258730": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42398842",
   "position": "last",
@@ -3836,6 +4114,7 @@
   "year": 2026
  },
  "R37CA263592": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42446663",
   "position": "last",
@@ -3844,6 +4123,7 @@
   "year": 2026
  },
  "R37CA263622": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41388172",
   "position": "first",
@@ -3860,6 +4140,7 @@
   "pmid": null
  },
  "R37NS128416": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41615417",
   "position": "first",
@@ -3868,6 +4149,7 @@
   "year": 2026
  },
  "R44NS132718": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41446508",
   "position": "first",
@@ -3876,6 +4158,7 @@
   "year": 2025
  },
  "R50CA211437": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42261582",
   "position": "middle",
@@ -3884,6 +4167,7 @@
   "year": 2026
  },
  "R50CA265359": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41522810",
   "position": "unknown",
@@ -3892,6 +4176,7 @@
   "year": 2025
  },
  "R50CA275931": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42549996",
   "position": "last",
@@ -3900,6 +4185,7 @@
   "year": 2026
  },
  "R50CA293837": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42697963",
   "position": "middle",
@@ -4028,6 +4314,7 @@
   "pmid": null
  },
  "R61CA297964": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41851019",
   "position": "last",
@@ -4064,6 +4351,7 @@
   "pmid": null
  },
  "RF1AG078170": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42498891",
   "position": "unknown",
@@ -4072,6 +4360,7 @@
   "year": 0
  },
  "RF1AG078378": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42242218",
   "position": "unknown",
@@ -4080,6 +4369,7 @@
   "year": 2026
  },
  "RF1NS074324": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42418533",
   "position": "last",
@@ -4088,6 +4378,7 @@
   "year": 2026
  },
  "RF1NS134549": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42663541",
   "position": "unknown",
@@ -4096,6 +4387,7 @@
   "year": 2026
  },
  "RF1NS135617": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42039600",
   "position": "middle",
@@ -4164,6 +4456,7 @@
   "pmid": null
  },
  "T32AI165391": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42437701",
   "position": "unknown",
@@ -4172,6 +4465,7 @@
   "year": 2026
  },
  "T32CA281953": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42301777",
   "position": "last",
@@ -4180,6 +4474,7 @@
   "year": 2026
  },
  "T32HG000047": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41838698",
   "position": "unknown",
@@ -4188,6 +4483,7 @@
   "year": 2026
  },
  "T32HG008341": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42466628",
   "position": "unknown",
@@ -4196,6 +4492,7 @@
   "year": 2026
  },
  "T32HL007446": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42511671",
   "position": "last",
@@ -4204,6 +4501,7 @@
   "year": 2026
  },
  "T32HL105349": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42514421",
   "position": "unknown",
@@ -4212,6 +4510,7 @@
   "year": 2026
  },
  "T32HL134616": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42088948",
   "position": "last",
@@ -4220,6 +4519,7 @@
   "year": 2026
  },
  "T32HL170967": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41911462",
   "position": "unknown",
@@ -4228,6 +4528,7 @@
   "year": 2026
  },
  "U01AI151801": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42233650",
   "position": "unknown",
@@ -4244,6 +4545,7 @@
   "pmid": null
  },
  "U01CA167552": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42639679",
   "position": "unknown",
@@ -4252,6 +4554,7 @@
   "year": 2026
  },
  "U01CA269181": {
+  "abs": false,
   "checked": "2026-09-23",
   "pmid": "42702506",
   "position": "last",
@@ -4260,6 +4563,7 @@
   "year": 2026
  },
  "U01CA269199": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41855436",
   "position": "middle",
@@ -4268,6 +4572,7 @@
   "year": 2026
  },
  "U01CA288325": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42061389",
   "position": "unknown",
@@ -4276,6 +4581,7 @@
   "year": 0
  },
  "U01CA290442": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42538936",
   "position": "unknown",
@@ -4308,6 +4614,7 @@
   "pmid": null
  },
  "U01EY034693": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42307183",
   "position": "middle",
@@ -4328,6 +4635,7 @@
   "pmid": null
  },
  "U01FD007695": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41377521",
   "position": "middle",
@@ -4340,6 +4648,7 @@
   "pmid": null
  },
  "U01FD008304": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41136823",
   "position": "middle",
@@ -4348,6 +4657,7 @@
   "year": 2025
  },
  "U01FD008322": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41380578",
   "position": "last",
@@ -4372,6 +4682,7 @@
   "pmid": null
  },
  "U01HG013771": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41505169",
   "position": "middle",
@@ -4380,6 +4691,7 @@
   "year": 2026
  },
  "U01NS131086": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42696589",
   "position": "middle",
@@ -4388,6 +4700,7 @@
   "year": 2026
  },
  "U01NS134348": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42539103",
   "position": "middle",
@@ -4396,6 +4709,7 @@
   "year": 2026
  },
  "U01NS137250": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42427518",
   "position": "middle",
@@ -4404,6 +4718,7 @@
   "year": 2026
  },
  "U01NS137449": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42146340",
   "position": "middle",
@@ -4416,6 +4731,7 @@
   "pmid": null
  },
  "U19AI171110": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42666664",
   "position": "unknown",
@@ -4424,6 +4740,7 @@
   "year": 2026
  },
  "U19AI171403": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42498819",
   "position": "unknown",
@@ -4432,6 +4749,7 @@
   "year": 2026
  },
  "U19AI171954": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42734511",
   "position": "unknown",
@@ -4440,6 +4758,7 @@
   "year": 0
  },
  "U19AI189168": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42339869",
   "position": "unknown",
@@ -4448,6 +4767,7 @@
   "year": 2026
  },
  "U19AI189183": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42395419",
   "position": "last",
@@ -4456,6 +4776,7 @@
   "year": 2026
  },
  "U19CA264512": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41854274",
   "position": "middle",
@@ -4464,6 +4785,7 @@
   "year": 2026
  },
  "U19NS104653": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42327124",
   "position": "unknown",
@@ -4472,6 +4794,7 @@
   "year": 2026
  },
  "U19NS132315": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39810005",
   "position": "middle",
@@ -4484,6 +4807,7 @@
   "pmid": null
  },
  "U24CA274159": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42620145",
   "position": "first",
@@ -4496,6 +4820,7 @@
   "pmid": null
  },
  "U24DA057611": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41372754",
   "position": "middle",
@@ -4508,6 +4833,7 @@
   "pmid": null
  },
  "U24HG006834": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42649465",
   "position": "unknown",
@@ -4516,6 +4842,7 @@
   "year": 2026
  },
  "U24HG007497": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42539208",
   "position": "unknown",
@@ -4524,6 +4851,7 @@
   "year": 2026
  },
  "U24HG009650": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42190545",
   "position": "unknown",
@@ -4532,6 +4860,7 @@
   "year": 2026
  },
  "U24HG011853": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42561915",
   "position": "last",
@@ -4540,6 +4869,7 @@
   "year": 2026
  },
  "U24HG012674": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42389189",
   "position": "unknown",
@@ -4548,6 +4878,7 @@
   "year": 0
  },
  "U24HL151308": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "38846726",
   "position": "middle",
@@ -4560,6 +4891,7 @@
   "pmid": null
  },
  "U24MH130919": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41676636",
   "position": "unknown",
@@ -4568,6 +4900,7 @@
   "year": 2026
  },
  "U24NS109113": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41620420",
   "position": "unknown",
@@ -4576,6 +4909,7 @@
   "year": 2026
  },
  "U54AG089334": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42474183",
   "position": "unknown",
@@ -4584,6 +4918,7 @@
   "year": 2026
  },
  "U54AR068069": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42596956",
   "position": "unknown",
@@ -4592,6 +4927,7 @@
   "year": 2026
  },
  "U54CA118623": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41543682",
   "position": "middle",
@@ -4600,6 +4936,7 @@
   "year": 2026
  },
  "U54CA132378": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42048441",
   "position": "unknown",
@@ -4608,6 +4945,7 @@
   "year": 0
  },
  "U54CA132383": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41648296",
   "position": "unknown",
@@ -4616,6 +4954,7 @@
   "year": 2026
  },
  "U54CA143728": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42489767",
   "position": "unknown",
@@ -4624,6 +4963,7 @@
   "year": 2026
  },
  "U54CA156734": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42715072",
   "position": "unknown",
@@ -4632,6 +4972,7 @@
   "year": 2026
  },
  "U54CA163071": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42633216",
   "position": "unknown",
@@ -4640,6 +4981,7 @@
   "year": 2026
  },
  "U54CA221704": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42653163",
   "position": "unknown",
@@ -4648,6 +4990,7 @@
   "year": 2026
  },
  "U54CA224070": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42698217",
   "position": "unknown",
@@ -4656,6 +4999,7 @@
   "year": 2026
  },
  "U54CA268072": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42523368",
   "position": "middle",
@@ -4664,6 +5008,7 @@
   "year": 2026
  },
  "U54CA274375": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42391037",
   "position": "unknown",
@@ -4672,6 +5017,7 @@
   "year": 2026
  },
  "U54CA274509": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42660991",
   "position": "unknown",
@@ -4680,6 +5026,7 @@
   "year": 0
  },
  "U54CA285114": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42326815",
   "position": "unknown",
@@ -4688,6 +5035,7 @@
   "year": 2026
  },
  "U54CA285116": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42653117",
   "position": "unknown",
@@ -4696,6 +5044,7 @@
   "year": 2026
  },
  "U54CA295337": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42552584",
   "position": "unknown",
@@ -4704,6 +5053,7 @@
   "year": 2026
  },
  "U54EB033664": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40489273",
   "position": "unknown",
@@ -4712,6 +5062,7 @@
   "year": 2025
  },
  "U54HD121579": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42413254",
   "position": "middle",
@@ -4724,6 +5075,7 @@
   "pmid": null
  },
  "U54MD007586": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42620269",
   "position": "middle",
@@ -4732,6 +5084,7 @@
   "year": 2026
  },
  "U54MD020892": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "36284097",
   "position": "unknown",
@@ -4744,6 +5097,7 @@
   "pmid": null
  },
  "UG1CA189809": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42048622",
   "position": "unknown",
@@ -4752,6 +5106,7 @@
   "year": 2026
  },
  "UG1CA189812": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "37339926",
   "position": "unknown",
@@ -4760,6 +5115,7 @@
   "year": 2023
  },
  "UG1CA189821": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42578969",
   "position": "unknown",
@@ -4768,6 +5124,7 @@
   "year": 2026
  },
  "UG1CA189850": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42545685",
   "position": "unknown",
@@ -4792,6 +5149,7 @@
   "pmid": null
  },
  "UG3HL179928": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41451850",
   "position": "unknown",
@@ -4804,6 +5162,7 @@
   "pmid": null
  },
  "UH3AT012547": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "39034090",
   "position": "middle",
@@ -4812,6 +5171,7 @@
   "year": 2024
  },
  "UH3CA265846": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "40939531",
   "position": "unknown",
@@ -4820,6 +5180,7 @@
   "year": 2025
  },
  "UH3CA275687": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42060693",
   "position": "middle",
@@ -4832,6 +5193,7 @@
   "pmid": null
  },
  "UH3HG013553": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42100798",
   "position": "last",
@@ -4840,6 +5202,7 @@
   "year": 2026
  },
  "UH3HL168504": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41721367",
   "position": "last",
@@ -4848,6 +5211,7 @@
   "year": 2026
  },
  "UH3NS134920": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "41716048",
   "position": "last",
@@ -4860,6 +5224,7 @@
   "pmid": null
  },
  "UM1HG010971": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42561950",
   "position": "last",
@@ -4868,6 +5233,7 @@
   "year": 2026
  },
  "UM1HG011969": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42528494",
   "position": "middle",
@@ -4876,6 +5242,7 @@
   "year": 2026
  },
  "UM1NS132253": {
+  "abs": true,
   "checked": "2026-09-23",
   "pmid": "42557444",
   "position": "unknown",
