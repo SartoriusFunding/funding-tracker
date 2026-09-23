@@ -1307,25 +1307,27 @@ POPUP_CSS = """
 .pubscroll { overflow:auto; padding:0 22px 18px; }
 #pubtable { table-layout:fixed; border-collapse:separate; border-spacing:0;
   width:100%; min-width:640px; }
-#pubtable th, #pubtable td { padding:7px 10px; border-bottom:1px solid var(--line);
-  text-align:left; font-size:13.5px; vertical-align:top; white-space:normal;
-  overflow-wrap:anywhere; position:static; }
-#pubtable th { position:sticky; top:0; background:#fff; z-index:2; font-weight:500;
-  user-select:none; white-space:nowrap; }
+#pubtable th, #pubtable td { padding:7px 10px; border-bottom:1px solid var(--grid);
+  border-right:1px solid var(--grid); text-align:left; font-size:13.5px;
+  vertical-align:top; white-space:normal; overflow-wrap:anywhere;
+  position:static; }
+#pubtable th:last-child, #pubtable td:last-child { border-right:0; }
+#pubtable th { position:sticky; top:0; background:#fff; z-index:2; font-weight:600;
+  user-select:none; white-space:nowrap; border-bottom:2px solid var(--gridstrong); }
 #pubtable th.sortable { cursor:pointer; }
-#pubtable th.sortable::after { content:"\21C5"; margin-left:6px; font-size:11px; color:var(--mut); }
-#pubtable th.sorted.asc::after { content:"\25B2"; color:var(--grow); }
-#pubtable th.sorted.desc::after { content:"\25BC"; color:var(--grow); }
-#pubtable th.sorted.c-first::after { content:"\25A0"; color:#A32D2D; }
-#pubtable th.sorted.c-middle::after { content:"\25A0"; color:#8A6A00; }
-#pubtable th.sorted.c-last::after { content:"\25A0"; color:#1B7A43; }
-#pubtable th::after { content:""; }
+#pubtable th.sortable .thwrap::after { content:"\u21C5"; margin-left:6px;
+  font-size:11px; color:var(--mut); }
+#pubtable th.sorted.asc .thwrap::after { content:"\u25B2"; color:var(--grow); }
+#pubtable th.sorted.desc .thwrap::after { content:"\u25BC"; color:var(--grow); }
+#pubtable th.sorted.c-first .thwrap::after { content:"\u25A0"; color:#A32D2D; }
+#pubtable th.sorted.c-middle .thwrap::after { content:"\u25A0"; color:#8A6A00; }
+#pubtable th.sorted.c-last .thwrap::after { content:"\u25A0"; color:#1B7A43; }
 #pubtable td.num { color:var(--mut); text-align:right; }
 #pubtable td.year { font-variant-numeric:tabular-nums; }
 #pubtable td.pos-first { background:#F9DAD8; color:#7A1F1F; }
 #pubtable td.pos-middle { background:#FBEFC4; color:#5C4A00; }
 #pubtable td.pos-last { background:#DCEFE2; color:#124D2B; }
-#pubtable td.pos-unknown { color:var(--mut); }
+#pubtable td.pos-unknown { background:#F1F2F4; color:#5A6068; }
 .rz { position:absolute; top:0; right:0; width:7px; height:100%; cursor:col-resize; }
 #pubtable th { position:sticky; }
 #pubtable th .thwrap { position:relative; display:block; padding-right:8px; }
@@ -1345,12 +1347,12 @@ POPUP_HTML = """
     <div class="pubscroll">
       <table id="pubtable">
         <colgroup>
-          <col style="width:52px"><col style="width:84px"><col style="width:170px"><col>
+          <col style="width:56px"><col style="width:92px"><col style="width:148px"><col>
         </colgroup>
         <thead><tr>
           <th><span class="thwrap">#<span class="rz"></span></span></th>
           <th class="sortable" data-k="year"><span class="thwrap">Year<span class="rz"></span></span></th>
-          <th class="sortable" data-k="pos"><span class="thwrap">Author Contribution<span class="rz"></span></span></th>
+          <th class="sortable" data-k="pos"><span class="thwrap">Author Order<span class="rz"></span></span></th>
           <th class="sortable" data-k="title"><span class="thwrap">Publication Title</span></th>
         </tr></thead>
         <tbody></tbody>
@@ -1484,12 +1486,18 @@ def render_html(data, pubs=None, linked=None) -> str:
         has_email = any(e.get("pi_email") for e in all_entries)
         has_name = any((e.get("pi") or "").strip() for e in all_entries)
         has_inst = bool((r.get("university") or "").strip())
+        statuses = [_pub_status(max(v, key=lambda e: e["amount"]),
+                                r.get("university", ""), pubs, linked)[0]
+                    for v in r["cells"].values() if v]
+        has_linked = "linked" in statuses
+        has_recent = "recent" in statuses
         cells = "".join(_cell_html(r["cells"].get(w, []), r.get("university", ""),
                                    pubs, linked)
                         for w in weeks)
         body.append(
             f'<tr data-he="{1 if has_email else 0}" data-hn="{1 if has_name else 0}" '
-            f'data-hi="{1 if has_inst else 0}">'
+            f'data-hi="{1 if has_inst else 0}" data-pl="{1 if has_linked else 0}" '
+            f'data-pr="{1 if has_recent else 0}">'
             f'<td class="rownum">{i}</td>'
             f'<td class="uni">{html_lib.escape(r["university"])}</td>'
             f'<td class="dept">{html_lib.escape(r["department"])}</td>'
@@ -1507,8 +1515,9 @@ def render_html(data, pubs=None, linked=None) -> str:
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {{
-  --bg:#FBFBFD; --ink:#101418; --line:#E3E6EA; --mut:#8A939C;
-  --grow:#1B7A43; --broth:#EAF6EF;
+  --bg:#FBFBFD; --ink:#101418; --line:#CDD3DA; --mut:#8A939C;
+  --grow:#1B7A43; --broth:#EAF6EF; --grid:#C3CAD2; --gridstrong:#8F98A3;
+  --caution:#A5670A;
 }}
 * {{ box-sizing:border-box; }}
 body {{ margin:0; background:var(--bg); color:var(--ink);
@@ -1527,6 +1536,9 @@ a:hover {{ border-bottom-color:var(--grow); }}
   margin-top:6px; font-size:13px; color:var(--ink); cursor:pointer;
   user-select:none; }}
 .emailchk:first-of-type {{ margin-top:9px; }}
+.colcount {{ margin-top:10px; padding-top:8px; font-size:13px; color:var(--mut);
+  border-top:1px solid var(--line); }}
+.colcount b {{ color:var(--ink); font-variant-numeric:tabular-nums; }}
 .emailchk input {{ width:15px; height:15px; accent-color:var(--grow);
   cursor:pointer; }}
 .controls {{ display:flex; gap:16px; align-items:center; flex-wrap:wrap;
@@ -1592,11 +1604,16 @@ tr:hover td {{ background:#F3F7F4; }}
       Only show rows with a PI name</label>
     <label class="emailchk"><input type="checkbox" id="onlyinst">
       Only show rows with an institution</label>
+    <label class="emailchk"><input type="checkbox" id="onlylinked">
+      Only rows with publication linked to grant</label>
+    <label class="emailchk"><input type="checkbox" id="onlyrecent">
+      Only rows with publications within the last 5 years</label>
+    <div class="colcount">Total Count For Column = <b id="colcount">0</b></div>
   </div>
 </div>
 
 <div class="controls">
-  <input id="q" type="search" placeholder="Filter by university, department or funder"
+  <input id="q" type="search" placeholder="Filter by institution, department or funder"
     aria-label="Filter rows">
   <span>The \u21C5 arrows mean a column is sortable &mdash; click to sort,
     click again to reverse</span>
@@ -1605,7 +1622,7 @@ tr:hover td {{ background:#F3F7F4; }}
 <div class="wrap"><table id="t">
 <thead><tr>
   <th>#</th>
-  <th data-t="text">University</th>
+  <th data-t="text">Institution</th>
   <th data-t="text">Department</th>
   <th data-t="text">Funder</th>
   {head_cells}
@@ -1636,6 +1653,9 @@ const q = document.getElementById('q');
 const only = document.getElementById('onlyemail');
 const onlyName = document.getElementById('onlyname');
 const onlyInst = document.getElementById('onlyinst');
+const onlyLinked = document.getElementById('onlylinked');
+const onlyRecent = document.getElementById('onlyrecent');
+const countEl = document.getElementById('colcount');
 let cur = {{ i:-1, dir:1 }};
 
 function renumber() {{
@@ -1643,6 +1663,19 @@ function renumber() {{
   [...tbody.rows].forEach(r => {{
     if (r.style.display !== 'none') r.cells[0].textContent = ++n;
   }});
+}}
+function updateCount() {{
+  // cells with funding in the currently selected week, among visible rows
+  const sel = ths.findIndex(h => h.classList.contains('sel'));
+  let n = 0;
+  if (sel >= 0) {{
+    [...tbody.rows].forEach(r => {{
+      if (r.style.display === 'none') return;
+      const c = r.cells[sel];
+      if (c && +c.dataset.v > 0) n++;
+    }});
+  }}
+  countEl.textContent = n.toLocaleString('en-US');
 }}
 function applyFilter() {{
   const v = q.value.toLowerCase();
@@ -1652,10 +1685,13 @@ function applyFilter() {{
     const ok = hay.includes(v)
       && (!only.checked || r.dataset.he === '1')
       && (!onlyName.checked || r.dataset.hn === '1')
-      && (!onlyInst.checked || r.dataset.hi === '1');
+      && (!onlyInst.checked || r.dataset.hi === '1')
+      && (!onlyLinked.checked || r.dataset.pl === '1')
+      && (!onlyRecent.checked || r.dataset.pr === '1');
     r.style.display = ok ? '' : 'none';
   }});
   renumber();
+  updateCount();
 }}
 ths.forEach((th, i) => {{
   if (i === 0) return; // the # column reflects position, it never sorts
@@ -1681,12 +1717,16 @@ ths.forEach((th, i) => {{
     }});
     rows.forEach(r => tbody.appendChild(r));
     renumber();
+    updateCount();
   }});
 }});
 q.addEventListener('input', applyFilter);
 only.addEventListener('change', applyFilter);
 onlyName.addEventListener('change', applyFilter);
 onlyInst.addEventListener('change', applyFilter);
+onlyLinked.addEventListener('change', applyFilter);
+onlyRecent.addEventListener('change', applyFilter);
+updateCount();
 {POPUP_JS}
 </script>
 </body></html>"""
@@ -1834,6 +1874,11 @@ def selftest() -> int:
     assert '<td class="rownum">1</td>' in page and '<td class="rownum">3</td>' in page
     assert 'id="onlyemail"' in page and 'data-he="1"' in page and 'data-he="0"' in page
     assert 'id="onlyname"' in page and 'id="onlyinst"' in page, "new checkboxes"
+    assert 'id="onlylinked"' in page and 'id="onlyrecent"' in page, "publication checkboxes"
+    assert 'Total Count For Column = <b id="colcount">' in page, "column count"
+    assert ">Author Order<" in page and "Author Contribution" not in page, "renamed header"
+    assert '<th data-t="text">Institution</th>' in page, "Institution column"
+    assert "\u21C5" in page and "1C5" not in page, "popup arrows must be real glyphs"
     assert 'data-hn="1"' in page and 'data-hi="1"' in page, "row flags"
     assert "Institution: Brown University" in page, "institution line"
     assert "onlyName.checked" in page and "onlyInst.checked" in page, "combined filter"
