@@ -103,6 +103,16 @@ EMAIL_RETRY_DAYS = 45
 MAX_EMAIL_LOOKUPS_PER_RUN = 900
 CACHE_VERSION = 7                 # bump ONLY to force a re-try of cached misses
 
+# --- Publications (OpenAlex) ------------------------------------------------
+OPENALEX_API_KEY = os.environ.get("OPENALEX_API_KEY", "").strip()
+OPENALEX_RATE = 5.0               # requests/sec (limit is 100/s; budget is $1/day)
+OPENALEX_WORKERS = 4
+PUBS_YEARS = 5                    # rolling window for "publications within..."
+MAX_PUBS_LOOKUPS_PER_RUN = 400    # ~2 calls each; keeps a run inside the free $1/day
+PUBS_REFRESH_DAYS = 60            # re-pull a PI's list this often (they keep publishing)
+LINKED_RECHECK_DAYS = 30          # re-ask NIH for grant-linked papers this often
+MAX_PUBS_PER_PI = 300
+
 # ----------------------------------------------------------------------------
 # Paths & session
 # ----------------------------------------------------------------------------
@@ -693,6 +703,404 @@ def sweep_pi_emails(data):
 
 
 # ----------------------------------------------------------------------------
+# Publications: grant-linked paper (NIH) or the PI's last-5-years (OpenAlex)
+# ----------------------------------------------------------------------------
+
+OA_LIMIT = _RateLimiter(OPENALEX_RATE)
+
+
+class OpenAlexBudget(Exception):
+    """Raised on HTTP 429: the daily budget (or rate) is exhausted."""
+
+
+def pubs_cache_path() -> Path:
+    return DATA_DIR / "pubs_cache.json"
+
+
+def linked_cache_path() -> Path:
+    return DATA_DIR / "linked_pubs_cache.json"
+
+
+def _slug(key: str) -> str:
+    import hashlib
+    return hashlib.sha1(key.lower().encode()).hexdigest()[:16]
+
+
+def _openalex_get(path: str, params: dict):
+    """Rate-limited GET against api.openalex.org. None on 404; raises
+    OpenAlexBudget on 429 so the sweep stops cleanly for this run."""
+    params = dict(params, api_key=OPENALEX_API_KEY)
+    for attempt, pause in enumerate((0, 3.0)):
+        if pause:
+            time.sleep(pause)
+        OA_LIMIT.wait()
+        r = _session().get("https://api.openalex.org" + path, params=params,
+                           timeout=TIMEOUT)
+        if r.status_code == 429:
+            raise OpenAlexBudget("OpenAlex returned 429 (daily budget or rate)")
+        if r.status_code == 404:
+            return None
+        if r.status_code in (500, 502, 503, 504) and attempt == 0:
+            continue
+        r.raise_for_status()
+        return r.json()
+    raise RuntimeError("OpenAlex request failed")
+
+
+# NIH abbreviates organization names; expand the common ones before matching.
+_INST_ABBREV = {
+    "univ": "university", "u": "university", "tx": "texas", "ca": "california",
+    "ny": "new york", "pa": "pennsylvania", "hlth": "health", "med": "medical",
+    "ctr": "center", "cntr": "center", "sci": "science", "scis": "sciences",
+    "coll": "college", "inst": "institute", "sch": "school", "hosp": "hospital",
+    "rsch": "research", "biomed": "biomedical", "cncr": "cancer", "can": "cancer",
+    "tech": "technology", "natl": "national", "intl": "international",
+}
+_INST_GENERIC = {
+    "university", "college", "medical", "medicine", "center", "centre",
+    "school", "of", "the", "at", "and", "in", "for", "health", "sciences",
+    "science", "institute", "hospital", "research", "state", "system",
+    "campus", "inc", "llc", "foundation", "cancer", "national", "general",
+    "graduate", "technology", "children", "childrens", "regents", "board",
+}
+
+
+def _inst_tokens(name: str):
+    """Distinctive words of an institution name, abbreviations expanded."""
+    out = []
+    for w in re.split(r"[^A-Za-z]+", name.lower()):
+        if not w:
+            continue
+        w = _INST_ABBREV.get(w, w)
+        for part in w.split():
+            if part not in _INST_GENERIC and len(part) >= 4:
+                out.append(part)
+    return out
+
+
+def _inst_score(nih_name: str, candidate_institutions) -> int:
+    """How many distinctive words of the NIH org name appear in any of the
+    candidate's affiliation names (current or past)."""
+    toks = _inst_tokens(nih_name)
+    names = " | ".join((n or "").lower() for n in candidate_institutions)
+    return sum(1 for tk in toks if tk in names)
+
+
+def _norm_name(s: str) -> str:
+    import unicodedata
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"[^a-z ]", "", s.lower()).strip()
+
+
+def _name_matches(candidate_name: str, pi: str) -> bool:
+    cand = _norm_name(candidate_name).split()
+    if not cand:
+        return False
+    for first, last in _name_forms(pi):
+        last_n = _norm_name(last).split()
+        if not last_n:
+            continue
+        # surname (possibly compound) must end the candidate's name
+        if cand[-len(last_n):] != last_n:
+            continue
+        fi = _norm_name(first)[:1]
+        if not fi or cand[0][:1] == fi:
+            return True
+    return False
+
+
+def _candidate_affiliations(c) -> list:
+    names = []
+    for a in c.get("affiliations") or []:
+        inst = (a or {}).get("institution") or {}
+        if inst.get("display_name"):
+            names.append(inst["display_name"])
+    for inst in c.get("last_known_institutions") or []:
+        if (inst or {}).get("display_name"):
+            names.append(inst["display_name"])
+    return names
+
+
+def _pick_author_profiles(pi: str, university: str, candidates):
+    """Return (author_ids, match) where match is 'exact', 'merged',
+    'uncertain' or 'none'. Name must match; institution history decides."""
+    named = [c for c in candidates if _name_matches(c.get("display_name", ""), pi)]
+    scored = [(c, _inst_score(university, _candidate_affiliations(c))) for c in named]
+    matched = [c for c, s in scored if s > 0]
+    if len(matched) == 1:
+        return [matched[0]["id"]], "exact"
+    if len(matched) > 1:
+        return [c["id"] for c in matched], "merged"  # one person split in two
+    if named:
+        best = max(named, key=lambda c: c.get("works_count", 0))
+        if best.get("works_count", 0) > 0:
+            return [best["id"]], "uncertain"
+    return [], "none"
+
+
+def _oa_id(full: str) -> str:
+    return (full or "").rsplit("/", 1)[-1]
+
+
+def _work_link(w) -> str:
+    doi = w.get("doi") or ""
+    if doi:
+        return doi if doi.startswith("http") else f"https://doi.org/{doi}"
+    loc = (w.get("primary_location") or {}) or {}
+    return loc.get("landing_page_url") or ""
+
+
+def _position_for(w, author_ids=(), pi: str = "") -> str:
+    """first / middle / last for our author on this work (by id, else by name)."""
+    ids = {_oa_id(a) for a in author_ids}
+    for au in w.get("authorships") or []:
+        aid = _oa_id(((au.get("author") or {}).get("id")) or "")
+        if ids and aid in ids:
+            return au.get("author_position") or "middle"
+    if pi:
+        for au in w.get("authorships") or []:
+            nm = ((au.get("author") or {}).get("display_name")
+                  or au.get("raw_author_name") or "")
+            if _name_matches(nm, pi):
+                return au.get("author_position") or "middle"
+    return "unknown"
+
+
+def _works_to_rows(works, author_ids, pi: str = ""):
+    rows, seen = [], set()
+    for w in works:
+        key = (w.get("doi") or w.get("id") or "").lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append({
+            "year": w.get("publication_year") or 0,
+            "position": _position_for(w, author_ids, pi),
+            "title": (w.get("title") or "").strip() or "(untitled)",
+            "url": _work_link(w),
+        })
+    rows.sort(key=lambda r: r["year"], reverse=True)
+    return rows[:MAX_PUBS_PER_PI]
+
+
+def _openalex_profile_and_works(pi: str, university: str):
+    """(match, author_ids, rows) for a PI's journal articles in the window."""
+    q = pi
+    data = _openalex_get("/authors", {
+        "search": q, "per_page": 25,
+        "select": "id,display_name,display_name_alternatives,works_count,"
+                  "affiliations,last_known_institutions",
+    })
+    candidates = (data or {}).get("results") or []
+    ids, match = _pick_author_profiles(pi, university, candidates)
+    if not ids:
+        return "none", [], []
+    since = (date.today() - timedelta(days=365 * PUBS_YEARS)).isoformat()
+    filt = (f"author.id:{'|'.join(_oa_id(i) for i in ids)},"
+            f"type:article,from_publication_date:{since}")
+    works, cursor = [], "*"
+    for _ in range(3):  # up to 300 works
+        page = _openalex_get("/works", {
+            "filter": filt, "per_page": 100, "cursor": cursor,
+            "sort": "publication_year:desc",
+            "select": "id,title,publication_year,doi,authorships,primary_location",
+        })
+        results = (page or {}).get("results") or []
+        works.extend(results)
+        cursor = ((page or {}).get("meta") or {}).get("next_cursor")
+        if not cursor or len(results) < 100:
+            break
+    return match, ids, _works_to_rows(works, ids, pi)
+
+
+def _linked_pub_details(pmid: str, pi: str):
+    """Title/year/link/position for a grant-linked PMID: OpenAlex first
+    (free single-record lookup), PubMed for title/year if OpenAlex lacks it."""
+    if OPENALEX_API_KEY:
+        try:
+            w = _openalex_get(f"/works/pmid:{pmid}", {
+                "select": "id,title,publication_year,doi,authorships,primary_location"})
+        except OpenAlexBudget:
+            raise
+        except Exception:
+            w = None
+        if w and w.get("title"):
+            return {"pmid": pmid, "title": w["title"].strip(),
+                    "year": w.get("publication_year") or 0,
+                    "url": _work_link(w), "position": _position_for(w, (), pi)}
+    # PubMed fallback: title + year only, no link (per spec)
+    try:
+        import xml.etree.ElementTree as ET
+        base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+        common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
+        if NCBI_API_KEY:
+            common["api_key"] = NCBI_API_KEY
+        r = _ncbi_get(base + "efetch.fcgi", dict(common, id=pmid, retmode="xml"))
+        root = ET.fromstring(r.text)
+        title = "".join((root.find(".//ArticleTitle") or ET.Element("x")).itertext()).strip()
+        year_el = root.find(".//PubDate/Year") or root.find(".//PubDate/MedlineDate")
+        year = int(re.search(r"\d{4}", (year_el.text if year_el is not None else "") or "0").group(0)) \
+            if year_el is not None and re.search(r"\d{4}", year_el.text or "") else 0
+        return {"pmid": pmid, "title": title or "(untitled)", "year": year,
+                "url": "", "position": "unknown"}
+    except Exception:
+        return {"pmid": pmid, "title": f"PubMed {pmid}", "year": 0,
+                "url": "", "position": "unknown"}
+
+
+def _top_entries(data):
+    """(entry, university) for the largest award in every non-empty cell."""
+    for row in data["rows"].values():
+        for entries in row["cells"].values():
+            if entries:
+                yield max(entries, key=lambda e: e["amount"]), row["university"]
+
+
+def _stale(entry: dict, days: int) -> bool:
+    try:
+        return (date.today() - date.fromisoformat(entry.get("checked", "1970-01-01"))).days >= days
+    except ValueError:
+        return True
+
+
+def sweep_publications(data):
+    """Grant-linked paper per grant (NIH), else the PI's last-5-years list
+    (OpenAlex). Cached; writes one small JSON per popup under docs/pubs."""
+    if not OPENALEX_API_KEY:
+        log("publications: OPENALEX_API_KEY not set - skipping this stage")
+        return data
+    pubs = load_json(pubs_cache_path(), {})
+    linked = load_json(linked_cache_path(), {})
+    today = date.today().isoformat()
+
+    # --- 1. grant-linked papers (batched RePORTER, free OpenAlex lookups) ---
+    core_pi = {}
+    for e, uni in _top_entries(data):
+        core = e.get("core") or ""
+        if core and (core not in linked or (not linked[core].get("pmid")
+                                            and _stale(linked[core], LINKED_RECHECK_DAYS))):
+            core_pi.setdefault(core, e.get("pi", ""))
+    if core_pi:
+        pmid_map = _batch_grant_pmids(core_pi)
+        got = 0
+        try:
+            for core, pi in core_pi.items():
+                pmids = pmid_map.get(core) or []
+                if pmids:
+                    linked[core] = dict(_linked_pub_details(pmids[0], pi), checked=today)
+                    got += 1
+                else:
+                    linked[core] = {"pmid": None, "checked": today}
+        except OpenAlexBudget as exc:
+            log(f"  {exc}; grant-linked details continue next run")
+        save_json(linked_cache_path(), linked)
+        log(f"grant-linked papers: {got} found among {len(core_pi)} grant(s) checked")
+
+    # --- 2. OpenAlex lists for PIs whose grant has no linked paper ---
+    todo, seen_keys = [], set()
+    for e, uni in _top_entries(data):
+        core = e.get("core") or ""
+        if core and (linked.get(core) or {}).get("pmid"):
+            continue  # linked paper wins; no list needed
+        if not e.get("pi"):
+            continue
+        key = f"{e['pi']}|{uni}".lower()
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        ent = pubs.get(key)
+        if ent and not _stale(ent, PUBS_REFRESH_DAYS):
+            continue
+        todo.append((key, e["pi"], uni))
+    deferred = max(len(todo) - MAX_PUBS_LOOKUPS_PER_RUN, 0)
+    todo = todo[:MAX_PUBS_LOOKUPS_PER_RUN]
+    log(f"publications: {len(todo)} PI(s) to look up on OpenAlex"
+        + (f", {deferred} deferred to next run" if deferred else ""))
+    if todo:
+        stopped = threading.Event()
+        counts = {"done": 0, "yes": 0, "no": 0, "uncertain": 0}
+
+        def work(key, pi, uni):
+            if stopped.is_set():
+                return key, None
+            try:
+                return key, _openalex_profile_and_works(pi, uni)
+            except OpenAlexBudget:
+                stopped.set()
+                return key, None
+            except Exception as exc:
+                log(f"  OpenAlex lookup failed for {pi}: {exc}")
+                return key, None
+
+        with ThreadPoolExecutor(max_workers=OPENALEX_WORKERS) as pool:
+            futures = [pool.submit(work, *item) for item in todo]
+            for fut in as_completed(futures):
+                key, res = fut.result()
+                if res is None:
+                    continue  # error or budget: not cached, retried next run
+                match, ids, rows = res
+                pubs[key] = {"match": match, "author_ids": ids, "rows": rows,
+                             "checked": today}
+                counts["done"] += 1
+                counts["yes" if rows else "no"] += 1
+                if match == "uncertain":
+                    counts["uncertain"] += 1
+                if counts["done"] % 50 == 0:
+                    log(f"  progress: {counts['done']}/{len(todo)} PIs")
+                    save_json(pubs_cache_path(), pubs)
+        if stopped.is_set():
+            log("OpenAlex daily budget reached; remaining PIs continue next run")
+        log(f"publications: {counts['done']} looked up - {counts['yes']} with "
+            f"recent papers, {counts['no']} without, {counts['uncertain']} uncertain match")
+    save_json(pubs_cache_path(), pubs)
+    return data
+
+
+def _pub_status(entry, university, pubs, linked):
+    """('linked'|'recent'|'none'|'pending', slug-or-None, match)"""
+    core = entry.get("core") or ""
+    lk = linked.get(core) if core else None
+    if lk and lk.get("pmid"):
+        return "linked", _slug(f"linked|{core}"), "exact"
+    key = f"{entry.get('pi', '')}|{university}".lower()
+    pc = pubs.get(key)
+    if pc is None:
+        return "pending", None, ""
+    if pc.get("rows"):
+        return "recent", _slug(key), pc.get("match", "")
+    return "none", None, pc.get("match", "")
+
+
+def write_pub_files(data, pubs, linked) -> int:
+    """One small JSON per popup under docs/pubs/. Returns the count."""
+    out_dir = DOCS_DIR / "pubs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    n = 0
+    written = set()
+    for e, uni in _top_entries(data):
+        kind, slug, match = _pub_status(e, uni, pubs, linked)
+        if not slug or slug in written:
+            continue
+        written.add(slug)
+        if kind == "linked":
+            lk = linked[e["core"]]
+            payload = {"pi": e.get("pi", ""), "university": uni, "linked": True,
+                       "match": "exact",
+                       "rows": [{"year": lk.get("year", 0),
+                                 "position": lk.get("position", "unknown"),
+                                 "title": lk.get("title", ""),
+                                 "url": lk.get("url", "")}]}
+        else:
+            pc = pubs[f"{e.get('pi', '')}|{uni}".lower()]
+            payload = {"pi": e.get("pi", ""), "university": uni, "linked": False,
+                       "match": pc.get("match", ""), "rows": pc.get("rows", [])}
+        (out_dir / f"{slug}.json").write_text(json.dumps(payload))
+        n += 1
+    return n
+
+
+# ----------------------------------------------------------------------------
 # NIH fetch: awards NOTICED during the target week
 # ----------------------------------------------------------------------------
 
@@ -839,7 +1247,7 @@ def ingest(awards, week_start_iso: str):
 # HTML RENDER
 # ----------------------------------------------------------------------------
 
-def _cell_html(entries, institution=""):
+def _cell_html(entries, institution="", pubs=None, linked=None):
     if not entries:
         return '<td class="zero" data-v="0">0</td>'
     total = sum(e["amount"] for e in entries)
@@ -861,12 +1269,196 @@ def _cell_html(entries, institution=""):
     else:
         pi_mail = "--"
     inst = html_lib.escape(institution.strip() or "--")
+    kind, slug, match = _pub_status(top, institution, pubs or {}, linked or {})
+    if kind == "linked":
+        pub_line = (f'<a class="publink" data-pub="{slug}" href="#">'
+                    f'Publication Linked To Grant</a>')
+    elif kind == "recent":
+        pub_line = (f'Publications Within The Past 5 Years? '
+                    f'<a class="publink" data-pub="{slug}" href="#">Yes</a>'
+                    + (' <span class="unc" title="name match uncertain - check '
+                       'affiliations in the popup">?</span>' if match == "uncertain" else ""))
+    elif kind == "none":
+        pub_line = "Publications Within The Past 5 Years? No"
+    else:
+        pub_line = '<span class="pend">Publications: not checked yet</span>'
     lines += (f'<div class="pib">PI Name: {pi_name}<br>PI Email: {pi_mail}'
-              f'<br>Institution: {inst}</div>')
+              f'<br>Institution: {inst}<br>{pub_line}</div>')
     return f'<td data-v="{total}">{lines}</td>'
 
 
-def render_html(data) -> str:
+POPUP_CSS = """
+.publink { color:var(--grow); border-bottom:1px solid #BFE0CC; cursor:pointer; }
+.pend { color:var(--mut); }
+.unc { color:var(--caution, #A5670A); font-weight:600; cursor:help; }
+#pubmodal { position:fixed; inset:0; background:rgba(16,20,24,.45); z-index:50;
+  display:flex; align-items:center; justify-content:center; padding:24px; }
+#pubmodal[hidden] { display:none; }
+.pubbox { background:#fff; color:var(--ink); border-radius:10px; width:min(1040px,100%);
+  max-height:90vh; display:flex; flex-direction:column; box-shadow:0 20px 60px rgba(0,0,0,.25); }
+.pubhead { display:flex; justify-content:space-between; align-items:flex-start;
+  gap:16px; padding:18px 22px 10px; border-bottom:1px solid var(--line); }
+.pubhead h2 { margin:0 0 4px; font-size:18px; font-weight:600; }
+.pubhead .sub { font-size:13px; color:var(--mut); }
+.pubhead .sub b { color:var(--ink); font-weight:600; }
+.pubclose { border:0; background:none; font-size:22px; line-height:1; cursor:pointer;
+  color:var(--mut); padding:2px 6px; }
+.pubclose:hover { color:var(--ink); }
+.pubscroll { overflow:auto; padding:0 22px 18px; }
+#pubtable { table-layout:fixed; border-collapse:separate; border-spacing:0;
+  width:100%; min-width:640px; }
+#pubtable th, #pubtable td { padding:7px 10px; border-bottom:1px solid var(--line);
+  text-align:left; font-size:13.5px; vertical-align:top; white-space:normal;
+  overflow-wrap:anywhere; position:static; }
+#pubtable th { position:sticky; top:0; background:#fff; z-index:2; font-weight:500;
+  user-select:none; white-space:nowrap; }
+#pubtable th.sortable { cursor:pointer; }
+#pubtable th.sortable::after { content:"\21C5"; margin-left:6px; font-size:11px; color:var(--mut); }
+#pubtable th.sorted.asc::after { content:"\25B2"; color:var(--grow); }
+#pubtable th.sorted.desc::after { content:"\25BC"; color:var(--grow); }
+#pubtable th.sorted.c-first::after { content:"\25A0"; color:#A32D2D; }
+#pubtable th.sorted.c-middle::after { content:"\25A0"; color:#8A6A00; }
+#pubtable th.sorted.c-last::after { content:"\25A0"; color:#1B7A43; }
+#pubtable th::after { content:""; }
+#pubtable td.num { color:var(--mut); text-align:right; }
+#pubtable td.year { font-variant-numeric:tabular-nums; }
+#pubtable td.pos-first { background:#F9DAD8; color:#7A1F1F; }
+#pubtable td.pos-middle { background:#FBEFC4; color:#5C4A00; }
+#pubtable td.pos-last { background:#DCEFE2; color:#124D2B; }
+#pubtable td.pos-unknown { color:var(--mut); }
+.rz { position:absolute; top:0; right:0; width:7px; height:100%; cursor:col-resize; }
+#pubtable th { position:sticky; }
+#pubtable th .thwrap { position:relative; display:block; padding-right:8px; }
+.pubempty { padding:24px; color:var(--mut); }
+"""
+
+POPUP_HTML = """
+<div id="pubmodal" hidden>
+  <div class="pubbox" role="dialog" aria-modal="true" aria-labelledby="pubtitle">
+    <div class="pubhead">
+      <div>
+        <h2 id="pubtitle">Publications</h2>
+        <div class="sub" id="pubsub"></div>
+      </div>
+      <button class="pubclose" id="pubclose" aria-label="Close">&times;</button>
+    </div>
+    <div class="pubscroll">
+      <table id="pubtable">
+        <colgroup>
+          <col style="width:52px"><col style="width:84px"><col style="width:170px"><col>
+        </colgroup>
+        <thead><tr>
+          <th><span class="thwrap">#<span class="rz"></span></span></th>
+          <th class="sortable" data-k="year"><span class="thwrap">Year<span class="rz"></span></span></th>
+          <th class="sortable" data-k="pos"><span class="thwrap">Author Contribution<span class="rz"></span></span></th>
+          <th class="sortable" data-k="title"><span class="thwrap">Publication Title</span></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pubempty" id="pubempty" hidden>No publications found.</div>
+    </div>
+  </div>
+</div>
+"""
+
+POPUP_JS = """
+// ---- publication popup ----
+(function () {
+  const modal = document.getElementById('pubmodal');
+  const tbl = document.getElementById('pubtable');
+  const tb = tbl.tBodies[0];
+  const cols = tbl.querySelectorAll('colgroup col');
+  const sub = document.getElementById('pubsub');
+  const empty = document.getElementById('pubempty');
+  const POS = { first: 'First Author', middle: 'Middle Author', last: 'Last Author', unknown: 'Unknown' };
+  const CYCLE = [['last', 'middle', 'first'], ['middle', 'first', 'last'], ['first', 'last', 'middle']];
+  let rows = [], sortState = { k: null, dir: 1, cyc: -1 };
+
+  function renumber() {
+    let n = 0;
+    [...tb.rows].forEach(r => { r.cells[0].textContent = ++n; });
+  }
+  function draw(list) {
+    tb.innerHTML = '';
+    for (const r of list) {
+      const tr = document.createElement('tr');
+      const title = r.url
+        ? `<a href="${r.url.replace(/"/g, '&quot;')}" target="_blank" rel="noopener">${esc(r.title)}</a>`
+        : esc(r.title);
+      tr.innerHTML = `<td class="num"></td><td class="year">${r.year || ''}</td>` +
+        `<td class="pos-${r.position}">${POS[r.position] || r.position}</td><td>${title}</td>`;
+      tb.appendChild(tr);
+    }
+    renumber();
+  }
+  function esc(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+  function open(slug) {
+    modal.hidden = false;
+    document.getElementById('pubtitle').textContent = 'Loading\u2026';
+    sub.textContent = ''; tb.innerHTML = ''; empty.hidden = true;
+    fetch('pubs/' + slug + '.json').then(r => r.json()).then(d => {
+      rows = d.rows || [];
+      document.getElementById('pubtitle').textContent = d.pi || 'Publications';
+      sub.innerHTML = `Publication Linked To Grant (Yes/No): <b>${d.linked ? 'Yes' : 'No'}</b>` +
+        (d.linked ? '' : ` &middot; journal articles, last 5 years &middot; <b>${rows.length}</b> found`) +
+        (d.match === 'uncertain' ? ' &middot; <b style="color:#A5670A">match uncertain</b> \u2014 verify affiliation' : '') +
+        (d.match === 'merged' ? ' &middot; merged from two OpenAlex profiles' : '');
+      sortState = { k: null, dir: 1, cyc: -1 };
+      tbl.querySelectorAll('th').forEach(h => h.className = h.className.replace(/\\bsorted\\b|\\basc\\b|\\bdesc\\b|\\bc-\\w+/g, '').trim());
+      draw(rows);
+      empty.hidden = rows.length > 0;
+    }).catch(() => {
+      document.getElementById('pubtitle').textContent = 'Could not load publications';
+    });
+  }
+  function close() { modal.hidden = true; }
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a.publink');
+    if (a) { e.preventDefault(); open(a.dataset.pub); }
+  });
+  document.getElementById('pubclose').addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) close(); });
+
+  // sorting: year (desc/asc), title (A-Z/Z-A), contribution (green -> yellow -> red first)
+  tbl.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', e => {
+    if (e.target.classList.contains('rz')) return;
+    const k = th.dataset.k;
+    tbl.querySelectorAll('th').forEach(h => h.className = h.className.replace(/\\bsorted\\b|\\basc\\b|\\bdesc\\b|\\bc-\\w+/g, '').trim());
+    let list = [...rows];
+    if (k === 'pos') {
+      sortState.cyc = (sortState.k === 'pos') ? (sortState.cyc + 1) % 3 : 0;
+      const order = CYCLE[sortState.cyc];
+      const rank = p => { const i = order.indexOf(p); return i < 0 ? 9 : i; };
+      list.sort((a, b) => rank(a.position) - rank(b.position) || (b.year - a.year));
+      th.classList.add('sorted', 'c-' + order[0]);
+    } else {
+      sortState.dir = (sortState.k === k) ? -sortState.dir : (k === 'year' ? -1 : 1);
+      if (k === 'year') list.sort((a, b) => ((a.year || 0) - (b.year || 0)) * sortState.dir);
+      else list.sort((a, b) => a.title.localeCompare(b.title) * sortState.dir);
+      th.classList.add('sorted', sortState.dir === 1 ? 'asc' : 'desc');
+    }
+    sortState.k = k;
+    draw(list);
+  }));
+
+  // manual column resizing: drag the right edge of a header
+  tbl.querySelectorAll('th .rz').forEach((h, i) => {
+    h.addEventListener('mousedown', e => {
+      e.preventDefault(); e.stopPropagation();
+      const col = cols[i], startX = e.clientX, startW = col.getBoundingClientRect().width;
+      const move = ev => { col.style.width = Math.max(40, startW + ev.clientX - startX) + 'px'; };
+      const up = () => { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
+      document.addEventListener('mousemove', move); document.addEventListener('mouseup', up);
+    });
+  });
+})();
+"""
+
+
+def render_html(data, pubs=None, linked=None) -> str:
+    pubs, linked = pubs or {}, linked or {}
     weeks = data["dates"]
     latest = weeks[-1] if weeks else None
     rows = sorted(
@@ -892,7 +1484,8 @@ def render_html(data) -> str:
         has_email = any(e.get("pi_email") for e in all_entries)
         has_name = any((e.get("pi") or "").strip() for e in all_entries)
         has_inst = bool((r.get("university") or "").strip())
-        cells = "".join(_cell_html(r["cells"].get(w, []), r.get("university", ""))
+        cells = "".join(_cell_html(r["cells"].get(w, []), r.get("university", ""),
+                                   pubs, linked)
                         for w in weeks)
         body.append(
             f'<tr data-he="{1 if has_email else 0}" data-hn="{1 if has_name else 0}" '
@@ -980,6 +1573,7 @@ td[data-v]:not(.zero) {{ background:#fff; }}
 tr:hover td {{ background:#F3F7F4; }}
 .zero {{ color:var(--mut); }}
 .legend {{ padding:12px 32px 40px; color:var(--mut); font-size:12.5px; }}
+{POPUP_CSS}
 </style></head><body>
 
 <div class="mast">
@@ -1031,6 +1625,8 @@ otherwise from the PI's recent PubMed publications (hover an email to see
 which), and -- means neither source had one yet. Row numbers always follow
 the current sort and filter. Source: NIH RePORTER (refreshes Sunday nights;
 this page updates every Monday morning).</div>
+
+{POPUP_HTML}
 
 <script>
 const table = document.getElementById('t');
@@ -1091,15 +1687,19 @@ q.addEventListener('input', applyFilter);
 only.addEventListener('change', applyFilter);
 onlyName.addEventListener('change', applyFilter);
 onlyInst.addEventListener('change', applyFilter);
+{POPUP_JS}
 </script>
 </body></html>"""
 
 
 def write_site(data) -> None:
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
-    (DOCS_DIR / "index.html").write_text(render_html(data))
+    pubs = load_json(pubs_cache_path(), {})
+    linked = load_json(linked_cache_path(), {})
+    n = write_pub_files(data, pubs, linked)
+    (DOCS_DIR / "index.html").write_text(render_html(data, pubs, linked))
     (DOCS_DIR / ".nojekyll").write_text("")
-    log(f"wrote {DOCS_DIR/'index.html'}")
+    log(f"wrote {DOCS_DIR/'index.html'} (+{n} publication popup file(s))")
 
 
 # ----------------------------------------------------------------------------
@@ -1228,7 +1828,8 @@ def selftest() -> int:
 
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
-    assert page.count("<th ") == 5, "expected 3 label ths + 2 week ths (# th has no attrs)"
+    main_head = page.split('<table id="t">')[1].split("</thead>")[0]
+    assert main_head.count("<th ") == 5, "expected 3 label ths + 2 week ths (# th has no attrs)"
     assert "Sep 6 \u2013 Sep 12" in page and "Sep 13 \u2013 Sep 19" in page
     assert '<td class="rownum">1</td>' in page and '<td class="rownum">3</td>' in page
     assert 'id="onlyemail"' in page and 'data-he="1"' in page and 'data-he="0"' in page
@@ -1264,16 +1865,21 @@ def main() -> int:
     ap.add_argument("--skip-emails", action="store_true",
                     help="update the table only; skip the PI-email sweep")
     ap.add_argument("--emails-only", action="store_true",
-                    help="skip the NIH fetch; only fill PI emails and re-render")
+                    help="skip the NIH fetch; run the enrichment stage only "
+                         "(PI emails, then publications) and re-render")
+    ap.add_argument("--skip-pubs", action="store_true",
+                    help="skip the OpenAlex publications stage")
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
     if args.skip_emails:
         ENABLE_EMAIL_LOOKUP = False
-    if args.emails_only:
+    if args.emails_only:  # the enrichment stage: emails, then publications
         data = load_json(DATA_FILE, {"dates": [], "rows": {}, "meta": {}})
         data = sweep_pi_emails(data)
+        if not args.skip_pubs:
+            data = sweep_publications(data)
         write_site(data)
         return 0
 
@@ -1283,6 +1889,8 @@ def main() -> int:
     log(f"NIH RePORTER: {len(awards)} award(s) matched filters")
     data, _ = ingest(awards, start.isoformat())
     data = sweep_pi_emails(data)
+    if ENABLE_EMAIL_LOOKUP and not args.skip_pubs:
+        data = sweep_publications(data)
     write_site(data)
     return 0
 
