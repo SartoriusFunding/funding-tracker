@@ -124,6 +124,24 @@ a:hover { border-bottom-color:var(--grow); }
 #pubtable th { position:sticky; }
 #pubtable th .thwrap { position:relative; display:block; padding-right:8px; }
 .pubempty { padding:24px; color:var(--mut); }
+#pubtable td.absc a { color:var(--grow); border-bottom:1px solid #BFE0CC; cursor:pointer; }
+#pubtable td.absc.no { color:var(--mut); }
+#absmodal { position:fixed; inset:0; background:rgba(16,20,24,.35); z-index:60;
+  display:flex; align-items:center; justify-content:center; padding:24px; }
+#absmodal[hidden] { display:none; }
+.absbox { background:#fff; color:var(--ink); border-radius:10px; width:min(760px,100%);
+  max-height:85vh; display:flex; flex-direction:column;
+  box-shadow:0 20px 60px rgba(0,0,0,.3); border:2px solid #BFE0CC; }
+.abshead { display:flex; justify-content:space-between; align-items:flex-start;
+  gap:16px; padding:16px 20px 10px; border-bottom:1px solid var(--grid); }
+.abshead h2 { margin:0 0 4px; font-size:16px; font-weight:600; line-height:1.35; }
+.abshead .sub { font-size:12.5px; color:var(--mut); }
+.absbody { overflow:auto; padding:14px 20px; font-size:14px; line-height:1.6; }
+.absbody p { margin:0 0 10px; }
+.absbody .lbl { font-weight:600; color:var(--ink); display:block; margin-top:8px; }
+.absbody .wait, .absbody .err { color:var(--mut); }
+.absfoot { padding:10px 20px 14px; border-top:1px solid var(--grid); font-size:12.5px;
+  color:var(--mut); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 
 </style></head><body>
 
@@ -131,7 +149,7 @@ a:hover { border-bottom-color:var(--grow); }
   <div>
     <h1>Biotech department funding ledger</h1>
     <div class="sub">NIH awards granted each week to biotech-adjacent
-      university departments &middot; updated 2026-09-23 22:54 UTC &middot;
+      university departments &middot; updated 2026-09-23 23:53 UTC &middot;
       796 rows &middot; 981 awards tracked</div>
   </div>
   <div class="todaybox">
@@ -992,18 +1010,32 @@ this page updates every Monday morning).</div>
     <div class="pubscroll">
       <table id="pubtable">
         <colgroup>
-          <col style="width:56px"><col style="width:92px"><col style="width:148px"><col>
+          <col style="width:56px"><col style="width:92px"><col style="width:148px"><col><col style="width:126px">
         </colgroup>
         <thead><tr>
           <th><span class="thwrap">#<span class="rz"></span></span></th>
           <th class="sortable" data-k="year"><span class="thwrap">Year<span class="rz"></span></span></th>
           <th class="sortable" data-k="pos"><span class="thwrap">Author Order<span class="rz"></span></span></th>
-          <th class="sortable" data-k="title"><span class="thwrap">Publication Title</span></th>
+          <th class="sortable" data-k="title"><span class="thwrap">Publication Title<span class="rz"></span></span></th>
+          <th class="sortable" data-k="abs"><span class="thwrap">Abstract (Yes/No)</span></th>
         </tr></thead>
         <tbody></tbody>
       </table>
       <div class="pubempty" id="pubempty" hidden>No publications found.</div>
     </div>
+  </div>
+</div>
+<div id="absmodal" hidden>
+  <div class="absbox" role="dialog" aria-modal="true" aria-labelledby="abstitle">
+    <div class="abshead">
+      <div>
+        <h2 id="abstitle">Abstract</h2>
+        <div class="sub" id="absmeta"></div>
+      </div>
+      <button class="pubclose" id="absclose" aria-label="Close">&times;</button>
+    </div>
+    <div class="absbody" id="absbody"></div>
+    <div class="absfoot" id="absfoot"></div>
   </div>
 </div>
 
@@ -1119,8 +1151,12 @@ applyFilter();
       const title = r.url
         ? `<a href="${r.url.replace(/"/g, '&quot;')}" target="_blank" rel="noopener">${esc(r.title)}</a>`
         : esc(r.title);
+      const absCell = r.abs
+        ? `<td class="absc"><a class="abslink" data-pmid="${esc(r.pmid || '')}" href="#">Yes</a></td>`
+        : `<td class="absc no">No</td>`;
       tr.innerHTML = `<td class="num"></td><td class="year">${r.year || ''}</td>` +
-        `<td class="pos-${r.position}">${POS[r.position] || r.position}</td><td>${title}</td>`;
+        `<td class="pos-${r.position}">${POS[r.position] || r.position}</td><td>${title}</td>` + absCell;
+      tr._row = r;
       tb.appendChild(tr);
     }
     renumber();
@@ -1153,7 +1189,75 @@ applyFilter();
   });
   document.getElementById('pubclose').addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) close(); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!absModal.hidden) closeAbs(); else if (!modal.hidden) close();
+  });
+
+  // ---- abstract window: text is fetched live from Europe PMC / PubMed on click,
+  // ---- never stored on this site
+  const absModal = document.getElementById('absmodal');
+  const absBody = document.getElementById('absbody');
+  const absMeta = document.getElementById('absmeta');
+  const absFoot = document.getElementById('absfoot');
+  function closeAbs() { absModal.hidden = true; }
+  document.getElementById('absclose').addEventListener('click', closeAbs);
+  absModal.addEventListener('click', e => { if (e.target === absModal) closeAbs(); });
+
+  function renderParts(parts) {
+    absBody.innerHTML = '';
+    for (const p of parts) {
+      if (p.label) { const l = document.createElement('span'); l.className = 'lbl'; l.textContent = p.label; absBody.appendChild(l); }
+      const para = document.createElement('p'); para.textContent = p.text; absBody.appendChild(para);
+    }
+  }
+  async function fromEuropePmc(pmid) {
+    const r = await fetch(`https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:${pmid}%20AND%20SRC:MED&resultType=core&format=json`);
+    if (!r.ok) return null;
+    const j = await r.json();
+    const t = (((j.resultList || {}).result || [])[0] || {}).abstractText;
+    if (!t) return null;
+    // structured abstracts arrive as <h4>Label</h4><p>text</p>; parse into a detached document
+    const doc = new DOMParser().parseFromString(t, 'text/html');
+    const parts = []; let label = null;
+    doc.body.childNodes.forEach(n => {
+      if (n.nodeName === 'H4' || n.nodeName === 'H3' || n.nodeName === 'STRONG') { label = n.textContent.trim(); return; }
+      const txt = n.textContent.trim();
+      if (txt) { parts.push({ label, text: txt }); label = null; }
+    });
+    return parts.length ? parts : [{ label: null, text: doc.body.textContent.trim() }];
+  }
+  async function fromPubMed(pmid) {
+    const r = await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${pmid}&retmode=xml`);
+    if (!r.ok) return null;
+    const xml = new DOMParser().parseFromString(await r.text(), 'text/xml');
+    const parts = [...xml.querySelectorAll('Abstract AbstractText')]
+      .map(el => ({ label: el.getAttribute('Label'), text: el.textContent.trim() }))
+      .filter(p => p.text);
+    return parts.length ? parts : null;
+  }
+  async function openAbs(row) {
+    absModal.hidden = false;
+    document.getElementById('abstitle').textContent = row.title || 'Abstract';
+    absMeta.textContent = [row.year || '', POS[row.position] || ''].filter(Boolean).join(' · ');
+    absBody.innerHTML = '<p class="wait">Loading abstract…</p>';
+    const paper = row.url || (row.pmid ? `https://pubmed.ncbi.nlm.nih.gov/${row.pmid}/` : '');
+    absFoot.innerHTML =
+      (paper ? `<a href="${paper.replace(/"/g, '&quot;')}" target="_blank" rel="noopener">Open paper ↗</a>` : '<span></span>') +
+      `<span>Abstract shown live from PubMed / Europe PMC (PMID ${esc(row.pmid || '')})</span>`;
+    let parts = null;
+    try { parts = await fromEuropePmc(row.pmid); } catch (e) {}
+    if (!parts) { try { parts = await fromPubMed(row.pmid); } catch (e) {} }
+    if (parts) renderParts(parts);
+    else absBody.innerHTML = '<p class="err">Could not load the abstract right now. Use the paper link above.</p>';
+  }
+  tb.addEventListener('click', e => {
+    const a = e.target.closest('a.abslink');
+    if (!a) return;
+    e.preventDefault();
+    const tr = a.closest('tr');
+    if (tr && tr._row) openAbs(tr._row);
+  });
 
   // sorting: year (desc/asc), title (A-Z/Z-A), contribution (green -> yellow -> red first)
   tbl.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', e => {
@@ -1167,6 +1271,11 @@ applyFilter();
       const rank = p => { const i = order.indexOf(p); return i < 0 ? 9 : i; };
       list.sort((a, b) => rank(a.position) - rank(b.position) || (b.year - a.year));
       th.classList.add('sorted', 'c-' + order[0]);
+    } else if (k === 'abs') {
+      // Yes first, click again for No first
+      sortState.dir = (sortState.k === k) ? -sortState.dir : 1;
+      list.sort((a, b) => ((b.abs ? 1 : 0) - (a.abs ? 1 : 0)) * sortState.dir || (b.year - a.year));
+      th.classList.add('sorted', sortState.dir === 1 ? 'asc' : 'desc');
     } else {
       sortState.dir = (sortState.k === k) ? -sortState.dir : (k === 'year' ? -1 : 1);
       if (k === 'year') list.sort((a, b) => ((a.year || 0) - (b.year || 0)) * sortState.dir);
