@@ -33,16 +33,18 @@ jobs:
           commit_message: "Weekly funding update"
           file_pattern: "data/* docs/*"
 
-      # Stage 2: fill in PI emails (only PIs not seen before) and publish again
-      - name: Look up PI emails
+      # Stage 2: PI emails, then publications (only PIs not seen before), publish again
+      - name: Look up PI emails and publications
         env:
-          # Optional: a free NCBI API key triples the PubMed lookup rate.
-          # Add it under Settings > Secrets and variables > Actions as NCBI_API_KEY.
+          # Free keys, stored under Settings > Secrets and variables > Actions.
+          # NCBI_API_KEY triples the PubMed lookup rate (optional).
+          # OPENALEX_API_KEY is required for the publications popup ($1/day free tier).
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
         run: python funding_tracker.py --emails-only
 
-      - name: Publish PI emails
+      - name: Publish PI emails and publications
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "PI email update"
+          commit_message: "PI email and publication update"
           file_pattern: "data/* docs/*"
