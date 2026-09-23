@@ -89,17 +89,15 @@ SCHEMA = "nih-weekly-1"  # ledger format tag; older data is reset automatically
 
 # --- PI email lookup --------------------------------------------------------
 ENABLE_EMAIL_LOOKUP = True
-# RePORTER's internal project-info service (feeds the "View Email" button on
-# project pages). Undocumented: if it errors repeatedly we stop calling it
-# for the run and rely on PubMed.
-REPORTER_INFO_URL = ("https://reporter.nih.gov/services/Projects/ProjectInfo"
-                     "?projectId={appl}")
-REPORTER_SLEEP = 0.6
-REPORTER_MAX_CONSECUTIVE_FAILS = 3
+# NOTE: RePORTER's own "View Email" button is reCAPTCHA-gated and its
+# project-info service carries no email field (verified), so PubMed /
+# Europe PMC publications are the email source.
+EUROPEPMC_SLEEP = 0.3
+MAX_PMC_FULLTEXT_PER_PI = 3  # open-access full texts to inspect per PI
 NCBI_API_KEY = os.environ.get("NCBI_API_KEY", "").strip()  # optional, free
 EMAIL_SLEEP = 0.12 if NCBI_API_KEY else 0.35
 EMAIL_RETRY_DAYS = 45
-MAX_EMAIL_LOOKUPS_PER_RUN = 600
+MAX_EMAIL_LOOKUPS_PER_RUN = 900
 
 # ----------------------------------------------------------------------------
 # Paths & session
@@ -189,11 +187,26 @@ def wlabel(week_start_iso: str) -> str:
 
 
 # ----------------------------------------------------------------------------
-# PI email lookup: RePORTER project-info first, PubMed fallback
+# PI email lookup: grant-linked publications, then PubMed author search,
+# then Europe PMC open-access full text
 # ----------------------------------------------------------------------------
 
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
-EMAIL_EDU_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.edu\b", re.I)
+# Institutional addresses are not all .edu - research institutes (.org),
+# hospitals, government labs (.gov) and foreign universities (.ac.uk, .ca)
+# are all legitimate. Reject only free consumer providers.
+FREE_EMAIL_DOMAINS = {
+    "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "hotmail.com",
+    "outlook.com", "live.com", "msn.com", "aol.com", "icloud.com", "me.com",
+    "mac.com", "proton.me", "protonmail.com", "gmx.com", "gmx.de",
+    "mail.com", "yandex.ru", "qq.com", "163.com", "126.com", "sina.com",
+    "example.com",
+}
+
+
+def _institutional(email: str) -> bool:
+    dom = email.split("@")[-1].lower().rstrip(".")
+    return bool(dom) and dom not in FREE_EMAIL_DOMAINS
 AFFIL_STOP = {"university", "of", "the", "at", "and", "a", "an", "in", "for",
               "system", "medical", "college", "school", "institute", "center",
               "centre", "hospital", "health", "sciences", "science",
@@ -227,52 +240,6 @@ def _walk_for_email(obj, require_pi=True):
     return hits[0][1] if hits else ""
 
 
-class ReporterEmailSource:
-    """Wraps the undocumented project-info endpoint with a circuit breaker."""
-
-    def __init__(self):
-        self.consecutive_fails = 0
-        self.no_email_streak = 0
-        self.disabled = False
-        self.logged_shape = False
-
-    def get(self, appl: str, stats: dict) -> str:
-        if self.disabled or not appl:
-            return ""
-        try:
-            stats["net"] = stats.get("net", 0) + 1
-            r = SESSION.get(REPORTER_INFO_URL.format(appl=appl), timeout=TIMEOUT)
-            time.sleep(REPORTER_SLEEP)
-            if r.status_code != 200:
-                raise RuntimeError(f"HTTP {r.status_code}")
-            payload = r.json()
-            if not self.logged_shape:
-                self.logged_shape = True
-                keys = (sorted(payload.keys())[:15]
-                        if isinstance(payload, dict) else type(payload).__name__)
-                log(f"  reporter payload shape: {keys}")
-            email = _walk_for_email(payload)
-            self.consecutive_fails = 0
-            if email:
-                self.no_email_streak = 0
-            else:
-                self.no_email_streak += 1
-                if self.no_email_streak >= 8:
-                    self.disabled = True
-                    log("RePORTER endpoint responds but carries no email field "
-                        "- skipping it for the rest of this run (paste the "
-                        "'reporter payload shape' log line to Claude)")
-            return email
-        except Exception as exc:
-            self.consecutive_fails += 1
-            if self.consecutive_fails >= REPORTER_MAX_CONSECUTIVE_FAILS:
-                self.disabled = True
-                log(f"RePORTER email endpoint unavailable ({exc}); "
-                    f"falling back to PubMed for the rest of this run - "
-                    f"report this line to Claude if it persists")
-            return ""
-
-
 def _uni_affil_terms(university: str) -> str:
     """One distinctive token, e.g. 'Vanderbilt University Medical Center' ->
     Vanderbilt. Stitching two non-adjacent words into a quoted phrase (the
@@ -282,7 +249,22 @@ def _uni_affil_terms(university: str) -> str:
     if not toks:
         toks = [w for w in re.split(r"[^A-Za-z]+", university)
                 if w and w.lower() not in {"of", "the", "at", "and"}]
-    return toks[0] if toks else ""
+    if not toks:
+        return ""
+    # longest wins (ties -> earliest): "Ada Forsyth" -> Forsyth, not Ada
+    return max(toks, key=lambda w: (len(w), -toks.index(w)))
+
+
+def _name_forms(pi: str):
+    """('Jessica Leigh Mark Welch') -> [('Jessica','Welch'),('Jessica','Mark Welch')]
+    so compound surnames are not silently truncated."""
+    parts = [x for x in pi.split() if x]
+    if len(parts) < 2:
+        return []
+    forms = [(parts[0], parts[-1])]
+    if len(parts) >= 3:
+        forms.append((parts[0], " ".join(parts[-2:])))
+    return forms
 
 
 def _plausible_own_email(email: str, first: str, last: str) -> bool:
@@ -301,23 +283,32 @@ def _plausible_own_email(email: str, first: str, last: str) -> bool:
     return False
 
 
-def _extract_edu_email(xml_text: str, first: str, last: str) -> str:
+def _extract_email(xml_text: str, forms) -> str:
+    """Pull a PI's own institutional email out of PubMed efetch XML.
+    `forms` is [(first, last), ...] - any form may match."""
     import xml.etree.ElementTree as ET
     try:
         root = ET.fromstring(xml_text)
     except ET.ParseError:
         return ""
-    last_l = last.lower()
+    lasts = {l.lower() for _, l in forms} | {l.split()[-1].lower() for _, l in forms}
+
+    def ok(e):
+        return _institutional(e) and any(
+            _plausible_own_email(e, f, l) for f, l in forms)
+
+    # pass 1: affiliations attached to an author whose surname matches
     for au in root.iter("Author"):
-        if (au.findtext("LastName") or "").lower() != last_l:
+        if (au.findtext("LastName") or "").lower() not in lasts:
             continue
         for aff in au.iter("Affiliation"):
-            for e in EMAIL_EDU_RE.findall(aff.text or ""):
-                if _plausible_own_email(e, first, last):
+            for e in EMAIL_RE.findall(aff.text or ""):
+                if ok(e):
                     return e
+    # pass 2: any affiliation line, name match still required
     for aff in root.iter("Affiliation"):
-        for e in EMAIL_EDU_RE.findall(aff.text or ""):
-            if _plausible_own_email(e, first, last):
+        for e in EMAIL_RE.findall(aff.text or ""):
+            if ok(e):
                 return e
     return ""
 
@@ -332,22 +323,116 @@ def _ncbi_get(url: str, params: dict):
     return r
 
 
-def _pubmed_email(first: str, last: str, university: str, stats: dict,
-                  verbose: bool = False):
-    """Return an email str, '' for a clean no-hit, or None on transient error
-    (None is never cached, so the PI is retried next run)."""
+def _grant_pmids(appl: str, stats: dict, verbose: bool = False, core: str = ""):
+    """PMIDs NIH itself links to this grant - far more precise than guessing
+    by author name (crucial for common names like 'Yu N'). The core project
+    number spans every year of the award, so it catches papers a brand-new
+    -01 application hasn't been linked to yet."""
+    if not appl and not core:
+        return []
+    criteria = ({"core_project_nums": [core]} if core
+                else {"appl_ids": [int(appl)]})
+    try:
+        stats["net"] = stats.get("net", 0) + 1
+        r = SESSION.post("https://api.reporter.nih.gov/v2/publications/search",
+                         json={"criteria": criteria,
+                               "limit": 20, "offset": 0}, timeout=TIMEOUT)
+        time.sleep(0.4)
+        if r.status_code != 200:
+            return []
+        pmids = [str(x.get("pmid")) for x in (r.json().get("results") or [])
+                 if x.get("pmid")]
+        if verbose:
+            log(f"    grant-linked publications: {len(pmids)} pmid(s)")
+        return pmids[:20]
+    except Exception as exc:
+        if verbose:
+            log(f"    grant publications lookup failed: {exc}")
+        return []
+
+
+def _pmcids_in(xml_text: str):
+    """PMC ids listed in PubMed efetch XML (open-access full text exists)."""
+    return re.findall(r'IdType="pmc">\s*(PMC\d+)', xml_text)
+
+
+def _europepmc_email(pmcid: str, forms, stats, verbose=False) -> str:
+    """Open-access full text (JATS) carries explicit corresponding-author
+    <email> tags that PubMed's affiliation field often omits."""
+    url = f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML"
+    try:
+        stats["net"] = stats.get("net", 0) + 1
+        r = SESSION.get(url, timeout=TIMEOUT)
+        time.sleep(EUROPEPMC_SLEEP)
+        if r.status_code != 200 or not r.text:
+            return ""
+        for e in EMAIL_RE.findall(r.text):
+            if _institutional(e) and any(
+                    _plausible_own_email(e, f, l) for f, l in forms):
+                if verbose:
+                    log(f"    -> {e} (Europe PMC full text, {pmcid})")
+                return e
+        return ""
+    except Exception:
+        return ""
+
+
+def _efetch_email(pmids, forms, stats, verbose=False):
     base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
     common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
     if NCBI_API_KEY:
         common["api_key"] = NCBI_API_KEY
-    author = f"{last} {first[:1]}[Author]"
-    term = _uni_affil_terms(university)
-    queries = ([f"{author} AND {term}[Affiliation]"] if term else []) + [author]
+    stats["net"] = stats.get("net", 0) + 1
+    r = _ncbi_get(base + "efetch.fcgi",
+                  dict(common, id=",".join(pmids), retmode="xml"))
+    time.sleep(EMAIL_SLEEP)
+    email = _extract_email(r.text, forms)
+    if verbose:
+        log(f"    -> {email or 'no matching institutional email in affiliations'}")
+    if email:
+        return email
+    for pmcid in _pmcids_in(r.text)[:MAX_PMC_FULLTEXT_PER_PI]:
+        email = _europepmc_email(pmcid, forms, stats, verbose)
+        if email:
+            return email
+    return ""
+
+
+def _pubmed_email(pi: str, university: str, appl: str, stats: dict,
+                  verbose: bool = False, core: str = ""):
+    """Return an email str, '' for a clean no-hit, or None on transient error
+    (None is never cached, so the PI is retried next run).
+
+    Order: papers NIH links to this grant first, then author-name search."""
+    forms = _name_forms(pi)
+    if not forms:
+        return ""
+    base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+    common = {"db": "pubmed", "tool": "biotech-funding-tracker"}
+    if NCBI_API_KEY:
+        common["api_key"] = NCBI_API_KEY
     try:
+        linked = _grant_pmids(appl, stats, verbose, core)
+        if linked:
+            email = _efetch_email(linked, forms, stats, verbose)
+            if email:
+                return email
+        term = _uni_affil_terms(university)
+        queries = []
+        for first, last in forms:
+            surname = last.split()[-1]
+            author = f"{surname} {first[:1]}[Author]"
+            if term:
+                queries.append(f"{author} AND {term}[Affiliation]")
+            queries.append(author)
+        seen_q = set()
         for q in queries:
+            if q in seen_q:
+                continue
+            seen_q.add(q)
             stats["net"] = stats.get("net", 0) + 1
             r = _ncbi_get(base + "esearch.fcgi",
-                          dict(common, term=q, retmax="10", retmode="json",
+                          dict(common, term=q, retmax="20", retmode="json",
                                reldate="4000", datetype="pdat"))
             time.sleep(EMAIL_SLEEP)
             ids = ((r.json().get("esearchresult") or {}).get("idlist")) or []
@@ -355,24 +440,17 @@ def _pubmed_email(first: str, last: str, university: str, stats: dict,
                 log(f"    pubmed q=[{q}] -> {len(ids)} pmid(s)")
             if not ids:
                 continue
-            stats["net"] += 1
-            r2 = _ncbi_get(base + "efetch.fcgi",
-                           dict(common, id=",".join(ids), retmode="xml"))
-            time.sleep(EMAIL_SLEEP)
-            email = _extract_edu_email(r2.text, first, last)
-            if verbose:
-                log(f"    -> {email or 'no matching .edu email in affiliations'}")
+            email = _efetch_email(ids, forms, stats, verbose)
             if email:
                 return email
         return ""
     except Exception as exc:
-        log(f"  PubMed lookup errored for {first} {last}: {exc}")
+        log(f"  PubMed lookup errored for {pi}: {exc}")
         return None
 
 
 def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
-                    stats: dict, reporter: "ReporterEmailSource",
-                    verbose: bool = False):
+                    stats: dict, verbose: bool = False, core: str = ""):
     """Return (email, source). Cached forever; misses retried after a while."""
     key = f"{pi}|{university}".lower()
     ent = cache.get(key)
@@ -385,21 +463,56 @@ def lookup_pi_email(pi: str, university: str, appl: str, cache: dict,
             checked = date(1970, 1, 1)
         if (date.today() - checked).days < EMAIL_RETRY_DAYS:
             return "", ""
-    email, src = reporter.get(appl, stats), "RePORTER"
-    if not email:
-        parts = pi.split()
-        if len(parts) >= 2:
-            pm = _pubmed_email(parts[0], parts[-1], university, stats, verbose)
-            if pm is None:  # transient error: don't cache, retry next run
-                return "", ""
-            email, src = pm, "PubMed"
-        else:
-            email = ""
-    if not email:
-        src = ""
+    # The RePORTER project-info service was verified to carry no email field
+    # (its "View Email" button is reCAPTCHA-gated), so PubMed is the source.
+    pm = _pubmed_email(pi, university, appl, stats, verbose, core)
+    if pm is None:  # transient error: don't cache, retry next run
+        return "", ""
+    email, src = pm, ("PubMed" if pm else "")
     cache[key] = {"email": email, "src": src,
                   "checked": date.today().isoformat()}
     return email, src
+
+
+def _backfill_core_numbers(data) -> None:
+    """One-time: entries recorded before core project numbers were stored
+    get them via batched RePORTER lookups (500 appl ids per call)."""
+    missing = {}
+    for row in data["rows"].values():
+        for entries in row["cells"].values():
+            for e in entries:
+                if "core" in e:
+                    continue
+                m = re.search(r"project-details/(\d+)", e.get("url", ""))
+                if m:
+                    missing.setdefault(m.group(1), []).append(e)
+                else:
+                    e["core"] = ""
+    if not missing:
+        return
+    ids = list(missing)
+    found = 0
+    for i in range(0, len(ids), 500):
+        chunk = ids[i:i + 500]
+        try:
+            r = SESSION.post("https://api.reporter.nih.gov/v2/projects/search",
+                             json={"criteria": {"appl_ids": [int(x) for x in chunk]},
+                                   "include_fields": ["ApplId", "CoreProjectNum"],
+                                   "limit": 500, "offset": 0}, timeout=TIMEOUT)
+            time.sleep(1)
+            r.raise_for_status()
+            for p in r.json().get("results", []):
+                core = p.get("core_project_num") or ""
+                for e in missing.get(str(p.get("appl_id")), []):
+                    e["core"] = core
+                    found += 1
+        except Exception as exc:
+            log(f"  core-number backfill chunk failed: {exc}")
+    for lst in missing.values():
+        for e in lst:
+            e.setdefault("core", "")
+    save_json(DATA_FILE, data)
+    log(f"backfilled core project numbers for {found} entries")
 
 
 def sweep_pi_emails(data):
@@ -411,17 +524,17 @@ def sweep_pi_emails(data):
     # One-time flush (v2): earlier versions cached transient errors as
     # 45-day misses. Drop all cached misses once so those PIs get a clean
     # retry; confirmed hits are kept.
-    if (cache.get("_meta") or {}).get("v") != 3:
+    if (cache.get("_meta") or {}).get("v") != 5:
         dropped = sum(1 for k, v in cache.items()
                       if isinstance(v, dict) and not v.get("email"))
         cache = {k: v for k, v in cache.items()
                  if isinstance(v, dict) and v.get("email")}
-        cache["_meta"] = {"v": 3}
+        cache["_meta"] = {"v": 5}
         if dropped:
             log(f"cleared {dropped} cached miss(es) so they retry now")
+    _backfill_core_numbers(data)
     stats = {"net": 0, "pis": 0}
-    reporter = ReporterEmailSource()
-    filled = {"RePORTER": 0, "PubMed": 0}
+    filled = {"PubMed": 0}
     changed = False
     pending = sum(
         1 for row in data["rows"].values() for entries in row["cells"].values()
@@ -434,8 +547,8 @@ def sweep_pi_emails(data):
         save_json(email_cache_path(), cache)
         if changed:
             save_json(DATA_FILE, data)
-        none_n = max(pending - filled["RePORTER"] - filled["PubMed"], 0)
-        log(f"emails: reporter={filled['RePORTER']}, pubmed={filled['PubMed']}, "
+        none_n = max(pending - filled["PubMed"], 0)
+        log(f"emails: found={filled['PubMed']}, "
             f"none={none_n} (PIs attempted: {stats['pis']}, "
             f"API calls: {stats['net']}, cache: {len(cache) - 1})")
 
@@ -457,7 +570,8 @@ def sweep_pi_emails(data):
                     log(f"  lookup: {e['pi']} @ {row['university']} "
                         f"(appl {appl or 'n/a'})")
                 em, src = lookup_pi_email(e["pi"], row["university"], appl,
-                                          cache, stats, reporter, verbose)
+                                          cache, stats, verbose,
+                                          e.get("core", ""))
                 if fresh:
                     stats["pis"] += 1
                 if em:
@@ -482,11 +596,11 @@ def sweep_pi_emails(data):
 # ----------------------------------------------------------------------------
 
 def make_award(key, university, department, amount, url, funder, pi,
-               pi_email=""):
+               pi_email="", core=""):
     return {
         "key": key, "university": university, "department": department,
         "funder": funder, "amount": int(amount), "url": url, "pi": pi,
-        "pi_email": pi_email,
+        "pi_email": pi_email, "core": core,
     }
 
 
@@ -504,7 +618,7 @@ def fetch_nih_week(week_start: date, week_end: date):
                 "ApplId", "ProjectNum", "ProjectTitle", "AwardAmount",
                 "Organization", "AwardNoticeDate", "ProjectDetailUrl",
                 "PrefTerms", "AgencyIcAdmin", "ContactPiName",
-                "PrincipalInvestigators",
+                "PrincipalInvestigators", "CoreProjectNum",
             ],
             "limit": 500,
             "offset": offset,
@@ -560,7 +674,7 @@ def fetch_nih_week(week_start: date, week_end: date):
                 key=f"NIH:{appl}", university=nice_name(name),
                 department=dept_label, amount=amt, url=url, funder=funder,
                 pi=flip_name(p.get("contact_pi_name") or ""),
-                pi_email=api_email,
+                pi_email=api_email, core=(p.get("core_project_num") or ""),
             ))
         if len(results) < 500:
             break
@@ -609,6 +723,7 @@ def ingest(awards, week_start_iso: str):
         row["cells"].setdefault(week_start_iso, []).append({
             "amount": a["amount"], "label": fmt_money(a["amount"]),
             "url": a["url"], "pi": a["pi"], "pi_email": a["pi_email"],
+            "core": a.get("core", ""),
         })
         new_count += 1
 
@@ -657,12 +772,15 @@ def render_html(data) -> str:
                        r["department"].lower()),
     )
 
-    total_latest = sum(e["amount"]
-                       for r in rows for e in r["cells"].get(latest, []))
+    week_totals = {
+        w: sum(e["amount"] for r in rows for e in r["cells"].get(w, []))
+        for w in weeks}
+    total_latest = week_totals.get(latest, 0)
     n_awards = sum(len(v) for r in rows for v in r["cells"].values())
 
     head_cells = "".join(
-        f'<th class="num{" today" if w == latest else ""}" data-t="num" '
+        f'<th class="num{" sel" if w == latest else ""}" data-t="num" '
+        f'data-total="{week_totals[w]}" data-label="{wlabel(w)}" '
         f'title="{w}">{wlabel(w)}</th>' for w in weeks)
 
     body = []
@@ -736,7 +854,7 @@ th.sorted {{ box-shadow:inset 0 -2px 0 var(--grow); color:var(--grow); }}
 th.sorted.asc::after {{ content:"\u25B2"; color:var(--grow); }}
 th.sorted.desc::after {{ content:"\u25BC"; color:var(--grow); }}
 th:hover {{ color:var(--grow); }}
-th.today {{ background:var(--broth); }}
+th.sel {{ background:var(--broth); }}
 th:nth-child(1), td.rownum {{ position:sticky; left:0; background:var(--bg);
   text-align:right; min-width:48px; max-width:48px; z-index:2;
   color:var(--mut); font-size:12.5px; }}
@@ -764,8 +882,8 @@ tr:hover td {{ background:#F3F7F4; }}
       {len(rows)} rows &middot; {n_awards} awards tracked</div>
   </div>
   <div class="todaybox">
-    <div class="fig">{fmt_money(total_latest)}</div>
-    <div class="cap">granted {wlabel(latest) if latest else "-"}</div>
+    <div class="fig" id="fig">{fmt_money(total_latest)}</div>
+    <div class="cap">granted <span id="cap">{wlabel(latest) if latest else "-"}</span></div>
     <label class="emailchk"><input type="checkbox" id="onlyemail">
       Only show rows with a PI email</label>
   </div>
@@ -834,6 +952,13 @@ ths.forEach((th, i) => {{
     cur.i = i;
     ths.forEach(h => h.classList.remove('sorted', 'asc', 'desc'));
     th.classList.add('sorted', cur.dir === 1 ? 'asc' : 'desc');
+    if (num && th.dataset.total !== undefined) {{
+      ths.forEach(h => h.classList.remove('sel'));
+      th.classList.add('sel');
+      document.getElementById('fig').textContent =
+        '$' + (+th.dataset.total).toLocaleString('en-US');
+      document.getElementById('cap').textContent = th.dataset.label;
+    }}
     const rows = [...tbody.rows];
     rows.sort((a, b) => {{
       if (num) {{
@@ -923,8 +1048,33 @@ def selftest() -> int:
            "<AffiliationInfo><Affiliation>Brown University. jane_big@brown.edu"
            "</Affiliation></AffiliationInfo></Author></AuthorList>"
            "</Article></MedlineCitation></PubmedArticle></PubmedArticleSet>")
-    assert _extract_edu_email(xml, "Jane", "Big") == "jane_big@brown.edu"
-    assert _extract_edu_email(xml, "Zed", "Nowhere") == ""
+    assert _extract_email(xml, [("Jane", "Big")]) == "jane_big@brown.edu"
+    assert _extract_email(xml, [("Zed", "Nowhere")]) == ""
+
+    # .org / .gov institutional addresses accepted, free-mail rejected
+    assert _institutional("jmarkwelch@forsyth.org")
+    assert _institutional("someone@nih.gov")
+    assert not _institutional("someone@gmail.com")
+
+    # compound surnames: both forms tried, PubMed's "Mark Welch" matches
+    forms = _name_forms("Jessica Leigh Mark Welch")
+    assert ("Jessica", "Welch") in forms and ("Jessica", "Mark Welch") in forms
+    xml2 = ("<PubmedArticleSet><PubmedArticle><MedlineCitation><Article>"
+            "<AuthorList><Author><LastName>Mark Welch</LastName>"
+            "<ForeName>Jessica L</ForeName><AffiliationInfo><Affiliation>"
+            "ADA Forsyth Institute, Somerville MA. jmarkwelch@forsyth.org"
+            "</Affiliation></AffiliationInfo></Author></AuthorList>"
+            "</Article></MedlineCitation><PubmedData><ArticleIdList>"
+            "<ArticleId IdType=\"pmc\">PMC9999999</ArticleId>"
+            "</ArticleIdList></PubmedData></PubmedArticle></PubmedArticleSet>")
+    assert _extract_email(xml2, forms) == "jmarkwelch@forsyth.org", \
+        "compound surname + .org email should match"
+    assert _pmcids_in(xml2) == ["PMC9999999"], "PMC id extraction"
+
+    # affiliation token picks the distinctive word
+    assert _uni_affil_terms("Ada Forsyth Institute, Inc.") == "Forsyth"
+    assert _uni_affil_terms("Johns Hopkins University") == "Hopkins"
+    assert _uni_affil_terms("University of Minnesota") == "Minnesota"
 
     # email sweep with stubbed lookup (no network) + cache-flush check
     save_json(email_cache_path(), {
@@ -935,8 +1085,8 @@ def selftest() -> int:
     })
     orig = globals()["lookup_pi_email"]
     globals()["lookup_pi_email"] = (
-        lambda pi, uni, appl, cache, stats, rep, verbose=False:
-        (("jbig@brown.edu", "RePORTER") if pi == "Jane Big" else ("", "")))
+        lambda pi, uni, appl, cache, stats, verbose=False, core="":
+        (("jbig@brown.edu", "PubMed") if pi == "Jane Big" else ("", "")))
     data = sweep_pi_emails(data)
     globals()["lookup_pi_email"] = orig
     assert data["rows"]["brown university||biomedical engineering||nih (nigms)"][
@@ -944,7 +1094,7 @@ def selftest() -> int:
     flushed = load_json(email_cache_path(), {})
     assert "old hit|somewhere" in flushed, "flush must keep confirmed hits"
     assert "poisoned miss|somewhere" not in flushed, "flush must drop misses"
-    assert flushed.get("_meta", {}).get("v") == 3
+    assert flushed.get("_meta", {}).get("v") == 5
 
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
@@ -954,10 +1104,15 @@ def selftest() -> int:
     assert 'id="onlyemail"' in page and 'data-he="1"' in page and 'data-he="0"' in page
     assert '<div class="tot">= $5,100,000</div>' in page
     assert "PI Name: Jane Big" in page and 'href="mailto:jbig@brown.edu"' in page
-    assert 'title="source: RePORTER"' in page
+    assert 'title="source: PubMed"' in page
     assert "PI Email: --" in page
     assert 'data-v="0">0<' in page
     assert "renumber" in page and "r.cells[0].textContent" in page
+    assert 'data-total="5850000"' in page, \
+        "week header must carry its own total (4.6M + 0.5M + 0.75M)"
+    assert 'data-label="Sep 6 \u2013 Sep 12"' in page, "week header label missing"
+    assert 'id="fig"' in page and 'id="cap"' in page, "summary ids missing"
+    assert page.count('class="num sel"') == 1, "exactly one week highlighted"
 
     data, n3 = ingest([wk1[0]], "2026-09-13")
     assert n3 == 0 and data["dates"].count("2026-09-13") == 1, "rerun broke"
